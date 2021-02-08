@@ -13,3 +13,6 @@ To develop local extensions use the docker-compose.dev.yml file:
 
 ### To start the containers:
 Run command `docker-compose -f docker-compose.dev.yml up`
+
+### Access wordpress admin:
+User prot 4000 `http://localhost:4000/`
