@@ -12,4 +12,4 @@ To develop local extensions use the docker-compose.dev.yml file:
 - Run docker compose for mysql and wordpress service  `docker-compose -f docker-compose.dev.yml build ` 
 
 ### To start the containers:
-docker-compose -f docker-compose.dev.yml up
+Run command `docker-compose -f docker-compose.dev.yml up`
