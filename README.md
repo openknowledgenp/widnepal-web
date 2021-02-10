@@ -12,13 +12,14 @@ Website for the steering committee of "women in data nepal"
 - ```cd widnepal-web```
 
 ## Setup WordPress CMS
+Make sure you are in the project root directory
 - Run: `docker-compose up -d`
 - After the command exit, goto `http://localhost:8000/` on your browser.
 - Setup the WordPress Dashboard by providing name of site, username, password and other information.
-- Goto "Plugins" > "Add New". Search and install the plugin "WPGraphQL" and then activate the plugin.
-- You can manage plugins from `/wordpress/wp-content/plugins`.
+- Goto "Plugins" > "Installed Plugins". Find "WP GraphQL" and then activate the it. (You can manage plugins from `/wordpress/wp-content/plugins`.)
+- Now setup the categories and tags as required.
 
 ## Setup NextJS Frontend
-- ```cd NextJS\ Site/```
-- ```yarn install```
-- ```yarn dev```
+Make sure you are in the project root directory
+- ```npm install```
+- ```npm run dev```
