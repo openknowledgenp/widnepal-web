@@ -8,6 +8,7 @@ Website for the steering committee of "women in data nepal"
 
 ## Setup WordPress CMS
 - ```git clone git@github.com:okfnepal/widnepal-web.git```
+- ```cd widnepal-web```
 - ```git switch wordpress```
 - Run: `docker-compose up -d`
 - After the command exit, goto `http://localhost:8000/` on your browser.
