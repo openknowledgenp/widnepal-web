@@ -1,5 +1,6 @@
 # 🌍 womenindatanepal website
 [![MIT license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat)](https://github.com/okfnepal/widnepal-web/blob/master/LICENSE)
+
 Website for the steering committee of "women in data nepal"
 
 ### Website powered with:
@@ -16,7 +17,7 @@ Website for the steering committee of "women in data nepal"
 - Goto `Plugins > Add New`. Search and install the plugin "WPGraphQL" and then activate.
 
 ## Setup NextJS Frontend
-```git clone git@github.com:okfnepal/widnepal-web.git```
-```cd widnepal-web```
-```yarn install```
-```yarn dev```
+- ```git clone git@github.com:okfnepal/widnepal-web.git```
+- ```cd widnepal-web```
+- ```yarn install```
+- ```yarn dev```
