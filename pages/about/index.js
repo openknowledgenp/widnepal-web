@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/about.queries';
-import Nav from '../../components/nav';
 
 const About = () => {
   // Create a query hook
@@ -20,7 +19,6 @@ const About = () => {
         <title>About Us</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav/>
       <ul>
         {data.posts.edges.map(post => {
           return (

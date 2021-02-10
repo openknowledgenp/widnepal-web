@@ -17,10 +17,9 @@ const Program = () => {
   return (
     <div>
       <Head>
-        <title>Programs</title>
+        <title>Projects</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav/>
       <ul>
         {data.posts.edges.map(post => {
           return (

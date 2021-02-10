@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
 import { POSTS, POST_WITH_SLUG } from '../../graphql/blog.queries';
-import Nav from '../../components/nav';
 
 const BlogDetail = () => {
   const router = useRouter()
@@ -26,7 +25,6 @@ const BlogDetail = () => {
         <title>Blog - {post.node.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav/>
       <ul>
         {data.posts.edges.map(post => {
           return (
