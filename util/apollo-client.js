@@ -5,7 +5,7 @@ import { createHttpLink } from 'apollo-link-http';
 import fetch from 'isomorphic-unfetch';
 
 // GraphQL endpoint
-const LOCAL_GRAPHQL_URL = 'http://localhost/index.php?graphql';
+const LOCAL_GRAPHQL_URL = 'http://localhost:8000/index.php?graphql';
 const STAGING_GRAPHQL_URL = 'https://demo.womenindatanepal.com/index.php?graphql';
 const PRODUCTION_GRAPHQL_URL = 'https://www.womenindatanepal.com/index.php?graphql';
 
