@@ -1,18 +1,14 @@
-# widnepal-web
-A website of women in data steering committee
+# 🌍 womenindatanepal website
+[![MIT license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat)](https://github.com/okfnepal/widnepal-web/blob/master/LICENSE)
+Website for the steering committee of "women in data nepal"
 
+### Website powered with:
+**CMS** : [WordPress](https://wordpress.com/)  \
+**Frontend** : [NextJS](https://nextjs.org/)
 
-### The website is powered with: 
-**CMS** ==> [Wordpress](https://wordpress.com/)  \
-**Frontend** ==> [Nextjs](https://nextjs.org/)
-
-# Development setup setps
-To develop local extensions use the docker-compose.dev.yml file:
-### To build the images:
-- Run docker compose for mysql and wordpress service  `docker-compose -f docker-compose.dev.yml build ` 
-
-### To start the containers:
-Run command `docker-compose -f docker-compose.dev.yml up`
-
-### Access wordpress admin:
-User prot 4000 `http://localhost:4000/`
+## Setup WordPress CMS
+- git switch wordpress
+- Run: `docker-compose up -d`
+- After the command exit, goto `http://localhost:8000/` on your browser.
+- Setup the WordPress Dashboard.
+- Goto `Plugins > Add New`. Search and install the plugin "WPGraphQL" and then activate.
