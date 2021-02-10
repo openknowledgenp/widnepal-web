@@ -1,5 +1,5 @@
 {
-  "name": "apollo-example",
+  "name": "womenindata",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,22 +10,22 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
-    "apollo-cache-inmemory": "^1.6.3",
-    "apollo-client": "^2.6.4",
-    "apollo-link-http": "^1.5.16",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
     "eslint": "^7.19.0",
     "graphql": "^15.5.0",
-    "graphql-tag": "^2.10.1",
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "10.0.6",
+    "graphql-tag": "^2.11.0",
+    "isomorphic-unfetch": "^3.1.0",
+    "next": "^10.0.6",
     "next-with-apollo": "^5.1.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1"
   }
