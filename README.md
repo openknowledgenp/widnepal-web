@@ -7,7 +7,7 @@ Website for the steering committee of "women in data nepal"
 **CMS** : [WordPress](https://wordpress.com/)  \
 **Frontend** : [NextJS](https://nextjs.org/)
 
-## Setup WordPress CMS
+## Setup WordPress CMS from scratch
 - ```git clone git@github.com:okfnepal/widnepal-web.git```
 - ```cd widnepal-web```
 - ```git switch wordpress```
