@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const JOBS_QUERY = gql`
+export const ALL_POSTS = gql`
   query Posts {
     posts {
       edges {
@@ -14,5 +14,3 @@ const JOBS_QUERY = gql`
     }
   }
 `;
-
-export default JOBS_QUERY;
