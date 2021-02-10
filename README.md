@@ -10,11 +10,11 @@ Website for the steering committee of "women in data nepal"
 ## Setup WordPress CMS from scratch
 - ```git clone git@github.com:okfnepal/widnepal-web.git```
 - ```cd widnepal-web```
-- ```git switch wordpress```
+- ```cd Wordpress\ CMS/```
 - Run: `docker-compose up -d`
 - After the command exit, goto `http://localhost:8000/` on your browser.
-- Setup the WordPress Dashboard.
-- Goto `Plugins > Add New`. Search and install the plugin "WPGraphQL" and then activate.
+- Setup the WordPress Dashboard by providing name of site, username, password and other information.
+- Goto `Plugins > Add New`. Search and install the plugin "WPGraphQL" and then activate the plugin.
 
 ## Setup NextJS Frontend
 - ```git clone git@github.com:okfnepal/widnepal-web.git```
