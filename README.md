@@ -12,7 +12,7 @@ Website for the steering committee of "women in data nepal"
 - ```cd widnepal-web```
 
 ## Setup WordPress CMS
-Make sure you are in the project root directory
+Make sure you are in the project's root directory.
 - Run: `docker-compose up -d`
 - After the command exit, goto `http://localhost:8000/` on your browser.
 - Setup the WordPress Dashboard by providing name of site, username, password and other information.
@@ -20,6 +20,6 @@ Make sure you are in the project root directory
 - Now setup the categories and tags as required.
 
 ## Setup NextJS Frontend
-Make sure you are in the project root directory
+Make sure you are in the project's root directory.
 - ```npm install```
 - ```npm run dev```
