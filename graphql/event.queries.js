@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-export const ALL_POSTS = gql`
+export const POSTS = gql`
   query Posts {
-    posts {
+    posts (where: {categoryName: "events"}) {
       edges {
         node {
           id
