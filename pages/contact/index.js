@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/contact.queries';
-import Nav from '../../components/nav';
+import { PageDetailLayout } from '../../components/pageLayout'
 
 const Contact = () => {
   // Create a query hook
@@ -14,14 +14,10 @@ const Contact = () => {
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
+
   return (
-    <div>
-      <Nav/>
-      <Head>
-        <title>Contact</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <ul>
+    <PageDetailLayout title="Contact">
+        contact detail
         {data.posts.edges.map(post => {
           return (
             <div key={`post__${post.node.id}`}>
@@ -30,8 +26,7 @@ const Contact = () => {
             </div>
           );
         })}
-      </ul>
-    </div>
+    </PageDetailLayout>
   );
 };
 

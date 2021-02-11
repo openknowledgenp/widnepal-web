@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
 import { POSTS, POST_WITH_SLUG } from '../../graphql/blog.queries';
-import Nav from '../../components/nav';
+import { PageDetailLayout } from '../../components/pageLayout'
 
 const BlogDetail = () => {
   const router = useRouter()
@@ -20,25 +20,19 @@ const BlogDetail = () => {
   } else if (data.posts.edges.length === 0){
     return <p>Blog Not Found</p>
   }
+
+  const post = data.posts.edges[0]
+
   return (
-    <div>
-      <Nav/>
-      <Head>
-        <title>Blog - {post.node.title}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <ul>
-        {data.posts.edges.map(post => {
-          return (
-            <div key={`post__${post.node.id}`}>
-              <h2>{post.node.title}</h2>
-              <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
-            </div>
-          );
-        })}
-      </ul>
-    </div>
+    <PageDetailLayout title={post.node.title}>
+        Blog: {post.node.title}
+        <div key={`post__${post.node.id}`}>
+          <h2>{post.node.title}</h2>
+          <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
+        </div>
+    </PageDetailLayout>
   );
+
 };
 
 export default BlogDetail;

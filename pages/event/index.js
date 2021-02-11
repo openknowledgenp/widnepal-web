@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/event.queries';
-import { PageDetailLayout } from '../../components/pageDetailLayout'
+import { PageDetailLayout } from '../../components/pageLayout'
 
 const Event = () => {
   // Create a query hook
@@ -17,7 +17,15 @@ const Event = () => {
 
   return (
     <PageDetailLayout title="Events">
-      this is good
+      event detail
+      {data.posts.edges.map(post => {
+        return (
+          <div key={`post__${post.node.id}`}>
+            <h2>{post.node.title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
+          </div>
+        );
+      })}
     </PageDetailLayout>
   );
 };
