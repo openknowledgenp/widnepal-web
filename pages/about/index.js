@@ -5,20 +5,7 @@ import { POSTS } from '../../graphql/about.queries';
 import Nav from '../../components/nav';
 import GraphicsElement from '../../components/graphicsElement'
 import {
-  Button,
   Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Segment,
-  Sidebar,
-  Visibility,
-  Input,
-  Label
 } from 'semantic-ui-react'
 
 const pageStyles = {

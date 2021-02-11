@@ -5,18 +5,12 @@ import Logo from '../assets/logo.jpg';
 import {
   Button,
   Container,
-  Divider,
-  Grid,
-  Header,
   Icon,
   Image,
-  List,
   Menu,
   Segment,
   Sidebar,
   Visibility,
-  Input,
-  Label
 } from 'semantic-ui-react'
 
 const { MediaContextProvider, Media } = createMedia({
