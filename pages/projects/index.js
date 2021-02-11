@@ -16,6 +16,7 @@ const Program = () => {
   }
   return (
     <div>
+      <Nav/>
       <Head>
         <title>Projects</title>
         <link rel="icon" href="/favicon.ico" />
