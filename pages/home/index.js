@@ -19,16 +19,7 @@ const Home = () => {
   }
 
   return (
-    <HomePageLayout
-      title="Women in data"
-      description = {
-        <p>
-          We provide a platform for female and gender<br/>
-          diverse data professionals to share their technical<br/>
-          knowledge, do something.
-        </p>
-      }
-    >
+    <HomePageLayout>
       home detail
       {data.posts.edges.map(post => {
         return (

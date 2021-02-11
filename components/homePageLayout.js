@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../graphql/home.queries';
 import Nav from './nav';
+import {HOME_HEADER_BUTON_TEXT, SITE_NAME, SITE_DESCRIPTION} from '../assets/siteDetails';
 import GraphicsElement from './graphicsElement'
 import {
   Button,
@@ -29,16 +30,16 @@ const pageStyles = {
 export const HomePageLayout = (pageDetail) => <div>
   <Nav isHomePage/>
   <Head>
-    <title>Home: {pageDetail.title}</title>
+    <title>Home: {SITE_NAME}</title>
     <link rel="icon" href="/favicon.ico" />
   </Head>
   <div style={pageStyles.hero}>
     <GraphicsElement />
     <Container style={pageStyles.heroContainer}>
         <div>
-          <h1 style={pageStyles.heroContainerHead}>{pageDetail.title.toUpperCase()}</h1>
-          <p style={pageStyles.heroContainerDescription}>{pageDetail.description}</p>
-          <Button color="yellow">Why should I take a part?</Button>
+          <h1 style={pageStyles.heroContainerHead}>{SITE_NAME.toUpperCase()}</h1>
+          <p style={pageStyles.heroContainerDescription}>{SITE_DESCRIPTION}</p>
+          <Button color="yellow">{HOME_HEADER_BUTON_TEXT}</Button>
         </div>
     </Container>
   </div>

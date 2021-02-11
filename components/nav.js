@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { createMedia } from '@artsy/fresnel';
 import Logo from '../assets/logo.jpg';
+import {SITE_NAME} from '../assets/siteDetails';
+
 import {
   Button,
   Container,
@@ -55,7 +57,7 @@ const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
             // fixed={fixed ? 'top' : null}
             pointing={!fixed}
             secondary
-            widths={11}
+            widths={menuItem.length + 4}
             inverted={fixed}
             style={pageStyles.desktopNavMenu(fixed, isHomePage)}
             // color='violet'
@@ -105,7 +107,7 @@ const MobileNav = ({menuItem, activeItem}) => {
                 </Menu.Item>
                 <Menu.Item position='left' basic="true">
                   <Image width="40px" src={Logo}/>
-                  <div style={pageStyles.mobileNavName}>WOMEN IN DATA</div>
+                  <div style={pageStyles.mobileNavName}>{SITE_NAME.toUpperCase()}</div>
                 </Menu.Item>
               </Menu>
             </Container>
@@ -117,7 +119,7 @@ const MobileNav = ({menuItem, activeItem}) => {
 }
 
 function Nav(props) {
-  const [activeItem, setActiveItem] = React.useState('home');
+  const [activeItem, setActiveItem] = React.useState(undefined);
   const handleItemClick = (e, { name }) => setActiveItem(name)
   const {isHomePage} = props
   const style = pageStyles.navMenu(isHomePage);
