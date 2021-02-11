@@ -50,7 +50,8 @@ const About = () => {
       </div>
       <div style={pageStyles.pageContainerWrapper}>
       <Container style={pageStyles.pageContainer}>
-        <ul>
+        <div>
+          about us detail
           {data.posts.edges.map(post => {
             return (
               <div key={`post__${post.node.id}`}>
@@ -59,7 +60,7 @@ const About = () => {
               </div>
             );
           })}
-        </ul>
+        </div>
       </Container>
       </div>
 

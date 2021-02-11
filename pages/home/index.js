@@ -58,16 +58,17 @@ const Home = () => {
         </Container>
       </div>
       <Container style={pageStyles.pageContainer}>
-      <ul>
-      {data.posts.edges.map(post => {
-        return (
-          <div key={`post__${post.node.id}`}>
-          <h2>{post.node.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
-          </div>
-        );
-      })}
-      </ul>
+        home detail
+        <div>
+          {data.posts.edges.map(post => {
+            return (
+              <div key={`post__${post.node.id}`}>
+              <h2>{post.node.title}</h2>
+              <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
+              </div>
+            );
+          })}
+        </div>
       </Container>
     </div>
   );
