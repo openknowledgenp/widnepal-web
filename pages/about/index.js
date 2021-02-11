@@ -22,7 +22,6 @@ import {
 } from 'semantic-ui-react'
 
 const pageStyles = {
-  graphEliment: { position: 'absolute', zIndex: 1, top:0 },
   hero: {
     zIndex: 0,
     position: 'absolute',
@@ -37,8 +36,6 @@ const pageStyles = {
   heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 32, padding: 30 },
   pageContainerWrapper: {zIndex: 3, position: 'relative', backgroundColor: 'white', minHeight: 400},
   pageContainer: { marginTop: 80, paddingTop: 30 },
-  heroContainerHead: { color: 'black', fontSize: '3em', fontWeight: 'bold' },
-  heroContainerDescription: { color: 'black', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
 }
 
 const About = () => {

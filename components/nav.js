@@ -36,6 +36,7 @@ const pageStyles = {
     marginLeft: 18,
     fontSize: 20,
   },
+  nav: { position: 'relative', zIndex: 5 },
   mobileNavButton: { marginTop: 'auto', marginBottom: 'auto' },
   navMenu: (isHomePage) => ({
     margin: 'auto',
@@ -46,6 +47,7 @@ const pageStyles = {
     backgroundColor: !fixed && 'none',
     borderBottom: isHomePage ? '3px solid white' : 'none'
   }),
+  sidebar: { backgroundColor: '#229EFD' }
 }
 
 const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
@@ -87,7 +89,8 @@ const MobileNav = ({menuItem, activeItem}) => {
       <Sidebar
         as={Menu}
         animation='overlay'
-        inverted
+        // inverted
+        style={pageStyles.sidebar}
         onHide={() => setSidebarOpened(false)}
         vertical
         visible={sidebarOpened}
@@ -135,7 +138,7 @@ function Nav(props) {
     <Menu.Item as='a' href="/contact" key='Contact' onClick={handleItemClick} style={style}>Contact</Menu.Item>
   ]
   return (
-    <div style={{ position: 'relative', zIndex: 1 }}>
+    <div style={pageStyles.nav}>
       <MediaContextProvider>
         <DesktopNav menuItem={menuItem} activeItem={activeItem} isHomePage={isHomePage}/>
         <MobileNav menuItem={menuItem}/>

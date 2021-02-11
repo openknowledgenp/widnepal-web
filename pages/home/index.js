@@ -22,7 +22,6 @@ import {
 } from 'semantic-ui-react'
 
 const pageStyles = {
-  graphEliment: { position: 'absolute', zIndex: 1, top:0 },
   hero: {
     zIndex: 0,
     position: 'absolute',
