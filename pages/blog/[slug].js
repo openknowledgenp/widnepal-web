@@ -1,5 +1,3 @@
-import React from 'react';
-import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
 import { POSTS, POST_WITH_SLUG } from '../../graphql/blog.queries';

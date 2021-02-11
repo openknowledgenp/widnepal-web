@@ -1,5 +1,3 @@
-import React from 'react';
-import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/program.queries';
 import { PageDetailLayout } from '../../components/pageLayout'

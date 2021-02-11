@@ -1,5 +1,3 @@
-import React from 'react';
-import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/blog.queries';
 import { PageDetailLayout } from '../../components/pageLayout'
@@ -14,7 +12,6 @@ const Blog = () => {
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
-
 
   return (
     <PageDetailLayout title="Blog">
