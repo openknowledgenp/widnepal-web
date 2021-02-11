@@ -38,7 +38,8 @@ export const HomePageLayout = (pageDetail) => <div>
     <Container style={pageStyles.heroContainer}>
         <div>
           <h1 style={pageStyles.heroContainerHead}>{SITE_NAME.toUpperCase()}</h1>
-          <p style={pageStyles.heroContainerDescription}>{SITE_DESCRIPTION}</p>
+          <div style={pageStyles.heroContainerDescription}>{SITE_DESCRIPTION}</div>
+          <br/>
           <Button color="yellow">{HOME_HEADER_BUTON_TEXT}</Button>
         </div>
     </Container>
