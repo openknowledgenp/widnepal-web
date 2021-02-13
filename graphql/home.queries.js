@@ -30,8 +30,8 @@ export const HEADER_DESCRIPTION = gql`
   }
 `;
 export const HEADER_DESCRIPTION_ERROR_MESSAGES = {
-  errorHomeTitle: "ERR: Update CMS (with category: 'home' and tag: 'site_description').",
-  errorHomeDescription: "ERR: Update CMS (with category: 'home' and tag: 'site_description')."
+  errorHomeTitle: "ERROR",
+  errorHomeDescription: "Err: Update CMS for title and description (Add a post with category: 'home' and tag: 'site_description')."
 }
 
 export const MEDIA = gql`
