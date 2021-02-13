@@ -50,28 +50,18 @@ const AboutSection = ({title, content, mediaFileError, mediaFile}) => {
 
 const Home = () => {
   // Create a query hook
-  const queryMultiple = () => {
-    const headerData = useQuery(HEADER_DESCRIPTION);
-    const aboutData = useQuery(ABOUT);
-    const aboutMediaData = useQuery(ABOUT_MEDIA);
-    return [headerData, aboutData, aboutMediaData];
-  }
-
   const [
       { loading: headerLoading, data: headerData, error: headerError },
       { loading: aboutLoading, data: aboutData, error: aboutError },
       { loading: aboutMediaLoading, data: aboutMediaData, error: aboutMediaError },
-  ] = queryMultiple()
+  ] = [useQuery(HEADER_DESCRIPTION), useQuery(ABOUT), useQuery(ABOUT_MEDIA)]
 
-  if (aboutLoading || headerLoading || aboutMediaLoading) {
-    return <p>Loading...</p>;
-  }
+  if (aboutLoading || headerLoading || aboutMediaLoading) return <p>Loading...</p>
+  if (aboutError || headerError || aboutMediaError) return <p>Error: {JSON.stringify(aboutError || headerError || headerError)}</p>
 
-  if (aboutError || headerError || aboutMediaError) {
-    return <p>Error: {JSON.stringify(aboutError || headerError || headerError)}</p>;
-  }
-
-  let title, content, mediaFile, mediaFileError
+  let
+    title, content,
+    mediaFile, mediaFileError
 
   try {
     title = aboutData.posts.edges[0].node.title;
@@ -87,10 +77,9 @@ const Home = () => {
   } catch (e) {
     mediaFileError = ABOUT_MEDIA_ERROR_MESSAGES.error
   }
-
   return (
     <HomePageLayout data={headerData}>
-        <AboutSection title={title} content={content} mediaFileError={mediaFileError} mediaFile={mediaFile} bgColor="#f7f7f7" />
+        <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor:"#f7f7f7"}}  />
     </HomePageLayout>
   );
 };
