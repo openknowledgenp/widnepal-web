@@ -24,12 +24,12 @@ const pageStyles = {
     marginTop: -110,
     // minHeight: 400, // If you change this value, also change the value of background in components/animDependencies/animScript.js at line 21 > webGLRenderer.setSize(window.innerWidth, 400);
   },
-  pageWrapper: {
-    // marginTop: 330,
-    // position: 'absolute'
-    position: 'relative', zIndex: 2, minHeight: 600,
-    backgroundColor: 'white'
+  minCompositionLayer: {
+    backgroundColor: 'white', position: 'relative', zIndex: 2, minHeight: 600,
   },
+  pageWrapper: (background_color) => {return({
+    backgroundColor: background_color,
+  });},
   heroContainer: { position: 'relative', zIndex: 2, padding: 50 },
   heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },
   heroContainerDescription: { color: 'white', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
@@ -76,10 +76,22 @@ export const HomePageLayout = (pageDetail) => {
             </Grid>
           </Container>
         </div>
-        <div style={pageStyles.pageWrapper}>
-          <Container style={pageStyles.pageContainer}>
-            {pageDetail.children}
-          </Container>
+        <div style={pageStyles.minCompositionLayer}>
+          {pageDetail.children.length === undefined ?
+            <div style={pageStyles.pageWrapper(pageDetail.children.props.bgColor)}>
+              <Container>
+                    {pageDetail.children}
+              </Container>
+            </div>
+            :
+            pageDetail.children.map((section) => {return(
+              <div key={section.props.title} style={pageStyles.pageWrapper(section.props.bgColor)}>
+                <Container>
+                      {section}
+                </Container>
+              </div>
+            )})
+          }
         </div>
       </div>
   )

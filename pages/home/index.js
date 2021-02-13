@@ -2,8 +2,8 @@ import { useQuery } from '@apollo/react-hooks';
 import {
   HEADER_DESCRIPTION,
   ABOUT,
-  ABOUT_ERROR_MESSAGES,
   ABOUT_MEDIA,
+  ABOUT_ERROR_MESSAGES,
   ABOUT_MEDIA_ERROR_MESSAGES,
 } from '../../graphql/home.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
@@ -17,11 +17,36 @@ import {
 
 const pageStyles = {
   section: { paddingTop: 80, paddingBottom: 80 },
-  title: { fontSize: 28 },
+  title: { fontSize: 28, color: '#403E3E' },
   content: { fontSize: 18 },
   image: { margin: 'auto', boxShadow: '15px -15px #FCCA35', width: '70%' },
   imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
 }
+
+const AboutSection = ({title, content, mediaFileError, mediaFile}) => {
+  return(
+  <Grid divided='vertically' stackable style={pageStyles.section}>
+    <Grid.Row columns={2}>
+      <Grid.Column>
+        <div style={pageStyles.content}>
+          <h2 style={pageStyles.title}>{title}</h2>
+          <br/>
+          <div style={pageStyles.heroContainerDescription}>
+            <div dangerouslySetInnerHTML={{ __html: content }}/>
+          </div>
+        </div>
+      </Grid.Column>
+      <Grid.Column only='tablet computer' style={pageStyles.imageWrapper}>
+        {!mediaFileError
+          ?
+          <Image style={pageStyles.image} src={mediaFile}/>
+          :
+          <div dangerouslySetInnerHTML={{ __html: mediaFileError }}/>
+        }
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
+)}
 
 const Home = () => {
   // Create a query hook
@@ -65,27 +90,7 @@ const Home = () => {
 
   return (
     <HomePageLayout data={headerData}>
-      <Grid divided='vertically' stackable style={pageStyles.section}>
-        <Grid.Row columns={2}>
-          <Grid.Column>
-            <div style={pageStyles.content}>
-              <h2 style={pageStyles.title}>{title}</h2>
-              <br/>
-              <div style={pageStyles.heroContainerDescription}>
-                <div dangerouslySetInnerHTML={{ __html: content }}/>
-              </div>
-            </div>
-          </Grid.Column>
-          <Grid.Column only='tablet computer' style={pageStyles.imageWrapper}>
-            {!mediaFileError
-              ?
-              <Image style={pageStyles.image} src={mediaFile}/>
-              :
-              <div dangerouslySetInnerHTML={{ __html: mediaFileError }}/>
-            }
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+        <AboutSection title={title} content={content} mediaFileError={mediaFileError} mediaFile={mediaFile} bgColor="#f7f7f7" />
     </HomePageLayout>
   );
 };
