@@ -5,7 +5,7 @@
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name:       WID Custom tags and categories plugin
+ * Plugin Name:       WID tags and categories plugin
  * Description:       Plugins for events/resource
  * Version:           0.1
  */
@@ -14,11 +14,11 @@
 
 function add_media_cats() {
 
-  register_taxonomy_for_object_type( 
+  register_taxonomy_for_object_type(
 
-    'category', 
+    'category',
 
-    'attachment' 
+    'attachment'
 
   );
 
@@ -30,11 +30,11 @@ add_action( 'init' , 'add_media_cats' );
 
 function add_media_tags() {
 
-  register_taxonomy_for_object_type( 
+  register_taxonomy_for_object_type(
 
-    'post_tag', 
+    'post_tag',
 
-    'attachment' 
+    'attachment'
 
   );
 
