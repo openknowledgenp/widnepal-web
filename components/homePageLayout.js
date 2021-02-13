@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { HEADER_DESCRIPTION_ERROR_MESSAGES } from '../graphql/home.queries';
-import HeaderImage from "../assets/images/header_img.svg"
+import HeaderImage from "../assets/images/home/header_img.svg"
 import Nav from './nav';
 import {HOME_HEADER_BUTON_TEXT} from '../assets/siteDetails';
 import GraphicsElement from './graphicsElement'
@@ -38,13 +38,12 @@ const pageStyles = {
 
 export const HomePageLayout = (pageDetail) => {
   let title, content
-  const { errorHomeTitle, errorHomeDescription } = HEADER_DESCRIPTION_ERROR_MESSAGES
   try {
     title = pageDetail.data.posts.edges[0].node.title;
     content = pageDetail.data.posts.edges[0].node.content;
   } catch (e) {
-    title = errorHomeTitle;
-    content = errorHomeDescription;
+    title = HEADER_DESCRIPTION_ERROR_MESSAGES.errorTitle;
+    content = HEADER_DESCRIPTION_ERROR_MESSAGES.errorDescription;
   }
   return (
       <div>
