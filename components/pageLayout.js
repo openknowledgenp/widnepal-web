@@ -15,10 +15,10 @@ const pageStyles = {
     overFlow: 'hidden',
     paddingTop: 0,
     marginTop: 100,
-    height: 400, // If you change this value, also change the value of background in components/anumDependencies at line 21 > webGLRenderer.setSize(window.innerWidth, 400);
+    height: 600, // If you change this value, also change the value of background in components/anumDependencies at line 21 > webGLRenderer.setSize(window.innerWidth, 400);
   },
   heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 32, padding: 30 },
-  pageContainerWrapper: {zIndex: 3, position: 'relative', backgroundColor: 'white', minHeight: 400},
+  pageContainerWrapper: {zIndex: 3, position: 'relative', backgroundColor: 'white', minHeight: 600},
   pageContainer: { marginTop: 80, paddingTop: 30 },
 }
 

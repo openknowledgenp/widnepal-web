@@ -39,8 +39,11 @@ const pageStyles = {
     color: isHomePage ? 'white' : '#333',
     fontWeight: 'bold'
   }),
+  desktopNavWrapper: (fixed, isHomePage) => ({
+    backgroundColor: (!fixed && !isHomePage && 'white'),
+  }),
   desktopNavMenu: (fixed, isHomePage) => ({
-    backgroundColor: !fixed && 'none',
+    backgroundColor: (!fixed && 'none'),
     borderBottom: isHomePage ? '3px solid white' : 'none'
   }),
   sidebar: { backgroundColor: '#229EFD' }
@@ -52,6 +55,7 @@ const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
   return (
     <Media greaterThan='mobile'>
       {/*<Visibility once={false} onBottomPassed={()=>setFixed(true)} onBottomPassedReverse={()=>setFixed(false)}>*/}
+      <div style={pageStyles.desktopNavWrapper(fixed, isHomePage)}>
         <Container>
           <Menu
             // fixed={fixed ? 'top' : null}
@@ -73,6 +77,7 @@ const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
               {menuItem}
           </Menu>
         </Container>
+      </div>
       {/*</Visibility>*/}
     </Media>
   )

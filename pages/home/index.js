@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/react-hooks';
-import { POSTS } from '../../graphql/home.queries';
+import { POSTS, HEADER_DESCRIPTION } from '../../graphql/home.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
 import {
   Button,
@@ -9,18 +9,27 @@ import {
 
 const Home = () => {
   // Create a query hook
-  const { data, loading, error } = useQuery(POSTS);
-  if (loading) {
+  const queryMultiple = () => {
+    const data = useQuery(POSTS);
+    const headerData = useQuery(HEADER_DESCRIPTION);
+    return [data, headerData];
+  }
+
+  const [
+      { loading: loading, data: data, error: error },
+      { loading: headerLoading, data: headerData, error: headerError }
+  ] = queryMultiple()
+
+  if (loading || headerLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <p>Error: {JSON.stringify(error)}</p>;
+  if (error || headerError) {
+    return <p>Error: {JSON.stringify(error || headerError)}</p>;
   }
 
   return (
-    <HomePageLayout>
-      home detail
+    <HomePageLayout data={headerData}>
       {data.posts.edges.map(post => {
         return (
           <div key={`post__${post.node.id}`}>
