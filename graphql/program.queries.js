@@ -14,3 +14,15 @@ export const POSTS = gql`
     }
   }
 `;
+
+export const MEDIA = gql`
+  query Posts {
+    mediaItems (where: {categoryName: "program-or-project"}) {
+      nodes {
+        mediaDetails {
+          file
+        }
+      }
+    }
+  }
+`;

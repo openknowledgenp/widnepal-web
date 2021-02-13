@@ -15,6 +15,18 @@ export const POSTS = gql`
   }
 `;
 
+export const MEDIA = gql`
+  query Posts {
+    mediaItems (where: {categoryName: "blog"}) {
+      nodes {
+        mediaDetails {
+          file
+        }
+      }
+    }
+  }
+`;
+
 export const POST_WITH_SLUG = (slug) => gql`
   query Blogs {
     posts (where: {categoryName: "blog", name: "${slug}"}) {

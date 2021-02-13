@@ -14,3 +14,15 @@ export const POSTS = gql`
     }
   }
 `;
+
+export const MEDIA = gql`
+  query Posts {
+    mediaItems (where: {categoryName: "resources"}) {
+      nodes {
+        mediaDetails {
+          file
+        }
+      }
+    }
+  }
+`;
