@@ -1,7 +1,5 @@
-import React from 'react';
 import Head from 'next/head';
-import { useQuery } from '@apollo/react-hooks';
-import { POSTS } from '../graphql/home.queries';
+import { HEADER_DESCRIPTION_ERROR_MESSAGES } from '../graphql/home.queries';
 import HeaderImage from "../assets/images/header_img.svg"
 import Nav from './nav';
 import {HOME_HEADER_BUTON_TEXT} from '../assets/siteDetails';
@@ -40,10 +38,7 @@ const pageStyles = {
 
 export const HomePageLayout = (pageDetail) => {
   let title, content
-  const { errorHomeTitle, errorHomeDescription } = {
-    errorHomeTitle: "Update CMS to get the title (with category: 'home' and tag: 'site_description').",
-    errorHomeDescription: "Update CMS to get the description (with category: 'home' and tag: 'site_description')."
-  }
+  const { errorHomeTitle, errorHomeDescription } = HEADER_DESCRIPTION_ERROR_MESSAGES
   try {
     title = pageDetail.data.posts.edges[0].node.title;
     content = pageDetail.data.posts.edges[0].node.content;
