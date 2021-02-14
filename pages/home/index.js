@@ -1,13 +1,14 @@
 import { useQuery } from '@apollo/react-hooks';
 import {
   HEADER_DESCRIPTION,
+  HEADER_MEDIA,
   ABOUT,
   ABOUT_MEDIA,
+  HEADER_MEDIA_ERROR_MESSAGES,
   ABOUT_ERROR_MESSAGES,
   ABOUT_MEDIA_ERROR_MESSAGES,
 } from '../../graphql/home.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
-import HeaderImage from "../../assets/images/home/about_featured_image.svg"
 import {
   Button,
   Container,
@@ -52,15 +53,17 @@ const Home = () => {
   // Create a query hook
   const [
       { loading: headerLoading, data: headerData, error: headerError },
+      { loading: headerMediaLoading, data: headerMediaData, error: headerMediaError },
       { loading: aboutLoading, data: aboutData, error: aboutError },
       { loading: aboutMediaLoading, data: aboutMediaData, error: aboutMediaError },
-  ] = [useQuery(HEADER_DESCRIPTION), useQuery(ABOUT), useQuery(ABOUT_MEDIA)]
+  ] = [useQuery(HEADER_DESCRIPTION), useQuery(HEADER_MEDIA), useQuery(ABOUT), useQuery(ABOUT_MEDIA)]
 
-  if (aboutLoading || headerLoading || aboutMediaLoading) return <p>Loading...</p>
-  if (aboutError || headerError || aboutMediaError) return <p>Error: {JSON.stringify(aboutError || headerError || headerError)}</p>
+  if (aboutLoading || headerLoading || headerMediaLoading || aboutMediaLoading) return <p>Loading...</p>
+  if (aboutError || headerError || headerMediaError || aboutMediaError) return <p>Error: {JSON.stringify(aboutError || headerError || headerError)}</p>
 
   let
     title, content,
+    headerImage, headerImageError,
     mediaFile, mediaFileError
 
   try {
@@ -72,13 +75,20 @@ const Home = () => {
   }
 
   try {
+    headerImage = headerMediaData.mediaItems.nodes[0].mediaItemUrl
+    headerImageError = false
+  } catch (e) {
+    headerImageError = HEADER_MEDIA_ERROR_MESSAGES.error
+  }
+
+  try {
     mediaFile = aboutMediaData.mediaItems.nodes[0].mediaItemUrl
     mediaFileError = false
   } catch (e) {
     mediaFileError = ABOUT_MEDIA_ERROR_MESSAGES.error
   }
   return (
-    <HomePageLayout data={headerData}>
+    <HomePageLayout {...{headerData, headerImage, headerImageError}}>
         <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor:"#f7f7f7"}}  />
     </HomePageLayout>
   );

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { HEADER_DESCRIPTION_ERROR_MESSAGES } from '../graphql/home.queries';
-import HeaderImage from "../assets/images/home/header_img.svg"
 import Nav from './nav';
 import {HOME_HEADER_BUTON_TEXT} from '../assets/siteDetails';
 import GraphicsElement from './graphicsElement'
@@ -36,11 +35,11 @@ const pageStyles = {
   headerImage: {float: 'right', margin: 'auto', height: '100%'}
 }
 
-export const HomePageLayout = (pageDetail) => {
+export const HomePageLayout = ({headerData, headerImage, headerImageError, children}) => {
   let title, content
   try {
-    title = pageDetail.data.posts.edges[0].node.title;
-    content = pageDetail.data.posts.edges[0].node.content;
+    title = headerData.posts.edges[0].node.title;
+    content = headerData.posts.edges[0].node.content;
   } catch (e) {
     title = HEADER_DESCRIPTION_ERROR_MESSAGES.errorTitle;
     content = HEADER_DESCRIPTION_ERROR_MESSAGES.errorDescription;
@@ -70,21 +69,26 @@ export const HomePageLayout = (pageDetail) => {
                   </div>
                 </Grid.Column>
                 <Grid.Column only='tablet computer'>
-                  <Image width="400" style={pageStyles.headerImage} src={HeaderImage}/>
+                  {!headerImageError
+                    ?
+                    <Image width="400" style={pageStyles.headerImage} src={headerImage}/>
+                    :
+                    <div dangerouslySetInnerHTML={{ __html: headerImageError }}/>
+                  }
                 </Grid.Column>
               </Grid.Row>
             </Grid>
           </Container>
         </div>
         <div style={pageStyles.minCompositionLayer}>
-          {pageDetail.children.length === undefined ?
-            <div style={pageStyles.pageWrapper(pageDetail.children.props.bgColor)}>
+          {children.length === undefined ?
+            <div style={pageStyles.pageWrapper(children.props.bgColor)}>
               <Container>
-                    {pageDetail.children}
+                    {children}
               </Container>
             </div>
             :
-            pageDetail.children.map((section) => {return(
+            children.map((section) => {return(
               <div key={section.props.title} style={pageStyles.pageWrapper(section.props.bgColor)}>
                 <Container>
                       {section}

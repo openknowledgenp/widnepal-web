@@ -19,6 +19,19 @@ export const HEADER_DESCRIPTION_ERROR_MESSAGES = {
   errorDescription: "<div>Update CMS for title and description (Add a Post with category: '<b>home</b>' and tag: '<b>site_description</b>').</div>"
 }
 
+export const HEADER_MEDIA = gql`
+  query Posts {
+    mediaItems (where: {categoryName: "home", tag: "header_image"}) {
+      nodes {
+        mediaItemUrl
+      }
+    }
+  }
+`;
+export const HEADER_MEDIA_ERROR_MESSAGES = {
+  error: "<div><b>Error: Header image is missing.</b><br/><br/>Update CMS for header image (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>header_image</b>').</div>"
+}
+
 export const ABOUT = gql`
   query Posts {
     posts (where: {categoryName: "home", tag: "about_us" }) {
