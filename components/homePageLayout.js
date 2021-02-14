@@ -27,7 +27,7 @@ const pageStyles = {
     backgroundColor: 'white', position: 'relative', zIndex: 2, minHeight: 600,
   },
   pageWrapper: (background_color) => {return({
-    backgroundColor: background_color,
+    backgroundColor: background_color || 'white',
   });},
   heroContainer: { position: 'relative', zIndex: 2, padding: 50 },
   heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },

@@ -64,14 +64,23 @@ export const ABOUT_MEDIA_ERROR_MESSAGES = {
   error: "<div><b>Error: Featured image is missing.</b><br/><br/>Update CMS for featured image (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>about_featured_image</b>').</div>"
 }
 
-export const MEDIA = gql`
+export const MEMBER_ORGANIZATION_MEDIA = gql`
   query Posts {
-    mediaItems (where: {categoryName: "home"}) {
+    mediaItems(where: {categoryName: "home", tag: "member_org_logo"}) {
       nodes {
-        mediaDetails {
-          mediaItemUrl
+        mediaItemUrl
+        tags {
+          edges {
+            node {
+              name
+            }
+          }
         }
+        description
       }
     }
   }
 `;
+export const MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES = {
+  error: "<div><b>Error: Logos for member organization missing.</b><br/><br/>Update CMS with member organization logo (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>member_org_logo</b>'. Add their <b>website url in the description</b> of the Media).</div>"
+}
