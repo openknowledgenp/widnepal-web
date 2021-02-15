@@ -1,14 +1,5 @@
 <?php
-/**
- * @package           WID tag and category
- * @author            Open Knowledge Nepal
- * @license           GPL-2.0-or-later
- *
- * @wordpress-plugin
- * Plugin Name:       WID tag and category plugin for media
- * Description:       Assign tag and category to media
- * Version:           0.1
- */
+
 
 // apply categories to attachments
 
