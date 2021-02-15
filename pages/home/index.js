@@ -11,11 +11,15 @@ import {
   MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES,
 } from '../../graphql/home.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
+import { TwitterTimelineEmbed } from "react-twitter-embed";
+
+// import StaticTweet from '../../components/twitter/staticTweet'
 import {
   Button,
   Container,
   Grid,
-  Image
+  Image,
+  Item
 } from 'semantic-ui-react'
 import Truncate from 'react-truncate';
 
@@ -98,10 +102,7 @@ const UpcomingEventCarousel = () => {
           </div>
         </div>
         <div>
-          <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
-          <Button {...{color:'blue'}} style={pageStyles.customCarousel.itemList}/>
-          <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
-          <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+          {[1,2,3,4].map(x=> <Button {...{key:x, color:x===1?'blue':'grey'}} style={pageStyles.customCarousel.itemList}/>)}
         </div>
       </div>
       <div style={pageStyles.customCarousel.shape}/>
@@ -123,12 +124,47 @@ const UpcomingEvent = () => {
           <div style={pageStyles.eventReadMore}>
             <Button style={pageStyles.eventReadMoreBtn}>Read more</Button>
             <div style={pageStyles.eventDetailCarousel}>
-              <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
-              <Button {...{color:'blue'}} style={pageStyles.customCarousel.itemList}/>
-              <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
-              <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+              {[1,2,3,4].map(x=> <Button {...{key:x, color:x===1?'blue':'grey'}} style={pageStyles.customCarousel.itemList}/>)}
             </div>
           </div>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+  )
+}
+
+const OtherMedia = () => {
+  const description = [
+  'Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their',
+  'tiny stature, and even others for their massive size.',
+].join(' ')
+  return(
+    <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
+      <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
+        <Grid.Column>
+          <div style={pageStyles.otherMediaTitle}>
+            Useful Resources
+          </div>
+          <Item.Group>
+            {[1,2,3].map(x=><Item as='a' key={x}>
+              <Item.Content style={pageStyles.usefulResourceItem}>
+                <Item.Header style={pageStyles.usefulResourceHead}>Open Data Curriculum</Item.Header>
+                <Item.Description style={pageStyles.usefulResourceDescription}>
+                  Open Knowledge Nepal: The Open Data Manual accompanies the Open Data Curriculum, and provides information on the basics of open data, with a list of helpful resources for the readers to refer to. To learn more  please  go to link: http://odap.oknp.org
+                </Item.Description>
+              </Item.Content>
+            </Item>)}
+          </Item.Group>
+        </Grid.Column>
+        <Grid.Column>
+          {/*<div style={pageStyles.otherMediaTitle}>
+          Twitter
+          </div>*/}
+          <TwitterTimelineEmbed
+             sourceType="profile"
+             screenName="okfn_np"
+             options={{height: 500}}
+          />
         </Grid.Column>
       </Grid.Row>
     </Grid>
@@ -199,6 +235,7 @@ const Home = () => {
         <MemberOrganization {...{memberOrgMedia, memberOrgMediaError, bgColor: "#f7f7f7"}}/>
         <UpcomingEventCarousel {...{bgColor: '#F2F2F2', bgSize: '40%'}}/>
         <UpcomingEvent {...{}}/>
+        <OtherMedia/>
     </HomePageLayout>
   );
 };
@@ -339,5 +376,27 @@ const pageStyles = {
   },
   eventDetailCarousel: {
     float: 'right',
+  },
+  otherMediaTitle: {
+    // fontWeight: 'bold',
+    // fontSize: 20,
+    // borderBottom: '1px solid #000000aa',
+    // paddingBottom: 5,
+    fontSize: 27,
+    lineHeight: '36px',
+    fontWeight: 300,
+    paddingBottom: 10,
+    paddingTop: 10,
+    borderBottom: '1px solid #0f46641f',
+  },
+  usefulResourceItem: {
+    paddingBottom: 10,
+    borderBottom: '1px solid #ddd'
+  },
+  usefulResourceHead: {
+    fontSize: 17,
+  },
+  usefulResourceDescription: {
+    fontSize: 16,
   }
 }
