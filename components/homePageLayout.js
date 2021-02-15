@@ -10,35 +10,6 @@ import {
   Grid
 } from 'semantic-ui-react'
 
-const pageStyles = {
-  hero: {
-    zIndex: 0,
-    position: 'relative',
-
-    width: '100%',
-    top: 0,
-    backgroundColor: '#229EFD',
-    overFlow: 'hidden',
-    paddingTop: 110,
-    marginTop: -110,
-    // minHeight: 400, // If you change this value, also change the value of background in components/animDependencies/animScript.js at line 21 > webGLRenderer.setSize(window.innerWidth, 400);
-  },
-  minCompositionLayer: {
-    backgroundColor: 'white', position: 'relative', zIndex: 2, minHeight: 600,
-  },
-  pageWrapper: (background_color, bgSize) => {return(
-    bgSize === undefined ? {
-      backgroundColor: background_color || 'white'
-    }: {
-      background: `linear-gradient(90deg, ${background_color} 0%, ${background_color} ${bgSize}, white ${bgSize}, white 100%)`,
-    }
-  );},
-  heroContainer: { position: 'relative', zIndex: 2, padding: 50 },
-  heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },
-  heroContainerDescription: { color: 'white', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
-  headerImage: {float: 'right', margin: 'auto', height: '100%'}
-}
-
 export const HomePageLayout = ({headerData, headerImage, headerImageError, children}) => {
   let title, content
   try {
@@ -103,4 +74,33 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
         </div>
       </div>
   )
+}
+
+const pageStyles = {
+  hero: {
+    zIndex: 0,
+    position: 'relative',
+
+    width: '100%',
+    top: 0,
+    backgroundColor: '#229EFD',
+    overFlow: 'hidden',
+    paddingTop: 110,
+    marginTop: -110,
+    // minHeight: 400, // If you change this value, also change the value of background in components/animDependencies/animScript.js at line 21 > webGLRenderer.setSize(window.innerWidth, 400);
+  },
+  minCompositionLayer: {
+    backgroundColor: 'white', position: 'relative', zIndex: 2, minHeight: 600,
+  },
+  pageWrapper: (background_color, bgSize) => {return(
+    bgSize === undefined ? {
+      backgroundColor: background_color || 'white'
+    }: {
+      background: `linear-gradient(90deg, ${background_color} 0%, ${background_color} ${bgSize}, white ${bgSize}, white 100%)`,
+    }
+  );},
+  heroContainer: { position: 'relative', zIndex: 2, padding: 50 },
+  heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },
+  heroContainerDescription: { color: 'white', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
+  headerImage: {float: 'right', margin: 'auto', height: '100%'}
 }
