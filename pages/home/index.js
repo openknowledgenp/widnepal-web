@@ -30,10 +30,6 @@ const pageStyles = {
   imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
 }
 
-const getLink = (html_string) => {
-  return "http://example.com/"
-}
-
 const AboutSection = ({title, content, mediaFileError, mediaFile}) => {
   return(
   <Grid divided='vertically' stackable style={pageStyles.section}>
@@ -77,7 +73,7 @@ const MemberOrganization = ({memberOrgMedia, memberOrgMediaError}) => {
                 style={pageStyles.imageButton}
                 key={img.mediaItemUrl}
                 as="a"
-                href={getLink(img.description)}
+                href={img.websiteAddress.websiteLink}
                 icon={
                   <Image src={img.mediaItemUrl} style={pageStyles.memberOrgImage} key={img.mediaItemUrl}/>
                 }
