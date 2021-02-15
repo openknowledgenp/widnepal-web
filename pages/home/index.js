@@ -12,6 +12,7 @@ import {
 } from '../../graphql/home.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import Footer from '../../components/footer'
 
 // import StaticTweet from '../../components/twitter/staticTweet'
 import {
@@ -114,7 +115,7 @@ const UpcomingEvent = () => {
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
       <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
-        <Grid.Column style={pageStyles.upcomingEventPicture(imageFile)} />
+        <Grid.Column style={pageStyles.upcomingEventPicture(imageFile)} only='tablet computer'/>
         <Grid.Column style={pageStyles.upcomingEventDetail}>
           <div style={pageStyles.inTheSpot}>In the spotlight:</div>
           <div style={pageStyles.eventTitle}>Open Data Fellowship for Women</div>
@@ -134,13 +135,9 @@ const UpcomingEvent = () => {
 }
 
 const OtherMedia = () => {
-  const description = [
-  'Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their',
-  'tiny stature, and even others for their massive size.',
-].join(' ')
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
-      <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
+      <Grid.Row columns={2}>
         <Grid.Column>
           <div style={pageStyles.otherMediaTitle}>
             Useful Resources
@@ -168,6 +165,19 @@ const OtherMedia = () => {
         </Grid.Column>
       </Grid.Row>
     </Grid>
+  )
+}
+
+const JoinUs = () => {
+  return(
+    <div style={pageStyles.section}>
+      <div style={pageStyles.joinUsInfo}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+      </div>
+      <Button color="blue">
+        Join Today
+      </Button>
+    </div>
   )
 }
 
@@ -236,6 +246,8 @@ const Home = () => {
         <UpcomingEventCarousel {...{bgColor: '#F2F2F2', bgSize: '40%'}}/>
         <UpcomingEvent {...{}}/>
         <OtherMedia/>
+        <JoinUs {...{bgColor: '#F7F7F7'}}/>
+        <Footer {...{bgColor: '#282828'}}/>
     </HomePageLayout>
   );
 };
@@ -244,7 +256,7 @@ export default Home;
 
 const pageStyles = {
   section: { paddingTop: 80, paddingBottom: 80 },
-  sectionNoUpperPadding: { paddingBottom: 80 },
+  sectionNoUpperPadding: { paddingBottom: 80, clear: 'both' },
   title: { fontSize: 28, color: '#403E3E' },
   middleTitle: {width: '100%', textAlign: 'center'},
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
@@ -398,5 +410,11 @@ const pageStyles = {
   },
   usefulResourceDescription: {
     fontSize: 16,
-  }
+  },
+  joinUsInfo: {
+    fontSize: 18,
+    float: 'left',
+    width: '70%',
+    paddingRight: 30
+  },
 }

@@ -23,7 +23,7 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
       <div>
         <Nav isHomePage/>
         <Head>
-          <title>Home: {title}</title>
+          <title>{title} | Home</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div style={pageStyles.hero}>
