@@ -15,39 +15,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
-const { MediaContextProvider, Media } = createMedia({
-  breakpoints: {
-    mobile: 0,
-    tablet: 768,
-    computer: 1024,
-  },
-})
 
-const pageStyles = {
-  desktopNavMenuItem: {
-    justifyContent: 'left'
-  },
-  mobileNavName: {
-    margin:'auto',
-    marginLeft: 18,
-    fontSize: 20,
-  },
-  nav: { position: 'relative', zIndex: 5 },
-  mobileNavButton: { marginTop: 'auto', marginBottom: 'auto' },
-  navMenu: (isHomePage) => ({
-    margin: 'auto',
-    color: isHomePage ? 'white' : '#333',
-    fontWeight: 'bold'
-  }),
-  desktopNavWrapper: (fixed, isHomePage) => ({
-    backgroundColor: (!fixed && !isHomePage && 'white'),
-  }),
-  desktopNavMenu: (fixed, isHomePage) => ({
-    backgroundColor: (!fixed && 'none'),
-    borderBottom: isHomePage ? '3px solid white' : 'none'
-  }),
-  sidebar: { backgroundColor: '#229EFD' }
-}
 
 const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
   const [fixed, setFixed] = React.useState(undefined);
@@ -149,3 +117,37 @@ function Nav(props) {
 }
 
 export default Nav;
+
+const { MediaContextProvider, Media } = createMedia({
+  breakpoints: {
+    mobile: 0,
+    tablet: 768,
+    computer: 1024,
+  },
+})
+
+const pageStyles = {
+  desktopNavMenuItem: {
+    justifyContent: 'left'
+  },
+  mobileNavName: {
+    margin:'auto',
+    marginLeft: 18,
+    fontSize: 20,
+  },
+  nav: { position: 'relative', zIndex: 5 },
+  mobileNavButton: { marginTop: 'auto', marginBottom: 'auto' },
+  navMenu: (isHomePage) => ({
+    margin: 'auto',
+    color: isHomePage ? 'white' : '#333',
+    fontWeight: 'bold'
+  }),
+  desktopNavWrapper: (fixed, isHomePage) => ({
+    backgroundColor: (!fixed && !isHomePage && 'white'),
+  }),
+  desktopNavMenu: (fixed, isHomePage) => ({
+    backgroundColor: (!fixed && 'none'),
+    borderBottom: isHomePage ? '3px solid white' : 'none'
+  }),
+  sidebar: { backgroundColor: '#229EFD' }
+}

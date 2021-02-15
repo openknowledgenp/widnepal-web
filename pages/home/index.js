@@ -17,18 +17,7 @@ import {
   Grid,
   Image
 } from 'semantic-ui-react'
-
-const pageStyles = {
-  section: { paddingTop: 80, paddingBottom: 80 },
-  title: { fontSize: 28, color: '#403E3E' },
-  middleTitle: {width: '100%', textAlign: 'center'},
-  middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
-  memberOrgImage: {maxWidth: '200px', maxHeight: '145px'},
-  imageButton: {backgroundColor: '#efefef', padding: 1, margin: 'auto'},
-  content: { fontSize: 18 },
-  image: { margin: 'auto', boxShadow: '15px -15px #FCCA35', width: '70%' },
-  imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
-}
+import Truncate from 'react-truncate';
 
 const AboutSection = ({title, content, mediaFileError, mediaFile}) => {
   return(
@@ -84,6 +73,65 @@ const MemberOrganization = ({memberOrgMedia, memberOrgMediaError}) => {
       }
 
     </div>
+  )
+}
+
+const UpcomingEventCarousel = () => {
+  return(
+    <div style={pageStyles.customCarousel.container}>
+      <div style={pageStyles.customCarousel.headContainer}>
+        <div style={pageStyles.customCarousel.head}>Upcoming Events</div>
+        <div columns={2} style={pageStyles.customCarousel.post}>
+          <div style={pageStyles.customCarousel.calendar}>
+            <div style={pageStyles.customCarousel.date}>27</div>
+            <div style={pageStyles.customCarousel.month}>March</div>
+          </div>
+          <div style={pageStyles.customCarousel.shortInfo}>
+            <div style={pageStyles.customCarousel.title}>
+              Women In Data Conference
+            </div>
+            <div style={pageStyles.customCarousel.description}>
+              <Truncate lines={2} ellipsis={<span>...</span>}>
+                  Women in Data Conference was organized with the theme where Women in Data Conference was organized with the theme where Women in Data Conference was organized with the theme where Women in Data Conference was organized with the theme where two superpowers meet
+              </Truncate>
+            </div>
+          </div>
+        </div>
+        <div>
+          <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+          <Button {...{color:'blue'}} style={pageStyles.customCarousel.itemList}/>
+          <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+          <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+        </div>
+      </div>
+      <div style={pageStyles.customCarousel.shape}/>
+    </div>
+  )
+}
+const UpcomingEvent = () => {
+  const imageFile = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+  return(
+    <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
+      <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
+        <Grid.Column style={pageStyles.upcomingEventPicture(imageFile)} />
+        <Grid.Column style={pageStyles.upcomingEventDetail}>
+          <div style={pageStyles.inTheSpot}>In the spotlight:</div>
+          <div style={pageStyles.eventTitle}>Open Data Fellowship for Women</div>
+          <div style={pageStyles.eventDescription}>
+            "Open Data Fellowship - Women Edition" is an initiative of Open Knowledge Nepal. The main motive behind the fellowship is to increase the number of women leaders in the field of open data in Nepal and use the existing expertise of different organizations to provide a good exposure to women and equip them with valuable work experience, confidence and skills that will help them to better understand the data ecosystem and potential opportunities.
+          </div>
+          <div style={pageStyles.eventReadMore}>
+            <Button style={pageStyles.eventReadMoreBtn}>Read more</Button>
+            <div style={pageStyles.eventDetailCarousel}>
+              <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+              <Button {...{color:'blue'}} style={pageStyles.customCarousel.itemList}/>
+              <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+              <Button {...{color:'grey'}} style={pageStyles.customCarousel.itemList}/>
+            </div>
+          </div>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   )
 }
 
@@ -147,10 +195,149 @@ const Home = () => {
 
   return (
     <HomePageLayout {...{headerData, headerImage, headerImageError}}>
-        <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor: "#f7f7f7"}}/>
-        <MemberOrganization {...{memberOrgMedia, memberOrgMediaError, bgColor: 'white'}}/>
+        <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor: 'white'}}/>
+        <MemberOrganization {...{memberOrgMedia, memberOrgMediaError, bgColor: "#f7f7f7"}}/>
+        <UpcomingEventCarousel {...{bgColor: '#F2F2F2', bgSize: '40%'}}/>
+        <UpcomingEvent {...{}}/>
     </HomePageLayout>
   );
 };
 
 export default Home;
+
+const pageStyles = {
+  section: { paddingTop: 80, paddingBottom: 80 },
+  sectionNoUpperPadding: { paddingBottom: 80 },
+  title: { fontSize: 28, color: '#403E3E' },
+  middleTitle: {width: '100%', textAlign: 'center'},
+  middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
+  memberOrgImage: {maxWidth: '200px', maxHeight: '145px'},
+  imageButton: {backgroundColor: '#efefef', padding: 1, margin: 'auto'},
+  content: { fontSize: 18 },
+  image: { margin: 'auto', boxShadow: '15px -15px #FCCA35', width: '70%' },
+  imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
+
+  customCarousel: {
+    container: { marginTop: 70, marginBottom: 50 },
+    headContainer: {
+      backgroundColor: '#F2F2F2',
+      height: 150,
+      width: '60%',
+      float: 'left',
+      padding: 20,
+      overflow: 'hidden',
+    },
+    shape: {
+      width: 0,
+      backgroundColor: '#F2F2F2',
+      position: 'relative',
+      marginLeft: '60%',
+      borderRight: 'solid 30px white',
+      borderBottom: 'solid 75px transparent',
+      borderTop: 'solid 75px transparent',
+    },
+    head: {
+      fontWeight: 'bold',
+      fontSize: 20
+    },
+    post: {
+      marginTop: 20,
+      fontSize: 16
+    },
+    calendar: {
+      backgroundColor: '#1B9EFF',
+      textAlign: 'center',
+      fontWeight: 'bold',
+      float: 'left',
+      width: 'fit-content',
+      padding: 15,
+      paddingBottom: 8,
+      marginRight: 20,
+    },
+    date: {
+      color: 'white',
+      fontSize: 32,
+    },
+    month: {
+      color: 'white',
+      fontSize: 14,
+      paddingTop: 5
+    },
+    shortInfo: {
+    },
+    title: {
+      color: '#1B9EFF',
+      fontWeight: 'bold',
+      fontSize: 18,
+    },
+    description: {
+      fontSize: 16,
+      paddingTop: 10,
+      overflow: 'hidden'
+    },
+    itemList: {
+      margin:0, padding:0, minHeight: 6, height: 6, width: 6, borderRadius: 3, border: 'none', marginLeft: 10
+    }
+  },
+
+  upcomingEventBrief: {
+    height: 450,
+  },
+  upcomingEventDetail: {
+    backgroundColor: '#FCCA35',
+    height: '100%',
+  },
+  upcomingEventPicture: (imageFile) => {return({
+    paddingRight:0,
+    height: '100%',
+    backgroundImage: `url(${imageFile})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#1B9EFF'
+  })},
+  inTheSpot: {
+    paddingTop: 30,
+    paddingLeft: 40,
+    fontSize: 14,
+  },
+  eventTitle: {
+    fontSize: 24,
+    fontWeignt: 'bold',
+    width: '80%',
+    marginTop: 15,
+    paddingRight: 40,
+    paddingLeft: 40,
+  },
+  eventDescription: {
+    marginTop: 15,
+    fontSize: 16,
+    height: '55%',
+    overflowY: 'auto',
+    paddingRight: 40,
+    paddingLeft: 40,
+  },
+  eventReadMore: {
+    fontSize: 16,
+    position:'absolute',
+    bottom: 15,
+    borderTop: '1px solid black',
+    width: '80%',
+    marginRight: 40,
+    marginLeft: 40,
+    paddingTop: 5,
+  },
+  eventReadMoreBtn: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    margin: 0,
+    paddingLeft: 0,
+    paddingTop: 5,
+    paddingBottom: 0,
+    border: 'none',
+    color: 'black',
+    float: 'left',
+  },
+  eventDetailCarousel: {
+    float: 'right',
+  }
+}

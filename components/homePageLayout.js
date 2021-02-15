@@ -26,9 +26,13 @@ const pageStyles = {
   minCompositionLayer: {
     backgroundColor: 'white', position: 'relative', zIndex: 2, minHeight: 600,
   },
-  pageWrapper: (background_color) => {return({
-    backgroundColor: background_color || 'white',
-  });},
+  pageWrapper: (background_color, bgSize) => {return(
+    bgSize === undefined ? {
+      backgroundColor: background_color || 'white'
+    }: {
+      background: `linear-gradient(90deg, ${background_color} 0%, ${background_color} ${bgSize}, white ${bgSize}, white 100%)`,
+    }
+  );},
   heroContainer: { position: 'relative', zIndex: 2, padding: 50 },
   heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },
   heroContainerDescription: { color: 'white', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
@@ -82,14 +86,14 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
         </div>
         <div style={pageStyles.minCompositionLayer}>
           {children.length === undefined ?
-            <div style={pageStyles.pageWrapper(children.props.bgColor)}>
+            <div style={pageStyles.pageWrapper(children.props.bgColor, children.props.bgSize)}>
               <Container>
                     {children}
               </Container>
             </div>
             :
             children.map((section) => {return(
-              <div key={section.props.title} style={pageStyles.pageWrapper(section.props.bgColor)}>
+              <div key={section.props.title} style={pageStyles.pageWrapper(section.props.bgColor, section.props.bgSize)}>
                 <Container>
                       {section}
                 </Container>
