@@ -79,7 +79,10 @@ const BlogDetail = ({host}) => {
                     July 20, 2019
                   </div>
                 </List.Item>
+
                 <List.Item width={5} style={pageStyles.socialMedia}>
+                  <div><small>SHARE</small></div>
+                  <br/>
                   <FacebookShareButton url={`${SITE_PROTOCOL}://${host}/blog/${slug}`}>
                     <Button circular color='facebook' icon='facebook' />
                   </FacebookShareButton>
@@ -122,5 +125,5 @@ const pageStyles = {
   authorName: {fontSize: 16, paddingRight: 20},
   avatar: {border: '2px solid #FCCA35', marginTop: 0, paddingTop: 0, height: 40, width: 40, marginRight: 10},
   description: {fontSize: 16, borderTop: '1px solid #0A0A0A',paddingTop:20, marginTop: 15},
-  socialMedia: {position: 'absolute', float: 'right', right: 0, paddingTop: 10, paddingRight: 20}
+  socialMedia: {position: 'absolute', float: 'right', right: 0, paddingRight: 20}
 }
