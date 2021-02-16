@@ -7,7 +7,7 @@ import {
 import Footer from './footer'
 
 
-export const PageDetailLayout = (pageDetail) => <div>
+export const PageLayout = (pageDetail) => <div>
   <Nav/>
   <Head>
     <title>{pageDetail.title}</title>

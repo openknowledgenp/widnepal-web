@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/resources.queries';
-import { PageDetailLayout } from '../../components/pageLayout'
+import { PageLayout } from '../../components/pageLayout'
 
 const Resources = () => {
   // Create a query hook
@@ -14,7 +14,7 @@ const Resources = () => {
   }
 
   return (
-    <PageDetailLayout title="Resources">
+    <PageLayout title="Resources">
       resources detail
       {data.posts.edges.map(post => {
         return (
@@ -24,7 +24,7 @@ const Resources = () => {
           </div>
         );
       })}
-    </PageDetailLayout>
+    </PageLayout>
   );
 
 };

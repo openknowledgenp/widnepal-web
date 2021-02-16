@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/about.queries';
-import { PageDetailLayout } from '../../components/pageLayout'
+import { PageLayout } from '../../components/pageLayout'
 
 const About = () => {
   // Create a query hook
@@ -12,7 +12,7 @@ const About = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
   return (
-    <PageDetailLayout title="About">
+    <PageLayout title="About">
         about us detail
         {data.posts.edges.map(post => {
           return (
@@ -22,7 +22,7 @@ const About = () => {
             </div>
           );
         })}
-    </PageDetailLayout>
+    </PageLayout>
   );
 };
 

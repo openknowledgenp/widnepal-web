@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
 import { POSTS, POST_WITH_SLUG } from '../../graphql/blog.queries';
-import { PageDetailLayout } from '../../components/pageLayout'
+import { PageLayout } from '../../components/pageLayout'
 
 const BlogDetail = () => {
   const router = useRouter()
@@ -22,13 +22,13 @@ const BlogDetail = () => {
   const post = data.posts.edges[0]
 
   return (
-    <PageDetailLayout title={post.node.title}>
+    <PageLayout title={post.node.title}>
         Blog: {post.node.title}
         <div key={`post__${post.node.id}`}>
           <h2>{post.node.title}</h2>
           <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
         </div>
-    </PageDetailLayout>
+    </PageLayout>
   );
 
 };

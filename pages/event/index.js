@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/react-hooks';
 import { POSTS } from '../../graphql/event.queries';
-import { PageDetailLayout } from '../../components/pageLayout'
+import { PageLayout } from '../../components/pageLayout'
 
 const Event = () => {
   // Create a query hook
@@ -14,7 +14,7 @@ const Event = () => {
   }
 
   return (
-    <PageDetailLayout title="Events">
+    <PageLayout title="Events">
       event detail
       {data.posts.edges.map(post => {
         return (
@@ -24,7 +24,7 @@ const Event = () => {
           </div>
         );
       })}
-    </PageDetailLayout>
+    </PageLayout>
   );
 };
 
