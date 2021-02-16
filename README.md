@@ -32,6 +32,20 @@ Make sure you are in the project's root directory.
     - Select "Yes" for Activate
     - Select "Yes" for Show in GraphQL
     - And in "GraphQL Field Name", type: "websiteAddress"
+- To add a image as attachment for blogs, add new "Custom Field" with the following information:
+  - Title: Post Attached Image
+  - Click on "+ Add Field" button and add the following detail:
+    - Field Label: Image
+    - Field Name: image
+    - Field Type: Image
+    - Required: No
+    - Show in GraphQL: Yes
+  - Now, in the location section, add the following rule:
+    - Show this field group if: Post Type - is equal to - Post
+  - Finally, in the settings section:
+    - Select "Yes" for Activate
+    - Select "Yes" for Show in GraphQL
+    - And in "GraphQL Field Name", type: "postAttachedImage"
 
 ## Setup NextJS Frontend
 Make sure you are in the project's root directory.

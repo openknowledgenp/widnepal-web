@@ -16,7 +16,9 @@ const BlogDetail = () => {
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
   } else if (data.posts.edges.length === 0){
-    return <p>Blog Not Found</p>
+    return <PageLayout title="Blog: Not Found">
+          <h2>The page you are looking for does not exist.</h2>
+    </PageLayout>
   }
 
   const post = data.posts.edges[0]
