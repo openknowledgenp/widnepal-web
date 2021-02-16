@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { POSTS, POST_WITH_SLUG } from '../../graphql/blog.queries';
 import { PageLayout } from '../../components/pageLayout'
 import HeaderImg from '../../assets/blog_detail_img_header.svg'
+import {SITE_PROTOCOL} from '../../assets/siteDetails'
 import {
   Grid,
   Container,
@@ -10,9 +11,14 @@ import {
   List,
   Button,
   Icon
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton
+} from "react-share";
 
-const BlogDetail = () => {
+const BlogDetail = ({host}) => {
   const router = useRouter()
   const { slug } = router.query
 
@@ -74,9 +80,15 @@ const BlogDetail = () => {
                   </div>
                 </List.Item>
                 <List.Item width={5} style={pageStyles.socialMedia}>
-                  <Button circular color='facebook' icon='facebook' />
-                  <Button circular color='twitter' icon='twitter' />
-                  <Button circular color='linkedin' icon='linkedin' />
+                  <FacebookShareButton url={`${SITE_PROTOCOL}://${host}/blog/${slug}`}>
+                    <Button circular color='facebook' icon='facebook' />
+                  </FacebookShareButton>
+                  <TwitterShareButton url={`${SITE_PROTOCOL}://${host}/blog/${slug}`}>
+                    <Button circular color='twitter' icon='twitter' />
+                  </TwitterShareButton>
+                  <LinkedinShareButton url={`${SITE_PROTOCOL}://${host}/blog/${slug}`}>
+                    <Button circular color='linkedin' icon='linkedin' />
+                  </LinkedinShareButton>
                 </List.Item>
               </List>
 
@@ -92,7 +104,18 @@ const BlogDetail = () => {
 
 };
 
+BlogDetail.getInitialProps = async ({req}) => {
+  let host
+  if (req) {
+    host = req.headers.host
+  } else {
+    host = window.location.hostname
+  }
+  return { host: host }
+}
+
 export default BlogDetail;
+
 
 const pageStyles = {
   postDate: { padding: 20 },
