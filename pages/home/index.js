@@ -12,7 +12,6 @@ import {
 } from '../../graphql/home.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
 import { TwitterTimelineEmbed } from "react-twitter-embed";
-import Footer from '../../components/footer'
 
 // import StaticTweet from '../../components/twitter/staticTweet'
 import {
@@ -247,7 +246,6 @@ const Home = () => {
         <UpcomingEvent {...{}}/>
         <OtherMedia/>
         <JoinUs {...{bgColor: '#F7F7F7'}}/>
-        <Footer {...{bgColor: '#282828'}}/>
     </HomePageLayout>
   );
 };

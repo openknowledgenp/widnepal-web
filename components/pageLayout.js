@@ -4,6 +4,8 @@ import GraphicsElement from '../components/graphicsElement'
 import {
   Container,
 } from 'semantic-ui-react'
+import Footer from './footer'
+
 
 export const PageDetailLayout = (pageDetail) => <div>
   <Nav/>
@@ -22,6 +24,8 @@ export const PageDetailLayout = (pageDetail) => <div>
       {pageDetail.children}
     </Container>
   </div>
+  <Footer/>
+
 </div>
 
 const pageStyles = {
