@@ -5,23 +5,29 @@ import {
   Container,
 } from 'semantic-ui-react'
 import Footer from './footer'
+import Truncate from 'react-truncate';
+import {
+  Image,
+} from 'semantic-ui-react'
 
-
-export const PageLayout = (pageDetail) => <div>
+export const PageLayout = ({title, children, format, headerImage}) => <div>
   <Nav/>
   <Head>
-    <title>{pageDetail.title}</title>
+    <title>{title}</title>
     <link rel="icon" href="/favicon.ico" />
   </Head>
   <div style={pageStyles.hero}>
     <GraphicsElement />
-    <Container style={pageStyles.heroContainer}>
-        {pageDetail.title}
+    <Container style={format === undefined ? pageStyles.heroContainer : pageStyles.formattedHead(format)}>
+      <Truncate lines={2} ellipsis={<span>...</span>}>
+        {title}
+      </Truncate>
+      <Image src={headerImage} style={pageStyles.headerImage}/>
     </Container>
   </div>
   <div style={pageStyles.pageContainerWrapper}>
-    <Container style={pageStyles.pageContainer}>
-      {pageDetail.children}
+    <Container style={format === undefined ? pageStyles.pageContainer : pageStyles.formattedContainer(format)}>
+      {children}
     </Container>
   </div>
   <Footer/>
@@ -40,7 +46,31 @@ const pageStyles = {
     marginTop: 100,
     height: 600, // If you change this value, also change the value of background in components/anumDependencies at line 21 > webGLRenderer.setSize(window.innerWidth, 400);
   },
-  heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 32, padding: 30 },
-  pageContainerWrapper: {zIndex: 3, position: 'relative', backgroundColor: 'white', minHeight: 600},
+  headerImage: {
+    position: 'absolute',
+    top: 0,
+    marginTop: 65
+  },
+  heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 32, margin: 30 },
+  formattedHead: (format) => {
+    if (format === 'blogread') {
+      return ({
+        position: 'relative',
+        zIndex: 2,
+        color: 'white',
+        fontSize: 26,
+        margin: 30,
+        lineHeight: 1.3,
+      })
+    }
+  },
   pageContainer: { marginTop: 80, paddingTop: 30 },
+  formattedContainer: (format) => {
+    if (format === 'blogread') {
+      return ({
+        marginTop: 120, paddingTop: 30
+      })
+    }
+  },
+  pageContainerWrapper: {zIndex: 3, position: 'relative', backgroundColor: 'white', minHeight: 600},
 }

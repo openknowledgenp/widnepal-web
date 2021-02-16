@@ -92,7 +92,9 @@ const UpcomingEventCarousel = () => {
           </div>
           <div style={pageStyles.customCarousel.shortInfo}>
             <div style={pageStyles.customCarousel.title}>
-              Women In Data Conference
+              <Truncate lines={1} ellipsis={<span>...</span>}>
+                  Women In Data Conference
+              </Truncate>
             </div>
             <div style={pageStyles.customCarousel.description}>
               <Truncate lines={2} ellipsis={<span>...</span>}>

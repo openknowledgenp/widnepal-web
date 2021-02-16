@@ -44,6 +44,16 @@ export const POST_WITH_SLUG = (slug) => gql`
           title
           slug
           content
+          author {
+            node {
+              firstName
+              lastName
+              description
+              avatar {
+                url
+              }
+            }
+        }
         }
       }
     }

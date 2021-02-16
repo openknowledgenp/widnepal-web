@@ -3,9 +3,6 @@ import { BLOGS, BLOGS_ERROR_MESSAGES } from '../../graphql/blog.queries';
 import BlogPlaceholder from '../../assets/blog_placeholder_image.jpg';
 import { PageLayout } from '../../components/pageLayout'
 import {
-  Button,
-  Container,
-  Grid,
   Image,
   Item
 } from 'semantic-ui-react'
