@@ -82,9 +82,9 @@ const BlogDetail = () => {
 
               <div dangerouslySetInnerHTML={{ __html: post.node.content }} style={pageStyles.description}/>
             </Grid.Column>
-            <Grid.Column width={5}>
-              side side side side side side side side side side side side side side side side side
-            </Grid.Column>
+            {/*<Grid.Column width={5}>
+              side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar,
+            </Grid.Column>*/}
           </Grid.Row>
         </Grid>
     </PageLayout>

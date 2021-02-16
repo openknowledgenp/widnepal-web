@@ -6,6 +6,7 @@ import {
   Image,
   Item
 } from 'semantic-ui-react'
+import Truncate from 'react-truncate';
 
 const Blog = () => {
   // Create a query hook
@@ -41,12 +42,16 @@ const Blog = () => {
           {data.posts.edges.map(post => {
             const postImage = post.node.postAttachedImage.image
             return (
-                <Item as='a' style={pageStyles.item} key={`post__${post.node.id}`}>
+                <Item as='a' href={`/blog/${post.node.slug}`} style={pageStyles.item} key={`post__${post.node.id}`}>
                   <Item.Image size='medium' src={postImage !== null ? postImage.mediaItemUrl : BlogPlaceholder} />
                   <Item.Content style={pageStyles.content}>
-                    <Item.Header style={pageStyles.header}>{post.node.title}</Item.Header>
+                    <Item.Header style={pageStyles.header}>
+                        {post.node.title}
+                    </Item.Header>
                     <Item.Description style={pageStyles.description}>
-                      <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
+                      <Truncate lines={8} ellipsis={<span>...</span>}>
+                        <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
+                      </Truncate>
                     </Item.Description>
                   </Item.Content>
                 </Item>
