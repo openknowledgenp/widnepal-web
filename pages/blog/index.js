@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/react-hooks';
 import { BLOGS, BLOGS_ERROR_MESSAGES } from '../../graphql/blog.queries';
-import BlogPlaceholder from '../../assets/blog_placeholder_image.jpg';
+import PlaceholderImage from '../../assets/placeholder_image.jpg';
 import { PageLayout } from '../../components/pageLayout'
 import {
   Image,
@@ -43,7 +43,7 @@ const Blog = () => {
             const postImage = post.node.featuredImage
             return (
                 <Item as='a' href={`/blog/${post.node.slug}`} style={pageStyles.item} key={`post__${post.node.id}`}>
-                  <Item.Image size='medium' src={postImage !== null ? postImage.node.mediaItemUrl : BlogPlaceholder} />
+                  <Item.Image size='medium' src={postImage !== null ? postImage.node.mediaItemUrl : PlaceholderImage} />
                   <Item.Content style={pageStyles.content}>
                     <Item.Header style={pageStyles.header}>
                         {post.node.title}

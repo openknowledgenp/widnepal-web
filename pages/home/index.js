@@ -1,3 +1,4 @@
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import {
   HEADER_DESCRIPTION,
@@ -10,8 +11,12 @@ import {
   ABOUT_MEDIA_ERROR_MESSAGES,
   MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES,
 } from '../../graphql/home.queries';
+import {
+  EVENTS, EVENTS_ERROR_MESSAGES
+} from '../../graphql/event.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import PlaceholderImage from '../../assets/placeholder_image.jpg';
 
 // import StaticTweet from '../../components/twitter/staticTweet'
 import {
@@ -80,55 +85,71 @@ const MemberOrganization = ({memberOrgMedia, memberOrgMediaError}) => {
   )
 }
 
-const UpcomingEventCarousel = () => {
+const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
   return(
     <div style={pageStyles.customCarousel.container}>
       <div style={pageStyles.customCarousel.headContainer}>
         <div style={pageStyles.customCarousel.head}>Upcoming Events</div>
-        <div columns={2} style={pageStyles.customCarousel.post}>
-          <div style={pageStyles.customCarousel.calendar}>
-            <div style={pageStyles.customCarousel.date}>27</div>
-            <div style={pageStyles.customCarousel.month}>March</div>
-          </div>
-          <div style={pageStyles.customCarousel.shortInfo}>
-            <div style={pageStyles.customCarousel.title}>
-              <Truncate lines={1} ellipsis={<span>...</span>}>
-                  Women In Data Conference
-              </Truncate>
+          {eventErr
+          ?
+          <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
+          :
+          <div columns={2} style={pageStyles.customCarousel.post}>
+            <div style={pageStyles.customCarousel.calendar}>
+              <div style={pageStyles.customCarousel.date}>27</div>
+              <div style={pageStyles.customCarousel.month}>March</div>
             </div>
-            <div style={pageStyles.customCarousel.description}>
-              <Truncate lines={2} ellipsis={<span>...</span>}>
-                  Women in Data Conference was organized with the theme where Women in Data Conference was organized with the theme where Women in Data Conference was organized with the theme where Women in Data Conference was organized with the theme where two superpowers meet
-              </Truncate>
+            <div style={pageStyles.customCarousel.shortInfo}>
+              <div style={pageStyles.customCarousel.title}>
+                <Truncate lines={1} ellipsis={<span>...</span>}>
+                    {pinnedEvents[selected_event].node.title}
+                </Truncate>
+              </div>
+              <div style={pageStyles.customCarousel.description}>
+                <Truncate lines={2} ellipsis={<span>...</span>}>
+                  <div dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
+                </Truncate>
+              </div>
             </div>
-          </div>
-        </div>
-        <div>
-          {[1,2,3,4].map(x=> <Button {...{key:x, color:x===1?'blue':'grey'}} style={pageStyles.customCarousel.itemList}/>)}
+          </div>}
+        <div style={pageStyles.customCarousel.buttons}>
+          {pinnedEvents.map((event, idx)=> <Button {...{key:idx, color:selected_event===idx?'blue':'grey'}} onClick={()=>setSelectedEvent(idx)} style={pageStyles.customCarousel.itemList}/>)}
         </div>
       </div>
       <div style={pageStyles.customCarousel.shape}/>
     </div>
   )
 }
-const UpcomingEvent = () => {
-  const imageFile = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+const UpcomingEvent = ({eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
+  let imageFile = PlaceholderImage
+  try {
+    imageFile = pinnedEvents[selected_event].node.featuredImage.node.mediaItemUrl
+  } catch (e) {
+    imageFile = PlaceholderImage
+  }
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
       <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
         <Grid.Column style={pageStyles.upcomingEventPicture(imageFile)} only='tablet computer'/>
+
         <Grid.Column style={pageStyles.upcomingEventDetail}>
-          <div style={pageStyles.inTheSpot}>In the spotlight:</div>
-          <div style={pageStyles.eventTitle}>Open Data Fellowship for Women</div>
-          <div style={pageStyles.eventDescription}>
-            "Open Data Fellowship - Women Edition" is an initiative of Open Knowledge Nepal. The main motive behind the fellowship is to increase the number of women leaders in the field of open data in Nepal and use the existing expertise of different organizations to provide a good exposure to women and equip them with valuable work experience, confidence and skills that will help them to better understand the data ecosystem and potential opportunities.
-          </div>
-          <div style={pageStyles.eventReadMore}>
-            <Button style={pageStyles.eventReadMoreBtn}>Read more</Button>
-            <div style={pageStyles.eventDetailCarousel}>
-              {[1,2,3,4].map(x=> <Button {...{key:x, color:x===1?'blue':'grey'}} style={pageStyles.customCarousel.itemList}/>)}
-            </div>
-          </div>
+          {eventErr
+            ?
+            <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
+            :
+            <div>
+              <div style={pageStyles.inTheSpot}>In the spotlight:</div>
+              <div style={pageStyles.eventTitle}>{pinnedEvents[selected_event].node.title}</div>
+              <div style={pageStyles.eventDescription}>
+                <div dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
+              </div>
+              <div style={pageStyles.eventReadMore}>
+                <Button style={pageStyles.eventReadMoreBtn} as="a" href={`/event/${pinnedEvents[selected_event].node.slug}`}>Read more</Button>
+                <div style={pageStyles.eventDetailCarousel}>
+                  {pinnedEvents.map((event, idx)=> <Button {...{key:idx, color:selected_event===idx?'blue':'grey'}} onClick={()=>setSelectedEvent(idx)} style={pageStyles.customCarousel.itemList}/>)}
+                </div>
+              </div>
+            </div>}
         </Grid.Column>
       </Grid.Row>
     </Grid>
@@ -184,29 +205,33 @@ const JoinUs = () => {
 
 const Home = () => {
   // Create a query hook
+  const [selected_event, setSelectedEvent] = React.useState(undefined);
+
   const [
       { loading: headerLoading, data: headerData, error: headerError },
       { loading: headerMediaLoading, data: headerMediaData, error: headerMediaError },
       { loading: aboutLoading, data: aboutData, error: aboutError },
       { loading: aboutMediaLoading, data: aboutMediaData, error: aboutMediaError },
       { loading: memberMediaLoading, data: memberMediaData, error: memberMediaError },
+      { loading: eventsLoading, data: eventsData, error: eventsError },
   ] = [
     useQuery(HEADER_DESCRIPTION), useQuery(HEADER_MEDIA), useQuery(ABOUT),
-    useQuery(ABOUT_MEDIA), useQuery(MEMBER_ORGANIZATION_MEDIA)
+    useQuery(ABOUT_MEDIA), useQuery(MEMBER_ORGANIZATION_MEDIA), useQuery(EVENTS)
   ]
 
   if (aboutLoading || headerLoading || headerMediaLoading ||
-    aboutMediaLoading || memberMediaLoading)
+    aboutMediaLoading || memberMediaLoading || eventsLoading)
     return <p>Loading...</p>
   if (aboutError || headerError || headerMediaError ||
-    aboutMediaError || memberMediaError)
-    return <p>Error: {JSON.stringify(aboutError || headerError || headerMediaError || memberMediaError)}</p>
+    aboutMediaError || memberMediaError || eventsError)
+    return <p>Error: {JSON.stringify(aboutError || headerError || headerMediaError || memberMediaError || eventsError)}</p>
 
   let
     title, content,
     headerImage, headerImageError,
     mediaFile, mediaFileError,
-    memberOrgMedia, memberOrgMediaError
+    memberOrgMedia, memberOrgMediaError,
+    pinnedEvents, eventErr
 
   try {
     title = aboutData.posts.edges[0].node.title;
@@ -240,12 +265,25 @@ const Home = () => {
     memberOrgMediaError = MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES.error
   }
 
+  try {
+    pinnedEvents = eventsData.events.edges.filter(evt=>evt.node.eventDetails.isPinned)
+    if (pinnedEvents.length > 0 && selected_event === undefined) {
+      eventErr = false
+      setSelectedEvent(0)
+    }
+    if (pinnedEvents.length === 0) {
+      eventErr = EVENTS_ERROR_MESSAGES.error
+    }
+  } catch (e) {
+    eventErr = EVENTS_ERROR_MESSAGES.error
+  }
+
   return (
     <HomePageLayout {...{headerData, headerImage, headerImageError}}>
         <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor: 'white'}}/>
         <MemberOrganization {...{memberOrgMedia, memberOrgMediaError, bgColor: "#f7f7f7"}}/>
-        <UpcomingEventCarousel {...{bgColor: '#F2F2F2', bgSize: '40%'}}/>
-        <UpcomingEvent {...{}}/>
+        <UpcomingEventCarousel {...{eventErr, selected_event, setSelectedEvent, pinnedEvents, bgColor: '#F2F2F2', bgSize: '40%'}}/>
+        <UpcomingEvent {...{eventErr, pinnedEvents, selected_event, setSelectedEvent}}/>
         <OtherMedia/>
         <JoinUs {...{bgColor: '#F7F7F7'}}/>
     </HomePageLayout>
@@ -326,6 +364,9 @@ const pageStyles = {
     },
     itemList: {
       margin:0, padding:0, minHeight: 6, height: 6, width: 6, borderRadius: 3, border: 'none', marginLeft: 10
+    },
+    buttons: {
+      clear: 'both',
     }
   },
 

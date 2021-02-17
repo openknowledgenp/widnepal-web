@@ -87,27 +87,3 @@ export const MEMBER_ORGANIZATION_MEDIA = gql`
 export const MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES = {
   error: "<div><b>Error: Logos for member organization missing.</b><br/><br/>Update CMS with member organization logo (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>member_org_logo</b>'. Add their <b>website url in the description</b> of the Media).</div>"
 }
-
-export const PINNED_EVENTS = gql`
-  query Posts {
-    mediaItems(where: {categoryName: "home", tag: "member_org_logo"}) {
-      nodes {
-        mediaItemUrl
-        tags {
-          edges {
-            node {
-              name
-            }
-          }
-        }
-        description
-        websiteLink {
-          websiteLink
-        }
-      }
-    }
-  }
-`;
-export const PINNED_EVENTS_ERROR_MESSAGES = {
-  error: "<div><b>Error: Logos for member organization missing.</b><br/><br/>Update CMS with member organization logo (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>member_org_logo</b>'. Add their <b>website url in the description</b> of the Media).</div>"
-}
