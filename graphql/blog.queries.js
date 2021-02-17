@@ -9,8 +9,8 @@ export const BLOGS = gql`
           title
           slug
           content
-          postAttachedImage {
-            image {
+          featuredImage {
+            node {
               mediaItemUrl
             }
           }

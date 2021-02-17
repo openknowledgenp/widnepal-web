@@ -40,10 +40,10 @@ const Blog = () => {
         :
         <Item.Group style={pageStyles.section}>
           {data.posts.edges.map(post => {
-            const postImage = post.node.postAttachedImage.image
+            const postImage = post.node.featuredImage
             return (
                 <Item as='a' href={`/blog/${post.node.slug}`} style={pageStyles.item} key={`post__${post.node.id}`}>
-                  <Item.Image size='medium' src={postImage !== null ? postImage.mediaItemUrl : BlogPlaceholder} />
+                  <Item.Image size='medium' src={postImage !== null ? postImage.node.mediaItemUrl : BlogPlaceholder} />
                   <Item.Content style={pageStyles.content}>
                     <Item.Header style={pageStyles.header}>
                         {post.node.title}
