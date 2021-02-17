@@ -24,8 +24,8 @@ require_once( 'add_resource_menuitem.php' );
 
 // add local fields
 if( function_exists('acf_add_local_field_group') ):
-  require_once( 'event_form.php' );
-  // require_once( 'resource_form.php' );
+  require_once( 'form_event.php' );
+  require_once( 'form_resource.php' );
+  // If "media" has image uploaded, make available the "website url field"
   require_once( 'image_website_link.php' );
-  require_once( 'pinned_resources.php' );
 endif;
