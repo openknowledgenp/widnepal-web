@@ -83,5 +83,5 @@ acf_add_local_field_group(array(
 	'active' => true,
 	'description' => '',
 	'show_in_graphql' => 1,
-	'graphql_field_name' => 'isPinned',
+	'graphql_field_name' => 'resourceDetails',
 ));
