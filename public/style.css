@@ -6,18 +6,17 @@
   font-display: swap;
 }
 
+html {
+  font-family: VarelaRegular !important;
+}
 body {
   font-family: VarelaRegular !important;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6 {
   font-family: VarelaRegular !important;
 }
 
-p div ul li a span {
+p, div, ul, li, a, span, button {
   font-family: VarelaRegular !important;
 }
-
-/* .ui.menu {
-  font-family: VarelaRegular !important;
-} */
