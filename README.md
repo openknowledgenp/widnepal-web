@@ -16,7 +16,7 @@ Make sure you are in the project's root directory.
 - Run: `docker-compose up -d`
 - After the command exit, goto `http://localhost:8000/` on your browser.
 - Setup the WordPress Dashboard by providing name of site, username, password and other information.
-- You need to activate following  plugins "WP GraphQL", "WPGraphQL for Advanced Custom Fields", "Advanced custom fields", "WID Custom plugin" and "WID media" then activate all plugins. (You can manage plugins from `/wordpress/wp-content/plugins`.)
+- You need to activate following  plugins "WP GraphQL", "WPGraphQL for Advanced Custom Fields", "Advanced custom fields" and "WID Custom Plugin" then activate all plugins. (You can manage plugins from `/wordpress/wp-content/plugins`.)
 - Add new categories with slugs: 'about-us', 'blog', 'contact', 'events', 'home', 'program-or-project' and 'resources'
 
 ## Setup NextJS Frontend
