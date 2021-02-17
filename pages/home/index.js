@@ -176,7 +176,7 @@ const OtherMedia = ({resourceErr, pinnedResources}) => {
             {resourceErr ?
               <div dangerouslySetInnerHTML={{ __html: resourceErr }}/>
               :
-              pinnedResources.map((resource, idx)=><Item as='a' key={idx}>
+              pinnedResources.map((resource, idx)=><Item as='a' key={idx} href={`/resources/${pinnedResources[idx].node.slug}`}>
               <Item.Content style={pageStyles.usefulResourceItem}>
                 <Item.Header style={pageStyles.usefulResourceHead}>{resource.node.title}</Item.Header>
                 <Item.Description style={pageStyles.usefulResourceDescription}>
