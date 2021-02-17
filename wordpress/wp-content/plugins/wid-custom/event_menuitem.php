@@ -16,7 +16,7 @@ function events_cpt() {
     'search_items'       => __( 'Search events', 'event-plugin' ),
     'parent_item_colon'  => __( 'Parent events:', 'event-plugin' ),
     'not_found'          => __( 'No events found.', 'event-plugin' ),
-    'not_found_in_trash' => __( 'No events found in Trash.', 'event-plugin' )
+    'not_found_in_trash' => __( 'No events found in Trash.', 'event-plugin' ),
   );
 
   $args = array(
@@ -36,7 +36,11 @@ function events_cpt() {
     'show_in_rest'       => true,
     'rest_base'          => 'events',
     'rest_controller_class' => 'WP_REST_Posts_Controller',
-    'supports'           => array( 'thumbnail' )
+    'supports'           => array( 'thumbnail' ),
+    'show_in_graphql' => true,
+    'hierarchical' => true,
+    'graphql_single_name' => 'event',
+    'graphql_plural_name' => 'events',
   );
 
   register_post_type( 'event', $args );
