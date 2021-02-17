@@ -11,9 +11,8 @@ import {
   ABOUT_MEDIA_ERROR_MESSAGES,
   MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES,
 } from '../../graphql/home.queries';
-import {
-  EVENTS, EVENTS_ERROR_MESSAGES
-} from '../../graphql/event.queries';
+import { EVENTS, EVENTS_ERROR_MESSAGES } from '../../graphql/event.queries';
+import { RESOURCES, RESOURCES_ERROR_MESSAGES } from '../../graphql/resources.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import PlaceholderImage from '../../assets/placeholder_image.jpg';
@@ -165,7 +164,7 @@ const UpcomingEvent = ({eventErr, pinnedEvents, selected_event, setSelectedEvent
   )
 }
 
-const OtherMedia = () => {
+const OtherMedia = ({resourceErr, pinnedResources}) => {
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
       <Grid.Row columns={2}>
@@ -174,11 +173,16 @@ const OtherMedia = () => {
             Useful Resources
           </div>
           <Item.Group>
-            {[1,2,3].map(x=><Item as='a' key={x}>
+            {resourceErr ?
+              <div dangerouslySetInnerHTML={{ __html: resourceErr }}/>
+              :
+              pinnedResources.map((resource, idx)=><Item as='a' key={idx}>
               <Item.Content style={pageStyles.usefulResourceItem}>
-                <Item.Header style={pageStyles.usefulResourceHead}>Open Data Curriculum</Item.Header>
+                <Item.Header style={pageStyles.usefulResourceHead}>{resource.node.title}</Item.Header>
                 <Item.Description style={pageStyles.usefulResourceDescription}>
-                  Open Knowledge Nepal: The Open Data Manual accompanies the Open Data Curriculum, and provides information on the basics of open data, with a list of helpful resources for the readers to refer to. To learn more  please  go to link: http://odap.oknp.org
+                  <Truncate lines={5} ellipsis={<span>...</span>}>
+                      <div dangerouslySetInnerHTML={{ __html: resource.node.resourceDetails.description }}/>
+                  </Truncate>
                 </Item.Description>
               </Item.Content>
             </Item>)}
@@ -223,24 +227,28 @@ const Home = () => {
       { loading: aboutMediaLoading, data: aboutMediaData, error: aboutMediaError },
       { loading: memberMediaLoading, data: memberMediaData, error: memberMediaError },
       { loading: eventsLoading, data: eventsData, error: eventsError },
+      { loading: resourcesLoading, data: resourcesData, error: resourcesError },
   ] = [
     useQuery(HEADER_DESCRIPTION), useQuery(HEADER_MEDIA), useQuery(ABOUT),
-    useQuery(ABOUT_MEDIA), useQuery(MEMBER_ORGANIZATION_MEDIA), useQuery(EVENTS)
+    useQuery(ABOUT_MEDIA), useQuery(MEMBER_ORGANIZATION_MEDIA), useQuery(EVENTS), useQuery(RESOURCES),
   ]
 
   if (aboutLoading || headerLoading || headerMediaLoading ||
-    aboutMediaLoading || memberMediaLoading || eventsLoading)
-    return <p>Loading...</p>
+    aboutMediaLoading || memberMediaLoading || eventsLoading ||
+    resourcesLoading
+  ) return <p>Loading...</p>
+
   if (aboutError || headerError || headerMediaError ||
-    aboutMediaError || memberMediaError || eventsError)
-    return <p>Error: {JSON.stringify(aboutError || headerError || headerMediaError || memberMediaError || eventsError)}</p>
+    aboutMediaError || memberMediaError || eventsError || resourcesError
+  ) return <p>Error: {JSON.stringify(aboutError || headerError || headerMediaError || memberMediaError || eventsError || resourcesError)}</p>
 
   let
     title, content,
     headerImage, headerImageError,
     mediaFile, mediaFileError,
     memberOrgMedia, memberOrgMediaError,
-    pinnedEvents, eventErr
+    pinnedEvents, eventErr,
+    pinnedResources, resourceErr
 
   try {
     title = aboutData.posts.edges[0].node.title;
@@ -287,13 +295,25 @@ const Home = () => {
     eventErr = EVENTS_ERROR_MESSAGES.error
   }
 
+  try {
+    pinnedResources = resourcesData.resources.edges.filter(evt=>evt.node.resourceDetails.isPinned)
+    if (pinnedResources.length > 0) {
+      resourceErr = false
+    }
+    if (pinnedResources.length === 0) {
+      resourceErr = RESOURCES_ERROR_MESSAGES.error
+    }
+  } catch (e) {
+    resourceErr = RESOURCES_ERROR_MESSAGES.error
+  }
+
   return (
     <HomePageLayout {...{headerData, headerImage, headerImageError}}>
         <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor: 'white'}}/>
         <MemberOrganization {...{memberOrgMedia, memberOrgMediaError, bgColor: "#f7f7f7"}}/>
         <UpcomingEventCarousel {...{eventErr, selected_event, setSelectedEvent, pinnedEvents, bgColor: '#F2F2F2', bgSize: '40%'}}/>
         <UpcomingEvent {...{eventErr, pinnedEvents, selected_event, setSelectedEvent}}/>
-        <OtherMedia/>
+        <OtherMedia {...{resourceErr, pinnedResources}}/>
         <JoinUs {...{bgColor: '#F7F7F7'}}/>
     </HomePageLayout>
   );
