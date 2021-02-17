@@ -131,26 +131,26 @@ const UpcomingEvent = ({eventErr, pinnedEvents, selected_event, setSelectedEvent
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
       <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
         <Grid.Column style={pageStyles.upcomingEventPicture(imageFile)} only='tablet computer'/>
-
-        <Grid.Column style={pageStyles.upcomingEventDetail}>
-          {eventErr
-            ?
+        {eventErr
+          ?
+          <Grid.Column style={pageStyles.upcomingEventDetail}>
             <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
-            :
-            <div>
-              <div style={pageStyles.inTheSpot}>In the spotlight:</div>
-              <div style={pageStyles.eventTitle}>{pinnedEvents[selected_event].node.title}</div>
-              <div style={pageStyles.eventDescription}>
-                <div dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
-              </div>
-              <div style={pageStyles.eventReadMore}>
-                <Button style={pageStyles.eventReadMoreBtn} as="a" href={`/event/${pinnedEvents[selected_event].node.slug}`}>Read more</Button>
-                <div style={pageStyles.eventDetailCarousel}>
-                  {pinnedEvents.map((event, idx)=> <Button {...{key:idx, color:selected_event===idx?'blue':'grey'}} onClick={()=>setSelectedEvent(idx)} style={pageStyles.customCarousel.itemList}/>)}
+          </Grid.Column>
+          :
+          <Grid.Column style={pageStyles.upcomingEventDetail}>
+                <div style={pageStyles.inTheSpot}>In the spotlight:</div>
+                <div style={pageStyles.eventTitle}>{pinnedEvents[selected_event].node.title}</div>
+                <div style={pageStyles.eventDescription}>
+                  <div dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
                 </div>
-              </div>
-            </div>}
-        </Grid.Column>
+                <div style={pageStyles.eventReadMore}>
+                  <Button style={pageStyles.eventReadMoreBtn} as="a" href={`/event/${pinnedEvents[selected_event].node.slug}`}>Read more</Button>
+                  <div style={pageStyles.eventDetailCarousel}>
+                    {pinnedEvents.map((event, idx)=> <Button {...{key:idx, color:selected_event===idx?'blue':'grey'}} onClick={()=>setSelectedEvent(idx)} style={pageStyles.customCarousel.itemList}/>)}
+                  </div>
+                </div>
+          </Grid.Column>
+        }
       </Grid.Row>
     </Grid>
   )
