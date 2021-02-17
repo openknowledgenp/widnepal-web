@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "VarelaRegular";
+  src: url("/fonts/Varela-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+body {
+  font-family: VarelaRegular !important;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: VarelaRegular !important;
+}
+
+p div ul li a span {
+  font-family: VarelaRegular !important;
+}
+
+/* .ui.menu {
+  font-family: VarelaRegular !important;
+} */

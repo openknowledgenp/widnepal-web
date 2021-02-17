@@ -21,11 +21,17 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
     content = HEADER_DESCRIPTION_ERROR_MESSAGES.errorDescription;
   }
   return (
-      <div>
+      <div style={{ fontFamily: 'VarelaRegular !important' }}>
         <Nav isHomePage/>
         <Head>
           <title>{title} | Home</title>
           <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="preload"
+            href="/fonts/Varela-Regular.ttf"
+            as="font"
+            crossOrigin=""
+          />
         </Head>
         <div style={pageStyles.hero}>
           <GraphicsElement />
