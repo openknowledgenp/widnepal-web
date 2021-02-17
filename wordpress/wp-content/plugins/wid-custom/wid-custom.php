@@ -15,8 +15,10 @@ require_once( 'media_taxonomy.php' );
 
 // Add event post type
 require_once( 'event_menuitem.php' );
+
 // add local fields
 if( function_exists('acf_add_local_field_group') ):
   require_once( 'event_form.php' );
   require_once( 'image_website_link.php' );
+  require_once( 'pinned_resources.php' );
 endif;
