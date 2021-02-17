@@ -86,6 +86,10 @@ const MemberOrganization = ({memberOrgMedia, memberOrgMediaError}) => {
 }
 
 const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
+  let event_date = []
+  if (pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
+    event_date = pinnedEvents[selected_event].node.eventDetails.startTime.split(',')[0].split(' ')
+  }
   return(
     <div style={pageStyles.customCarousel.container}>
       <div style={pageStyles.customCarousel.headContainer}>
@@ -95,10 +99,14 @@ const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelec
           <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
           :
           <div columns={2} style={pageStyles.customCarousel.post}>
-            <div style={pageStyles.customCarousel.calendar}>
-              <div style={pageStyles.customCarousel.date}>27</div>
-              <div style={pageStyles.customCarousel.month}>March</div>
-            </div>
+            {event_date.length > 0 ?
+              <div style={pageStyles.customCarousel.calendar}>
+                <div style={pageStyles.customCarousel.date}>{event_date[1]}</div>
+                <div style={pageStyles.customCarousel.month}>{event_date[0]}</div>
+              </div>
+              :
+              <div style={pageStyles.customCarousel.calendar}/>
+            }
             <div style={pageStyles.customCarousel.shortInfo}>
               <div style={pageStyles.customCarousel.title}>
                 <Truncate lines={1} ellipsis={<span>...</span>}>
@@ -127,6 +135,7 @@ const UpcomingEvent = ({eventErr, pinnedEvents, selected_event, setSelectedEvent
   } catch (e) {
     imageFile = PlaceholderImage
   }
+
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
       <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
@@ -340,6 +349,7 @@ const pageStyles = {
       padding: 15,
       paddingBottom: 8,
       marginRight: 20,
+      minHeight: 50
     },
     date: {
       color: 'white',
@@ -347,7 +357,7 @@ const pageStyles = {
     },
     month: {
       color: 'white',
-      fontSize: 14,
+      fontSize: 12,
       paddingTop: 5
     },
     shortInfo: {
