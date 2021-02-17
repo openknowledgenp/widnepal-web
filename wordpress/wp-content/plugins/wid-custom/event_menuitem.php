@@ -36,7 +36,7 @@ function events_cpt() {
     'show_in_rest'       => true,
     'rest_base'          => 'events',
     'rest_controller_class' => 'WP_REST_Posts_Controller',
-    'supports'           => array( 'thumbnail' ),
+    'supports'           => array( 'thumbnail', 'title' ),
     'show_in_graphql' => true,
     'hierarchical' => true,
     'graphql_single_name' => 'event',

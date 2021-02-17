@@ -4,26 +4,6 @@ acf_add_local_field_group(array(
 	'title' => 'Event details',
 	'fields' => array(
 		array(
-			'key' => 'field_602c9132b3fce',
-			'label' => 'Title',
-			'name' => 'title',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'show_in_graphql' => 1,
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-		),
-		array(
 			'key' => 'field_602cc9862ab0c',
 			'label' => 'Is pinned?',
 			'name' => 'is_pinned',
@@ -65,7 +45,7 @@ acf_add_local_field_group(array(
 		),
 		array(
 			'key' => 'field_602ca4876b80a',
-			'label' => 'Start time',
+			'label' => 'Starting date and time',
 			'name' => 'start_time',
 			'type' => 'date_time_picker',
 			'instructions' => '',
@@ -83,7 +63,7 @@ acf_add_local_field_group(array(
 		),
 		array(
 			'key' => 'field_602ca49d6b80b',
-			'label' => 'End time',
+			'label' => 'Ending date and time',
 			'name' => 'end_time',
 			'type' => 'date_time_picker',
 			'instructions' => '',
