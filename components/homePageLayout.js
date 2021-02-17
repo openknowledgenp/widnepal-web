@@ -21,7 +21,7 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
     content = HEADER_DESCRIPTION_ERROR_MESSAGES.errorDescription;
   }
   return (
-      <div style={{ fontFamily: 'VarelaRegular !important' }}>
+      <div>
         <Nav isHomePage/>
         <Head>
           <title>{title} | Home</title>
