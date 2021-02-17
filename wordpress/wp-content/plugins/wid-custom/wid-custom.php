@@ -1,6 +1,6 @@
 <?php
 /**
- * @package           WID custom  
+ * @package           WID custom
  * @author            Open Knowledge Nepal
  * @license           GPL-2.0-or-later
  *
@@ -29,7 +29,7 @@ function events_cpt() {
     'not_found'          => __( 'No events found.', 'event-plugin' ),
     'not_found_in_trash' => __( 'No events found in Trash.', 'event-plugin' )
   );
- 
+
   $args = array(
     'labels'             => $labels,
     'description'        => __( 'Description.', 'event-plugin' ),
@@ -47,146 +47,175 @@ function events_cpt() {
     'show_in_rest'       => true,
     'rest_base'          => 'events',
     'rest_controller_class' => 'WP_REST_Posts_Controller',
-    'supports'           => array( 'title', 'author', 'thumbnail', 'excerpt', )
+    'supports'           => array( 'thumbnail' )
   );
- 
+
   register_post_type( 'event', $args );
 }
 
-// Added event date field on event post type
-if( function_exists('acf_add_local_field_group') ):
-    acf_add_local_field_group(array(
-      'key' => 'read_more',
-      'title' => 'Blog link',
-      'fields' => array(
-        array(
-          'key' => 'field_link',
-          'label' => 'Read more',
-          'name' => 'read_more',
-          'type' => 'url',
-          'instructions' => '',
-          'required' => 1,
-          'conditional_logic' => 0,
-          'wrapper' => array(
-            'width' => '',
-            'class' => '',
-            'id' => '',
-          ),
-          'default_value' => '',
-          'placeholder' => '',
-        ),
-      ),
-      'location' => array(
-        array(
-          array(
-            'param' => 'post_type',
-            'operator' => '==',
-            'value' => 'event',
-          ),
-        ),
-      ),
-      'menu_order' => 0,
-      'position' => 'side',
-      'style' => 'default',
-      'label_placement' => 'top',
-      'instruction_placement' => 'label',
-      'hide_on_screen' => '',
-      'active' => true,
-      'description' => '',
-    ));
-endif;
-
 
 if( function_exists('acf_add_local_field_group') ):
-    acf_add_local_field_group(array(
-      'key' => 'event_date',
-      'title' => 'Event Date',
-      'fields' => array(
-        array(
-          'key' => 'field_date',
-          'label' => 'Event Date',
-          'name' => 'event_date',
-          'type' => 'date_picker',
-          'required' => 1,
-          'default_value' => '',
-          'placeholder' => '',
-          'prepend' => '',
-          'append' => '',
-          'formatting' => 'html',
-          'maxlength' => '',
-          'display_format' => 'd/m/Y',
-          'return_format' => 'd/m/Y',
-          'first_day' => 0,
-          'required' => 0,
-          'wrapper' => array(
-            'width' => '',
-            'class' => '',
-            'id' => '',
-          ),
-          'default_value' => '',
-          'placeholder' => '',
-        ),
-      ),
-      'location' => array(
-        array(
-          array(
-            'param' => 'post_type',
-            'operator' => '==',
-            'value' => 'event',
-          ),
-        ),
-      ),
-      'menu_order' => 0,
-      'position' => 'side',
-      'style' => 'default',
-      'label_placement' => 'top',
-      'instruction_placement' => 'label',
-      'hide_on_screen' => '',
-      'active' => true,
-      'description' => '',
-    ));
+
+acf_add_local_field_group(array(
+	'key' => 'group_602c90f28e5f4',
+	'title' => 'Event details',
+	'fields' => array(
+		array(
+			'key' => 'field_602c9132b3fce',
+			'label' => 'Title',
+			'name' => 'title',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'show_in_graphql' => 1,
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array(
+			'key' => 'field_602ca4756b809',
+			'label' => 'Description',
+			'name' => 'description',
+			'type' => 'textarea',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'show_in_graphql' => 1,
+			'default_value' => '',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => '',
+		),
+		array(
+			'key' => 'field_602ca4876b80a',
+			'label' => 'Start time',
+			'name' => 'start_time',
+			'type' => 'date_time_picker',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'show_in_graphql' => 1,
+			'display_format' => 'F j, Y g:i a',
+			'return_format' => 'F j, Y g:i a',
+			'first_day' => 1,
+		),
+		array(
+			'key' => 'field_602ca49d6b80b',
+			'label' => 'End time',
+			'name' => 'end_time',
+			'type' => 'date_time_picker',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'show_in_graphql' => 1,
+			'display_format' => 'F j, Y g:i a',
+			'return_format' => 'F j, Y g:i a',
+			'first_day' => 1,
+		),
+		array(
+			'key' => 'field_602ca4f78c666',
+			'label' => 'Website Link',
+			'name' => 'website_link',
+			'type' => 'url',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'show_in_graphql' => 1,
+			'default_value' => '',
+			'placeholder' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'event',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+	'show_in_graphql' => 1,
+	'graphql_field_name' => 'eventDetails',
+));
+
+acf_add_local_field_group(array(
+	'key' => 'group_602a3a0965870',
+	'title' => 'Website Link',
+	'fields' => array(
+		array(
+			'key' => 'field_602a3a376624f',
+			'label' => 'Website Link',
+			'name' => 'website_link',
+			'type' => 'url',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '100',
+				'class' => '',
+				'id' => '',
+			),
+			'show_in_graphql' => 1,
+			'default_value' => '',
+			'placeholder' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'attachment',
+				'operator' => '==',
+				'value' => 'image',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+	'show_in_graphql' => 1,
+	'graphql_field_name' => 'websiteLink',
+));
+
 endif;
-
-// Custom post event type rest API
-function rest_route_for_post_event( $route, $post ) {
-    if ( $post->post_type === 'event' ) {
-        $route = '/wp/v2/events/' . $post->ID;
-    }
-    return $route;
-}
-add_filter( 'rest_route_for_post', 'rest_route_for_post_event', 10, 2 );
-
-
-// GRAPHQL API
-add_filter( 'register_post_type_args', function( $args, $post_type ) {
-	if ( 'event' === $post_type ) { 
-		$args['show_in_graphql'] = true;
-		$args['graphql_single_name'] = 'event';
-		$args['graphql_plural_name'] = 'events';
-	}
-	return $args;
-}, 10, 2 );
-
-// Exposing event date on graphql
-add_action( 'graphql_register_types', function() {
-	register_graphql_field( 'event', 'event_date', [
-		'type' => 'String',
-		'description' => __( 'Date of event', 'event' ),
-		'resolve' => function($post) {
-        $wid_event_date = get_post_meta($post -> ID, 'event_date', true);
-		    return $wid_event_date;
-		}
-	]);
-} );
-
-// Exposing event readmore field on graphql
-add_action( 'graphql_register_types', function() {
-	register_graphql_field( 'event', 'read_more', [
-		'type' => 'String',
-		'description' => __( 'Organizaiton url link', 'read_more' ),
-		'resolve' => function($post) {
-        $wid_event_date = get_post_meta($post -> ID, 'read_more', true);
-		    return $wid_event_date;
-		}
-	]);
-} );

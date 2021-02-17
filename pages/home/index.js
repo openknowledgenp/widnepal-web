@@ -66,7 +66,7 @@ const MemberOrganization = ({memberOrgMedia, memberOrgMediaError}) => {
                 style={pageStyles.imageButton}
                 key={img.mediaItemUrl}
                 as="a"
-                href={img.websiteAddress.websiteLink}
+                href={img.websiteLink.websiteLink}
                 icon={
                   <Image src={img.mediaItemUrl} style={pageStyles.memberOrgImage} key={img.mediaItemUrl}/>
                 }

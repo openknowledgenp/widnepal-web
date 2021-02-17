@@ -18,20 +18,6 @@ Make sure you are in the project's root directory.
 - Setup the WordPress Dashboard by providing name of site, username, password and other information.
 - You need to activate following  plugins "WP GraphQL", "WPGraphQL for Advanced Custom Fields", "Advanced custom fields", "WID Custom plugin" and "WID media" then activate all plugins. (You can manage plugins from `/wordpress/wp-content/plugins`.)
 - Add new categories with slugs: 'about-us', 'blog', 'contact', 'events', 'home', 'program-or-project' and 'resources'
-- To add a image url field to media(image), add new "Custom Field" with the following information:
-  - Title: Website Link
-  - Click on "+ Add Field" button and add the following detail:
-    - Field Label: Targeted Website Link
-    - Field Name: website_link
-    - Field Type: Text
-    - Instructions: Website address. Don't miss the "http://"
-    - Show in GraphQL: Yes
-  - Now, in the location section, add the following rule:
-    - Show this field group if: Attachment - is equal to - All image formats
-  - Finally, in the settings section:
-    - Select "Yes" for Activate
-    - Select "Yes" for Show in GraphQL
-    - And in "GraphQL Field Name", type: "websiteAddress"
 
 ## Setup NextJS Frontend
 Make sure you are in the project's root directory.

@@ -77,7 +77,7 @@ export const MEMBER_ORGANIZATION_MEDIA = gql`
           }
         }
         description
-        websiteAddress {
+        websiteLink {
           websiteLink
         }
       }
