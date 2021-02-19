@@ -13,6 +13,7 @@ import {
 } from '../../graphql/home.queries';
 import { EVENTS, EVENTS_ERROR_MESSAGES } from '../../graphql/event.queries';
 import { RESOURCES, RESOURCES_ERROR_MESSAGES } from '../../graphql/resources.queries';
+import { BLOGS, BLOGS_ERROR_MESSAGES } from '../../graphql/blog.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import PlaceholderImage from '../../assets/placeholder_image.jpg';
@@ -63,7 +64,7 @@ const MemberOrganization = ({memberOrgMedia, memberOrgMediaError}) => {
         ?
         <div dangerouslySetInnerHTML={{ __html: memberOrgMediaError }}/>
         :
-        <Grid divided='vertically' stackable>
+        <Grid divided='vertically' stackable style={pageStyles.memberOrganization}>
           <Grid.Row columns={memberOrgMedia.length}>
             {memberOrgMedia.map(img=>{return(
               <Button
@@ -97,7 +98,7 @@ const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelec
           ?
           <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
           :
-          <div columns={2} style={pageStyles.customCarousel.post}>
+          <Grid.Row as="a" href={`/event/upcoming-events/${pinnedEvents[selected_event].node.slug}`} columns={2} style={pageStyles.customCarousel.post}>
             {event_date.length > 0 ?
               <div style={pageStyles.customCarousel.calendar}>
                 <div style={pageStyles.customCarousel.date}>{event_date[1]}</div>
@@ -113,12 +114,15 @@ const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelec
                 </Truncate>
               </div>
               <div style={pageStyles.customCarousel.description}>
-                <Truncate lines={2} ellipsis={<span>...</span>}>
-                  <div dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
+                <Truncate lines={2} ellipsis={<span style={{ fontWeight: 'bold' }}>... Read More</span>}>
+                  <span dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
+                  <span style={{ fontWeight: 'bold' }}>
+                  ... Read More
+                  </span>
                 </Truncate>
               </div>
             </div>
-          </div>}
+          </Grid.Row>}
         <div style={pageStyles.customCarousel.buttons}>
           {pinnedEvents.map((event, idx)=> <Button {...{key:idx, color:selected_event===idx?'blue':'grey'}} onClick={()=>setSelectedEvent(idx)} style={pageStyles.customCarousel.itemList}/>)}
         </div>
@@ -127,36 +131,36 @@ const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelec
     </div>
   )
 }
-const UpcomingEvent = ({eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
+const PinnedBlogs = ({ blogErr, pinnedBlogs, selected_blog, setSelectedBlog}) => {
   let imageFile = PlaceholderImage
   try {
-    imageFile = pinnedEvents[selected_event].node.featuredImage.node.mediaItemUrl
+    imageFile = pinnedBlogs[selected_blog].node.featuredImage.node.mediaItemUrl
   } catch (e) {
     imageFile = PlaceholderImage
   }
 
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
-      <Grid.Row columns={2} style={pageStyles.upcomingEventBrief}>
-        <Grid.Column style={pageStyles.upcomingEventPicture(imageFile)} only='tablet computer'/>
-        {eventErr
+      <Grid.Row columns={2} style={pageStyles.pinnedBlogContent}>
+        <Grid.Column style={pageStyles.pinnedBlogPicture(imageFile)} only='tablet computer'/>
+        {blogErr
           ?
-          <Grid.Column style={pageStyles.upcomingEventDetail}>
-            <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
+          <Grid.Column style={pageStyles.pinnedBlogDetail}>
+            <div dangerouslySetInnerHTML={{ __html: blogErr }}/>
           </Grid.Column>
           :
-          <Grid.Column style={pageStyles.upcomingEventDetail}>
-                <div style={pageStyles.inTheSpot}>In the spotlight:</div>
-                <div style={pageStyles.eventTitle}>{pinnedEvents[selected_event].node.title}</div>
-                <div style={pageStyles.eventDescription}>
-                  <div dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
+          <Grid.Column style={pageStyles.pinnedBlogDetail}>
+              <div style={pageStyles.inTheSpot}>In the spotlight:</div>
+              <div style={pageStyles.contentTitle}>{pinnedBlogs[selected_blog].node.title}</div>
+              <div style={pageStyles.mainContent}>
+                <div dangerouslySetInnerHTML={{ __html: pinnedBlogs[selected_blog].node.blogDetails.blog }} />
+              </div>
+              <div style={pageStyles.blogReadMore}>
+                <Button style={pageStyles.blogReadMoreBtn} as="a" href={`/blog/${pinnedBlogs[selected_blog].node.slug}`}>Read more</Button>
+                <div style={pageStyles.detailCarousel}>
+                  {pinnedBlogs.map((event, idx)=> <Button {...{key:idx, color:selected_blog===idx?'blue':'grey'}} onClick={()=>setSelectedBlog(idx)} style={pageStyles.customCarousel.itemList}/>)}
                 </div>
-                <div style={pageStyles.eventReadMore}>
-                  <Button style={pageStyles.eventReadMoreBtn} as="a" href={`/event/${pinnedEvents[selected_event].node.slug}`}>Read more</Button>
-                  <div style={pageStyles.eventDetailCarousel}>
-                    {pinnedEvents.map((event, idx)=> <Button {...{key:idx, color:selected_event===idx?'blue':'grey'}} onClick={()=>setSelectedEvent(idx)} style={pageStyles.customCarousel.itemList}/>)}
-                  </div>
-                </div>
+              </div>
           </Grid.Column>
         }
       </Grid.Row>
@@ -219,6 +223,7 @@ const JoinUs = () => {
 const Home = () => {
   // Create a query hook
   const [selected_event, setSelectedEvent] = React.useState(undefined);
+  const [selected_blog, setSelectedBlog] = React.useState(undefined);
 
   const [
       { loading: headerLoading, data: headerData, error: headerError },
@@ -228,19 +233,22 @@ const Home = () => {
       { loading: memberMediaLoading, data: memberMediaData, error: memberMediaError },
       { loading: eventsLoading, data: eventsData, error: eventsError },
       { loading: resourcesLoading, data: resourcesData, error: resourcesError },
+      { loading: blogsLoading, data: blogsData, error: blogsError },
   ] = [
     useQuery(HEADER_DESCRIPTION), useQuery(HEADER_MEDIA), useQuery(ABOUT),
-    useQuery(ABOUT_MEDIA), useQuery(MEMBER_ORGANIZATION_MEDIA), useQuery(EVENTS), useQuery(RESOURCES),
+    useQuery(ABOUT_MEDIA), useQuery(MEMBER_ORGANIZATION_MEDIA), useQuery(EVENTS),
+    useQuery(RESOURCES), useQuery(BLOGS)
   ]
 
   if (aboutLoading || headerLoading || headerMediaLoading ||
     aboutMediaLoading || memberMediaLoading || eventsLoading ||
-    resourcesLoading
+    resourcesLoading || blogsLoading
   ) return <p>Loading...</p>
 
   if (aboutError || headerError || headerMediaError ||
-    aboutMediaError || memberMediaError || eventsError || resourcesError
-  ) return <p>Error: {JSON.stringify(aboutError || headerError || headerMediaError || memberMediaError || eventsError || resourcesError)}</p>
+    aboutMediaError || memberMediaError || eventsError ||
+    resourcesError || blogsError
+  ) return <p>Error: {JSON.stringify(aboutError || headerError || headerMediaError || memberMediaError || eventsError || resourcesError || blogsError)}</p>
 
   let
     title, content,
@@ -248,7 +256,8 @@ const Home = () => {
     mediaFile, mediaFileError,
     memberOrgMedia, memberOrgMediaError,
     pinnedEvents, eventErr,
-    pinnedResources, resourceErr
+    pinnedResources, resourceErr,
+    pinnedBlogs, blogErr
 
   try {
     title = aboutData.posts.edges[0].node.title;
@@ -296,6 +305,19 @@ const Home = () => {
   }
 
   try {
+    pinnedEvents = eventsData.events.edges.filter(evt=>evt.node.eventDetails.isPinned)
+    if (pinnedEvents.length > 0 && selected_blog === undefined) {
+      eventErr = false
+      setSelectedBlog(0)
+    }
+    if (pinnedEvents.length === 0) {
+      eventErr = EVENTS_ERROR_MESSAGES.error
+    }
+  } catch (e) {
+    eventErr = EVENTS_ERROR_MESSAGES.error
+  }
+
+  try {
     pinnedResources = resourcesData.resources.edges.filter(evt=>evt.node.resourceDetails.isPinned)
     if (pinnedResources.length > 0) {
       resourceErr = false
@@ -307,12 +329,24 @@ const Home = () => {
     resourceErr = RESOURCES_ERROR_MESSAGES.error
   }
 
+  try {
+    pinnedBlogs = blogsData.blogs.edges.filter(evt=>evt.node.blogDetails.isPinned)
+    if (pinnedBlogs.length > 0) {
+      blogErr = false
+    }
+    if (pinnedBlogs.length === 0) {
+      blogErr = BLOGS_ERROR_MESSAGES.error
+    }
+  } catch (e) {
+    blogErr = BLOGS_ERROR_MESSAGES.error
+  }
+
   return (
     <HomePageLayout {...{headerData, headerImage, headerImageError}}>
         <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor: 'white'}}/>
         <MemberOrganization {...{memberOrgMedia, memberOrgMediaError, bgColor: "#f7f7f7"}}/>
         <UpcomingEventCarousel {...{eventErr, selected_event, setSelectedEvent, pinnedEvents, bgColor: '#F2F2F2', bgSize: '40%'}}/>
-        <UpcomingEvent {...{eventErr, pinnedEvents, selected_event, setSelectedEvent}}/>
+        <PinnedBlogs {...{blogErr, pinnedBlogs, selected_blog, setSelectedBlog}}/>
         <OtherMedia {...{resourceErr, pinnedResources}}/>
         <JoinUs {...{bgColor: '#F7F7F7'}}/>
     </HomePageLayout>
@@ -354,7 +388,8 @@ const pageStyles = {
     },
     head: {
       fontWeight: 'bold',
-      fontSize: 20
+      fontSize: 20,
+      paddingBottom: 15
     },
     post: {
       marginTop: 20,
@@ -390,24 +425,30 @@ const pageStyles = {
     description: {
       fontSize: 16,
       paddingTop: 10,
-      overflow: 'hidden'
+      overflow: 'hidden',
+      color: '#403E3E',
     },
     itemList: {
       margin:0, padding:0, minHeight: 6, height: 6, width: 6, borderRadius: 3, border: 'none', marginLeft: 10
     },
     buttons: {
       clear: 'both',
-    }
+    },
   },
 
-  upcomingEventBrief: {
+  memberOrganization: {
+    paddingRight: 80,
+    paddingLeft: 80,
+  },
+
+  pinnedBlogContent: {
     height: 450,
   },
-  upcomingEventDetail: {
+  pinnedBlogDetail: {
     backgroundColor: '#FCCA35',
     height: '100%',
   },
-  upcomingEventPicture: (imageFile) => {return({
+  pinnedBlogPicture: (imageFile) => {return({
     paddingRight:0,
     height: '100%',
     backgroundImage: `url(${imageFile})`,
@@ -421,7 +462,7 @@ const pageStyles = {
     paddingLeft: 40,
     fontSize: 14,
   },
-  eventTitle: {
+  contentTitle: {
     fontSize: 24,
     fontWeignt: 'bold',
     width: '80%',
@@ -429,7 +470,7 @@ const pageStyles = {
     paddingRight: 40,
     paddingLeft: 40,
   },
-  eventDescription: {
+  mainContent: {
     marginTop: 15,
     fontSize: 16,
     height: '55%',
@@ -437,7 +478,7 @@ const pageStyles = {
     paddingRight: 40,
     paddingLeft: 40,
   },
-  eventReadMore: {
+  blogReadMore: {
     fontSize: 16,
     position:'absolute',
     bottom: 15,
@@ -447,7 +488,7 @@ const pageStyles = {
     marginLeft: 40,
     paddingTop: 5,
   },
-  eventReadMoreBtn: {
+  blogReadMoreBtn: {
     backgroundColor: 'rgba(0,0,0,0)',
     margin: 0,
     paddingLeft: 0,
@@ -457,7 +498,7 @@ const pageStyles = {
     color: 'black',
     float: 'left',
   },
-  eventDetailCarousel: {
+  detailCarousel: {
     float: 'right',
   },
   otherMediaTitle: {

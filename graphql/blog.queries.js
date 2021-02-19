@@ -1,14 +1,17 @@
 import gql from 'graphql-tag';
 
 export const BLOGS = gql`
-  query Blogs {
-    posts(where: {categoryName: "blog"}) {
+  query MyQuery {
+    blogs {
       edges {
         node {
-          id
+          blogDetails {
+            blog
+            isPinned
+          }
           title
           slug
-          content
+          blogId
           featuredImage {
             node {
               mediaItemUrl
@@ -35,25 +38,35 @@ export const MEDIA = gql`
   }
 `;
 
-export const POST_WITH_SLUG = (slug) => gql`
-  query Blogs {
-    posts (where: {categoryName: "blog", name: "${slug}"}) {
+
+
+export const BLOG_WITH_SLUG = (slug) => gql`
+  query MyQuery {
+    blogs(where: {name: "${slug}"}) {
       edges {
         node {
-          id
+          blogDetails {
+            blog
+            isPinned
+          }
           title
           slug
-          content
-          author {
+          blogId
+          featuredImage {
             node {
-              firstName
-              lastName
-              description
-              avatar {
-                url
+              mediaItemUrl
+              author {
+                node {
+                  firstName
+                  lastName
+                  description
+                  avatar {
+                    url
+                  }
+                }
               }
             }
-        }
+          }
         }
       }
     }

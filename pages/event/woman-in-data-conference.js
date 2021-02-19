@@ -14,7 +14,7 @@ const Event = () => {
   }
 
   return (
-    <PageLayout title="Events">
+    <PageLayout title="Events | Woman in Data Conference">
       event detail
       {data.posts.edges.map(post => {
         return (

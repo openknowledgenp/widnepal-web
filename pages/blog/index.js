@@ -23,7 +23,7 @@ const Blog = () => {
   }
 
   try {
-    blogs = data.posts.edges
+    blogs = data.blogs.edges
     blogError = false
     if (blogs.length === 0) {
       blogError = BLOGS_ERROR_MESSAGES.error
@@ -39,18 +39,20 @@ const Blog = () => {
         <div dangerouslySetInnerHTML={{ __html: blogError }}/>
         :
         <Item.Group style={pageStyles.section}>
-          {data.posts.edges.map(post => {
-            const postImage = post.node.featuredImage
+          {data.blogs.edges.map(blog => {
+            const blogImage = blog.node.featuredImage
+            console.log('BLOG');
+            console.log(blog);
             return (
-                <Item as='a' href={`/blog/${post.node.slug}`} style={pageStyles.item} key={`post__${post.node.id}`}>
-                  <Item.Image size='medium' src={postImage !== null ? postImage.node.mediaItemUrl : PlaceholderImage} />
+                <Item as='a' href={`/blog/${blog.node.slug}`} style={pageStyles.item} key={`blog__${blog.node.blogId}`}>
+                  <Item.Image size='medium' src={blogImage !== null ? blogImage.node.mediaItemUrl : PlaceholderImage} />
                   <Item.Content style={pageStyles.content}>
                     <Item.Header style={pageStyles.header}>
-                        {post.node.title}
+                        {blog.node.title}
                     </Item.Header>
                     <Item.Description style={pageStyles.description}>
                       <Truncate lines={8} ellipsis={<span>...</span>}>
-                        <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
+                        <div dangerouslySetInnerHTML={{ __html: blog.node.blogDetails.blog }}/>
                       </Truncate>
                     </Item.Description>
                   </Item.Content>

@@ -12,7 +12,7 @@ const About = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
   return (
-    <PageLayout title="About">
+    <PageLayout title="About | Committee Members">
         about us detail
         {data.posts.edges.map(post => {
           return (

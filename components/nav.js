@@ -13,6 +13,7 @@ import {
   Segment,
   Sidebar,
   Visibility,
+  Dropdown
 } from 'semantic-ui-react'
 
 
@@ -99,10 +100,20 @@ function Nav(props) {
 
   const menuItem = [
     <Menu.Item as='a' href="/home" key='Home' onClick={handleItemClick} style={style}>Home</Menu.Item>,
-    <Menu.Item as='a' href="/about" key='About' onClick={handleItemClick} style={style}>About Us</Menu.Item>,
+    <Dropdown simple text='About Us' key='About' style={style}>
+      <Dropdown.Menu>
+        <Menu.Item as='a' href="/about/learn-about-us" onClick={handleItemClick} style={style}>Learn About Us</Menu.Item>
+        <Menu.Item as='a' href="/about/committee-member" onClick={handleItemClick} style={style}>Committee Member</Menu.Item>
+      </Dropdown.Menu>
+    </Dropdown>,
     <Menu.Item as='a' href="/projects" key='Projects' onClick={handleItemClick} style={style}>Projects</Menu.Item>,
     <Menu.Item as='a' href="/resources" key='Resources' onClick={handleItemClick} style={style}>Resources</Menu.Item>,
-    <Menu.Item as='a' href="/event" key='Events' onClick={handleItemClick} style={style}>Events</Menu.Item>,
+    <Dropdown simple text='Events' key='Events' style={style}>
+      <Dropdown.Menu>
+        <Menu.Item as='a' href="/event/upcoming-events" onClick={handleItemClick} style={style}>Upcoming Events</Menu.Item>
+        <Menu.Item as='a' href="/event/woman-in-data-conference" onClick={handleItemClick} style={style}>Women in Data Conference</Menu.Item>
+      </Dropdown.Menu>
+    </Dropdown>,
     <Menu.Item as='a' href="/blog" key='Blog' onClick={handleItemClick} style={style}>Blog</Menu.Item>,
     <Menu.Item as='a' href="/contact" key='Contact' onClick={handleItemClick} style={style}>Contact</Menu.Item>
   ]
