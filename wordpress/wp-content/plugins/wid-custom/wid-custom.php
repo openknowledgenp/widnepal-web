@@ -23,8 +23,8 @@ require_once('remove_menu_items.php');
 // Allow tags and Category in media
 require_once( 'media_taxonomy.php' );
 // Add homepage items
-// require_once( 'add_homepage_menuitem.php' );
-// require_once( 'override_homepage_itemname.php' );
+require_once( 'add_homepage_menuitem.php' );
+require_once( 'override_homepage_itemname.php' );
 // Add blogs post type
 require_once( 'add_blog_menuitem.php' );
 // Add event post type
@@ -33,7 +33,7 @@ require_once( 'add_event_menuitem.php' );
 require_once( 'add_resource_menuitem.php' );
 // add local fields
 if( function_exists('acf_add_local_field_group') ):
-  // require_once( 'form_homepage_item.php' );
+  require_once( 'form_homepage_item.php' );
   require_once( 'form_event.php' );
   require_once( 'form_blog.php' );
   require_once( 'form_resource.php' );
