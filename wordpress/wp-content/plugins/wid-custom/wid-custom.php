@@ -21,7 +21,7 @@
 // Remove some default menu items
 require_once('remove_menu_items.php');
 // Allow tags and Category in media
-require_once( 'media_taxonomy.php' );
+// require_once( 'media_taxonomy.php' );
 // Add homepage items
 require_once( 'add_homepage_menuitem.php' );
 require_once( 'override_homepage_itemname.php' );
@@ -38,5 +38,5 @@ if( function_exists('acf_add_local_field_group') ):
   require_once( 'form_blog.php' );
   require_once( 'form_resource.php' );
   // If "media" has image uploaded, make available the "website url field"
-  require_once( 'image_website_link.php' );
+  // require_once( 'image_website_link.php' );
 endif;
