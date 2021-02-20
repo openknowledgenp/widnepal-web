@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "DefaultFont";
+  /* src: url("/fonts/PTSans-Regular.ttf"); */
+  src: url("/fonts/Varela-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6, body, html, p, div, ul, li, a, span, button {
+  font-family: DefaultFont !important;
+}
