@@ -1,89 +1,70 @@
 import gql from 'graphql-tag';
 
-export const HEADER_DESCRIPTION = gql`
-  query Posts {
-    posts (where: {categoryName: "home", tag: "site_description" }) {
-      edges {
-        node {
-          title
-          content
-          link
-          uri
-        }
-      }
-    }
-  }
-`;
-export const HEADER_DESCRIPTION_ERROR_MESSAGES = {
-  errorTitle: "ERROR: Title is missing",
-  errorDescription: "<div>Update CMS for title and description (Add a Post with category: '<b>home</b>' and tag: '<b>site_description</b>').</div>"
-}
-
-export const HEADER_MEDIA = gql`
-  query Posts {
-    mediaItems (where: {categoryName: "home", tag: "header_image"}) {
-      nodes {
-        mediaItemUrl
-      }
-    }
-  }
-`;
-export const HEADER_MEDIA_ERROR_MESSAGES = {
-  error: "<div><b>Error: Header image is missing.</b><br/><br/>Update CMS for header image (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>header_image</b>').</div>"
-}
-
-export const ABOUT = gql`
-  query Posts {
-    posts (where: {categoryName: "home", tag: "about_us" }) {
-      edges {
-        node {
-          id
-          title
-          slug
-          content
-        }
-      }
-    }
-  }
-`;
-export const ABOUT_ERROR_MESSAGES = {
-  errorTitle: "ERROR: About us section is missing.",
-  errorDescription: "<div>Update CMS for title and description (Add a Post with category: '<b>home</b>' and tag: '<b>about_us</b>').</div>"
-}
-
-export const ABOUT_MEDIA = gql`
-  query Posts {
-    mediaItems (where: {categoryName: "home", tag: "about_featured_image"}) {
-      nodes {
-        mediaItemUrl
-      }
-    }
-  }
-`;
-export const ABOUT_MEDIA_ERROR_MESSAGES = {
-  error: "<div><b>Error: Featured image is missing.</b><br/><br/>Update CMS for featured image (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>about_featured_image</b>').</div>"
-}
-
-export const MEMBER_ORGANIZATION_MEDIA = gql`
-  query Posts {
-    mediaItems(where: {categoryName: "home", tag: "member_org_logo"}) {
-      nodes {
-        mediaItemUrl
-        tags {
-          edges {
-            node {
-              name
+export const HOMEPAGE_DETAIL = gql`
+query MyQuery {
+  homepageitems {
+    edges {
+      node {
+        homepageitems {
+          homepageElement
+          aboutUs
+          joinUsDescription
+          siteDescription
+          siteTitle
+          siteLogo {
+            mediaItemUrl
+          }
+          siteBannerImage {
+            mediaItemUrl
+          }
+          addMemberOrganizations {
+            name
+            websiteUrl
+            logo {
+              mediaItemUrl
             }
           }
-        }
-        description
-        websiteLink {
-          websiteLink
+          aboutUsBannerImage {
+            mediaItemUrl
+          }
         }
       }
     }
   }
+}
 `;
-export const MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES = {
-  error: "<div><b>Error: Logos for member organization missing.</b><br/><br/>Update CMS with member organization logo (Add a <b>Media</b> with category: '<b>home</b>' and tag: '<b>member_org_logo</b>'. Add their <b>website url in the description</b> of the Media).</div>"
+
+export const HOMEPAGE_CONTENT_MAP = {
+  'Site Logo' : {
+    element: 'siteLogo',
+    nullError: '<div><b>No Site Logo</b>. Add "Site Logo" <b>CMS > Homepage Items</b></div>',
+  },
+  'Site Title' : {
+    element: 'siteTitle',
+    nullError: '<div>Error: <b>Site Title</b> is not available. Goto CMS and add "Site Title" from <b>Homepage Items</b> section.</div>',
+  },
+  'Site Description' : {
+    element: 'siteDescription',
+    nullError: '<div>Error: <b>Site Description</b> is not available. Goto CMS and add "Site Description" from <b>Homepage Items</b> section.</div>',
+  },
+  'Site Banner Image' : {
+    element: 'siteBannerImage',
+    nullError: '<div>Error: <b>Site Banner Image</b> is not available. Goto CMS and add "Site Banner Image" from <b>Homepage Items</b> section.</div>',
+  },
+  'About Us' : {
+    element: 'aboutUs',
+    nullError: '<div>Error: <b>About Us</b> is not available. Goto CMS and add "About Us" from <b>Homepage Items</b> section.</div>',
+  },
+  'About Us Banner Image' : {
+    element: 'aboutUsBannerImage',
+    nullError: '<div>Error: <b>About Us Banner Image</b> is not available. Goto CMS and add "About Us Banner Image" from <b>Homepage Items</b> section.</div>',
+  },
+  'Member Organizations' : {
+    element: 'addMemberOrganizations',
+    nullError: '<div>Error: <b>Member Organizations</b> are not available. Goto CMS and add "Member Organizations" from <b>Homepage Items</b> section.</div>',
+  },
+  'Join Us Info' : {
+    element: 'joinUsDescription',
+    nullError: '<div>Error: <b>Join Us Info</b> is not available. Goto CMS and add "Join Us Info" from <b>Homepage Items</b> section.</div>',
+  },
 }

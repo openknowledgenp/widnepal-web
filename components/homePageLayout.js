@@ -11,20 +11,16 @@ import {
   Grid
 } from 'semantic-ui-react'
 
-export const HomePageLayout = ({headerData, headerImage, headerImageError, children}) => {
-  let title, content
-  try {
-    title = headerData.posts.edges[0].node.title;
-    content = headerData.posts.edges[0].node.content;
-  } catch (e) {
-    title = HEADER_DESCRIPTION_ERROR_MESSAGES.errorTitle;
-    content = HEADER_DESCRIPTION_ERROR_MESSAGES.errorDescription;
-  }
+export const HomePageLayout = ({resultObject, errorReport, children}) => {
+  const title = {data: resultObject['siteTitle'], errStatus: errorReport['siteTitleHasError']}
+  const content = {data: resultObject['siteDescription'], errStatus: errorReport['siteDescriptionHasError']}
+  const bannerImage = {data: resultObject['siteBannerImage'], errStatus: errorReport['siteBannerImageHasError']}
+  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return (
       <div>
-        <Nav isHomePage/>
+        <Nav {...{isHomePage: true, resultObject, errorReport}}/>
         <Head>
-          <title>{title} | Home</title>
+          <title>{title.errStatus ? 'Home' : `${title.data} | Home`}</title>
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="preload"
@@ -40,10 +36,12 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
               <Grid.Row columns={2}>
                 <Grid.Column>
                   <div>
-                    <h1 style={pageStyles.heroContainerHead}>{title.toUpperCase()}</h1>
-                    <div style={pageStyles.heroContainerDescription}>
-                      <div dangerouslySetInnerHTML={{ __html: content }}/>
-                    </div>
+                    {title.errStatus ? renderHTML(title.data) : <h1 style={pageStyles.heroContainerHead}>{title.data.toUpperCase()}</h1>}
+                    {content.errStatus ? renderHTML(content.data) :
+                      <div style={pageStyles.heroContainerDescription}>
+                        <div dangerouslySetInnerHTML={{ __html: content.data }}/>
+                      </div>
+                    }
                     <br/>
                     <br/>
                     <br/>
@@ -51,11 +49,11 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
                   </div>
                 </Grid.Column>
                 <Grid.Column only='tablet computer'>
-                  {!headerImageError
+                  {bannerImage.errStatus
                     ?
-                    <Image width="400" style={pageStyles.headerImage} src={headerImage}/>
+                    <div dangerouslySetInnerHTML={{ __html: bannerImage.data }}/>
                     :
-                    <div dangerouslySetInnerHTML={{ __html: headerImageError }}/>
+                    <Image style={pageStyles.headerImage} src={bannerImage.data.mediaItemUrl}/>
                   }
                 </Grid.Column>
               </Grid.Row>
@@ -71,7 +69,7 @@ export const HomePageLayout = ({headerData, headerImage, headerImageError, child
             </div>
             :
             children.map((section) => {return(
-              <div key={section.props.title} style={pageStyles.pageWrapper(section.props.bgColor, section.props.bgSize)}>
+              <div key={section.type.name} style={pageStyles.pageWrapper(section.props.bgColor, section.props.bgSize)}>
                 <Container>
                       {section}
                 </Container>
@@ -110,5 +108,5 @@ const pageStyles = {
   heroContainer: { position: 'relative', zIndex: 2, padding: 50 },
   heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },
   heroContainerDescription: { color: 'white', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
-  headerImage: {float: 'right', margin: 'auto', height: '100%'}
+  headerImage: {margin: 'auto', maxHeight: 280, width: 'auto', textAlign: 'center'}
 }

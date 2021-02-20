@@ -1,15 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import {
-  HEADER_DESCRIPTION,
-  HEADER_MEDIA,
-  ABOUT,
-  ABOUT_MEDIA,
-  MEMBER_ORGANIZATION_MEDIA,
-  HEADER_MEDIA_ERROR_MESSAGES,
-  ABOUT_ERROR_MESSAGES,
-  ABOUT_MEDIA_ERROR_MESSAGES,
-  MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES,
+  HOMEPAGE_DETAIL,
+  HOMEPAGE_CONTENT_MAP
 } from '../../graphql/home.queries';
 import { EVENTS, EVENTS_ERROR_MESSAGES } from '../../graphql/event.queries';
 import { RESOURCES, RESOURCES_ERROR_MESSAGES } from '../../graphql/resources.queries';
@@ -28,64 +21,67 @@ import {
 } from 'semantic-ui-react'
 import Truncate from 'react-truncate';
 
-const AboutSection = ({title, content, mediaFileError, mediaFile}) => {
+const AboutSection = ({resultObject, errorReport}) => {
+  const content = {data: resultObject['aboutUs'], errStatus: errorReport['aboutUsHasError']}
+  const bannerImage = {data: resultObject['aboutUsBannerImage'], errStatus: errorReport['aboutUsBannerImageHasError']}
+  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return(
   <Grid divided='vertically' stackable style={pageStyles.section}>
     <Grid.Row columns={2}>
       <Grid.Column>
         <div style={pageStyles.content}>
-          <h2 style={pageStyles.title}>{title}</h2>
+          <h2 style={pageStyles.title}>About Us</h2>
           <br/>
           <div style={pageStyles.heroContainerDescription}>
-            <div dangerouslySetInnerHTML={{ __html: content }}/>
+            {renderHTML(content.data)}
           </div>
         </div>
       </Grid.Column>
       <Grid.Column only='tablet computer' style={pageStyles.imageWrapper}>
-        {!mediaFileError
+        {bannerImage.errStatus
           ?
-          <Image style={pageStyles.image} src={mediaFile}/>
+          renderHTML(bannerImage.data)
           :
-          <div dangerouslySetInnerHTML={{ __html: mediaFileError }}/>
+          <Image style={pageStyles.image} src={bannerImage.data.mediaItemUrl}/>
         }
       </Grid.Column>
     </Grid.Row>
   </Grid>
 )}
 
-const MemberOrganization = ({memberOrgMedia, memberOrgMediaError}) => {
+const MemberOrganization = ({resultObject, errorReport}) => {
+  const memberOrgs = {data: resultObject['addMemberOrganizations'], errStatus: errorReport['addMemberOrganizationsHasError']}
+  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return(
     <div style={pageStyles.section}>
       <Grid>
         <h2 style={{...pageStyles.title, ...pageStyles.middleTitle}}>Member Organization</h2>
         <div style={pageStyles.middleTitleUnderline}/>
       </Grid>
-      {memberOrgMediaError
-        ?
-        <div dangerouslySetInnerHTML={{ __html: memberOrgMediaError }}/>
+      {memberOrgs.errStatus ?
+        renderHTML(memberOrgs.data)
         :
         <Grid divided='vertically' stackable style={pageStyles.memberOrganization}>
-          <Grid.Row columns={memberOrgMedia.length}>
-            {memberOrgMedia.map(img=>{return(
+          <Grid.Row columns={memberOrgs.length}>
+            {memberOrgs.data.map(memberOrg=>{return(
               <Button
                 style={pageStyles.imageButton}
-                key={img.mediaItemUrl}
+                key={memberOrg.name}
                 as="a"
-                href={img.websiteLink.websiteLink}
+                href={memberOrg.websiteUrl}
                 icon={
-                  <Image src={img.mediaItemUrl} style={pageStyles.memberOrgImage} key={img.mediaItemUrl}/>
+                  <Image src={memberOrg.logo.mediaItemUrl} style={pageStyles.memberOrgImage}/>
                 }
               />
             )})}
           </Grid.Row>
         </Grid>
       }
-
     </div>
   )
 }
 
-const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
+const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
   let event_date = []
   if (pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
     event_date = pinnedEvents[selected_event].node.eventDetails.startTime.split(',')[0].split(' ')
@@ -131,7 +127,7 @@ const UpcomingEventCarousel = ({eventErr, pinnedEvents, selected_event, setSelec
     </div>
   )
 }
-const PinnedBlogs = ({ blogErr, pinnedBlogs, selected_blog, setSelectedBlog}) => {
+const PinnedBlogs = ({resultObject, errorReport, blogErr, pinnedBlogs, selected_blog, setSelectedBlog}) => {
   let imageFile = PlaceholderImage
   try {
     imageFile = pinnedBlogs[selected_blog].node.featuredImage.node.mediaItemUrl
@@ -168,7 +164,7 @@ const PinnedBlogs = ({ blogErr, pinnedBlogs, selected_blog, setSelectedBlog}) =>
   )
 }
 
-const OtherMedia = ({resourceErr, pinnedResources}) => {
+const OtherMedia = ({resultObject, errorReport, resourceErr, pinnedResources}) => {
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
       <Grid.Row columns={2}>
@@ -207,11 +203,13 @@ const OtherMedia = ({resourceErr, pinnedResources}) => {
   )
 }
 
-const JoinUs = () => {
+const JoinUs = ({resultObject, errorReport}) => {
+  const joinUsDescription = {data: resultObject['joinUsDescription'], errStatus: errorReport['joinUsDescriptionHasError']}
+  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return(
     <div style={pageStyles.section}>
       <div style={pageStyles.joinUsInfo}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        {renderHTML(joinUsDescription.data)}
       </div>
       <Button color="blue">
         Join Today
@@ -222,73 +220,47 @@ const JoinUs = () => {
 
 const Home = () => {
   // Create a query hook
+  let pinnedEvents, eventErr, pinnedResources, resourceErr, pinnedBlogs, blogErr, homepageData
+  let resultObject = {}
+  let errorReport = {}
   const [selected_event, setSelectedEvent] = React.useState(undefined);
   const [selected_blog, setSelectedBlog] = React.useState(undefined);
 
   const [
-      { loading: headerLoading, data: headerData, error: headerError },
-      { loading: headerMediaLoading, data: headerMediaData, error: headerMediaError },
-      { loading: aboutLoading, data: aboutData, error: aboutError },
-      { loading: aboutMediaLoading, data: aboutMediaData, error: aboutMediaError },
-      { loading: memberMediaLoading, data: memberMediaData, error: memberMediaError },
       { loading: eventsLoading, data: eventsData, error: eventsError },
       { loading: resourcesLoading, data: resourcesData, error: resourcesError },
       { loading: blogsLoading, data: blogsData, error: blogsError },
-  ] = [
-    useQuery(HEADER_DESCRIPTION), useQuery(HEADER_MEDIA), useQuery(ABOUT),
-    useQuery(ABOUT_MEDIA), useQuery(MEMBER_ORGANIZATION_MEDIA), useQuery(EVENTS),
-    useQuery(RESOURCES), useQuery(BLOGS)
-  ]
+      { loading: homepageItemsLoading, data: homepageItemsData, error: homepageItemsError },
+  ] = [ useQuery(EVENTS), useQuery(RESOURCES), useQuery(BLOGS), useQuery(HOMEPAGE_DETAIL) ]
 
-  if (aboutLoading || headerLoading || headerMediaLoading ||
-    aboutMediaLoading || memberMediaLoading || eventsLoading ||
-    resourcesLoading || blogsLoading
-  ) return <p>Loading...</p>
+  if ( eventsLoading || resourcesLoading || blogsLoading || homepageItemsLoading) return <p>Loading...</p>
+  if ( eventsError || resourcesError || blogsError || homepageItemsError ) return <p>Error: {JSON.stringify(eventsError || resourcesError || blogsError || homepageItemsError)}</p>
 
-  if (aboutError || headerError || headerMediaError ||
-    aboutMediaError || memberMediaError || eventsError ||
-    resourcesError || blogsError
-  ) return <p>Error: {JSON.stringify(aboutError || headerError || headerMediaError || memberMediaError || eventsError || resourcesError || blogsError)}</p>
-
-  let
-    title, content,
-    headerImage, headerImageError,
-    mediaFile, mediaFileError,
-    memberOrgMedia, memberOrgMediaError,
-    pinnedEvents, eventErr,
-    pinnedResources, resourceErr,
-    pinnedBlogs, blogErr
-
-  try {
-    title = aboutData.posts.edges[0].node.title;
-    content = aboutData.posts.edges[0].node.content;
-  } catch (e) {
-    title = ABOUT_ERROR_MESSAGES.errorTitle;
-    content = ABOUT_ERROR_MESSAGES.errorDescription;
-  }
-
-  try {
-    headerImage = headerMediaData.mediaItems.nodes[0].mediaItemUrl
-    headerImageError = false
-  } catch (e) {
-    headerImageError = HEADER_MEDIA_ERROR_MESSAGES.error
-  }
-
-  try {
-    mediaFile = aboutMediaData.mediaItems.nodes[0].mediaItemUrl
-    mediaFileError = false
-  } catch (e) {
-    mediaFileError = ABOUT_MEDIA_ERROR_MESSAGES.error
-  }
-
-  try {
-    memberOrgMedia = memberMediaData.mediaItems.nodes
-    memberOrgMediaError = false
-    if (memberOrgMedia.length === 0) {
-      memberOrgMediaError = MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES.error
-    }
-  } catch (e) {
-    memberOrgMediaError = MEMBER_ORGANIZATION_MEDIA_ERROR_MESSAGES.error
+  if (homepageItemsData.homepageitems.edges.length === 0) {
+    Object.keys(HOMEPAGE_CONTENT_MAP).forEach((item, i) => {
+      resultObject[HOMEPAGE_CONTENT_MAP[item].element] = HOMEPAGE_CONTENT_MAP[item].nullError
+      errorReport[HOMEPAGE_CONTENT_MAP[item].element + 'HasError'] = true
+    });
+  } else {
+    Object.keys(HOMEPAGE_CONTENT_MAP).forEach((item, i) => {
+      homepageItemsData.homepageitems.edges.forEach((edge, j) => {
+        if (edge.node.homepageitems.homepageElement === item) {
+          if (item === 'Member Organizations') {
+            if (resultObject[HOMEPAGE_CONTENT_MAP[item].element] === undefined || errorReport[HOMEPAGE_CONTENT_MAP[item].element + 'HasError']) {
+              resultObject[HOMEPAGE_CONTENT_MAP[item].element] = []
+            }
+            resultObject[HOMEPAGE_CONTENT_MAP[item].element].push(edge.node.homepageitems[HOMEPAGE_CONTENT_MAP[item].element])
+            errorReport[HOMEPAGE_CONTENT_MAP[item].element + 'HasError'] = false
+          } else {
+            resultObject[HOMEPAGE_CONTENT_MAP[item].element] = edge.node.homepageitems[HOMEPAGE_CONTENT_MAP[item].element]
+            errorReport[HOMEPAGE_CONTENT_MAP[item].element + 'HasError'] = false
+          }
+        } else if (errorReport[HOMEPAGE_CONTENT_MAP[item].element + 'HasError'] !== false) {
+          resultObject[HOMEPAGE_CONTENT_MAP[item].element] = HOMEPAGE_CONTENT_MAP[item].nullError
+          errorReport[HOMEPAGE_CONTENT_MAP[item].element + 'HasError'] = true
+        }
+      });
+    });
   }
 
   try {
@@ -297,58 +269,38 @@ const Home = () => {
       eventErr = false
       setSelectedEvent(0)
     }
-    if (pinnedEvents.length === 0) {
-      eventErr = EVENTS_ERROR_MESSAGES.error
-    }
+    if (pinnedEvents.length === 0) eventErr = EVENTS_ERROR_MESSAGES.error
   } catch (e) {
     eventErr = EVENTS_ERROR_MESSAGES.error
-  }
-
-  try {
-    pinnedEvents = eventsData.events.edges.filter(evt=>evt.node.eventDetails.isPinned)
-    if (pinnedEvents.length > 0 && selected_blog === undefined) {
-      eventErr = false
-      setSelectedBlog(0)
-    }
-    if (pinnedEvents.length === 0) {
-      eventErr = EVENTS_ERROR_MESSAGES.error
-    }
-  } catch (e) {
-    eventErr = EVENTS_ERROR_MESSAGES.error
-  }
-
-  try {
-    pinnedResources = resourcesData.resources.edges.filter(evt=>evt.node.resourceDetails.isPinned)
-    if (pinnedResources.length > 0) {
-      resourceErr = false
-    }
-    if (pinnedResources.length === 0) {
-      resourceErr = RESOURCES_ERROR_MESSAGES.error
-    }
-  } catch (e) {
-    resourceErr = RESOURCES_ERROR_MESSAGES.error
   }
 
   try {
     pinnedBlogs = blogsData.blogs.edges.filter(evt=>evt.node.blogDetails.isPinned)
-    if (pinnedBlogs.length > 0) {
+    if (pinnedBlogs.length > 0 && selected_blog === undefined) {
       blogErr = false
+      setSelectedBlog(0)
     }
-    if (pinnedBlogs.length === 0) {
-      blogErr = BLOGS_ERROR_MESSAGES.error
-    }
+    if (pinnedBlogs.length === 0) blogErr = BLOGS_ERROR_MESSAGES.error
   } catch (e) {
     blogErr = BLOGS_ERROR_MESSAGES.error
   }
 
+  try {
+    pinnedResources = resourcesData.resources.edges.filter(evt=>evt.node.resourceDetails.isPinned)
+    if (pinnedResources.length > 0) resourceErr = false
+    if (pinnedResources.length === 0) resourceErr = RESOURCES_ERROR_MESSAGES.error
+  } catch (e) {
+    resourceErr = RESOURCES_ERROR_MESSAGES.error
+  }
+
   return (
-    <HomePageLayout {...{headerData, headerImage, headerImageError}}>
-        <AboutSection {...{title, content, mediaFileError, mediaFile, bgColor: 'white'}}/>
-        <MemberOrganization {...{memberOrgMedia, memberOrgMediaError, bgColor: "#f7f7f7"}}/>
+    <HomePageLayout {...{resultObject, errorReport}}>
+        <AboutSection {...{resultObject, errorReport, bgColor: 'white'}}/>
+        <MemberOrganization {...{resultObject, errorReport, bgColor: "#f7f7f7"}}/>
         <UpcomingEventCarousel {...{eventErr, selected_event, setSelectedEvent, pinnedEvents, bgColor: '#F2F2F2', bgSize: '40%'}}/>
         <PinnedBlogs {...{blogErr, pinnedBlogs, selected_blog, setSelectedBlog}}/>
         <OtherMedia {...{resourceErr, pinnedResources}}/>
-        <JoinUs {...{bgColor: '#F7F7F7'}}/>
+        <JoinUs {...{resultObject, errorReport, bgColor: '#F7F7F7'}}/>
     </HomePageLayout>
   );
 };

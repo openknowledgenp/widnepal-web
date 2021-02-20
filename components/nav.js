@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { createMedia } from '@artsy/fresnel';
 import Logo from '../assets/logo.jpg';
-import {SITE_NAME} from '../assets/siteDetails';
 
 import {
   Button,
@@ -18,8 +17,10 @@ import {
 
 
 
-const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
+const DesktopNav = ({menuItem, activeItem, isHomePage, resultObject, errorReport}) => {
   const [fixed, setFixed] = React.useState(undefined);
+  const site_logo = {data: resultObject['siteLogo'], errStatus: errorReport['siteLogoHasError']}
+  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
 
   return (
     <Media greaterThan='mobile'>
@@ -37,7 +38,11 @@ const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
           >
               {!fixed &&
                 <Menu.Item basic="true" style={pageStyles.desktopNavMenuItem}>
-                  <Image src={Logo} width="80px"/>
+                  {site_logo.errStatus ?
+                    renderHTML(site_logo.data)
+                    :
+                    <Image src={site_logo.data.mediaItemUrl} width="80px"/>
+                  }
                 </Menu.Item>
               }
               <Menu.Item/>
@@ -52,8 +57,10 @@ const DesktopNav = ({menuItem, activeItem, isHomePage}) => {
   )
 }
 
-const MobileNav = ({menuItem, activeItem}) => {
+const MobileNav = ({menuItem, activeItem, resultObject, errorReport}) => {
   const [sidebarOpened, setSidebarOpened] = React.useState(false);
+  const site_logo = {data: resultObject['siteLogo'], errStatus: errorReport['siteLogoHasError']}
+  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return (
     <Media as={Sidebar.Pushable} at='mobile'>
       <Sidebar
@@ -80,8 +87,11 @@ const MobileNav = ({menuItem, activeItem}) => {
                   <Icon name='sidebar' />
                 </Menu.Item>
                 <Menu.Item position='left' basic="true">
-                  <Image width="40px" src={Logo}/>
-                  <div style={pageStyles.mobileNavName}>{SITE_NAME.toUpperCase()}</div>
+                  {site_logo.errStatus ?
+                    renderHTML(site_logo.data)
+                    :
+                    <Image src={site_logo.data.mediaItemUrl} width="40px"/>
+                  }
                 </Menu.Item>
               </Menu>
             </Container>
@@ -92,10 +102,9 @@ const MobileNav = ({menuItem, activeItem}) => {
   )
 }
 
-function Nav(props) {
+function Nav({isHomePage, resultObject, errorReport}) {
   const [activeItem, setActiveItem] = React.useState(undefined);
   const handleItemClick = (e, { name }) => setActiveItem(name)
-  const {isHomePage} = props
   const style = pageStyles.navMenu(isHomePage);
 
   const menuItem = [
@@ -120,8 +129,8 @@ function Nav(props) {
   return (
     <div style={pageStyles.nav}>
       <MediaContextProvider>
-        <DesktopNav menuItem={menuItem} activeItem={activeItem} isHomePage={isHomePage}/>
-        <MobileNav menuItem={menuItem}/>
+        <DesktopNav {...{menuItem, activeItem, isHomePage, resultObject, errorReport}} />
+        <MobileNav {...{menuItem, resultObject, errorReport}} />
       </MediaContextProvider>
     </div>
   )
