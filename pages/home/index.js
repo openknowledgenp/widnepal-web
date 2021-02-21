@@ -83,7 +83,7 @@ const MemberOrganization = ({resultObject, errorReport}) => {
 
 const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
   let event_date = []
-  if (pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
+  if (pinnedEvents[selected_event] && pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
     event_date = pinnedEvents[selected_event].node.eventDetails.startTime.split(',')[0].split(' ')
   }
   return(
