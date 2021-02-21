@@ -61,7 +61,7 @@ const BlogDetail = ({host}) => {
 
   return (
     <PageLayout title={post.node.title} format="blogread" headerImage={HeaderImg}>
-        <Grid stackable>
+        <Grid stackable className="blog-read-screen">
           <Grid.Row>
             <Grid.Column width={11}>
               <List relaxed divided horizontal stackable>

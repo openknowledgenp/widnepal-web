@@ -10,3 +10,8 @@
 h1, h2, h3, h4, h5, h6, body, html, p, div, ul, li, a, span, button {
   font-family: DefaultFont !important;
 }
+
+
+.blog-read-screen img {
+    max-width: 100%;
+}
