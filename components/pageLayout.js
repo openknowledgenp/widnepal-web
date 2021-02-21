@@ -9,36 +9,59 @@ import Truncate from 'react-truncate';
 import {
   Image,
 } from 'semantic-ui-react'
+import { useQuery } from '@apollo/react-hooks';
+import { NAV_SITE_LOGO, NAV_SITE_LOGO_CONTENT_MAP } from '../graphql/common.queries.js';
 
-export const PageLayout = ({title, children, format, headerImage}) => <div>
-  <Nav/>
-  <Head>
-    <title>{title}</title>
-    <link rel="icon" href="/favicon.ico" />
-    <link
-      rel="preload"
-      href="/fonts/Varela-Regular.ttf"
-      as="font"
-      crossOrigin=""
-    />
-  </Head>
-  <div style={pageStyles.hero}>
-    <GraphicsElement />
-    <Container style={format === undefined ? pageStyles.heroContainer : pageStyles.formattedHead(format)}>
-      <Truncate lines={2} ellipsis={<span>...</span>}>
-        {title}
-      </Truncate>
-      <Image src={headerImage} style={pageStyles.headerImage}/>
-    </Container>
-  </div>
-  <div style={pageStyles.pageContainerWrapper}>
-    <Container style={format === undefined ? pageStyles.pageContainer : pageStyles.formattedContainer(format)}>
-      {children}
-    </Container>
-  </div>
-  <Footer/>
+export const PageLayout = ({title, children, format, headerImage}) => {
+  let resultObject = {}
+  let errorReport = {}
 
-</div>
+  const [
+      { loading: navLogoLoading, data: navLogoData, error: navLogoError },
+  ] = [ useQuery(NAV_SITE_LOGO) ];
+
+  if ( navLogoLoading ) return <p>Loading...</p>
+  if ( navLogoError ) return <p>Error: {JSON.stringify(eventsError)}</p>
+
+  try {
+    resultObject = navLogoData.homepageitems.edges[0].node.homepageitems
+  } catch (e) {
+    resultObject['siteLogo'] = NAV_SITE_LOGO_CONTENT_MAP['Site Logo'].nullError
+    errorReport['siteLogoHasError'] = true
+  }
+
+  return (
+    <div>
+      <Nav {...{resultObject, errorReport}}/>
+      <Head>
+        <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preload"
+          href="/fonts/Varela-Regular.ttf"
+          as="font"
+          crossOrigin=""
+        />
+      </Head>
+      <div style={pageStyles.hero}>
+        <GraphicsElement />
+        <Container style={format === undefined ? pageStyles.heroContainer : pageStyles.formattedHead(format)}>
+          <Truncate lines={2} ellipsis={<span>...</span>}>
+            {title}
+          </Truncate>
+          <Image src={headerImage} style={pageStyles.headerImage}/>
+        </Container>
+      </div>
+      <div style={pageStyles.pageContainerWrapper}>
+        <Container style={format === undefined ? pageStyles.pageContainer : pageStyles.formattedContainer(format)}>
+          {children}
+        </Container>
+      </div>
+      <Footer/>
+
+    </div>
+  )
+  }
 
 const pageStyles = {
   hero: {
