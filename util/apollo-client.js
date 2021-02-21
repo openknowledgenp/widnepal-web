@@ -3,15 +3,12 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import withApollo from 'next-with-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import fetch from 'isomorphic-unfetch';
-
-// GraphQL endpoint
-const LOCAL_GRAPHQL_URL = 'http://localhost:8000/index.php?graphql';
-const STAGING_GRAPHQL_URL = 'https://demo.womenindatanepal.com/index.php?graphql';
-const PRODUCTION_GRAPHQL_URL = 'https://www.womenindatanepal.com/index.php?graphql';
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
 
 const link = createHttpLink({
   fetch, // Switches between unfetch & node-fetch for client & server.
-  uri: LOCAL_GRAPHQL_URL
+  uri: `${publicRuntimeConfig.WORDPRESS_API}`
 });
 
 // Export a HOC from next-with-apollo
