@@ -149,7 +149,9 @@ const PinnedBlogs = ({resultObject, errorReport, blogErr, pinnedBlogs, selected_
               <div style={pageStyles.inTheSpot}>In the spotlight:</div>
               <div style={pageStyles.contentTitle}>{pinnedBlogs[selected_blog].node.title}</div>
               <div style={pageStyles.mainContent}>
+                <Truncate lines={10} ellipsis={<span>...</span>}>
                 <div dangerouslySetInnerHTML={{ __html: pinnedBlogs[selected_blog].node.blogDetails.blog }} />
+                </Truncate>
               </div>
               <div style={pageStyles.blogReadMore}>
                 <Button style={pageStyles.blogReadMoreBtn} as="a" href={`/blog/${pinnedBlogs[selected_blog].node.slug}`}>Read more</Button>
@@ -427,8 +429,8 @@ const pageStyles = {
     fontSize: 16,
     height: '55%',
     overflowY: 'auto',
-    paddingRight: 40,
-    paddingLeft: 40,
+    marginRight: 40,
+    marginLeft: 40,
   },
   blogReadMore: {
     fontSize: 16,
