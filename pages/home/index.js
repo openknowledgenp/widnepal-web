@@ -431,6 +431,7 @@ const pageStyles = {
     overflowY: 'auto',
     marginRight: 40,
     marginLeft: 40,
+    lineHeight: 1.38
   },
   blogReadMore: {
     fontSize: 16,
