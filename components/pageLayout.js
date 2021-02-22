@@ -36,12 +36,6 @@ export const PageLayout = ({title, children, format, headerImage}) => {
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preload"
-          href="/fonts/Varela-Regular.ttf"
-          as="font"
-          crossOrigin=""
-        />
       </Head>
       <div style={pageStyles.hero}>
         <GraphicsElement />

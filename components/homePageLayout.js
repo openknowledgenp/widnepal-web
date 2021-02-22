@@ -22,12 +22,6 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
         <Head>
           <title>{title.errStatus ? 'Home' : `${title.data} | Home`}</title>
           <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="preload"
-            href="/fonts/Varela-Regular.ttf"
-            as="font"
-            crossOrigin=""
-          />
         </Head>
         <div style={pageStyles.hero}>
           <GraphicsElement />
@@ -105,7 +99,7 @@ const pageStyles = {
       background: `linear-gradient(90deg, ${background_color} 0%, ${background_color} ${bgSize}, white ${bgSize}, white 100%)`,
     }
   );},
-  heroContainer: { position: 'relative', zIndex: 2, padding: 50 },
+  heroContainer: { position: 'relative', zIndex: 2, paddingTop: 50, paddingBottom: 50 },
   heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },
   heroContainerDescription: { color: 'white', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
   headerImage: {margin: 'auto', maxHeight: 280, width: 'auto', textAlign: 'center'}
