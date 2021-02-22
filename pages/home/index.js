@@ -89,12 +89,12 @@ const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvent
   return(
     <div style={pageStyles.customCarousel.container}>
       <div style={pageStyles.customCarousel.headContainer}>
-        <div style={pageStyles.customCarousel.head}>Upcoming Events</div>
+        <h4 style={pageStyles.customCarousel.head}>Upcoming Events</h4>
           {eventErr
           ?
           <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
           :
-          <Grid.Row as="a" href={`/event/upcoming-events/${pinnedEvents[selected_event].node.slug}`} columns={2} style={pageStyles.customCarousel.post}>
+          <Grid.Row as="a" href={`/event/upcoming-events/${pinnedEvents[selected_event].node.slug}`} columns={2}>
             {event_date.length > 0 ?
               <div style={pageStyles.customCarousel.calendar}>
                 <div style={pageStyles.customCarousel.date}>{event_date[1]}</div>
@@ -147,10 +147,16 @@ const PinnedBlogs = ({resultObject, errorReport, blogErr, pinnedBlogs, selected_
           :
           <Grid.Column style={pageStyles.pinnedBlogDetail}>
               <div style={pageStyles.inTheSpot}>In the spotlight:</div>
-              <div style={pageStyles.contentTitle}>{pinnedBlogs[selected_blog].node.title}</div>
+              <div style={pageStyles.contentTitle} >
+                {pinnedBlogs[selected_blog].node.title.length > 50 ?
+                  pinnedBlogs[selected_blog].node.title.substring(0,47) + '...'
+                  :
+                  pinnedBlogs[selected_blog].node.title
+                }
+              </div>
               <div style={pageStyles.mainContent}>
-                <Truncate lines={10} ellipsis={<span>...</span>}>
-                <div dangerouslySetInnerHTML={{ __html: pinnedBlogs[selected_blog].node.blogDetails.blog }} />
+                <Truncate lines={8} ellipsis={<span>...</span>}>
+                  <div dangerouslySetInnerHTML={{ __html: pinnedBlogs[selected_blog].node.blogDetails.blog }} />
                 </Truncate>
               </div>
               <div style={pageStyles.blogReadMore}>
@@ -312,7 +318,7 @@ export default Home;
 const pageStyles = {
   section: { paddingTop: 80, paddingBottom: 80 },
   sectionNoUpperPadding: { paddingBottom: 80, clear: 'both' },
-  title: { fontSize: 28, color: '#403E3E' },
+  title: { fontSize: 26, color: '#403E3E' },
   middleTitle: {width: '100%', textAlign: 'center'},
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
   memberOrgImage: {maxWidth: '200px', maxHeight: '145px'},
@@ -342,12 +348,9 @@ const pageStyles = {
     },
     head: {
       fontWeight: 'bold',
-      fontSize: 20,
-      paddingBottom: 15
-    },
-    post: {
-      marginTop: 20,
-      fontSize: 16
+      fontSize: 26,
+      marginTop: -10,
+      paddingBottom: 0
     },
     calendar: {
       backgroundColor: '#1B9EFF',
@@ -374,10 +377,10 @@ const pageStyles = {
     title: {
       color: '#1B9EFF',
       fontWeight: 'bold',
-      fontSize: 18,
+      fontSize: 20,
     },
     description: {
-      fontSize: 16,
+      fontSize: 18,
       paddingTop: 10,
       overflow: 'hidden',
       color: '#403E3E',
@@ -401,6 +404,9 @@ const pageStyles = {
   pinnedBlogDetail: {
     backgroundColor: '#FCCA35',
     height: '100%',
+    paddingRight: 40,
+    paddingLeft: 40,
+    paddingTop: 40,
   },
   pinnedBlogPicture: (imageFile) => {return({
     paddingRight:0,
@@ -412,25 +418,19 @@ const pageStyles = {
     backgroundColor: '#1B9EFF'
   })},
   inTheSpot: {
-    paddingTop: 30,
-    paddingLeft: 40,
     fontSize: 14,
   },
   contentTitle: {
-    fontSize: 24,
+    fontSize: 30,
+    lineHeight: 1,
     fontWeignt: 'bold',
     width: '80%',
-    marginTop: 15,
-    paddingRight: 40,
-    paddingLeft: 40,
   },
   mainContent: {
-    marginTop: 15,
-    fontSize: 16,
+    paddingTop: 10,
+    fontSize: 18,
     height: '260px',
     overflowY: 'auto',
-    marginRight: 40,
-    marginLeft: 40,
     lineHeight: 1.45
   },
   blogReadMore: {
@@ -438,9 +438,7 @@ const pageStyles = {
     position:'absolute',
     bottom: 15,
     borderTop: '1px solid black',
-    width: '80%',
-    marginRight: 40,
-    marginLeft: 40,
+    width: '85%',
     paddingTop: 5,
   },
   blogReadMoreBtn: {
@@ -457,13 +455,9 @@ const pageStyles = {
     float: 'right',
   },
   otherMediaTitle: {
-    // fontWeight: 'bold',
-    // fontSize: 20,
-    // borderBottom: '1px solid #000000aa',
-    // paddingBottom: 5,
-    fontSize: 27,
+    fontSize: 26,
     lineHeight: '36px',
-    fontWeight: 300,
+    fontWeight: 600,
     paddingBottom: 10,
     paddingTop: 10,
     borderBottom: '1px solid #0f46641f',
@@ -473,10 +467,10 @@ const pageStyles = {
     borderBottom: '1px solid #ddd'
   },
   usefulResourceHead: {
-    fontSize: 17,
+    fontSize: 20,
   },
   usefulResourceDescription: {
-    fontSize: 16,
+    fontSize: 18,
   },
   joinUsInfo: {
     fontSize: 18,

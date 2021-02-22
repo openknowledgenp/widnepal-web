@@ -74,7 +74,7 @@ const pageStyles = {
     top: 0,
     marginTop: 65
   },
-  heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 32, margin: 30 },
+  heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 30, margin: 30, fontWeight: '600' },
   formattedHead: (format) => {
     if (format === 'blogread') {
       return ({
@@ -82,6 +82,7 @@ const pageStyles = {
         zIndex: 2,
         color: 'white',
         fontSize: 26,
+        fontWeight: '600',
         margin: 30,
         lineHeight: 1.3,
       })

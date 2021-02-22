@@ -72,6 +72,6 @@ const pageStyles = {
   section: { paddingTop: 80, paddingBottom: 80, width: '80%' },
   item: { borderBottom: '1px solid #0f46641f', paddingBottom: 30, marginBottom: 20 },
   content: {},
-  header: {fontSize: 17},
+  header: {fontSize: 20},
   description: {fontSize: 16},
 }

@@ -100,7 +100,7 @@ const pageStyles = {
     }
   );},
   heroContainer: { position: 'relative', zIndex: 2, paddingTop: 50, paddingBottom: 50 },
-  heroContainerHead: { color: 'white', fontSize: '3em', fontWeight: 'bold' },
-  heroContainerDescription: { color: 'white', fontSize: '1.45em', fontWeight: 300, paddingTop: '15px' },
+  heroContainerHead: { color: 'white', fontSize: '30px', fontWeight: 'bold' },
+  heroContainerDescription: { color: 'white', fontSize: '18px', fontWeight: 300, paddingTop: '15px' },
   headerImage: {margin: 'auto', maxHeight: 280, width: 'auto', textAlign: 'center'}
 }

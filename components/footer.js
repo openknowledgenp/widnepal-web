@@ -4,10 +4,10 @@ import {
 } from 'semantic-ui-react'
 
 const pageStyles = {
-  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828' },
-  license: { borderTop: '1px solid white', paddingTop: 10, marginTop: 10, width: '100%', clear: 'both' },
-  supportedBy: { width: '80%', float: 'left', paddingBottom: 20 },
-  otherLinks: { width: '20%', float: 'left', paddingBottom: 20 },
+  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: 18 },
+  license: { borderTop: '1px solid white', paddingTop: 10, marginTop: 10, width: '100%', clear: 'both', fontSize: 18 },
+  supportedBy: { width: '80%', float: 'left', paddingBottom: 20, fontSize: 18 },
+  otherLinks: { width: '20%', float: 'left', paddingBottom: 20, fontSize: 18 },
 }
 
 const Footer = () => {
