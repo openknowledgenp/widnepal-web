@@ -427,6 +427,8 @@ const pageStyles = {
   mainContent: {
     marginTop: 15,
     fontSize: 16,
+    height: '260px',
+    overflowY: 'auto',
     marginRight: 40,
     marginLeft: 40,
     lineHeight: 1.45
