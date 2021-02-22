@@ -25,6 +25,8 @@ require_once('remove_menu_items.php');
 // Add homepage items
 require_once( 'add_homepage_menuitem.php' );
 require_once( 'override_homepage_itemname.php' );
+// Add homepage items
+require_once( 'add_about_us_menuitem.php' );
 // Add blogs post type
 require_once( 'add_blog_menuitem.php' );
 // Add event post type
