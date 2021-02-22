@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react'
 import { useQuery } from '@apollo/react-hooks';
 import { NAV_SITE_LOGO, NAV_SITE_LOGO_CONTENT_MAP } from '../graphql/common.queries.js';
+import { Loading } from './loading'
 
 export const PageLayout = ({title, children, format, headerImage}) => {
   let resultObject = {}
@@ -20,7 +21,7 @@ export const PageLayout = ({title, children, format, headerImage}) => {
       { loading: navLogoLoading, data: navLogoData, error: navLogoError },
   ] = [ useQuery(NAV_SITE_LOGO) ];
 
-  if ( navLogoLoading ) return <p>Loading...</p>
+  if ( navLogoLoading ) return <Loading />
   if ( navLogoError ) return <p>Error: {JSON.stringify(eventsError)}</p>
 
   try {

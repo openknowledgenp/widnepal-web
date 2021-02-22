@@ -10,8 +10,7 @@ import { BLOGS, BLOGS_ERROR_MESSAGES } from '../../graphql/blog.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 import PlaceholderImage from '../../assets/placeholder_image.jpg';
-
-// import StaticTweet from '../../components/twitter/staticTweet'
+import { Loading } from '../../components/loading'
 import {
   Button,
   Container,
@@ -241,7 +240,7 @@ const Home = () => {
       { loading: homepageItemsLoading, data: homepageItemsData, error: homepageItemsError },
   ] = [ useQuery(EVENTS), useQuery(RESOURCES), useQuery(BLOGS), useQuery(HOMEPAGE_DETAIL) ]
 
-  if ( eventsLoading || resourcesLoading || blogsLoading || homepageItemsLoading) return <p>Loading...</p>
+  if ( eventsLoading || resourcesLoading || blogsLoading || homepageItemsLoading) return <Loading />
   if ( eventsError || resourcesError || blogsError || homepageItemsError ) return <p>Error: {JSON.stringify(eventsError || resourcesError || blogsError || homepageItemsError)}</p>
 
   if (homepageItemsData.homepageitems.edges.length === 0) {

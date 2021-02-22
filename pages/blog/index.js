@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { BLOGS, BLOGS_ERROR_MESSAGES } from '../../graphql/blog.queries';
 import PlaceholderImage from '../../assets/placeholder_image.jpg';
 import { PageLayout } from '../../components/pageLayout'
+import { Loading } from '../../components/loading'
 import {
   Image,
   Item
@@ -15,7 +16,7 @@ const Blog = () => {
   let blogError
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (error) {

@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
 import { BLOG_WITH_SLUG } from '../../graphql/blog.queries';
 import { PageLayout } from '../../components/pageLayout'
+import { Loading } from '../../components/loading'
 import HeaderImg from '../../assets/blog_detail_img_header.svg'
 import {SITE_PROTOCOL} from '../../assets/siteDetails'
 import {
@@ -25,7 +26,7 @@ const BlogDetail = ({host}) => {
   // Create a query hook
   const { data, loading, error } = useQuery(BLOG_WITH_SLUG(slug));
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (error) {
