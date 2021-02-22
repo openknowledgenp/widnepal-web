@@ -36,7 +36,7 @@ function abouts_cpt() {
     'show_in_rest'       => true,
     'rest_base'          => 'abouts',
     'rest_controller_class' => 'WP_REST_Posts_Controller',
-    'supports'           => array( 'thumbnail', 'title' ),
+    'supports'           => array( 'thumbnail' ),
     'show_in_graphql' => true,
     'hierarchical' => true,
     'graphql_single_name' => 'about',
