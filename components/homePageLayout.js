@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { HEADER_DESCRIPTION_ERROR_MESSAGES } from '../graphql/home.queries';
 import Nav from './nav';
 import {HOME_HEADER_BUTON_TEXT} from '../assets/siteDetails';
 import GraphicsElement from './graphicsElement'

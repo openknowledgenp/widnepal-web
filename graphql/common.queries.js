@@ -22,3 +22,29 @@ export const NAV_SITE_LOGO_CONTENT_MAP = {
     nullError: '<div><b>No Site Logo</b>. Add "Site Logo" <b>CMS > Homepage Items</b></div>',
   },
 }
+
+
+export const NAV_BAR_OPTIONS = gql`
+query MyQuery {
+  abouts {
+    edges {
+      node {
+        about_us_page {
+          page
+          pageTitle
+        }
+      }
+    }
+  }
+  events {
+    edges {
+      node {
+        eventDetails {
+          page
+          pageTitle
+        }
+      }
+    }
+  }
+}
+`;
