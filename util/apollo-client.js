@@ -12,6 +12,7 @@ const PRODUCTION_GRAPHQL_URL = 'https://www.womenindatanepal.com/index.php?graph
 const link = createHttpLink({
   fetch, // Switches between unfetch & node-fetch for client & server.
   uri: STAGING_GRAPHQL_URL
+  // uri: LOCAL_GRAPHQL_URL
 });
 
 // Export a HOC from next-with-apollo
