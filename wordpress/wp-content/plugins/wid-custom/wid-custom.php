@@ -28,17 +28,20 @@ require_once( 'override_homepage_itemname.php' );
 // Add homepage items
 require_once( 'add_about_us_menuitem.php' );
 require_once( 'override_about_us_itemname.php' );
-// Add blogs post type
-require_once( 'add_blog_menuitem.php' );
-// Add event post type
-require_once( 'add_event_menuitem.php' );
+// Add projects post type
+require_once( 'add_project_menuitem.php' );
 // Add resource post type
 require_once( 'add_resource_menuitem.php' );
+// Add event post type
+require_once( 'add_event_menuitem.php' );
+// Add blogs post type
+require_once( 'add_blog_menuitem.php' );
 // add local fields
 if( function_exists('acf_add_local_field_group') ):
   require_once( 'form_homepage_item.php' );
   require_once( 'form_event.php' );
   require_once( 'form_blog.php' );
+  require_once( 'form_project.php' );
   require_once( 'form_resource.php' );
   require_once( 'form_about_us.php' );
   // If "media" has image uploaded, make available the "website url field"
