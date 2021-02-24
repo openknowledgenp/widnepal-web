@@ -12,11 +12,11 @@ function abouts_cpt() {
     'new_item'           => __( 'New about', 'about-plugin' ),
     'edit_item'          => __( 'Edit about', 'about-plugin' ),
     'view_item'          => __( 'View about', 'about-plugin' ),
-    'all_items'          => __( 'All abouts', 'about-plugin' ),
-    'search_items'       => __( 'Search abouts', 'about-plugin' ),
-    'parent_item_colon'  => __( 'Parent abouts:', 'about-plugin' ),
-    'not_found'          => __( 'No abouts found.', 'about-plugin' ),
-    'not_found_in_trash' => __( 'No abouts found in Trash.', 'about-plugin' ),
+    'all_items'          => __( 'All items', 'about-plugin' ),
+    'search_items'       => __( 'Search items', 'about-plugin' ),
+    'parent_item_colon'  => __( 'Parent items:', 'about-plugin' ),
+    'not_found'          => __( 'No item found.', 'about-plugin' ),
+    'not_found_in_trash' => __( 'No item found in Trash.', 'about-plugin' ),
   );
 
   $args = array(
