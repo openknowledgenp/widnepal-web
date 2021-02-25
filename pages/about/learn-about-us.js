@@ -17,8 +17,8 @@ const About = () => {
   const learnAboutUsContent = filteredPageContents[0]
   return (
     <PageLayout title={`About | ${ABOUT_US_PAGE}`}>
-          {filteredPageContents[0] ?
-            <div style={pageStyles.aboutUs} dangerouslySetInnerHTML={{ __html: filteredPageContents[0].node.about_us_page.learnAboutUs }}/>
+          {learnAboutUsContent && learnAboutUsContent.node.about_us_page.learnAboutUs !== '' && learnAboutUsContent.node.about_us_page.learnAboutUs !== null?
+            <div style={pageStyles.aboutUs} dangerouslySetInnerHTML={{ __html: learnAboutUsContent.node.about_us_page.learnAboutUs }}/>
             :
             <div style={pageStyles.aboutUs} dangerouslySetInnerHTML={{ __html: ABOUT_US_CONTENT_ERROR.error }}/>
           }
@@ -29,5 +29,5 @@ const About = () => {
 export default About;
 
 const pageStyles = {
-  aboutUs: {fontSize: 18, paddingTop: 20, paddingBottom: 20}
+  aboutUs: {fontSize: 18, paddingTop: 40, paddingBottom: 40}
 }

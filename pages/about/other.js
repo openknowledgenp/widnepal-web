@@ -18,11 +18,11 @@ const About = () => {
   }
   const ABOUT_US_PAGE = 'Other'
   const filteredPageContents = data.abouts.edges.filter(post=>post.node.about_us_page.page===ABOUT_US_PAGE)
-  const pageContent = filteredPageContents.filter(post=>post.node.about_us_page.pageTitle===page)
+  const pageContent = filteredPageContents.filter(post=>post.node.about_us_page.pageTitle===page)[0]
   return (
     <PageLayout title={`About | ${page}`}>
-          {(filteredPageContents[0] && filteredPageContents[0].node.about_us_page.pageContent!=='' && filteredPageContents[0].node.about_us_page.pageContent!==null) ?
-            <div style={pageStyles.aboutUs} dangerouslySetInnerHTML={{ __html: filteredPageContents[0].node.about_us_page.pageContent }}/>
+          {pageContent && pageContent.node.about_us_page.pageContent !== ''  && pageContent.node.about_us_page.pageContent !== null  ?
+            <div style={pageStyles.aboutUs} dangerouslySetInnerHTML={{ __html: pageContent.node.about_us_page.pageContent }}/>
             :
             <div style={pageStyles.aboutUs} dangerouslySetInnerHTML={{ __html: ABOUT_US_CONTENT_ERROR.error }}/>
           }
@@ -33,5 +33,5 @@ const About = () => {
 export default About;
 
 const pageStyles = {
-  aboutUs: {fontSize: 18, paddingTop: 20, paddingBottom: 20}
+  aboutUs: {fontSize: 18, paddingTop: 40, paddingBottom: 40}
 }
