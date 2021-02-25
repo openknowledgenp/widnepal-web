@@ -115,6 +115,11 @@ const BlogDetail = ({host}) => {
             </Grid.Column>*/}
           </Grid.Row>
         </Grid>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
     </PageLayout>
   );
 
