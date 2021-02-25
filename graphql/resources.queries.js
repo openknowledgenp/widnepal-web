@@ -26,7 +26,7 @@ export const RESOURCES = gql`
   }
 `;
 export const RESOURCES_ERROR_MESSAGES = {
-  error: "<br/><div><b>Error: Resources are not available.</b><br/><br/>Update CMS in Resources section. (To get the events on home page check the <b>Is pinned?</b> option).</div>"
+  error: "<br/><div><b>Resources are not available.</b><br/><br/></div>"
 }
 
 export const POSTS = gql`

@@ -19,7 +19,7 @@ query MyQuery {
 export const NAV_SITE_LOGO_CONTENT_MAP = {
   'Site Logo' : {
     element: 'siteLogo',
-    nullError: '<div><b>No Site Logo</b>. Add "Site Logo" <b>CMS > Homepage Items</b></div>',
+    nullError: '<div><b>No Site Logo</b></div>',
   },
 }
 

@@ -26,7 +26,7 @@ export const EVENTS = gql`
   }
 `;
 export const EVENTS_ERROR_MESSAGES = {
-  error: "<br/><div><b>Error: Events are not available.</b><br/><br/>Update CMS in Events section. (To get the events on home page check the <b>Is pinned?</b> option).</div>"
+  error: "<br/><div><b>Events are not available.</b></div>"
 }
 
 export const POSTS = gql`

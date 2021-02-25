@@ -35,5 +35,5 @@ query MyQuery {
 
 `
 export const ABOUT_US_CONTENT_ERROR = {
-  error: "<div><div><h2>ERROR: Detail is not available</h2></div><div>Update CMS (Add a new item in '<b>about</b>' section).</div></div>",
+  error: "<div><h2>About section is not available</h2></div>",
 }
