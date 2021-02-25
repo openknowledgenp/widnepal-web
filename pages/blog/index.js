@@ -43,7 +43,7 @@ const Blog = () => {
           {data.blogs.edges.map(blog => {
             const blogImage = blog.node.featuredImage
             return (
-                <Item as='a' href={`/blog/${blog.node.slug}`} style={pageStyles.item} key={`blog__${blog.node.blogId}`}>
+                <Item as='a' href={`/blog/${blog.node.slug}`} style={pageStyles.item} key={`blog__${blog.node.id}`}>
                   <Item.Image size='medium' src={blogImage !== null ? blogImage.node.mediaItemUrl : PlaceholderImage} />
                   <Item.Content style={pageStyles.content}>
                     <Item.Header style={pageStyles.header}>

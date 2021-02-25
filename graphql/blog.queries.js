@@ -11,7 +11,7 @@ export const BLOGS = gql`
           }
           title
           slug
-          blogId
+          id
           featuredImage {
             node {
               mediaItemUrl
@@ -37,7 +37,6 @@ export const BLOG_WITH_SLUG = (slug) => gql`
           }
           title
           slug
-          blogId
           date
           featuredImage {
             node {
@@ -53,6 +52,9 @@ export const BLOG_WITH_SLUG = (slug) => gql`
               lastName
               description
               nickname
+              user_organizational_association {
+                organizationalAssociation
+              }
             }
           }
         }

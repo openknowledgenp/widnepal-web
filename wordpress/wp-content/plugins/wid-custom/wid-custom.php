@@ -44,6 +44,7 @@ if( function_exists('acf_add_local_field_group') ):
   require_once( 'form_project.php' );
   require_once( 'form_resource.php' );
   require_once( 'form_about_us.php' );
+  require_once( 'form_user_additional_info.php' );
   // If "media" has image uploaded, make available the "website url field"
   // require_once( 'image_website_link.php' );
 endif;

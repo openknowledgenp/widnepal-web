@@ -56,9 +56,9 @@ const BlogDetail = ({host}) => {
     post.node.lastEditedBy.node.firstName + ' ' + post.node.lastEditedBy.node.lastName :
     'Author name is not mentioned.'
 
-  let association = (post.node.lastEditedBy.node.description !== null && post.node.lastEditedBy.node.description !== null) ?
-    post.node.lastEditedBy.node.description :
-    'No information about author.'
+  let association = (post.node.lastEditedBy.node.user_organizational_association.organizationalAssociation !== null) ?
+    post.node.lastEditedBy.node.user_organizational_association.organizationalAssociation :
+    ''
 
   const dateRenderer = (post_date) => {
     let date = new Date(post_date)
