@@ -11,8 +11,9 @@ export const EVENTS = gql`
             isPinned
             startTime
             websiteLink
+            page
           }
-          eventId
+          id
           slug
           title
           featuredImage {
@@ -38,18 +39,6 @@ export const POSTS = gql`
           title
           slug
           content
-        }
-      }
-    }
-  }
-`;
-
-export const MEDIA = gql`
-  query Posts {
-    mediaItems (where: {categoryName: "events"}) {
-      nodes {
-        mediaDetails {
-          file
         }
       }
     }

@@ -82,7 +82,7 @@ acf_add_local_field_group(array(
 			'key' => 'field_602ca4756b809',
 			'label' => 'Description',
 			'name' => 'description',
-			'type' => 'textarea',
+			'type' => 'wysiwyg',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
