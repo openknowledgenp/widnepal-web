@@ -19,7 +19,7 @@ import { useQuery } from '@apollo/react-hooks';
 const DesktopNav = ({menuItem, activeItem, isHomePage, resultObject, errorReport}) => {
   const [fixed, setFixed] = React.useState(undefined);
   const site_logo = {data: resultObject['siteLogo'], errStatus: errorReport['siteLogoHasError']}
-  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
+  const renderHTML = (data) => <div style={pageStyles.noLogoMsg} dangerouslySetInnerHTML={{ __html: data }}/>
 
   return (
     <Media greaterThan='mobile'>
@@ -40,7 +40,7 @@ const DesktopNav = ({menuItem, activeItem, isHomePage, resultObject, errorReport
                   {site_logo.errStatus ?
                     renderHTML(site_logo.data)
                     :
-                    <Image src={site_logo.data.mediaItemUrl} width="80px"/>
+                    <Image src={site_logo.data.mediaItemUrl} style={pageStyles.desktopLogo}/>
                   }
                 </Menu.Item>
               }
@@ -59,7 +59,7 @@ const DesktopNav = ({menuItem, activeItem, isHomePage, resultObject, errorReport
 const MobileNav = ({menuItem, activeItem, resultObject, errorReport}) => {
   const [sidebarOpened, setSidebarOpened] = React.useState(false);
   const site_logo = {data: resultObject['siteLogo'], errStatus: errorReport['siteLogoHasError']}
-  const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
+  const renderHTML = (data) => <div style={pageStyles.noLogoMsg} dangerouslySetInnerHTML={{ __html: data }}/>
   return (
     <Media as={Sidebar.Pushable} at='mobile'>
       <Sidebar
@@ -89,7 +89,7 @@ const MobileNav = ({menuItem, activeItem, resultObject, errorReport}) => {
                   {site_logo.errStatus ?
                     renderHTML(site_logo.data)
                     :
-                    <Image src={site_logo.data.mediaItemUrl} width="40px"/>
+                    <Image src={site_logo.data.mediaItemUrl} style={pageStyles.mobileLogo}/>
                   }
                 </Menu.Item>
               </Menu>
@@ -180,6 +180,17 @@ const { MediaContextProvider, Media } = createMedia({
 })
 
 const pageStyles = {
+  desktopLogo: {
+    maxHeight: 80,
+    maxWidth: 80
+  },
+  mobileLogo: {
+    maxHeight: 40,
+    maxWidth: 40
+  },
+  noLogoMsg: {
+    padding: 20
+  },
   desktopNavMenuItem: {
     justifyContent: 'left'
   },
