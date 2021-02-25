@@ -4,7 +4,7 @@ import {
 } from 'semantic-ui-react'
 
 const pageStyles = {
-  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: 18 },
+  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: 18, position: 'relative',  },
   license: { borderTop: '1px solid white', paddingTop: 10, marginTop: 10, width: '100%', clear: 'both', fontSize: 18 },
   supportedBy: { width: '80%', float: 'left', paddingBottom: 20, fontSize: 18 },
   otherLinks: { width: '20%', float: 'left', paddingBottom: 20, fontSize: 18 },

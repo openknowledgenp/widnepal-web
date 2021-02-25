@@ -1,7 +1,7 @@
 import React from 'react';
 
 const pageStyles = {
-  graphEliment: { position: 'absolute', zIndex: 1, top:0 },
+  graphEliment: { position: 'fixed', zIndex: 0, top:0 },
 }
 
 class GraphicsElement extends React.Component {
