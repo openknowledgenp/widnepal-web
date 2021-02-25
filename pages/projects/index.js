@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/react-hooks';
-import { PROJECTS } from '../../graphql/project.queries';
+import { PROJECTS, PROJECT_ERROR_MESSAGES } from '../../graphql/project.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
 import Truncate from 'react-truncate';
@@ -10,6 +10,8 @@ import {
 const Project = () => {
   // Create a query hook
   const { data, loading, error } = useQuery(PROJECTS);
+  let projectError
+  let projects = []
   if (loading) {
     return <Loading />;
   }
@@ -18,10 +20,27 @@ const Project = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
+  try {
+    projects = data.projects.edges
+    projectError = false
+    if (projects.length === 0) {
+      projectError = PROJECT_ERROR_MESSAGES.error
+    }
+  } catch (e) {
+    projectError = PROJECT_ERROR_MESSAGES.error
+  }
+
   return (
     <PageLayout title="Projects">
+      {projectError
+      ?
+      <div dangerouslySetInnerHTML={{ __html: projectError }}/>
+      :
       <Item.Group style={pageStyles.section}>
-        {data.projects.edges.map(post => {
+        {data.projects.edges.length === 0 ?
+            <div>That</div>
+          :
+          data.projects.edges.map(post => {
           return (
               <Item as='a' href={`/projects/${post.node.slug}`} key={`post__${post.node.id}`} style={pageStyles.item}>
                 <Item.Content style={pageStyles.content}>
@@ -37,7 +56,7 @@ const Project = () => {
               </Item>
           );
         })}
-      </Item.Group>
+      </Item.Group>}
     </PageLayout>
   );
 };

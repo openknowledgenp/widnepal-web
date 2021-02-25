@@ -17,8 +17,8 @@ query MyQuery {
 }
 `;
 
-export const Projects_ERROR_MESSAGES = {
-  error: "<div><div><h2>ERROR: Blogs are not available</h2></div><div>Update CMS for blogs (Add a Post with category: '<b>blog</b>').</div></div>",
+export const PROJECT_ERROR_MESSAGES = {
+  error: "<div><h2>Projects are not available</h2></div>",
 }
 
 export const PROJECT_WITH_SLUG = (slug) => gql`
