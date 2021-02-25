@@ -42,8 +42,6 @@ const Blog = () => {
         <Item.Group style={pageStyles.section}>
           {data.blogs.edges.map(blog => {
             const blogImage = blog.node.featuredImage
-            console.log('BLOG');
-            console.log(blog);
             return (
                 <Item as='a' href={`/blog/${blog.node.slug}`} style={pageStyles.item} key={`blog__${blog.node.blogId}`}>
                   <Item.Image size='medium' src={blogImage !== null ? blogImage.node.mediaItemUrl : PlaceholderImage} />
@@ -70,7 +68,7 @@ const Blog = () => {
 export default Blog;
 
 const pageStyles = {
-  section: { paddingTop: 80, paddingBottom: 80, width: '80%' },
+  section: { paddingTop: 40, paddingBottom: 40, width: '80%' },
   item: { borderBottom: '1px solid #0f46641f', paddingBottom: 30, marginBottom: 20 },
   content: {},
   header: {fontSize: 20},

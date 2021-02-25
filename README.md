@@ -16,8 +16,8 @@ Make sure you are in the project's root directory.
 - Run: `docker-compose up -d`
 - After the command exit, goto `http://localhost:8000/` on your browser.
 - Setup the WordPress Dashboard by providing name of site, username, password and other information.
+- Setup the timezone - `Settings > General > Timezone` 
 - You need to activate following  plugins "WP GraphQL", "WPGraphQL for Advanced Custom Fields", "Advanced custom fields" and "WID Custom Plugin" then activate all plugins. (You can manage plugins from `/wordpress/wp-content/plugins`.)
-- Add new categories with slugs: 'about-us', 'contact', 'home', 'program-or-project' and 'resources'
 
 ## Setup NextJS Frontend
 Make sure you are in the project's root directory.

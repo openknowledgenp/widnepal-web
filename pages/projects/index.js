@@ -1,11 +1,15 @@
 import { useQuery } from '@apollo/react-hooks';
-import { POSTS } from '../../graphql/program.queries';
+import { PROJECTS } from '../../graphql/project.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
+import Truncate from 'react-truncate';
+import {
+  Item
+} from 'semantic-ui-react'
 
-const Program = () => {
+const Project = () => {
   // Create a query hook
-  const { data, loading, error } = useQuery(POSTS);
+  const { data, loading, error } = useQuery(PROJECTS);
   if (loading) {
     return <Loading />;
   }
@@ -13,19 +17,37 @@ const Program = () => {
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
+
   return (
     <PageLayout title="Projects">
-        projects detail
-        {data.posts.edges.map(post => {
+      <Item.Group style={pageStyles.section}>
+        {data.projects.edges.map(post => {
           return (
-            <div key={`post__${post.node.id}`}>
-              <h2>{post.node.title}</h2>
-              <div dangerouslySetInnerHTML={{ __html: post.node.content }}/>
-            </div>
+              <Item as='a' href={`/projects/${post.node.slug}`} key={`post__${post.node.id}`} style={pageStyles.item}>
+                <Item.Content style={pageStyles.content}>
+                  <Item.Header style={pageStyles.header}>
+                      {post.node.title}
+                  </Item.Header>
+                  <Item.Description style={pageStyles.description}>
+                    <Truncate lines={8} ellipsis={<span>...</span>}>
+                      <div dangerouslySetInnerHTML={{ __html: post.node.projectDetails.brief }}/>
+                    </Truncate>
+                  </Item.Description>
+                </Item.Content>
+              </Item>
           );
         })}
+      </Item.Group>
     </PageLayout>
   );
 };
 
-export default Program;
+export default Project;
+
+const pageStyles = {
+  section: { paddingTop: 40, paddingBottom: 40, width: '80%' },
+  item: { borderBottom: '1px solid #0f46641f', paddingBottom: 30, marginBottom: 20 },
+  content: {},
+  header: {fontSize: 20},
+  description: {fontSize: 16},
+}

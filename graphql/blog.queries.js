@@ -23,22 +23,8 @@ export const BLOGS = gql`
   }
 `;
 export const BLOGS_ERROR_MESSAGES = {
-  error: "<div><div><h2>ERROR: Blogs are not available</h2></div><div>Update CMS for blogs (Add a Post with category: '<b>blog</b>').</div></div>",
+  error: "<div><h2>Blogs are not available</h2></div>",
 }
-
-export const MEDIA = gql`
-  query Posts {
-    mediaItems (where: {categoryName: "blog"}) {
-      nodes {
-        mediaDetails {
-          file
-        }
-      }
-    }
-  }
-`;
-
-
 
 export const BLOG_WITH_SLUG = (slug) => gql`
   query MyQuery {
@@ -52,19 +38,21 @@ export const BLOG_WITH_SLUG = (slug) => gql`
           title
           slug
           blogId
+          date
           featuredImage {
             node {
               mediaItemUrl
-              author {
-                node {
-                  firstName
-                  lastName
-                  description
-                  avatar {
-                    url
-                  }
-                }
+            }
+          }
+          lastEditedBy {
+            node {
+              firstName
+              avatar {
+                url
               }
+              lastName
+              description
+              nickname
             }
           }
         }

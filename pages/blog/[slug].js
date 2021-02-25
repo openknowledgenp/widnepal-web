@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { BLOG_WITH_SLUG } from '../../graphql/blog.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
-import HeaderImg from '../../assets/blog_detail_img_header.svg'
+import HeaderImg from '../../assets/detail_img_header.svg'
 import {SITE_PROTOCOL} from '../../assets/siteDetails'
 import {
   Grid,
@@ -18,7 +18,20 @@ import {
   TwitterShareButton,
   LinkedinShareButton
 } from "react-share";
-
+const numberToMonth = {
+0: "January",
+1: "February",
+2: "March",
+3: "April",
+4: "May",
+5: "June",
+6: "July",
+7: "August",
+8: "September",
+9: "October",
+10: "November",
+11: "December",
+}
 const BlogDetail = ({host}) => {
   const router = useRouter()
   const { slug } = router.query
@@ -38,27 +51,19 @@ const BlogDetail = ({host}) => {
   }
 
   const post = data.blogs.edges[0]
-  console.log(post);
 
-  let author =
-    (post.node.featuredImage.node.author.node.firstName !== '' &&
-    post.node.featuredImage.node.author.node.firstName !== null &&
-    post.node.featuredImage.node.author.node.firstName !== undefined &&
-    post.node.featuredImage.node.author.node.lastName !== '' &&
-    post.node.featuredImage.node.author.node.lastName !== null &&
-    post.node.featuredImage.node.author.node.lastName !== undefined)
-    ?
-    post.node.featuredImage.node.author.node.firstName + ' ' + post.node.featuredImage.node.author.node.lastName
-    :
-    'Author name is not available. (Update the user\'s first name and last name to get author\'s name)'
+  let author = (post.node.lastEditedBy.node.firstName !== null && post.node.lastEditedBy.node.firstName !== null && post.node.lastEditedBy.node.lastName !== '' && post.node.lastEditedBy.node.lastName !== '') ?
+    post.node.lastEditedBy.node.firstName + ' ' + post.node.lastEditedBy.node.lastName :
+    'Author name is not mentioned.'
 
-  let association =
-    (post.node.featuredImage.node.author.node.description !== '' &&
-    post.node.featuredImage.node.author.node.description !== null &&
-    post.node.featuredImage.node.author.node.description !== undefined) ?
-    post.node.featuredImage.node.author.node.description
-    :
-    'Author\'s association is not available. (Update the user\'s biographical info to get the author\'s association)'
+  let association = (post.node.lastEditedBy.node.description !== null && post.node.lastEditedBy.node.description !== null) ?
+    post.node.lastEditedBy.node.description :
+    'No information about author.'
+
+  const dateRenderer = (post_date) => {
+    let date = new Date(post_date)
+    return (numberToMonth[date.getMonth()]) +' '+date.getDate()+', '+ date.getFullYear()
+  }
 
   return (
     <PageLayout title={post.node.title} format="blogread" headerImage={HeaderImg}>
@@ -67,7 +72,7 @@ const BlogDetail = ({host}) => {
             <Grid.Column width={11}>
               <List relaxed divided horizontal stackable>
                 <List.Item width={5}>
-                  {post.node.featuredImage.node.author.node.avatar && <Image avatar src={post.node.featuredImage.node.author.node.avatar.url} style={pageStyles.avatar} />}
+                  {post.node.lastEditedBy.node.avatar !== null && <Image avatar src={post.node.lastEditedBy.node.avatar.url} style={pageStyles.avatar} />}
                   <List.Content style={pageStyles.authorName}>
                     <List.Header>{author}</List.Header>
                     <List.Description>
@@ -78,7 +83,9 @@ const BlogDetail = ({host}) => {
                 <List.Item width={5}>
                   <div style={pageStyles.postDate}>
                     <Icon link name='pencil square' />
-                    July 20, 2019
+                    {
+                    dateRenderer(post.node.date)
+                    }
                   </div>
                 </List.Item>
 
@@ -97,7 +104,11 @@ const BlogDetail = ({host}) => {
                 </List.Item>
               </List>
 
-              <div dangerouslySetInnerHTML={{ __html: post.node.blogDetails.blog }} style={pageStyles.description}/>
+              {post.node.blogDetails.blog !== null && post.node.blogDetails.blog !== '' ?
+                <div dangerouslySetInnerHTML={{ __html: post.node.blogDetails.blog }} style={pageStyles.description}/>
+                :
+                <div style={pageStyles.description}>This blog has no content.</div>
+              }
             </Grid.Column>
             {/*<Grid.Column width={5}>
               side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar,
