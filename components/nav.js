@@ -40,7 +40,9 @@ const DesktopNav = ({menuItem, activeItem, isHomePage, resultObject, errorReport
                   {site_logo.errStatus ?
                     renderHTML(site_logo.data)
                     :
-                    <Image src={site_logo.data.mediaItemUrl} style={pageStyles.desktopLogo}/>
+                    <div style={pageStyles.desktopLogoContainer}>
+                      <Image src={site_logo.data.mediaItemUrl} style={pageStyles.desktopLogo}/>
+                    </div>
                   }
                 </Menu.Item>
               }
@@ -180,9 +182,14 @@ const { MediaContextProvider, Media } = createMedia({
 })
 
 const pageStyles = {
+  desktopLogoContainer: {
+    height: 80,
+    width: '100%',
+  },
   desktopLogo: {
-    maxHeight: 80,
-    maxWidth: 80
+    maxHeight: '100%',
+    maxWidth: '100%',
+    width: 'auto'
   },
   mobileLogo: {
     maxHeight: 40,

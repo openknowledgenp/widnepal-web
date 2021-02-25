@@ -5,6 +5,7 @@ export const RESOURCES = gql`
     resources {
       edges {
         node {
+          id
           resourceDetails {
             description
             isPinned
@@ -29,29 +30,34 @@ export const RESOURCES_ERROR_MESSAGES = {
   error: "<br/><div><b>Resources are not available.</b><br/><br/></div>"
 }
 
-export const POSTS = gql`
-  query Posts {
-    posts (where: {categoryName: "resources"}) {
-      edges {
-        node {
-          id
-          title
-          slug
-          content
+export const RESOURCE_WITH_SLUG = (slug) => gql`
+query MyQuery {
+  resources(where: {name: "${slug}"}) {
+    edges {
+      node {
+        title
+        slug
+        id
+        date
+        lastEditedBy {
+          node {
+            firstName
+            avatar {
+              url
+            }
+            lastName
+            description
+            nickname
+          }
+        }
+        resourceDetails {
+          description
+          attachedFile {
+            mediaItemUrl
+          }
         }
       }
     }
   }
-`;
-
-export const MEDIA = gql`
-  query Posts {
-    mediaItems (where: {categoryName: "resources"}) {
-      nodes {
-        mediaDetails {
-          file
-        }
-      }
-    }
-  }
+}
 `;

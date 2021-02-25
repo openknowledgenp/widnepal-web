@@ -37,9 +37,7 @@ const Project = () => {
       <div dangerouslySetInnerHTML={{ __html: projectError }}/>
       :
       <Item.Group style={pageStyles.section}>
-        {data.projects.edges.length === 0 ?
-            <div>That</div>
-          :
+        {
           data.projects.edges.map(post => {
           return (
               <Item as='a' href={`/projects/${post.node.slug}`} key={`post__${post.node.id}`} style={pageStyles.item}>

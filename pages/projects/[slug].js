@@ -18,7 +18,6 @@ const ProjectDetail = () => {
   if (loading) {
     return <Loading />;
   }
-  console.log(data);
 
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
