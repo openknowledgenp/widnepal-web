@@ -29,6 +29,7 @@ query MyQuery {
   abouts {
     edges {
       node {
+        id
         about_us_page {
           page
           pageTitle
@@ -39,6 +40,7 @@ query MyQuery {
   events {
     edges {
       node {
+        id
         eventDetails {
           page
           pageTitle
