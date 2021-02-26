@@ -105,7 +105,7 @@ const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvent
             <div style={pageStyles.customCarousel.shortInfo}>
               <div style={pageStyles.customCarousel.title}>
                 <Truncate lines={1} ellipsis={<span>...</span>}>
-                    {pinnedEvents[selected_event].node.title}
+                    {pinnedEvents[selected_event].node.eventDetails.title}
                 </Truncate>
               </div>
               <div style={pageStyles.customCarousel.description}>
