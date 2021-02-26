@@ -12,10 +12,11 @@ export const EVENTS = gql`
             startTime
             websiteLink
             page
+            pageTitle
+            title
           }
           id
           slug
-          title
           featuredImage {
             node {
               mediaItemUrl
@@ -42,8 +43,8 @@ query MyQuery {
           startTime
           websiteLink
           page
+          title
         }
-        title
         slug
         id
         featuredImage {

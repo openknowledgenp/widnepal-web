@@ -16,8 +16,6 @@ function about_us_name_updater( $post_id ) {
     }
   }
 
-
-
   // Update the post into the database
   wp_update_post( $my_post );
 }

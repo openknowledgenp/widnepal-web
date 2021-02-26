@@ -34,6 +34,7 @@ require_once( 'add_project_menuitem.php' );
 require_once( 'add_resource_menuitem.php' );
 // Add event post type
 require_once( 'add_event_menuitem.php' );
+require_once( 'override_event_itemname.php' );
 // Add blogs post type
 require_once( 'add_blog_menuitem.php' );
 // add local fields

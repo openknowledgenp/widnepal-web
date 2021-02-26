@@ -19,8 +19,6 @@ const EventDetail = () => {
     return <Loading />;
   }
 
-  console.log(data);
-
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
   } else if (data.events.edges.length === 0){
@@ -35,17 +33,20 @@ const EventDetail = () => {
     event_date = post.node.eventDetails.startTime.split(' ').map(x=>x.split(','))
   }
   return (
-    <PageLayout title={post.node.title} format="eventread" headerImage={HeaderImg}>
+    <PageLayout title={post.node.eventDetails.title} format="eventread" headerImage={HeaderImg}>
         <Grid stackable className="event-read-screen" style={pageStyles.eventContainer}>
           <Grid.Row>
             <Grid.Column width={11}>
+              {post.node.eventDetails.startTime !== null &&
               <div>
-                <b>Event On:</b>
-                <span> {event_date[0][0]} </span>
-                <span>{event_date[1][0]}, </span>
-                <span>{event_date[2][0]} </span>
-              </div>
-              <hr/>
+                <div>
+                  <b>Event On:</b>
+                  <span> {event_date[0][0]} </span>
+                  <span>{event_date[1][0]}, </span>
+                  <span>{event_date[2][0]} </span>
+                </div>
+                <hr/>
+              </div>}
               {post.node.eventDetails.description !== null && post.node.eventDetails.description !== '' ?
                 <div dangerouslySetInnerHTML={{ __html: post.node.eventDetails.description }} style={pageStyles.description}/>
                 :
