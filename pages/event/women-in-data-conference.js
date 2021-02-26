@@ -16,7 +16,8 @@ const Event = () => {
   if (error) {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
-  const PAGE_TYPE = "Woman in Data Conference"
+  const PAGE_TYPE = "Women in Data Conference"
+  console.log(data.events);
   const upcomingEvents = data.events.edges.filter(event=>event.node.eventDetails.page === PAGE_TYPE)
   return (
     <PageLayout title={`Events | ${PAGE_TYPE}`}>
@@ -32,7 +33,7 @@ const Event = () => {
           }
           return (
             <div key={`post__${post.node.id}`} style={pageStyles.container}>
-              <Grid stackable as="a" href={`/event/upcoming-events/${post.node.slug}`}>
+              <Grid stackable as="a" href={`/event/women-in-data-conference/${post.node.slug}`}>
                 <Grid.Row>
                   {post.node.eventDetails.startTime !== null && <Grid.Column width={2}>
                     <div style={pageStyles.calendar(idx)}>
