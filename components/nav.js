@@ -111,7 +111,6 @@ function Nav({isHomePage, resultObject, errorReport}) {
   const [
       { loading: navBarLoading, data: navBarData, error: navBarError },
   ] = [ useQuery(NAV_BAR_OPTIONS) ];
-  console.log(navBarLoading, navBarData, navBarError);
 
   let otherAboutUsOptions = []
   let otherEventsOptions = []
