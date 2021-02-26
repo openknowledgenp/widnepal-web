@@ -54,11 +54,13 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
           {children}
         </Container>}
         {format=="conferenceread" &&
-        children.map((section) => {return(
-          <div key={section.type.name} style={pageStyles.pageWrapper(section.props.bgColor, section.props.bgSize)}>
+        children.map((section) => {console.log(section);return(
+          <div key={section.type && section.type.name} style={pageStyles.bgImage(section.props && section.props.bgImageLink)}>
+          <div style={pageStyles.pageWrapper(section.props && section.props.bgColor ,section.props && section.props.bgSize)}>
             <Container>
                   {section}
             </Container>
+            </div>
           </div>
         )})
         }
@@ -110,6 +112,19 @@ const pageStyles = {
       return ({
         marginTop: 0, paddingTop: 0
       })
+    }
+  },
+  bgImage: (imageLink) => {
+    if (imageLink) {
+      return ({
+          backgroundImage: `url(${imageLink})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover'
+      })
+    }
+    else {
+      return ({})
     }
   },
   pageWrapper: (background_color, bgSize) => {return(
