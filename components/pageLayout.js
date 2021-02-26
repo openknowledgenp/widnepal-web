@@ -13,7 +13,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { NAV_SITE_LOGO, NAV_SITE_LOGO_CONTENT_MAP } from '../graphql/common.queries.js';
 import { Loading } from './loading'
 
-export const PageLayout = ({title, children, format, headerImage}) => {
+export const PageLayout = ({title, children, format, headerImage, noHero}) => {
   let resultObject = {}
   let errorReport = {}
 
@@ -38,6 +38,7 @@ export const PageLayout = ({title, children, format, headerImage}) => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {!noHero &&
       <div style={pageStyles.hero}>
         <GraphicsElement />
         <Container style={format === undefined ? pageStyles.heroContainer : pageStyles.formattedHead(format)}>
@@ -46,11 +47,21 @@ export const PageLayout = ({title, children, format, headerImage}) => {
           </Truncate>
           <Image src={headerImage} style={pageStyles.headerImage}/>
         </Container>
-      </div>
+      </div>}
       <div style={pageStyles.pageContainerWrapper}>
+        {format!=="conferenceread" &&
         <Container style={format === undefined ? pageStyles.pageContainer : pageStyles.formattedContainer(format)}>
           {children}
-        </Container>
+        </Container>}
+        {format=="conferenceread" &&
+        children.map((section) => {return(
+          <div key={section.type.name} style={pageStyles.pageWrapper(section.props.bgColor, section.props.bgSize)}>
+            <Container>
+                  {section}
+            </Container>
+          </div>
+        )})
+        }
       </div>
       <Footer/>
 
@@ -95,7 +106,18 @@ const pageStyles = {
       return ({
         marginTop: 120, paddingTop: 30
       })
+    } else if (format === 'conferenceread') {
+      return ({
+        marginTop: 0, paddingTop: 0
+      })
     }
   },
+  pageWrapper: (background_color, bgSize) => {return(
+    bgSize === undefined ? {
+      backgroundColor: background_color || 'white'
+    }: {
+      background: `linear-gradient(90deg, ${background_color} 0%, ${background_color} ${bgSize}, white ${bgSize}, white 100%)`,
+    }
+  );},
   pageContainerWrapper: {zIndex: 3, position: 'relative', backgroundColor: 'white', minHeight: 600},
 }
