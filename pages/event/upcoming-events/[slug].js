@@ -30,11 +30,22 @@ const EventDetail = () => {
   }
 
   const post = data.events.edges[0]
+  let event_date = []
+  if (post.node.eventDetails.startTime !== null) {
+    event_date = post.node.eventDetails.startTime.split(' ').map(x=>x.split(','))
+  }
   return (
     <PageLayout title={post.node.title} format="eventread" headerImage={HeaderImg}>
         <Grid stackable className="event-read-screen" style={pageStyles.eventContainer}>
           <Grid.Row>
             <Grid.Column width={11}>
+              <div>
+                <b>Event On:</b>
+                <span> {event_date[0][0]} </span>
+                <span>{event_date[1][0]}, </span>
+                <span>{event_date[2][0]} </span>
+              </div>
+              <hr/>
               {post.node.eventDetails.description !== null && post.node.eventDetails.description !== '' ?
                 <div dangerouslySetInnerHTML={{ __html: post.node.eventDetails.description }} style={pageStyles.description}/>
                 :
