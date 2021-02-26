@@ -85,6 +85,13 @@ const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvent
   if (pinnedEvents[selected_event] && pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
     event_date = pinnedEvents[selected_event].node.eventDetails.startTime.split(',')[0].split(' ')
   }
+  const URL_SUBSTRING_MAP = {
+    'Other': 'other',
+    'Women in Data Conference': 'women-in-data-conference',
+    'Upcoming Events': 'upcoming-events',
+  }
+  const url_substring = URL_SUBSTRING_MAP[pinnedEvents[selected_event].node.eventDetails.page]
+  console.log(pinnedEvents[selected_event].node.eventDetails);
   return(
     <div style={pageStyles.customCarousel.container}>
       <div style={pageStyles.customCarousel.headContainer}>
@@ -93,7 +100,7 @@ const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvent
           ?
           <div dangerouslySetInnerHTML={{ __html: eventErr }}/>
           :
-          <Grid.Row as="a" href={`/event/upcoming-events/${pinnedEvents[selected_event].node.slug}`} columns={2}>
+          <Grid.Row as="a" href={`/event/${url_substring}/${pinnedEvents[selected_event].node.slug}`} columns={2}>
             {event_date.length > 0 ?
               <div style={pageStyles.customCarousel.calendar}>
                 <div style={pageStyles.customCarousel.date}>{event_date[1]}</div>
