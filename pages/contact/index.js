@@ -19,11 +19,9 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState()
   const [state, setState] = useState({full_name:'',email:'',subject:'',message:''})
 
-  const handleChange = (e, { name, value }) => setState({ [name]: value })
+  const handleChange = (e, { name, value }) => setState({ ...state, [name]: value })
 
   const submitForm = async () => {
-    // const mailer = require('../../util/mailer');
-
     setSubmitting(true)
     const res = await sendContactMail(state.full_name, state.email, state.message, state.subject)
     if (res.status < 300) {
@@ -41,39 +39,6 @@ const Contact = () => {
       setError(true)
       setTimeout(()=>{setError(false);},5000)
     }
-    // mailer().then(() => {
-    //   console.log('success')
-    //   res.send({message:'success'})
-    // }).catch((error) => {
-    //   console.log('failed')
-    //   res.status(400).send({message:'fail'})
-    // })
-    // fetch('/api/contact', {
-    //   method: 'post',
-    //   headers: {
-    //     'Accept': 'application/json, text/plain, */*',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ name: state.full_name, email: state.email, message: state.message, subject: state.subject})
-    // }).then((res) => {
-    //   console.log(res);
-    //  if (res.status === 404 || res.status === 400 || res.status === 403){
-    //    setSubmitting(false)
-    //    setError(true)
-    //    setTimeout(()=>{setError(false);},5000)
-    //  }
-    //  if (res.status === 200){
-    //    setSubmitting(false)
-    //    setSubmitted(true)
-    //    setState({
-    //       full_name:'',
-    //       email:'',
-    //       subject:'',
-    //       message:'',
-    //     })
-    //    setTimeout(()=>{setSubmitted(false);},5000)
-    //  }
-    // })
   }
   return (
     <PageLayout title="Contact Us">

@@ -1,6 +1,16 @@
 import nodemailer from "nodemailer"
 import {RECEIPIENT_MAIL} from "../../assets/siteDetails"
 
+
+// var transporter = nodemailer.createTransport({
+//        service: "Gmail",
+//        auth: {
+//            user: "",
+//            pass: ""
+//        }
+//    });
+
+
 const transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
   port: 587,
