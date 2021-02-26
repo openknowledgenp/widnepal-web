@@ -70,5 +70,5 @@ const pageStyles = {
   aboutUs: {fontSize: 18, paddingTop: 20, paddingBottom: 20},
   organizationName: {fontSize: 26, fontWeight: 'bold'},
   logoItem: {marginTop: 15, height: 90, width: 'auto'},
-  memberContainer: {marginBottom: 20, borderBottom: '1px solid #E5E5E5', paddingBottom: 20},
+  memberContainer: {borderBottom: '1px solid #E5E5E5', paddingBottom: 40},
 }

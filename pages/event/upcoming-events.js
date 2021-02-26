@@ -71,5 +71,5 @@ const pageStyles={
   year:{fontSize: 18},
   date: {fontSize: 36, fontWeight: 'bold', padding: 10},
   description: {fontSize:18, color: '#18201E'},
-  container: {marginBottom:40, marginTop:40}
+  container: {paddingBottom:40, marginTop:40}
 }

@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/react-hooks';
-import { POSTS } from '../../graphql/event.queries';
+import { EVENTS, EVENTS_ERROR_MESSAGES } from '../../graphql/event.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
 
 const Event = () => {
   // Create a query hook
-  const { data, loading, error } = useQuery(POSTS);
+  const { data, loading, error } = useQuery(EVENTS);
   if (loading) {
     return <Loading />;
   }

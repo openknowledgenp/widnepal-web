@@ -77,7 +77,7 @@ const pageStyles = {
   },
   heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 30, margin: 30, fontWeight: '600' },
   formattedHead: (format) => {
-    if (format === 'blogread' || format === 'projectread' || format === 'resourceread') {
+    if (format === 'blogread' || format === 'projectread' || format === 'resourceread' || format === 'eventread') {
       return ({
         position: 'relative',
         zIndex: 2,
@@ -91,7 +91,7 @@ const pageStyles = {
   },
   pageContainer: { marginTop: 80, paddingTop: 30 },
   formattedContainer: (format) => {
-    if (format === 'blogread' || format === 'projectread' || format === 'resourceread') {
+    if (format === 'blogread' || format === 'projectread' || format === 'resourceread' || format === 'eventread') {
       return ({
         marginTop: 120, paddingTop: 30
       })

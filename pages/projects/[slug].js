@@ -51,5 +51,5 @@ export default ProjectDetail;
 
 const pageStyles = {
   description: {fontSize: 18, paddingTop:20, marginTop: 15},
-  projectContainer: {marginBottom: 80},
+  projectContainer: {paddingBottom: 80},
 }

@@ -13,6 +13,6 @@ body, html, p, div, ul, li, a, span, button {
   font-family: 'Nunito Sans', sans-serif !important;
 }
 
-.resource-read-screen img, .project-read-screen img, .blog-read-screen img {
+.event-read-screen img, .resource-read-screen img, .project-read-screen img, .blog-read-screen img {
     max-width: 100%;
 }

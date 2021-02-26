@@ -30,17 +30,29 @@ export const EVENTS_ERROR_MESSAGES = {
   error: "<br/><div><b>Events are not available.</b></div>"
 }
 
-export const POSTS = gql`
-  query Posts {
-    posts (where: {categoryName: "events"}) {
-      edges {
-        node {
-          id
-          title
-          slug
-          content
+export const EVENT_WITH_SLUG = (slug) => gql`
+query MyQuery {
+  events(where: {name: "${slug}"}) {
+    edges {
+      node {
+        eventDetails {
+          description
+          endTime
+          isPinned
+          startTime
+          websiteLink
+          page
+        }
+        title
+        slug
+        id
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
         }
       }
     }
   }
+}
 `;
