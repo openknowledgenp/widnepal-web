@@ -82,16 +82,16 @@ const MemberOrganization = ({resultObject, errorReport}) => {
 
 const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvents, selected_event, setSelectedEvent}) => {
   let event_date = []
-  if (pinnedEvents[selected_event] && pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
-    event_date = pinnedEvents[selected_event].node.eventDetails.startTime.split(',')[0].split(' ')
-  }
+  let url_substring
   const URL_SUBSTRING_MAP = {
     'Other': 'other',
     'Women in Data Conference': 'women-in-data-conference',
     'Upcoming Events': 'upcoming-events',
   }
-  const url_substring = URL_SUBSTRING_MAP[pinnedEvents[selected_event].node.eventDetails.page]
-  console.log(pinnedEvents[selected_event].node.eventDetails);
+  if (pinnedEvents[selected_event] && pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
+    event_date = pinnedEvents[selected_event].node.eventDetails.startTime.split(',')[0].split(' ')
+    url_substring = URL_SUBSTRING_MAP[pinnedEvents[selected_event].node.eventDetails.page]
+  }
   return(
     <div style={pageStyles.customCarousel.container}>
       <div style={pageStyles.customCarousel.headContainer}>
