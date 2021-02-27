@@ -24,3 +24,7 @@ Make sure you are in the project's root directory.
 Make sure you are in the project's root directory.
 - ```npm install```
 - ```npm run dev```
+- Setup these three environment variables for email service available through contact form
+  - `RECEIPIENT_MAIL` - Email of user who recieves the email
+  - `CONTACT_EMAIL_USER` - Email address of application which serves the email service
+  - `CONTACT_EMAIL_PASSWORD` - Password for above email address which serves the email service
