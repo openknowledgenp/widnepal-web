@@ -1,25 +1,25 @@
 import nodemailer from "nodemailer"
 
 
-// var transporter = nodemailer.createTransport({
-//        service: "Gmail",
-//        auth: {
-//            user: process.env.CONTACT_GMAIL_USER,
-//            pass: process.env.CONTACT_GMAIL_PASSWORD
-//        }
-//    });
+var transporter = nodemailer.createTransport({
+       service: "Gmail",
+       auth: {
+           user: process.env.CONTACT_GMAIL_USER,
+           pass: process.env.CONTACT_GMAIL_PASSWORD
+       }
+   });
 
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com',
-  port: 587,
-  secureConnection: false,
-  tls: { ciphers: 'SSLv3' },
-  auth: {
-    user: process.env.CONTACT_EMAIL_USER, // add user
-    pass: process.env.CONTACT_EMAIL_PASSWORD, // add password
-  }
-})
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.office365.com',
+//   port: 587,
+//   secureConnection: false,
+//   tls: { ciphers: 'SSLv3' },
+//   auth: {
+//     user: process.env.CONTACT_EMAIL_USER, // add user
+//     pass: process.env.CONTACT_EMAIL_PASSWORD, // add password
+//   }
+// })
 
 
 export default async (req, res) => {
