@@ -23,6 +23,9 @@ var transporter = nodemailer.createTransport({
 
 
 export default async (req, res) => {
+    console.log(process.env.CONTACT_GMAIL_USER);
+    console.log(process.env.CONTACT_GMAIL_PASSWORD);
+    console.log(process.env.RECEIPIENT_MAIL);
     const { email, full_name, message, subject } = req.body
     const recipientMail = process.env.RECEIPIENT_MAIL
 
