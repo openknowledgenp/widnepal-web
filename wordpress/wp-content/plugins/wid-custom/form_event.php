@@ -19,7 +19,6 @@ acf_add_local_field_group(array(
 			'show_in_graphql' => 1,
 			'choices' => array(
 				'Upcoming Events' => 'Upcoming Events',
-				'Women in Data Conference' => 'Women in Data Conference',
 				'Other' => 'Other',
 			),
 			'default_value' => false,
@@ -82,7 +81,7 @@ acf_add_local_field_group(array(
 			'key' => 'field_602ca4756b809',
 			'label' => 'Description',
 			'name' => 'description',
-			'type' => 'wysiwyg',
+			'type' => 'textarea',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
