@@ -1,12 +1,11 @@
 import nodemailer from "nodemailer"
-import {RECEIPIENT_MAIL} from "../../assets/siteDetails"
 
 
 // var transporter = nodemailer.createTransport({
 //        service: "Gmail",
 //        auth: {
-//            user: "",
-//            pass: ""
+//            user: process.env.CONTACT_GMAIL_USER,
+//            pass: process.env.CONTACT_GMAIL_PASSWORD
 //        }
 //    });
 
@@ -17,15 +16,15 @@ const transporter = nodemailer.createTransport({
   secureConnection: false,
   tls: { ciphers: 'SSLv3' },
   auth: {
-    user: '', // add user
-    pass: '', // add password
+    user: process.env.CONTACT_EMAIL_USER, // add user
+    pass: process.env.CONTACT_EMAIL_PASSWORD, // add password
   }
 })
 
 
 export default async (req, res) => {
     const { email, full_name, message, subject } = req.body
-    const recipientMail = RECEIPIENT_MAIL
+    const recipientMail = process.env.RECEIPIENT_MAIL
 
     if (email === "" || full_name === "" || message === "" || recipientMail === "") {
         res.status(403).send("")
