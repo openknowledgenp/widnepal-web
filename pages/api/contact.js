@@ -21,7 +21,10 @@ import nodemailer from "nodemailer"
 
 
 const transporter = nodemailer.createTransport({
-  service: "Outlook365",
+  host: 'smtp.office365.com',
+  port: 587,
+  secureConnection: false,
+  tls: { ciphers: 'SSLv3' },
   auth: {
     user: process.env.CONTACT_EMAIL_USER, // add user
     pass: process.env.CONTACT_EMAIL_PASSWORD, // add password
