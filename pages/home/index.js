@@ -63,15 +63,9 @@ const MemberOrganization = ({resultObject, errorReport}) => {
         <Grid divided='vertically' stackable style={pageStyles.memberOrganization}>
           <Grid.Row columns={memberOrgs.length}>
             {memberOrgs.data.map(memberOrg=>{return(
-              <Button
-                style={pageStyles.imageButton}
-                key={memberOrg.name}
-                as="a"
-                href={memberOrg.websiteUrl}
-                icon={
-                  <Image src={memberOrg.logo.mediaItemUrl} style={pageStyles.memberOrgImage}/>
-                }
-              />
+              <a href={memberOrg.websiteUrl} key={memberOrg.name} style={pageStyles.imageLink}>
+                <Image src={memberOrg.logo.mediaItemUrl} style={pageStyles.memberOrgImage} />
+              </a>
             )})}
           </Grid.Row>
         </Grid>
@@ -327,8 +321,8 @@ const pageStyles = {
   title: { fontSize: 26, color: '#403E3E' },
   middleTitle: {width: '100%', textAlign: 'center'},
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
-  memberOrgImage: {maxWidth: '200px', maxHeight: '145px'},
-  imageButton: {backgroundColor: '#efefef', padding: 1, margin: 'auto'},
+  memberOrgImage: {maxWidth: '200px', maxHeight: '100px', padding: 1},
+  imageLink: { margin: 'auto'},
   content: { fontSize: 18 },
   image: { margin: 'auto', boxShadow: '15px -15px #FCCA35', width: '70%' },
   imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
