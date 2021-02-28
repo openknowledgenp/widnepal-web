@@ -4,6 +4,7 @@ import { EVENT_WITH_SLUG } from '../../graphql/event.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
 import HeaderImg from '../../assets/detail_img_header.svg'
+import BannerImage from '../../assets/WIDC/9.jpg'
 import D4DLogo from '../../assets/WIDC/D4D Logo.png'
 import GITLogo from '../../assets/WIDC/GIT_Logo_Chapter_Primary_Nepal_WEB.png'
 import OKNLogo from '../../assets/WIDC/OK_LG_LOGO_NEPAL_RGB.png'
@@ -305,7 +306,7 @@ const Supporters = ({post}) => {
 const EventDetail = () => {
   return (
     <PageLayout title="Women in data conference" format="conferenceread" headerImage={HeaderImg} noHero>
-        <ConferenceHero {...{bgColor: 'rgba(252,202,53,0.91)', bgImageLink: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png'}} />
+        <ConferenceHero {...{bgColor: 'rgba(252,202,53,0.91)', bgImageLink: BannerImage}} />
         <AboutEvent />
         <People {...{bgColor:'#F7F7F7'}}/>
         <Organization />
