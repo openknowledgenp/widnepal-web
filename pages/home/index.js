@@ -188,7 +188,7 @@ const OtherMedia = ({resultObject, errorReport, resourceErr, pinnedResources}) =
               <Item.Content style={pageStyles.usefulResourceItem}>
                 <Item.Header style={pageStyles.usefulResourceHead}>{resource.node.title}</Item.Header>
                 <Item.Description style={pageStyles.usefulResourceDescription}>
-                  <Truncate lines={5} ellipsis={<span>...</span>}>
+                  <Truncate lines={3} ellipsis={<span>...</span>}>
                       <div dangerouslySetInnerHTML={{ __html: resource.node.resourceDetails.description }}/>
                   </Truncate>
                 </Item.Description>
