@@ -225,8 +225,8 @@ const JoinUs = ({resultObject, errorReport}) => {
       <div style={pageStyles.joinUsInfo}>
         {renderHTML(joinUsDescription.data)}
       </div>
-      <Button color="blue">
-        Join Today
+      <Button color="blue" as="a" href="/contact">
+        Get Involved
       </Button>
     </div>
   )
