@@ -37,7 +37,6 @@ const About = () => {
               <div style={pageStyles.aboutUs} dangerouslySetInnerHTML={{ __html: page_data.member.description }}/>
               {Object.keys(page_data.socialMediaLinksAndEmail).map((item,id)=>{
                 if (page_data.socialMediaLinksAndEmail[item]!==null) {
-                  console.log(item);
                   if (item==='facebook'||item==='twitter'||item==='linkedin') {
                     return <Button key={id} as='a' href={page_data.socialMediaLinksAndEmail[item]} circular icon={item} size='huge' style={pageStyles.socialMediaBtn}/>
                   } else if (item==='website') {
@@ -69,6 +68,6 @@ const pageStyles = {
   aboutUsIntro: {fontSize: 18, paddingBottom: 20, fontWeight: 'bold'},
   aboutUs: {fontSize: 18, paddingTop: 20, paddingBottom: 20},
   organizationName: {fontSize: 26, fontWeight: 'bold'},
-  logoItem: {marginTop: 15, height: 90, width: 'auto'},
-  memberContainer: {borderBottom: '1px solid #E5E5E5', paddingBottom: 40},
+  logoItem: {marginTop: 15, maxHeight: 90, width: 'auto', maxWidth: 300},
+  memberContainer: {borderBottom: '1px solid #E5E5E5', paddingBottom: 40, paddingTop: 40},
 }
