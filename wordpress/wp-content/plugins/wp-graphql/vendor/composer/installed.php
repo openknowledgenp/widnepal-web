@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
+    'pretty_version' => 'v1.2.4',
+    'version' => '1.2.4.0',
     'aliases' => 
     array (
     ),
-    'reference' => '8cc7e0aab9a45e7ca53d0b9803a0147c49981d60',
+    'reference' => '4c4ff85cd75ae5cb6ddf56142de45abfbfe7f033',
     'name' => 'wp-graphql/wp-graphql',
   ),
   'versions' => 
@@ -31,12 +31,12 @@
     ),
     'wp-graphql/wp-graphql' => 
     array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
+      'pretty_version' => 'v1.2.4',
+      'version' => '1.2.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8cc7e0aab9a45e7ca53d0b9803a0147c49981d60',
+      'reference' => '4c4ff85cd75ae5cb6ddf56142de45abfbfe7f033',
     ),
   ),
 );
