@@ -9,6 +9,16 @@ import nodemailer from "nodemailer"
 //        }
 //    });
 
+// var transporter = nodemailer.createTransport({
+//   host: 'smtp.gmail.com',
+//   port: 465,
+//   secure: true,
+//        auth: {
+//            user: process.env.CONTACT_GMAIL_USER,
+//            pass: process.env.CONTACT_GMAIL_PASSWORD
+//        }
+//    });
+
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
