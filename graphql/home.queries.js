@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const HOMEPAGE_DETAIL = gql`
 query MyQuery {
-  homepageitems {
+  homepageitems(first: 100) {
     edges {
       node {
         homepageitems {
