@@ -113,7 +113,7 @@ export default class Sidebar extends React.Component {
           fontSize: 18,
           marginBottom: 20
         }}>
-          <div style={{ backgroundColor: 'rgba(0,0,0,0.5)', minHeight: 100, height: '100%', width: '100%', color: 'white', fontWeight: 'bold', padding: 20 }}>
+          <div style={{ backgroundColor: 'rgba(0,0,0,0.5)', minHeight: 100, height: '100%', width: '100%', color: 'white', fontWeight: 'bold', padding: 50 }}>
             <div>{`"${selectedQuote.quote}"`}</div>
             <br/>
             <div>{`- ${selectedQuote.by}`}</div>
