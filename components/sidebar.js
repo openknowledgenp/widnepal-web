@@ -124,8 +124,12 @@ export default class Sidebar extends React.Component {
           {selectedFacts.map((fact, idx)=>{
             return(
               <div key={idx} style={{ paddingBottom: 10, paddingTop: 10 }}>
+                <div>
                 <span style={{ fontWeight: 'bold', fontSize: 20, marginRight: 6, color: idx % 2 === 0 ? '#1B9EFF':'#FCCA35' }}>{fact.data}</span>
                 <span>{fact.story}</span>
+                </div>
+                <div style={{ color: '#999', float: 'right' }}><small>Source: {fact.data_source}</small></div>
+                <br/>
               </div>
             )
           })}
