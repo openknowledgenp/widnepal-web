@@ -40,6 +40,53 @@ const Quotes = [
   },
 ]
 
+const Facts = [
+  {
+    data: '77 cents',
+    story: 'is earned by women for every dollar that men get for the same work.',
+    data_source: 'np.undp.org',
+  },
+  {
+    data: '35%',
+    story: 'of women have experienced physical and/or sexual violence.',
+    data_source: 'np.undp.org',
+  },
+  {
+    data: '13%',
+    story: 'of agricultural landholders are women.',
+    data_source: 'np.undp.org',
+  },
+  {
+    data: '750 million',
+    story: 'women and girls alive today were married before their 18th birthday.',
+    data_source: 'np.undp.org',
+  },
+  {
+    data: '2/3',
+    story: '(two thirds) of developing countries have achieved gender parity in primary education.',
+    data_source: 'np.undp.org',
+  },
+  {
+    data: '24%',
+    story: 'of national parliamentarians were women as of November 2018, a small increase from 11.3 percent in 1995.',
+    data_source: 'np.undp.org',
+  },
+]
+
+function getRandom(arr, n) {
+    var result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    if (n > len)
+        throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
+}
+
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +94,7 @@ export default class Sidebar extends React.Component {
   render() {
     const selectedQuote = Quotes[Math.floor(Math.random() * Quotes.length)];
     const selectedImage = Images[Math.floor(Math.random() * Images.length)];
+    const selectedFacts = getRandom(Facts, 3)
     return(
     <div
       style={{
@@ -72,6 +120,16 @@ export default class Sidebar extends React.Component {
           </div>
         </div>
         <Image src={QuickFacts}/>
+        <div style={{ paddingTop: 10 }}>
+          {selectedFacts.map((fact, idx)=>{
+            return(
+              <div key={idx} style={{ paddingBottom: 10, paddingTop: 10 }}>
+                <span style={{ fontWeight: 'bold', fontSize: 20, marginRight: 6, color: idx % 2 === 0 ? '#1B9EFF':'#FCCA35' }}>{fact.data}</span>
+                <span>{fact.story}</span>
+              </div>
+            )
+          })}
+        </div>
     </div>
     )
   }
