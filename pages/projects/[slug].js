@@ -30,16 +30,12 @@ const ProjectDetail = () => {
   const post = data.projects.edges[0]
   return (
     <PageLayout title={post.node.title} format="projectread" headerImage={HeaderImg}>
-        <Grid stackable className="project-read-screen" style={pageStyles.projectContainer}>
-          <Grid.Row>
-            <Grid.Column width={11}>
+        <Grid className="project-read-screen" style={pageStyles.projectContainer}>
               {post.node.projectDetails.brief !== null && post.node.projectDetails.brief !== '' ?
                 <div dangerouslySetInnerHTML={{ __html: post.node.projectDetails.brief }} style={pageStyles.description}/>
                 :
                 <div style={pageStyles.description}>This project has no content.</div>
               }
-            </Grid.Column>
-          </Grid.Row>
         </Grid>
     </PageLayout>
   );

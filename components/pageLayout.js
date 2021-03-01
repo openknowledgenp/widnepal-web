@@ -8,10 +8,12 @@ import Footer from './footer'
 import Truncate from 'react-truncate';
 import {
   Image,
+  Grid
 } from 'semantic-ui-react'
 import { useQuery } from '@apollo/react-hooks';
 import { NAV_SITE_LOGO, NAV_SITE_LOGO_CONTENT_MAP } from '../graphql/common.queries.js';
 import { Loading } from './loading'
+import Sidebar from './sidebar'
 
 export const PageLayout = ({title, children, format, headerImage, noHero}) => {
   let resultObject = {}
@@ -51,7 +53,16 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
       <div style={pageStyles.pageContainerWrapper}>
         {format!=="conferenceread" &&
         <Container style={format === undefined ? pageStyles.pageContainer : pageStyles.formattedContainer(format)}>
-          {children}
+          <Grid stackable>
+            <Grid.Row>
+              <Grid.Column width={11}>
+                {children}
+              </Grid.Column>
+              <Grid.Column width={5}>
+                <Sidebar/>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Container>}
         {format=="conferenceread" &&
         children.map((section) => {console.log(section);return(

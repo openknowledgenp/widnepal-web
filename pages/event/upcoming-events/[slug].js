@@ -35,10 +35,9 @@ const EventDetail = () => {
   return (
     <PageLayout title={post.node.eventDetails.title} format="eventread" headerImage={HeaderImg}>
         <Grid stackable className="event-read-screen" style={pageStyles.eventContainer}>
-          <Grid.Row>
-            <Grid.Column width={11}>
               {post.node.eventDetails.startTime !== null &&
               <div>
+                <br/>
                 <div>
                   <b>Event On:</b>
                   <span> {event_date[0][0]} </span>
@@ -52,8 +51,6 @@ const EventDetail = () => {
                 :
                 <div style={pageStyles.description}>This event has no content.</div>
               }
-            </Grid.Column>
-          </Grid.Row>
         </Grid>
     </PageLayout>
   );
@@ -64,6 +61,6 @@ export default EventDetail;
 
 
 const pageStyles = {
-  description: {fontSize: 18, paddingTop:20, marginTop: 15},
+  description: {fontSize: 18, paddingTop:20},
   eventContainer: {paddingBottom: 80},
 }

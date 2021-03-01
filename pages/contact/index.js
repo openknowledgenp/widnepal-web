@@ -44,7 +44,7 @@ const Contact = () => {
     <PageLayout title="Contact Us">
       <Grid stackable >
         <Grid.Row>
-            <Grid.Column width={11}>
+            <Grid.Column width={16}>
               <Form style={pageStyles.formContainer} loading={isSubmitting} onSubmit={submitForm}>
                 <Form.Input
                   required
@@ -86,8 +86,6 @@ const Contact = () => {
                 <p>{ isError ? <div style={{color:'red'}}>An error occured while submitting your message.</div>: ''}</p>
                 <Button fluid color="blue" type='submit'>Submit</Button>
               </Form>
-            </Grid.Column>
-            <Grid.Column width={5}>
             </Grid.Column>
         </Grid.Row>
       </Grid>

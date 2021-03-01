@@ -68,8 +68,6 @@ const BlogDetail = ({host}) => {
   return (
     <PageLayout title={post.node.title} format="blogread" headerImage={HeaderImg}>
         <Grid stackable className="blog-read-screen">
-          <Grid.Row>
-            <Grid.Column width={11}>
               <List relaxed divided horizontal stackable>
                 <List.Item width={5}>
                   {post.node.lastEditedBy.node.avatar !== null && <Image avatar src={post.node.lastEditedBy.node.avatar.url} style={pageStyles.avatar} />}
@@ -109,11 +107,9 @@ const BlogDetail = ({host}) => {
                 :
                 <div style={pageStyles.description}>This blog has no content.</div>
               }
-            </Grid.Column>
             {/*<Grid.Column width={5}>
               side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar, side bar,
             </Grid.Column>*/}
-          </Grid.Row>
         </Grid>
         <br />
         <br />

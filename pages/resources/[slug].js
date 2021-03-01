@@ -32,8 +32,6 @@ const ResourceDetail = () => {
   return (
     <PageLayout title={post.node.title} format="resourceread" headerImage={HeaderImg}>
         <Grid stackable className="resource-read-screen" style={pageStyles.resourceContainer}>
-          <Grid.Row>
-            <Grid.Column width={11}>
               {post.node.resourceDetails.description !== null && post.node.resourceDetails.description !== '' ?
                 <div>
                   <div dangerouslySetInnerHTML={{ __html: post.node.resourceDetails.description }} style={pageStyles.description}/>
@@ -53,8 +51,6 @@ const ResourceDetail = () => {
                 :
                 <div style={pageStyles.description}>This resource has no content.</div>
               }
-            </Grid.Column>
-          </Grid.Row>
         </Grid>
     </PageLayout>
   );
