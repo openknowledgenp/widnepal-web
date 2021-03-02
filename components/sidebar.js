@@ -174,7 +174,7 @@ export default class Sidebar extends React.Component {
   render() {
     const selectedQuote = Quotes[Math.floor(Math.random() * Quotes.length)];
     const selectedImage = Images[Math.floor(Math.random() * Images.length)];
-    const selectedFacts = getRandom(Facts, 5)
+    const selectedFacts = getRandom(Facts, 3)
     return(
     <div
       style={{
@@ -208,7 +208,7 @@ export default class Sidebar extends React.Component {
                 <span style={{ fontWeight: 'bold', fontSize: 20, marginRight: 6, color: idx % 2 === 0 ? '#1B9EFF':'#FCCA35' }}>{fact.data}</span>
                 <span>{fact.story}</span>
                 </div>
-                <div style={{ color: '#999', float: 'right' }}><small>Source: {fact.data_source}</small></div>
+                <div style={{ color: '#999', float: 'right' }}><small>- {fact.data_source}</small></div>
                 <br/>
               </div>
             )
