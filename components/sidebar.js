@@ -42,34 +42,114 @@ const Quotes = [
 
 const Facts = [
   {
-    data: '77 cents',
-    story: 'is earned by women for every dollar that men get for the same work.',
-    data_source: 'np.undp.org',
+    data: '7.8%',
+    story: 'of researchers in Nepal are female.',
+    data_source: 'UNESCO, 2018',
   },
   {
-    data: '35%',
-    story: 'of women have experienced physical and/or sexual violence.',
-    data_source: 'np.undp.org',
+    data: '41%',
+    story: 'of countries regularly produce data on violence against women.',
+    data_source: 'UN Women, 2018',
+  },
+  {
+    data: '59.72%',
+    story: 'of the female population in Nepal are literate.',
+    data_source: 'UNESCO, 2018',
+  },
+  {
+    data: '81%',
+    story: 'of the female population in Nepal aged 15 or above are economically active.',
+    data_source: 'Nepal Labour Force Survey, 2008',
+  },
+  {
+    data: '80%',
+    story: 'of SDG indicators for gender equality are lacking data.',
+    data_source: 'UN Women, 2018',
+  },
+  {
+    data: '71%',
+    story: 'is the percentage by which Nepal decreased it’s maternal mortality rate between 1990 and 2015.',
+    data_source: 'World Health Organisation, 2018',
+  },
+  {
+    data: '23%',
+    story: 'is the global gender pay gap between women and men.',
+    data_source: 'UNDP, 2018',
+  },
+  {
+    data: '51.5%',
+    story: 'of people in Nepal are female.',
+    data_source: 'Nepal Census, 2019',
+  },
+  {
+    data: '15%',
+    story: 'of countries mandate specialized gender surveys.',
+    data_source: 'UN Women, 2018',
   },
   {
     data: '13%',
-    story: 'of agricultural landholders are women.',
-    data_source: 'np.undp.org',
+    story: 'of countries have a dedicated gender statistics budget.',
+    data_source: 'UN Women, 2018',
   },
   {
-    data: '750 million',
-    story: 'women and girls alive today were married before their 18th birthday.',
-    data_source: 'np.undp.org',
+    data: '0.3%',
+    story: 'of official development assistance is focused on data collection.',
+    data_source: 'Open Data Watch, 2018',
   },
   {
-    data: '2/3',
-    story: '(two thirds) of developing countries have achieved gender parity in primary education.',
-    data_source: 'np.undp.org',
+    data: '80%',
+    story: 'of SDG indicators for gender equality are lacking data.',
+    data_source: 'UN Women, 2018',
   },
   {
-    data: '24%',
-    story: 'of national parliamentarians were women as of November 2018, a small increase from 11.3 percent in 1995.',
-    data_source: 'np.undp.org',
+    data: '33%',
+    story: 'is the percentage of parliamentarians in Nepal who are female.',
+    data_source: 'UN Women, 2018',
+  },
+  {
+    data: '20%',
+    story: 'is the average percentage of parliamentarians in Asia who are female.',
+    data_source: 'UN Women, 2018',
+  },
+  {
+    data: '8%',
+    story: 'is the percentage that women are more likely to live in extreme poverty than men.',
+    data_source: 'UN Women, 2018',
+  },
+  {
+    data: '81%',
+    story: 'of the female population in Nepal aged 15 or above are economically active.',
+    data_source: 'Nepal Labour Force Survey, 2008',
+  },
+  {
+    data: '28.8%',
+    story: 'of researchers in the world are female.',
+    data_source: 'Unesco, 2018',
+  },
+  {
+    data: '7.8%',
+    story: 'of researchers in Nepal are female.',
+    data_source: 'Unesco, 2018',
+  },
+  {
+    data: '7.8%',
+    story: 'of researchers are  globally working in science, technology women.',
+    data_source: 'Unesco, 2015',
+  },
+  {
+    data: '16%',
+    story: 'of data scientists globally are women.',
+    data_source: 'Kaggle, 2018',
+  },
+  {
+    data: '23%',
+    story: 'is the global gender pay gap between women and men.',
+    data_source: 'UNDP, 2018',
+  },
+  {
+    data: '100 years',
+    story: 'are needed to close the gender pay gap at the current global rate of change.',
+    data_source: 'UNDP, 2018',
   },
 ]
 
@@ -94,7 +174,7 @@ export default class Sidebar extends React.Component {
   render() {
     const selectedQuote = Quotes[Math.floor(Math.random() * Quotes.length)];
     const selectedImage = Images[Math.floor(Math.random() * Images.length)];
-    const selectedFacts = getRandom(Facts, 3)
+    const selectedFacts = getRandom(Facts, 5)
     return(
     <div
       style={{
