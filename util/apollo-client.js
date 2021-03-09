@@ -7,11 +7,11 @@ import fetch from 'isomorphic-unfetch';
 // GraphQL endpoint
 const LOCAL_GRAPHQL_URL = 'http://localhost:8000/index.php?graphql';
 const STAGING_GRAPHQL_URL = 'http://wid-admin.oknp.org/index.php?graphql';
-const PRODUCTION_GRAPHQL_URL = 'https://www.womenindatanepal.com/index.php?graphql';
+const PRODUCTION_GRAPHQL_URL = 'https://admin.womenindatanepal.org/index.php?graphql';
 
 const link = createHttpLink({
   fetch, // Switches between unfetch & node-fetch for client & server.
-  uri: STAGING_GRAPHQL_URL
+  uri: PRODUCTION_GRAPHQL_URL
   // uri: LOCAL_GRAPHQL_URL
 });
 
