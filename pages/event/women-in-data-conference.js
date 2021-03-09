@@ -399,6 +399,7 @@ const pageStyles = {
   partnerImage: {maxWidth:200, height: 'auto',  border: '1px solid #eee', margin:'auto'},
   organization: {marginTop: 80, marginBottom: 80},
   participants: {
+    lineHeight: 1.4,
     paddingTop: 10,
     paddingBottom: 80,
     textAlign: 'center',
