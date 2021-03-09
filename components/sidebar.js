@@ -170,11 +170,24 @@ function getRandom(arr, n) {
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { loaded: false, selectedQuote: undefined, selectedImage: undefined, selectedFacts: undefined }
+  }
+  componentDidMount() {
+    this.setState({})
   }
   render() {
-    const selectedQuote = Quotes[Math.floor(Math.random() * Quotes.length)];
-    const selectedImage = Images[Math.floor(Math.random() * Images.length)];
-    const selectedFacts = getRandom(Facts, 3)
+    if (!this.state.loaded) {
+      this.setState({
+        loaded: true,
+        selectedQuote: Quotes[Math.floor(Math.random() * Quotes.length)],
+        selectedImage: Images[Math.floor(Math.random() * Images.length)],
+        selectedFacts: getRandom(Facts, 3)
+      })
+      this.state.selectedQuote = Quotes[Math.floor(Math.random() * Quotes.length)];
+      this.state.selectedImage = Images[Math.floor(Math.random() * Images.length)];
+      this.state.selectedFacts = getRandom(Facts, 3);
+    }
+    const {selectedQuote, selectedImage,selectedFacts} = this.state
     return(
     <div
       style={{
