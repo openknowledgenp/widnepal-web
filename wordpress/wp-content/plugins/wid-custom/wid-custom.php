@@ -37,6 +37,9 @@ require_once( 'add_event_menuitem.php' );
 require_once( 'override_event_itemname.php' );
 // Add blogs post type
 require_once( 'add_blog_menuitem.php' );
+// Add sidebar post type
+//PAUSED require_once( 'add_sidebar_item_menuitem.php' );
+//PAUSED require_once( 'override_sidebar_item_itemname.php' );
 // add local fields
 if( function_exists('acf_add_local_field_group') ):
   require_once( 'form_homepage_item.php' );
@@ -46,6 +49,7 @@ if( function_exists('acf_add_local_field_group') ):
   require_once( 'form_resource.php' );
   require_once( 'form_about_us.php' );
   require_once( 'form_user_additional_info.php' );
+  //PAUSED require_once( 'form_sidebar.php' );
   // If "media" has image uploaded, make available the "website url field"
   // require_once( 'image_website_link.php' );
 endif;

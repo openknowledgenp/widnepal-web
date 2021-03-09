@@ -181,7 +181,7 @@ export default class Sidebar extends React.Component {
         fontSize:18,
         // position: '-webkit-sticky',
         // position: 'sticky',
-        paddingTop: 30,
+        paddingTop: 80,
         top: 20,
       }}
     >
