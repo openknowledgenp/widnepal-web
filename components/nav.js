@@ -41,7 +41,7 @@ const DesktopNav = ({menuItem, activeItem, isHomePage, resultObject, errorReport
                     renderHTML(site_logo.data)
                     :
                     <div style={pageStyles.desktopLogoContainer}>
-                      <Image src={site_logo.data.mediaItemUrl} style={pageStyles.desktopLogo}/>
+                      <Image as="a" href="/home" src={site_logo.data.mediaItemUrl} style={pageStyles.desktopLogo}/>
                     </div>
                   }
                 </Menu.Item>
