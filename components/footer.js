@@ -57,7 +57,7 @@ const Footer = () => {
             </Grid.Column>
             <Grid.Column width={4}>
               <div style={pageStyles.otherLinks}>
-                <div><a href="/about/other?page=Thematic%20Areas" style={pageStyles.whiteLinks}>Thematic Areas</a></div>
+                <div><a href="/about/thematic-areas" style={pageStyles.whiteLinks}>Thematic Areas</a></div>
                 <br/>
                 <div><a href="/resources" style={pageStyles.whiteLinks}>Resources</a></div>
                 <br/>

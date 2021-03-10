@@ -39,7 +39,7 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
                     <br/>
                     <br/>
                     <br/>
-                    <Button color="yellow" href="/about/other?page=Thematic%20Areas">Thematic Areas</Button>
+                    <Button color="yellow" href="/about/thematic-areas">Thematic Areas</Button>
                   </div>
                   <br/>
                   <br/>
