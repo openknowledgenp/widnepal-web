@@ -215,14 +215,21 @@ const JoinUs = ({resultObject, errorReport}) => {
   const joinUsDescription = {data: resultObject['joinUsDescription'], errStatus: errorReport['joinUsDescriptionHasError']}
   const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return(
-    <div style={pageStyles.section}>
-      <div style={pageStyles.joinUsInfo}>
-        {renderHTML(joinUsDescription.data)}
-      </div>
-      <Button color="blue" as="a" href="/contact">
-        Get Involved
-      </Button>
-    </div>
+    <Grid stackable  style={pageStyles.section}>
+      <Grid.Row>
+        <Grid.Column width={12}>
+          <div style={pageStyles.joinUsInfo}>
+            {renderHTML(joinUsDescription.data)}
+          </div>
+        </Grid.Column>
+        <Grid.Column  width={1} />
+        <Grid.Column width={3}>
+          <Button color="blue" as="a" href="/contact">
+            Get Involved
+          </Button>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   )
 }
 
@@ -474,9 +481,6 @@ const pageStyles = {
   },
   joinUsInfo: {
     fontSize: 18,
-    float: 'left',
-    width: '70%',
-    paddingRight: 30,
-    lineHeight: 1.4,
+    lineHeight: 1.3,
   },
 }
