@@ -38,7 +38,7 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
                     <br/>
                     <br/>
                     <br/>
-                    <Button color="yellow">{HOME_HEADER_BUTON_TEXT}</Button>
+                    <Button color="yellow" href="/about/learn-about-us">{HOME_HEADER_BUTON_TEXT}</Button>
                   </div>
                 </Grid.Column>
                 <Grid.Column only='tablet computer'>
