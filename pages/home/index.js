@@ -59,8 +59,6 @@ const MemberOrganization = ({resultObject, errorReport}) => {
   const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return(
     <div style={pageStyles.section}>
-      <br/>
-      <br/>
       <Grid>
         <h2 style={{...pageStyles.title, ...pageStyles.middleTitle}}>Member Organizations</h2>
         <div style={pageStyles.middleTitleUnderline}/>
@@ -78,8 +76,6 @@ const MemberOrganization = ({resultObject, errorReport}) => {
           </Grid.Row>
         </Grid>
       }
-      <br/>
-      <br/>
     </div>
   )
 }
