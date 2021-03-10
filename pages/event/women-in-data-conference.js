@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
+import React from 'react'
 import { EVENT_WITH_SLUG } from '../../graphql/event.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
@@ -19,7 +20,8 @@ import Jamie from '../../assets/WIDC/Jamie Holton.jpg'
 import {
   Grid,
   Image,
-  Button
+  Button,
+  Popup
 } from 'semantic-ui-react';
 
 const DAY_MAP = {
@@ -104,6 +106,8 @@ const AboutEvent = () => {
 }
 
 const People = () => {
+  const [eventsEnabled, setEventsEnabled] = React.useState(true)
+  const [open, setOpen] = React.useState(false)
   return(
     <div style={pageStyles.people}>
       <div style={pageStyles.peopleDescription}>Opening Remarks</div>
@@ -157,53 +161,65 @@ const People = () => {
       <br/>
       <br/>
       <br/>
-      <div style={pageStyles.peopleDescription}>The Leadership Panel: Leveraging Data for Digital Future by GiT</div>
+      <div style={pageStyles.peopleDescription}>The Leadership Panel</div>
       <br/>
       <Grid stackable >
         <Grid.Row>
-
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
-          <Grid.Column width={12} style={pageStyles.peopleDetail}>
-            <Image src={Jyoti} style={pageStyles.peopleImage}/>
-            <div><b>Jyoti U. Devkota</b></div>
-            <div>Professor, Department of Mathematics</div>
-            <div>Kathmandu University</div>
-            <br/>
-            <div style={pageStyles.bio}>Jyoti U. Devkota, completed Bachelors (Honors) and Masters in Mathematical Statistics from Lady Shriram College, New Delhi India. She completed her PhD.  from the Department of Computer Science and Mathematics, University of Osnabrueck, Germany, with DAAD fellowship. She is a Professor in the Department of Mathematics, Kathmandu University, Nepal. She has a teaching experience of more than 25 years at this university. She has over 25 first authored publications in international peer reviewed journals. She has served as the Head of the Department of Natural Sciences, Kathmandu University from Oct. 2013 to April 2017. She has presented papers in several national and international conferences. Jyoti U Devkota has also written three books on Statistics and Data Analysis.</div>
+          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+            <Popup
+              content=<div style={pageStyles.bio}>Jyoti U. Devkota, completed Bachelors (Honors) and Masters in Mathematical Statistics from Lady Shriram College, New Delhi India. She completed her PhD.  from the Department of Computer Science and Mathematics, University of Osnabrueck, Germany, with DAAD fellowship. She is a Professor in the Department of Mathematics, Kathmandu University, Nepal. She has a teaching experience of more than 25 years at this university. She has over 25 first authored publications in international peer reviewed journals. She has served as the Head of the Department of Natural Sciences, Kathmandu University from Oct. 2013 to April 2017. She has presented papers in several national and international conferences. Jyoti U Devkota has also written three books on Statistics and Data Analysis.</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({jyoti: false})}
+              onOpen={() => setOpen({jyoti: true})}
+              open={open.jyoti}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Jyoti} style={pageStyles.peopleImage}/>
+                  <b>Jyoti U. Devkota</b>
+                  <div>Professor, Department of Mathematics</div>
+                  <div>Kathmandu University</div>
+                </div>
+              }
+            />
+          </Grid.Column>
+          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+            <Popup
+              content=<div style={pageStyles.bio}>Sumana is the managing partner of Kosi Collaborative. Kosi Collaborative (Kosi) is a technology and management consulting company that works at the intersection of data and research in South Asia, with the objective of helping clients realize the potential of their data and harness the power of data-driven decision making. She has an MBA from MIT Sloan School of Business, and Bachelors in Mathematics and Economics from Bryn Mawr College. She is a published mathematician in Topology and Geometry. Formerly, she was a consultant with the Boston Consulting Group, and financial analyst at Citigroup, NY.</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({sumana: false})}
+              onOpen={() => setOpen({sumana: true})}
+              open={open.sumana}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Sumana} style={pageStyles.peopleImage}/>
+                  <b>Sumana Shrestha</b>
+                </div>
+              }
+            />
+
+          </Grid.Column>
+          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+            <Popup
+              content=<div style={pageStyles.bio}>Jamie Holton is Project Management and Research Officer for Publish What You Fund, the global campaign for aid and development transparency. She oversees the Gender Financing Project, which aims to get a clear picture of funding towards gender equality in Kenya, Nepal and Guatemala so we can hold governments and funders to account on their gender equality commitments and understand which initiatives make societies more equal. Jamie previously worked for Save the Children, UNOCHA, the Dutch MFA and the Dutch National Rapporteur on Trafficking in Human Beings and Sexual Violence against Children. She holds an MSc in International Development & Humanitarian Emergencies from the London School of Economics, and an MA in International Relations from Leiden University in The Netherlands.</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({jamie: false})}
+              onOpen={() => setOpen({jamie: true})}
+              open={open.jamie}
+              position='left center'
+              trigger={
+                <div>
+                  <Image src={Jamie} style={pageStyles.peopleImage}/>
+                  <b>Jamie Holton</b>
+                  <div>Project Management and Research Officer</div>
+                  <div>Publish What You Fund</div>
+                </div>
+              }
+            />
           </Grid.Column>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
-          <Grid.Column width={12} style={pageStyles.peopleDetail}>
-            <br/>
-            <br/>
-            <br/>
-            <Image src={Sumana} style={pageStyles.peopleImage}/>
-            <div><b>Sumana Shrestha</b></div>
-            <br/>
-            <div style={pageStyles.bio}>Sumana is the managing partner of Kosi Collaborative. Kosi Collaborative (Kosi) is a technology and management consulting company that works at the intersection of data and research in South Asia, with the objective of helping clients realize the potential of their data and harness the power of data-driven decision making. She has an MBA from MIT Sloan School of Business, and Bachelors in Mathematics and Economics from Bryn Mawr College. She is a published mathematician in Topology and Geometry. Formerly, she was a consultant with the Boston Consulting Group, and financial analyst at Citigroup, NY.</div>
-          </Grid.Column>
-          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
-        </Grid.Row>
-
-
-        <Grid.Row>
-          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
-          <Grid.Column width={12} style={pageStyles.peopleDetail}>
-            <br/>
-            <br/>
-            <br/>
-            <Image src={Jamie} style={pageStyles.peopleImage}/>
-            <b>Jamie Holton</b>
-            <div>Project Management and Research Officer</div>
-            <div>Publish What You Fund</div>
-            <br/>
-            <div style={pageStyles.bio}>Jamie Holton is Project Management and Research Officer for Publish What You Fund, the global campaign for aid and development transparency. She oversees the Gender Financing Project, which aims to get a clear picture of funding towards gender equality in Kenya, Nepal and Guatemala so we can hold governments and funders to account on their gender equality commitments and understand which initiatives make societies more equal. Jamie previously worked for Save the Children, UNOCHA, the Dutch MFA and the Dutch National Rapporteur on Trafficking in Human Beings and Sexual Violence against Children. She holds an MSc in International Development & Humanitarian Emergencies from the London School of Economics, and an MA in International Relations from Leiden University in The Netherlands.</div>
-          </Grid.Column>
-          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
-
         </Grid.Row>
       </Grid>
       <br/>
@@ -387,7 +403,7 @@ const pageStyles = {
   categoryTitle: {borderBottom: '4px solid #252323', width: 'fit-content', margin: 'auto', paddingBottom: 10},
   people: {marginRight:'auto',marginLeft:'auto',marginTop: 50, paddingTop: 80, paddingBottom: 80, fontSize: 18},
   peopleDetail: {fontSize: 18, textAlign: 'center', lineHeight: 1.4},
-  peopleImage: {backgroundColor: 'grey', border: '1px solid #eee', margin:'auto', marginBottom: 10, maxHeight:400},
+  peopleImage: {backgroundColor: 'grey', border: '1px solid #eee', margin:'auto', marginBottom: 10, maxHeight:150},
   organizingMember: {fontSize: 18, textAlign:'center'},
   orgImage: {margin:'auto', maxHeight:200, width:'auto'},
   partnerImage: {maxWidth:200, height: 'auto',  border: '1px solid #eee', margin:'auto'},
@@ -399,7 +415,7 @@ const pageStyles = {
     textAlign: 'center',
     fontSize: 18
   },
-  bio: { fontWeight: 200 },
+  bio: { fontWeight: 300, fontSize: 18, width: '400px' },
   titleBorderRight: {
     backgroundClip: 'content-box',
     margin:'auto',
