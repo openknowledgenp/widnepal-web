@@ -53,6 +53,7 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
       <div style={pageStyles.pageContainerWrapper}>
         {format!=="conferenceread" &&
         <Container style={format === undefined ? pageStyles.pageContainer : pageStyles.formattedContainer(format)}>
+          <br/>
           <Grid stackable>
             <Grid.Row>
               <Grid.Column width={11}>

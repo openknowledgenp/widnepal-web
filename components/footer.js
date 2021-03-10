@@ -42,6 +42,8 @@ const Footer = () => {
   return(
     <div style={pageStyles.section}>
       <Container>
+        <br/>
+        <br/>
         <Grid style={pageStyles.marginZero}>
           <Grid.Row>
             <Grid.Column width={12}>
