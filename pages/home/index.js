@@ -307,7 +307,7 @@ const Home = () => {
         <MemberOrganization {...{resultObject, errorReport, bgColor: "#f7f7f7"}}/>
         <UpcomingEventCarousel {...{eventErr, selected_event, setSelectedEvent, pinnedEvents, bgColor: '#F2F2F2', bgSize: '40%'}}/>
         <PinnedBlogs {...{blogErr, pinnedBlogs, selected_blog, setSelectedBlog}}/>
-        <OtherMedia {...{resourceErr, pinnedResources}}/>
+        {/*<OtherMedia {...{resourceErr, pinnedResources}}/>*/}
         <JoinUs {...{resultObject, errorReport, bgColor: '#F7F7F7'}}/>
     </HomePageLayout>
   );
