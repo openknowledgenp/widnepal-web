@@ -27,15 +27,15 @@ const Footer = () => {
       name: 'D4D Nepal',
     },
     {
-      imageLink:DI_logo,
+      imageLink:TAF_logo,
       name: 'The Asia Foundation',
     },
     {
-      imageLink:TAF_logo,
+      imageLink:UKAID_logo,
       name: 'UK AID',
     },
     {
-      imageLink:UKAID_logo,
+      imageLink:DI_logo,
       name: 'Development Initiative',
     },
   ]

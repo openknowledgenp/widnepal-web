@@ -290,8 +290,6 @@ const Organization = () => {
             <div style={pageStyles.organizingMember}>
               <br/>
               <Image src={D4DLogo} style={pageStyles.orgImage}/>
-              <br/>
-              <b>Data for Development</b>
             </div>
           </Grid.Column>
           <Grid.Column width={12}>
@@ -307,8 +305,6 @@ const Organization = () => {
                 ].map((x, idx)=>(
                   <Grid.Column key={idx} width={4} style={pageStyles.organizingMember}>
                     <Image src={x.logo} style={pageStyles.orgImage}/>
-                    <br/>
-                    <b>{x.name}</b>
                   </Grid.Column>)
                   )
                 }
@@ -352,8 +348,6 @@ const Supporters = ({post}) => {
                 ].map((x, idx)=>(
                   <Grid.Column key={idx} width={3} style={pageStyles.organizingMember}>
                     <Image src={x.logo} style={pageStyles.orgImage}/>
-                    <br/>
-                    <b>{x.name}</b>
                   </Grid.Column>)
                   )
                 }
@@ -395,7 +389,7 @@ const pageStyles = {
   peopleDetail: {fontSize: 18, textAlign: 'center', lineHeight: 1.4},
   peopleImage: {backgroundColor: 'grey', border: '1px solid #eee', margin:'auto', marginBottom: 10, maxHeight:400},
   organizingMember: {fontSize: 18, textAlign:'center'},
-  orgImage: {border: '1px solid #eee', margin:'auto', maxHeight:200, width:'auto'},
+  orgImage: {margin:'auto', maxHeight:200, width:'auto'},
   partnerImage: {maxWidth:200, height: 'auto',  border: '1px solid #eee', margin:'auto'},
   organization: {marginTop: 80, marginBottom: 80},
   participants: {

@@ -476,6 +476,7 @@ const pageStyles = {
     fontSize: 18,
     float: 'left',
     width: '70%',
-    paddingRight: 30
+    paddingRight: 30,
+    lineHeight: 1.4,
   },
 }
