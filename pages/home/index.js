@@ -8,9 +8,11 @@ import { EVENTS, EVENTS_ERROR_MESSAGES } from '../../graphql/event.queries';
 import { RESOURCES, RESOURCES_ERROR_MESSAGES } from '../../graphql/resources.queries';
 import { BLOGS, BLOGS_ERROR_MESSAGES } from '../../graphql/blog.queries';
 import { HomePageLayout } from '../../components/homePageLayout'
-import { TwitterTimelineEmbed } from "react-twitter-embed";
 import PlaceholderImage from '../../assets/placeholder_image.jpg';
 import { Loading } from '../../components/loading'
+import { getTweets } from "../../components/networking/tweets"
+import  { useState } from 'react';
+import Tweet from 'react-tweet'
 import {
   Button,
   Container,
@@ -179,6 +181,23 @@ const PinnedBlogs = ({resultObject, errorReport, blogErr, pinnedBlogs, selected_
 }
 
 const OtherMedia = ({resultObject, errorReport, resourceErr, pinnedResources}) => {
+  const [tweets, setTweets] = useState(undefined)
+  const [loadingTweets, setLoadingTweets] = useState(false)
+
+  const getTwitterFeed = async () => {
+    setLoadingTweets(true)
+    const res = await getTweets()
+    if (res.status === 200) {
+      setTweets(res.data.statuses)
+      setLoadingTweets(false)
+    } else {
+      setTweets([])
+      setLoadingTweets(false)
+    }
+  }
+  if (tweets === undefined && loadingTweets === false) {
+    getTwitterFeed()
+  }
   return(
     <Grid divided='vertically' stackable style={pageStyles.sectionNoUpperPadding}>
       <Grid.Row columns={2}>
@@ -203,14 +222,24 @@ const OtherMedia = ({resultObject, errorReport, resourceErr, pinnedResources}) =
           </Item.Group>
         </Grid.Column>
         <Grid.Column>
-          {/*<div style={pageStyles.otherMediaTitle}>
-          Twitter
-          </div>*/}
-          <TwitterTimelineEmbed
-             sourceType="profile"
-             screenName="okfn_np"
-             options={{height: 500}}
-          />
+          <div>
+            <div style={pageStyles.otherMediaTitle}>
+              Tweets
+            </div>
+            {loadingTweets && <div>Loading Tweets . . .</div>}
+            {tweets && tweets.length === 0 && <div>Tweets are not available</div>}
+            <div style={pageStyles.tweetContainer}>
+            {tweets && tweets.length > 0 ? tweets.map((tweet)=>{
+                const linkProps = {target: '_blank', rel: 'noreferrer'}
+                return (
+                  <Tweet key={tweet.id} data={tweet} linkProps={linkProps}/>
+                )
+              })
+              :
+              <span/>
+            }
+            </div>
+          </div>
         </Grid.Column>
       </Grid.Row>
     </Grid>
@@ -320,7 +349,7 @@ const Home = () => {
         <MemberOrganization {...{resultObject, errorReport, bgColor: "#f7f7f7"}}/>
         <UpcomingEventCarousel {...{eventErr, selected_event, setSelectedEvent, pinnedEvents, bgColor: '#F2F2F2', bgSize: '40%'}}/>
         <PinnedBlogs {...{blogErr, pinnedBlogs, selected_blog, setSelectedBlog}}/>
-        {/*<OtherMedia {...{resourceErr, pinnedResources}}/>*/}
+        <OtherMedia {...{resourceErr, pinnedResources}}/>
         <JoinUs {...{resultObject, errorReport, bgColor: '#F7F7F7'}}/>
     </HomePageLayout>
   );
@@ -339,7 +368,7 @@ const pageStyles = {
   content: { fontSize: 18 },
   image: { margin: 'auto', boxShadow: '15px -15px #FCCA35', width: '70%' },
   imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
-
+tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #ddd'},
   customCarousel: {
     container: { marginTop: 100, marginBottom: 100 },
     headContainer: {

@@ -24,7 +24,12 @@ Make sure you are in the project's root directory.
 Make sure you are in the project's root directory.
 - ```npm install```
 - ```npm run dev```
-- Setup these three environment variables for email service available through contact form
+- Setup these three environment variables for email service available through contact form (in .env file)
   - `RECEIPIENT_MAIL` - Email of user who recieves the form data submitted through contact us form
   - `CONTACT_EMAIL_USER` - Email address of application which serves the email service
   - `CONTACT_EMAIL_PASSWORD` - Password for above email address which serves the email service
+- Setup these four environment variables for getting tweets at home page (in .env file)
+  - `APPLICATION_CONSUMER_KEY` - Twitter app's APPLICATION_CONSUMER_KEY
+  - `APPLICATION_CONSUMER_SECRET` - Twitter app's APPLICATION_CONSUMER_SECRET
+  - `ACCESS_TOKEN` - Twitter app's ACCESS_TOKEN
+  - `ACCESS_TOKEN_SECRET` - Twitter app's ACCESS_TOKEN_SECRET
