@@ -11,7 +11,7 @@ const PRODUCTION_GRAPHQL_URL = 'https://admin.womenindatanepal.org/index.php?gra
 
 const link = createHttpLink({
   fetch, // Switches between unfetch & node-fetch for client & server.
-  uri: PRODUCTION_GRAPHQL_URL
+  uri: LOCAL_GRAPHQL_URL
   // uri: LOCAL_GRAPHQL_URL
 });
 

@@ -146,6 +146,7 @@ function Nav({isHomePage, resultObject, errorReport}) {
       <Dropdown.Menu>
         <Menu.Item as='a' href="/about/learn-about-us" onClick={handleItemClick} style={style}>Learn About Us</Menu.Item>
         <Menu.Item as='a' href="/about/committee-member" onClick={handleItemClick} style={style}>Committee Member</Menu.Item>
+        <Menu.Item as='a' href="/about/thematic-areas" onClick={handleItemClick} style={style}>Thematic Areas</Menu.Item>
         {otherAboutUsOptions.length > 0 && otherAboutUsOptions.map(x=><Menu.Item as='a' key={x.node.about_us_page.pageTitle} href={`/about/other?page=${x.node.about_us_page.pageTitle}`} onClick={handleItemClick} style={style}>{x.node.about_us_page.pageTitle}</Menu.Item>)}
       </Dropdown.Menu>
     </Dropdown>,

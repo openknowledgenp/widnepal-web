@@ -20,6 +20,7 @@ acf_add_local_field_group(array(
 			'choices' => array(
 				'Learn About Us' => 'Learn About Us',
 				'Committee Member' => 'Committee Member',
+				'Thematic Areas' => 'Thematic Areas',
 				'Other' => 'Other',
 			),
 			'default_value' => false,
@@ -365,6 +366,13 @@ acf_add_local_field_group(array(
 						'field' => 'field_6033be18adb0c',
 						'operator' => '==',
 						'value' => 'Other',
+					),
+				),
+				array(
+					array(
+						'field' => 'field_6033be18adb0c',
+						'operator' => '==',
+						'value' => 'Thematic Areas',
 					),
 				),
 			),
