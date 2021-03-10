@@ -212,7 +212,7 @@ const People = () => {
       <br/>
       <br/>
       <br/>
-      <div style={pageStyles.peopleDescription}>Presentation: Role of Technology in STEM for Nepal by WiSTEM</div>
+      <div style={pageStyles.peopleDescription}>Presentation</div>
       <br/>
       <Grid stackable >
         <Grid.Row>

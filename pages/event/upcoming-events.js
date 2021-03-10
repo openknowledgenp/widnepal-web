@@ -34,14 +34,14 @@ const Event = () => {
             <div key={`post__${post.node.id}`} style={pageStyles.container}>
               <Grid stackable as="a" href={`/event/upcoming-events/${post.node.slug}`}>
                 <Grid.Row>
-                  {post.node.eventDetails.startTime !== null && <Grid.Column width={2}>
+                  {post.node.eventDetails.startTime !== null && <Grid.Column width={3}>
                     <div style={pageStyles.calendar(idx)}>
                       <div style={pageStyles.month}>{event_date[0][0]}</div>
                       <div style={pageStyles.date}>{event_date[1][0]}</div>
                       <div style={pageStyles.year}>{event_date[2][0]}</div>
                     </div>
                   </Grid.Column>}
-                  <Grid.Column width={14}>
+                  <Grid.Column width={13}>
                     <div style={pageStyles.heading}>{post.node.eventDetails.title}</div>
                     <Truncate lines={4} ellipsis={<span>...</span>} style={pageStyles.description}>
                       <div dangerouslySetInnerHTML={{ __html: post.node.eventDetails.description }}/>
