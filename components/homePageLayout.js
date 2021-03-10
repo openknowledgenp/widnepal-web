@@ -28,6 +28,8 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
             <Grid divided='vertically' stackable>
               <Grid.Row columns={2}>
                 <Grid.Column>
+                  <br/>
+                  <br/>
                   <div>
                     {title.errStatus ? renderHTML(title.data) : <h1 style={pageStyles.heroContainerHead}>{title.data.toUpperCase()}</h1>}
                     {content.errStatus ? renderHTML(content.data) :
@@ -40,8 +42,13 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
                     <br/>
                     <Button color="yellow" href="/about/learn-about-us">{HOME_HEADER_BUTON_TEXT}</Button>
                   </div>
+                  <br/>
+                  <br/>
+
                 </Grid.Column>
                 <Grid.Column only='tablet computer'>
+                  <br/>
+                  <br/>
                   {bannerImage.errStatus
                     ?
                     <div dangerouslySetInnerHTML={{ __html: bannerImage.data }}/>
