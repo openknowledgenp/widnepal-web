@@ -54,7 +54,7 @@ const MemberOrganization = ({resultObject, errorReport}) => {
   return(
     <div style={pageStyles.section}>
       <Grid>
-        <h2 style={{...pageStyles.title, ...pageStyles.middleTitle}}>Member Organization</h2>
+        <h2 style={{...pageStyles.title, ...pageStyles.middleTitle}}>Member Organizations</h2>
         <div style={pageStyles.middleTitleUnderline}/>
       </Grid>
       {memberOrgs.errStatus ?
