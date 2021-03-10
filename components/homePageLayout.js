@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Nav from './nav';
-import {HOME_HEADER_BUTON_TEXT} from '../assets/siteDetails';
 import GraphicsElement from './graphicsElement'
 import Footer from './footer'
 import {
@@ -40,7 +39,7 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
                     <br/>
                     <br/>
                     <br/>
-                    <Button color="yellow" href="/about/learn-about-us">{HOME_HEADER_BUTON_TEXT}</Button>
+                    <Button color="yellow" href="/about/other?page=Thematic%20Areas">Thematic Areas</Button>
                   </div>
                   <br/>
                   <br/>
