@@ -97,7 +97,7 @@ const pageStyles = {
   headerImage: {
     position: 'absolute',
     top: 0,
-    marginTop: 65
+    marginTop: 55
   },
   heroContainer: { position: 'relative', zIndex: 2, color: 'white', fontSize: 30, margin: 30, fontWeight: '600' },
   formattedHead: (format) => {
@@ -106,9 +106,10 @@ const pageStyles = {
         position: 'relative',
         zIndex: 2,
         color: 'white',
-        fontSize: 26,
+        fontSize: 30,
         fontWeight: '600',
         margin: 30,
+        marginTop: 40,
         lineHeight: 1.3,
       })
     }
