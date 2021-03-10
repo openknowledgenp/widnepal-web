@@ -64,7 +64,7 @@ const pageStyles={
   heading: {fontSize: 20, fontWeight: 'bold', marginBottom: 15, color: '#000'},
   calendar: (idx)=>{
     return(
-      {backgroundColor: idx%2!==0? '#1B9EFF':'#FCCA35', width:'100%', height:120, textAlign: 'center',padding:20, color: 'white'}
+      {backgroundColor: idx%2!==0? '#1B9EFF':'#FCCA35', width:'100%', minWidth: 100, height:120, textAlign: 'center',padding:20, color: 'white'}
     )
   },
   month:{fontSize: 12, fontWeight: 'bold'},
