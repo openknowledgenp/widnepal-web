@@ -29,14 +29,20 @@ const AboutSection = ({resultObject, errorReport}) => {
     <Grid.Row columns={2}>
       <Grid.Column>
         <div style={pageStyles.content}>
+          <br/>
           <h2 style={pageStyles.title}>About Us</h2>
           <br/>
           <div style={pageStyles.heroContainerDescription}>
             {renderHTML(content.data)}
           </div>
+          <br/>
+          <br/>
+          <br/>
         </div>
       </Grid.Column>
       <Grid.Column only='tablet computer' style={pageStyles.imageWrapper}>
+        <br/>
+        <br/>
         {bannerImage.errStatus
           ?
           renderHTML(bannerImage.data)
@@ -53,6 +59,8 @@ const MemberOrganization = ({resultObject, errorReport}) => {
   const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
   return(
     <div style={pageStyles.section}>
+      <br/>
+      <br/>
       <Grid>
         <h2 style={{...pageStyles.title, ...pageStyles.middleTitle}}>Member Organizations</h2>
         <div style={pageStyles.middleTitleUnderline}/>
@@ -70,6 +78,8 @@ const MemberOrganization = ({resultObject, errorReport}) => {
           </Grid.Row>
         </Grid>
       }
+      <br/>
+      <br/>
     </div>
   )
 }
@@ -324,7 +334,7 @@ export default Home;
 
 const pageStyles = {
   section: { paddingTop: 80, paddingBottom: 80 },
-  sectionNoUpperPadding: { paddingBottom: 80, clear: 'both' },
+  sectionNoUpperPadding: { paddingBottom: 100, clear: 'both' },
   title: { fontSize: 26, color: '#403E3E' },
   middleTitle: {width: '100%', textAlign: 'center'},
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
@@ -335,7 +345,7 @@ const pageStyles = {
   imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
 
   customCarousel: {
-    container: { marginTop: 70, marginBottom: 50 },
+    container: { marginTop: 100, marginBottom: 100 },
     headContainer: {
       backgroundColor: '#F2F2F2',
       height: 150,
