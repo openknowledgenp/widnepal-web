@@ -314,24 +314,6 @@ const Home = () => {
     resourceErr = RESOURCES_ERROR_MESSAGES.error
   }
 
-  var Twitter = require('twitter');
-
-  var client = new Twitter({
-    consumer_key: '64M9rK4emRqJXJj0xxj0BK0pn',
-    consumer_secret: 'RHX3klkalgCeeSt9belBLnaJKF3P0LT8EPuTIuLQRVB90EBeUK',
-    access_token_key: '1075997910-uKjUPIBOFpZ3ck4b9BUbCY3jOMmrXqfM0NilK49',
-    access_token_secret: 'ErT9IuMNWLsiF1Zdrv6Yn1NFZF4Nc6yJ6zXbOsAEtrTsO'
-  });
-
-  var params = {screen_name: 'nodejs'};
-
-  client.get('statuses/user_timeline', params, function(error, tweets, response) {
-    console.log(error, tweets, response);
-    if (!error) {
-      console.log(tweets);
-    }
-  });
-
   return (
     <HomePageLayout {...{resultObject, errorReport}}>
         <AboutSection {...{resultObject, errorReport, bgColor: 'white'}}/>
