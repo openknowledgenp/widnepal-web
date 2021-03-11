@@ -32,7 +32,7 @@ Make sure you are in the project's root directory.
   - `CONTACT_EMAIL_USER` - Email address of application which serves the email service
   - `CONTACT_EMAIL_PASSWORD` - Password for above email address which serves the email service
 - Setup these four environment variables for getting tweets at home page (in .env file)
-  - `APPLICATION_CONSUMER_KEY` - Twitter app's APPLICATION_CONSUMER_KEY
-  - `APPLICATION_CONSUMER_SECRET` - Twitter app's APPLICATION_CONSUMER_SECRET
-  - `ACCESS_TOKEN` - Twitter app's ACCESS_TOKEN
-  - `ACCESS_TOKEN_SECRET` - Twitter app's ACCESS_TOKEN_SECRET
+  - `APPLICATION_CONSUMER_KEY` - Twitter app's "API key"
+  - `APPLICATION_CONSUMER_SECRET` - Twitter app's "API secret key"
+  - `ACCESS_TOKEN` - Twitter app's "Access token"
+  - `ACCESS_TOKEN_SECRET` - Twitter app's "Access token secret"
