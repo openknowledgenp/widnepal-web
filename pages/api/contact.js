@@ -47,11 +47,21 @@ export default async (req, res) => {
 
 const mailer = ({ email, full_name, text, recipientMail, subject }) => {
     const from = full_name && email ? `${full_name} <${email}>` : `${full_name || email}`
+    const html_text = `
+      <div style="font-size:16px">
+        <div style="padding: 5px; background-color: #1d6daa; color: white; font-size: 18px"><b>This email is received from womenindatanepal website's contact form.</b></div>
+        <div style="margin-top: 20px"><b>Sent By:</b> ${full_name}</div>
+        <div><b>User Email:</b> ${email}</div>
+        <div><b>Subject:</b> ${subject}</div>
+        <div style="margin-bottom: 20px"><b>Message:</b> ${text}</div>
+        <b>You may reply to this user's email by replying this email.</b>
+      <div>
+    `
     const message = {
-        from,
+        from: process.env.CONTACT_EMAIL_USER,
         to: `${recipientMail}`,
-        subject: `[WIDN] Subject: ${subject === '' ? 'No Subject' : subject}`,
-        text,
+        subject: `[WIDN] Contact Us Message`,
+        html: html_text,
         replyTo: from
     }
 
