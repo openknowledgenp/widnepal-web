@@ -1,7 +1,7 @@
 # 🌍 womenindatanepal website
 [![MIT license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat)](https://github.com/okfnepal/widnepal-web/blob/master/LICENSE)
 
-Website for the steering committee of "women in data nepal"
+Web application for the steering committee of "women in data nepal"
 
 ### Project powered with:
 [WordPress](https://wordpress.com/) | [NextJS](https://nextjs.org/) | [GraphQL](https://graphql.org/)
