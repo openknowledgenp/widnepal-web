@@ -5,6 +5,7 @@ Website for the steering committee of "women in data nepal"
 
 ### Project powered with:
 [WordPress](https://wordpress.com/) | [NextJS](https://nextjs.org/) | [GraphQL](https://graphql.org/)
+
 This project uses WordPress as CMS only, GraphQL to access APIs and NextJS for rendering the website.
 
 ## Clone this project
