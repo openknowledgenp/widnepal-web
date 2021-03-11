@@ -18,7 +18,7 @@ Make sure you are in the project's root directory.
 - Setup the WordPress Dashboard by providing name of site, username, password and other information.
 - Setup the timezone - `Settings > General > Timezone` (Important for blog section)
 - Setup profile with First Name, Last Name, Profile Picture and Organizational Association - `User > Profile > (Additional Info, About Yourself and Additional Info)` (Important for blog section)
-- You need to activate following  plugins "WP GraphQL", "WPGraphQL for Advanced Custom Fields", "Advanced custom fields" and "WID Custom Plugin" then activate all plugins. (You can manage plugins from `/wordpress/wp-content/plugins`.)
+- You need to activate following plugins: "WP GraphQL", "WPGraphQL for Advanced Custom Fields", "Advanced custom fields" and "WID Custom Plugin". (You can manage plugins from `/wordpress/wp-content/plugins`.)
 
 ## Setup NextJS Frontend
 Make sure you are in the project's root directory.
