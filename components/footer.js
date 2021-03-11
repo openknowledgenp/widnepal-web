@@ -12,7 +12,7 @@ import UKAID_logo from '../assets/footer/ukaid.png'
 
 const pageStyles = {
   section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: 18, position: 'relative',  },
-  license: { borderTop: '1px solid white', paddingTop: 10, marginTop: 10, width: '100%', clear: 'both', fontSize: 18 },
+  license: { borderTop: '1px solid white', paddingTop: 10, marginTop: 10, width: '100%', clear: 'both', fontSize: 16 },
   supportedBy: {paddingBottom: 20, fontSize: 18 },
   otherLinks: {paddingBottom: 20, fontSize: 18 },
   marginZero: {margin:0},

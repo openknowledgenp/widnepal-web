@@ -56,9 +56,20 @@ const AboutSection = ({resultObject, errorReport}) => {
   </Grid>
 )}
 
+const getSortIndices = (test) => {
+  var len = test.length;
+  var indices = new Array(len);
+  for (var i = 0; i < len; ++i) indices[i] = i;
+  indices.sort(function (a, b) { return test[a] < test[b] ? -1 : test[a] > test[b] ? 1 : 0; });
+  return indices
+}
+
 const MemberOrganization = ({resultObject, errorReport}) => {
   const memberOrgs = {data: resultObject['addMemberOrganizations'], errStatus: errorReport['addMemberOrganizationsHasError']}
   const renderHTML = (data) => <div dangerouslySetInnerHTML={{ __html: data }}/>
+
+  const indices = getSortIndices(memberOrgs.data.map(item=>item.name))
+
   return(
     <div style={pageStyles.section}>
       <Grid>
@@ -70,11 +81,13 @@ const MemberOrganization = ({resultObject, errorReport}) => {
         :
         <Grid divided='vertically' stackable style={pageStyles.memberOrganization}>
           <Grid.Row columns={memberOrgs.length}>
-            {memberOrgs.data.map(memberOrg=>{return(
-              <a href={memberOrg.websiteUrl} key={memberOrg.name} style={pageStyles.imageLink}>
-                <Image src={memberOrg.logo.mediaItemUrl} style={pageStyles.memberOrgImage} />
-              </a>
-            )})}
+            {memberOrgs.data.map((x,idx)=>{
+              const position = indices.indexOf(idx);
+              return(
+                <a href={memberOrgs.data[position].websiteUrl} key={memberOrgs.data[position].name} style={pageStyles.imageLink}>
+                  <Image src={memberOrgs.data[position].logo.mediaItemUrl} style={pageStyles.memberOrgImage} />
+                </a>
+              )})}
           </Grid.Row>
         </Grid>
       }
