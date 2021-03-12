@@ -11,13 +11,14 @@ import TAF_logo from '../assets/footer/taf.png'
 import UKAID_logo from '../assets/footer/ukaid.png'
 
 const pageStyles = {
-  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: 18, position: 'relative',  },
-  license: { borderTop: '1px solid white', paddingTop: 10, marginTop: 10, width: '100%', clear: 'both', fontSize: 16 },
-  supportedBy: {paddingBottom: 20, fontSize: 18 },
-  otherLinks: {paddingBottom: 20, fontSize: 18 },
+  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: 17, position: 'relative',  },
+  license: { borderTop: '1px solid white', padding: '10px 0 0 0', marginTop: 10, width: '100%', clear: 'both', fontSize: 16 },
+  supportedBy: {paddingBottom: 10, fontSize: 17 },
+  otherLinks: {padding: 20, fontSize: 16 },
   marginZero: {margin:0},
   whiteLinks: {color:'white'},
-  memberOrgImage: {maxWidth: '200px', maxHeight: '80px', padding: 10, backgroundColor: 'white'},
+  suportList: { margin: 0},
+  memberOrgImage: {maxWidth: 'auto', maxHeight: '80px', padding: 15, backgroundColor: 'white'},
 }
 
 const Footer = () => {
@@ -42,13 +43,11 @@ const Footer = () => {
   return(
     <div style={pageStyles.section}>
       <Container>
-        <br/>
-        <br/>
         <Grid style={pageStyles.marginZero}>
           <Grid.Row>
-            <Grid.Column width={12}>
+            <Grid.Column width={12} style= {{ padding : 0}}>
               <div style={pageStyles.supportedBy}>Supported By:</div>
-                <Grid divided='vertically' stackable>
+              <Grid divided='vertically' stackable style={{ margin: 0}}>
                   <Grid.Row columns={memberOrgs.length} style={pageStyles.suportList}>
                     {memberOrgs.map(memberOrg=>{return(
                         <Image src={memberOrg.imageLink} key={memberOrg.name} style={pageStyles.memberOrgImage} />
@@ -59,18 +58,13 @@ const Footer = () => {
             </Grid.Column>
             <Grid.Column width={4}>
               <div style={pageStyles.otherLinks}>
-                <div><a href="/about/thematic-areas" style={pageStyles.whiteLinks}>Thematic Areas</a></div>
-                <br/>
-                <div><a href="/resources" style={pageStyles.whiteLinks}>Resources</a></div>
-                <br/>
-                <div><a href="/blog" style={pageStyles.whiteLinks}>Blog</a></div>
-                <br/>
-                <div><a href="/event/upcoming-events" style={pageStyles.whiteLinks}>Upcoming Events</a></div>
+                <p style={{paddingBottom: '2px',  margin: '0'}}><a href="/about/thematic-areas" style={pageStyles.whiteLinks}>Thematic Areas</a></p>
+                <p style={{ paddingBottom: '2px', margin: '0'}}><a href="/resources" style={pageStyles.whiteLinks}>Resources</a></p>
+                <p style={{ paddingBottom: '2px', margin: '0' }}><a href="/blog" style={pageStyles.whiteLinks}>Blog</a></p>
+                <p style={{ paddingBottom: '2px', margin: '0' }}><a href="/event/upcoming-events" style={pageStyles.whiteLinks}>Upcoming Events</a></p>
               </div>
             </Grid.Column>
           </Grid.Row>
-          <br/>
-          <br/>
             <div style={pageStyles.license}>
               Content on this site is licensed under a <a target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/" >Creative Commons Attribution-ShareAlike 4.0 International License</a>. <a target="_blank" href="https://github.com/okfnepal/widnepal-web">Source code</a> available under the MIT license. Developed and managed by <a target="_blank" href="http://oknp.org/">Open Knowledge Nepal</a>.
             </div>

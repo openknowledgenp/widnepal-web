@@ -212,14 +212,15 @@ const pageStyles = {
   navMenu: (isHomePage) => ({
     margin: 'auto',
     color: isHomePage ? 'white' : '#333',
-    fontWeight: 'bold',
+    fontWeight: '400',
+    fontSize: '16px'
   }),
   desktopNavWrapper: (fixed, isHomePage) => ({
     backgroundColor: (!fixed && !isHomePage && 'white'),
   }),
   desktopNavMenu: (fixed, isHomePage) => ({
     backgroundColor: (!fixed && 'none'),
-    borderBottom: isHomePage ? '3px solid white' : 'none'
+    borderBottom: isHomePage ? '1px solid white' : 'none'
   }),
   sidebar: { backgroundColor: '#229EFD' }
 }

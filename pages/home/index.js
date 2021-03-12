@@ -29,17 +29,12 @@ const AboutSection = ({resultObject, errorReport}) => {
   return(
   <Grid divided='vertically' stackable style={pageStyles.section}>
     <Grid.Row columns={2}>
-      <Grid.Column>
+      <Grid.Column style={{ display: 'flex', margin: 'auto'}}>
         <div style={pageStyles.content}>
-          <br/>
           <h2 style={pageStyles.title}>About Us</h2>
-          <br/>
           <div style={pageStyles.heroContainerDescription}>
             {renderHTML(content.data)}
           </div>
-          <br/>
-          <br/>
-          <br/>
         </div>
       </Grid.Column>
       <Grid.Column only='tablet computer' style={pageStyles.imageWrapper}>
@@ -131,11 +126,8 @@ const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvent
                 </Truncate>
               </div>
               <div style={pageStyles.customCarousel.description}>
-                <Truncate lines={2} ellipsis={<span style={{ fontWeight: 'bold' }}>... Read More</span>}>
+                <Truncate lines={2} ellipsis={<span>... <span style={{ color: 'rgb(27, 158, 255)', textDecoration: 'underline'}}>Read more</span></span> }>
                   <span dangerouslySetInnerHTML={{ __html: pinnedEvents[selected_event].node.eventDetails.description }}/>
-                  <span style={{ fontWeight: 'bold' }}>
-                  ... Read More
-                  </span>
                 </Truncate>
               </div>
             </div>
@@ -272,7 +264,9 @@ const JoinUs = ({resultObject, errorReport}) => {
         </Grid.Column>
         <Grid.Column  width={1} />
         <Grid.Column width={3}>
-          <Button color="blue" as="a" href="/contact">
+          <Button style={{ 
+            backgroundColor: "rgb(27, 158, 255)", color: '#fff', 
+            padding: '10px 40px', fontSize: '17px', fontWeight: 600}} as="a" href="/contact">
             Get Involved
           </Button>
         </Grid.Column>
@@ -378,10 +372,10 @@ const pageStyles = {
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
   memberOrgImage: {maxWidth: '200px', maxHeight: '100px', padding: 1},
   imageLink: { margin: 'auto'},
-  content: { fontSize: 18 },
+  content: { fontSize: "16px" },
   image: { margin: 'auto', boxShadow: '15px -15px #FCCA35', width: '70%' },
   imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
-tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #ddd'},
+  tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #ddd'},
   customCarousel: {
     container: { marginTop: 100, marginBottom: 100 },
     headContainer: {
@@ -405,7 +399,8 @@ tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #dd
       fontWeight: 'bold',
       fontSize: 26,
       marginTop: -10,
-      paddingBottom: 0
+      paddingBottom: 0,
+      color: '#403e3e'
     },
     calendar: {
       backgroundColor: '#1B9EFF',
@@ -416,7 +411,11 @@ tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #dd
       padding: 15,
       paddingBottom: 8,
       marginRight: 20,
-      minHeight: 50
+      minHeight: 50,
+      alignItems: 'center',
+      textAlign: 'center',
+      fontWeight: 200,
+      WebkitTransform: 'scale(1,1.1)'
     },
     date: {
       color: 'white',
@@ -431,11 +430,11 @@ tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #dd
     },
     title: {
       color: '#1B9EFF',
-      fontWeight: 'bold',
+      fontWeight: '600',
       fontSize: 20,
     },
     description: {
-      fontSize: 18,
+      fontSize: "17px",
       paddingTop: 10,
       overflow: 'hidden',
       color: '#403E3E',
@@ -473,23 +472,25 @@ tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #dd
     backgroundColor: '#1B9EFF'
   })},
   inTheSpot: {
-    fontSize: 14,
+    fontSize: 16,
+    paddingBottom: '5px'
   },
   contentTitle: {
     fontSize: 30,
     lineHeight: 1,
-    fontWeignt: 'bold',
+    fontWeight: '600',
     width: '80%',
   },
   mainContent: {
     paddingTop: 10,
-    fontSize: 18,
+    fontSize: 17,
     height: '260px',
     overflowY: 'auto',
     lineHeight: 1.45
   },
   blogReadMore: {
-    fontSize: 16,
+    color: 'rgb(27, 158, 255)',
+    fontSize: 17,
     position:'absolute',
     bottom: 15,
     borderTop: '1px solid black',
@@ -497,13 +498,14 @@ tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #dd
     paddingTop: 5,
   },
   blogReadMoreBtn: {
+    color: 'rgb(27, 158, 255)',
     backgroundColor: 'rgba(0,0,0,0)',
+    textDecoration: 'underline',
     margin: 0,
     paddingLeft: 0,
     paddingTop: 5,
     paddingBottom: 0,
     border: 'none',
-    color: 'black',
     float: 'left',
   },
   detailCarousel: {
@@ -522,13 +524,15 @@ tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #dd
     borderBottom: '1px solid #ddd'
   },
   usefulResourceHead: {
-    fontSize: 20,
+    fontSize: 17,
+    color: 'rgb(27, 158, 255)',
+    textDecoration:'underline'
   },
   usefulResourceDescription: {
-    fontSize: 18,
+    fontSize: 17,
   },
   joinUsInfo: {
-    fontSize: 18,
+    fontSize: 17,
     lineHeight: 1.3,
   },
 }
