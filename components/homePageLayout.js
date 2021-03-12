@@ -27,27 +27,17 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
             <Grid divided='vertically' stackable>
               <Grid.Row columns={2}>
                 <Grid.Column>
-                  <br/>
-                  <br/>
                   <div>
                     {title.errStatus ? renderHTML(title.data) : <h1 style={pageStyles.heroContainerHead}>{title.data.toUpperCase()}</h1>}
                     {content.errStatus ? renderHTML(content.data) :
                       <div style={pageStyles.heroContainerDescription}>
                         <div dangerouslySetInnerHTML={{ __html: content.data }}/>
-                      </div>
+                       </div>
                     }
-                    <br/>
-                    <br/>
-                    <br/>
-                    <Button color="yellow" href="/about/thematic-areas">Thematic Areas</Button>
+                  <Button style={{ cursor: "pointer" }} color="yellow" href="/about/thematic-areas">Thematic Areas</Button>
                   </div>
-                  <br/>
-                  <br/>
-
                 </Grid.Column>
                 <Grid.Column only='tablet computer'>
-                  <br/>
-                  <br/>
                   {bannerImage.errStatus
                     ?
                     <div dangerouslySetInnerHTML={{ __html: bannerImage.data }}/>
@@ -104,8 +94,8 @@ const pageStyles = {
       background: `linear-gradient(90deg, ${background_color} 0%, ${background_color} ${bgSize}, white ${bgSize}, white 100%)`,
     }
   );},
-  heroContainer: { position: 'relative', zIndex: 2, paddingTop: 50, paddingBottom: 50 },
-  heroContainerHead: { color: 'white', fontSize: '30px', fontWeight: 'bold' },
-  heroContainerDescription: { color: 'white', fontSize: '18px', fontWeight: 300, paddingTop: '15px' },
-  headerImage: {margin: 'auto', maxHeight: 280, width: 'auto', textAlign: 'center'}
+  heroContainer: { position: 'relative', zIndex: 2, paddingTop: 90, paddingBottom: 100 },
+  heroContainerHead: { color: 'white', fontSize: '30px', fontWeight: '600' },
+  heroContainerDescription: { color: 'white', fontSize: '17px', fontWeight: '400', paddingTop: '15px', marginBottom: '30px' },
+  headerImage: {margin: 'auto', maxHeight: 240, width: 'auto', textAlign: 'center'}
 }
