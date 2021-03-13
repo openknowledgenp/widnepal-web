@@ -46,6 +46,6 @@ export default ProjectDetail;
 
 
 const pageStyles = {
-  description: {fontSize: 18, paddingTop:20, marginTop: 15},
+  description: {fontSize: 17, paddingTop:20, marginTop: 15},
   projectContainer: {paddingBottom: 80},
 }

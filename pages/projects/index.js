@@ -66,5 +66,5 @@ const pageStyles = {
   item: { borderBottom: '1px solid #0f46641f', paddingBottom: 30, paddingTop: 20 },
   content: {},
   header: {fontSize: 20},
-  description: {fontSize: 16},
+  description: {fontSize: 17},
 }

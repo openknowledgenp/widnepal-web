@@ -190,39 +190,25 @@ export default class Sidebar extends React.Component {
     const {selectedQuote, selectedImage,selectedFacts} = this.state
     return(
     <div
-      style={{
-        fontSize:18,
-        // position: '-webkit-sticky',
-        // position: 'sticky',
-        paddingLeft: 30,
-        paddingTop: 80,
-        top: 20,
-      }}
+      style={pageStyles.mainContainer}
     >
-        <div style={{
-          backgroundImage: `url('${selectedImage}')`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          width: '100%',
-          fontSize: 18,
-          marginBottom: 20
-        }}>
-          <div style={{ backgroundColor: 'rgba(0,0,0,0.5)', minHeight: 100, height: '100%', width: '100%', color: 'white', fontWeight: 'bold', padding: 50 }}>
+        <div style={pageStyles.quoteContainer(selectedImage)}>
+          <div style={pageStyles.quote}>
             <div>{`"${selectedQuote.quote}"`}</div>
             <br/>
             <div>{`- ${selectedQuote.by}`}</div>
           </div>
         </div>
         <Image src={QuickFacts}/>
-        <div style={{ paddingTop: 10 }}>
+        <div style={pageStyles.factContainer}>
           {selectedFacts.map((fact, idx)=>{
             return(
-              <div key={idx} style={{ paddingBottom: 10, paddingTop: 10 }}>
+              <div key={idx} style={pageStyles.fact}>
                 <div>
-                <span style={{ fontWeight: 'bold', fontSize: 20, marginRight: 6, color: idx % 2 === 0 ? '#1B9EFF':'#FCCA35' }}>{fact.data}</span>
+                <span style={pageStyles.factData(idx)}>{fact.data}</span>
                 <span>{fact.story}</span>
                 </div>
-                <div style={{ color: '#999', float: 'right' }}><small>- {fact.data_source}</small></div>
+                <div style={pageStyles.dataSource}><small>- {fact.data_source}</small></div>
                 <br/>
               </div>
             )
@@ -231,4 +217,28 @@ export default class Sidebar extends React.Component {
     </div>
     )
   }
+}
+
+const pageStyles = {
+  mainContainer: {
+    fontSize: 17,
+    // position: '-webkit-sticky',
+    // position: 'sticky',
+    paddingLeft: 30,
+    paddingTop: 80,
+    top: 20,
+  },
+  quoteContainer: (selectedImage)=>{return {
+    backgroundImage: `url('${selectedImage}')`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    width: '100%',
+    fontSize: 17,
+    marginBottom: 20
+  }},
+  quote: { backgroundColor: 'rgba(0,0,0,0.5)', minHeight: 100, height: '100%', width: '100%', color: 'white', fontWeight: 'bold', padding: 50 },
+  factContainer: { paddingTop: 10 },
+  fact: { paddingBottom: 10, paddingTop: 10 },
+  factData: (idx) => {return { fontWeight: 'bold', fontSize: 20, marginRight: 6, color: idx % 2 === 0 ? '#1B9EFF':'#FCCA35' }},
+  dataSource: { color: '#999', float: 'right' },
 }

@@ -396,15 +396,15 @@ export default EventDetail;
 
 const pageStyles = {
   conferenceHero: {textAlign: 'center', padding: 50},
-  description: {fontSize: 18, paddingTop:20, marginTop: 15, textAlign: 'center', lineHeight:1.4},
+  description: {fontSize: 17, paddingTop:20, marginTop: 15, textAlign: 'center', lineHeight:1.4},
   subtitle: {fontWeight: 'bold', fontSize: 26, marginTop: 40, textAlign: 'center'},
   peopleDescription: {fontWeight: 'bold', fontSize: 24, marginBottom: 40, textAlign: 'center'},
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '100px', marginRight: 'auto', marginLeft: 'auto', marginTop: 15 },
   categoryTitle: {borderBottom: '4px solid #252323', width: 'fit-content', margin: 'auto', paddingBottom: 10},
-  people: {marginRight:'auto',marginLeft:'auto',marginTop: 50, paddingTop: 80, paddingBottom: 80, fontSize: 18},
-  peopleDetail: {fontSize: 18, textAlign: 'center', lineHeight: 1.4},
+  people: {marginRight:'auto',marginLeft:'auto',marginTop: 50, paddingTop: 80, paddingBottom: 80, fontSize: 17},
+  peopleDetail: {fontSize: 17, textAlign: 'center', lineHeight: 1.4},
   peopleImage: {backgroundColor: 'grey', border: '1px solid #eee', margin:'auto', marginBottom: 10, maxHeight:150},
-  organizingMember: {fontSize: 18, textAlign:'center'},
+  organizingMember: {fontSize: 17, textAlign:'center'},
   orgImage: {margin:'auto', maxHeight:200, width:'auto'},
   partnerImage: {maxWidth:200, height: 'auto',  border: '1px solid #eee', margin:'auto'},
   organization: {marginTop: 80, marginBottom: 80},
@@ -413,9 +413,9 @@ const pageStyles = {
     paddingTop: 10,
     paddingBottom: 80,
     textAlign: 'center',
-    fontSize: 18
+    fontSize: 17
   },
-  bio: { fontWeight: 300, fontSize: 18, width: '400px' },
+  bio: { fontWeight: 300, fontSize: 17, width: '400px' },
   titleBorderRight: {
     backgroundClip: 'content-box',
     margin:'auto',

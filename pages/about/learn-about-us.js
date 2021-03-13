@@ -29,5 +29,5 @@ const About = () => {
 export default About;
 
 const pageStyles = {
-  aboutUs: {fontSize: 18, paddingTop: 40, paddingBottom: 40}
+  aboutUs: {fontSize: 17, paddingTop: 40, paddingBottom: 40}
 }

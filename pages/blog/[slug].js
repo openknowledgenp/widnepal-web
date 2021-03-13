@@ -136,8 +136,8 @@ export default BlogDetail;
 
 const pageStyles = {
   postDate: { padding: 20 },
-  authorName: {fontSize: 18, paddingRight: 20},
+  authorName: {fontSize: 17, paddingRight: 20},
   avatar: {border: '2px solid #FCCA35', marginTop: 0, paddingTop: 0, height: 40, width: 40, marginRight: 10},
-  description: {fontSize: 18, borderTop: '1px solid #0A0A0A',paddingTop:20, marginTop: 15},
+  description: {fontSize: 17, borderTop: '1px solid #0A0A0A',paddingTop:20, marginTop: 15},
   socialMedia: {position: 'absolute', float: 'right', right: 0, paddingRight: 20}
 }

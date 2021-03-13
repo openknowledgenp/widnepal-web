@@ -64,6 +64,6 @@ export default EventDetail;
 
 
 const pageStyles = {
-  description: {fontSize: 18, paddingTop:20, marginTop: 15},
+  description: {fontSize: 17, paddingTop:20, marginTop: 15},
   eventContainer: {paddingBottom: 80},
 }

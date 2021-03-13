@@ -264,9 +264,7 @@ const JoinUs = ({resultObject, errorReport}) => {
         </Grid.Column>
         <Grid.Column  width={1} />
         <Grid.Column width={3}>
-          <Button style={{ 
-            backgroundColor: "rgb(27, 158, 255)", color: '#fff', 
-            padding: '10px 40px', fontSize: '17px', fontWeight: 600}} as="a" href="/contact">
+          <Button style={pageStyles.joinUsBtn} as="a" href="/contact">
             Get Involved
           </Button>
         </Grid.Column>
@@ -535,4 +533,8 @@ const pageStyles = {
     fontSize: 17,
     lineHeight: 1.3,
   },
+  joinUsBtn: {
+    backgroundColor: "rgb(27, 158, 255)", color: '#fff',
+    padding: '10px 40px', fontSize: '17px', fontWeight: 600
+  }
 }

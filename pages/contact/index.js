@@ -100,6 +100,6 @@ const pageStyles = {
   formContainer: {
     marginTop: 50,
     marginBottom: 50,
-    fontSize: 16
+    fontSize: 17
   }
 }

@@ -61,6 +61,6 @@ export default ResourceDetail;
 
 
 const pageStyles = {
-  description: {fontSize: 18, paddingTop:20, marginTop: 15},
+  description: {fontSize: 17, paddingTop:20, marginTop: 15},
   resourceContainer: {paddingBottom: 80},
 }
