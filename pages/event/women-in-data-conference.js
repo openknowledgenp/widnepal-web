@@ -256,7 +256,7 @@ const People = () => {
       <br/>
       <br/>
       <br/>
-      <div style={pageStyles.peopleDescription}>Panel Discussion: Women in Tech and Data for Problem Solving by WLiT</div>
+      <div style={pageStyles.peopleDescription}>Panel Discussion</div>
       <br/>
       <Grid stackable >
         <Grid.Row>
