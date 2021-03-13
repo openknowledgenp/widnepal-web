@@ -17,6 +17,9 @@ import DevelopmentInitiativeLogo from '../../assets/WIDC/Development_Initiatives
 import Jyoti from '../../assets/WIDC/Jyoti Upadhyaya.jpg'
 import Sumana from '../../assets/WIDC/Sumana Shrestha.jpg'
 import Jamie from '../../assets/WIDC/Jamie Holton.jpg'
+import Aradhana from '../../assets/WIDC/aradhana.jpg'
+import Princi from '../../assets/WIDC/Princi.jpeg'
+import Rumee from '../../assets/WIDC/rumee.png'
 import {
   Grid,
   Image,
@@ -259,15 +262,15 @@ const People = () => {
         <Grid.Row>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
+            <Image src={Rumee} style={pageStyles.peopleImage}/>
             <b>Rumee Singh</b>
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
+            <Image src={Princi} style={pageStyles.peopleImage}/>
             <b>Princi Koirala</b>
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
+            <Image src={Aradhana} style={pageStyles.peopleImage}/>
             <b>Aradhana Gurung</b>
           </Grid.Column>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
