@@ -199,6 +199,8 @@ const People = () => {
                 <div>
                   <Image src={Sumana} style={pageStyles.peopleImage}/>
                   <b>Sumana Shrestha</b>
+                  <div>Managing Partner</div>
+                  <div>Kosi Collaborative</div>
                 </div>
               }
             />
@@ -262,16 +264,61 @@ const People = () => {
         <Grid.Row>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src={Rumee} style={pageStyles.peopleImage}/>
-            <b>Rumee Singh</b>
+            <Popup
+              content=<div style={pageStyles.bio}>Rumee intertwines her love for frontier technology and her passion in communication to focus on social impact. As Rumsan Group’s co-founder, she has launched several initiatives including Hamro LifeBank, a data-informed approach to cut out the stress involved in finding and managing blood for patients; and Katha4Nepal, an online community-driven platform for children to learn through empowering stories during the pandemic. Rumee and her team have also been actively pushing the concept of blockchain technology. She leads the project “Rahat” - a concept of streamlining aid distribution with blockchain. Rumee has over 15 years of experience in leading production teams in the U.S. and has successfully managed educational programs including financial literacy programs featuring Warren Buffett and STEM programs for Intel & Disney. She worked with PepsiCo in the global communication team at New York and led sector PepsiCo consumer relations in Dubai before moving back to Nepal. In January 2021, The Kathmandu Post featured her as one of ten women making a difference with technology in Nepal. She was also listed in the Annual 100 people to watch by Business360.</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({rumee: false})}
+              onOpen={() => setOpen({rumee: true})}
+              open={open.rumee}
+              position='left center'
+              trigger={
+                <div>
+                  <Image src={Rumee} style={pageStyles.peopleImage}/>
+                  <b>Rumee Singh</b>
+                  <div>Co-founder</div>
+                  <div>Rumsan Group</div>
+                </div>
+              }
+            />
+
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src={Princi} style={pageStyles.peopleImage}/>
-            <b>Princi Koirala</b>
+            <Popup
+              content=<div style={pageStyles.bio}>Princi is the co-founder of Moonlit Solutions. Moonlit Solutions has delivered projects in data-driven decision-making. She is an advocate on data for good and agile governance. She has over 8 years of experience in product, design and technology entrepreneurship. She is a passionate teacher and has taught in several business and art schools in Nepal. She is currently delivering classes and workshops on Social Media and Digital Citizenship at Kathmandu University School of Arts. A believer in giving back to the earth, currently she is also exploring the circular economy by researching sustainable green local products.</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({princi: false})}
+              onOpen={() => setOpen({princi: true})}
+              open={open.princi}
+              position='left center'
+              trigger={
+                <div>
+                  <Image src={Princi} style={pageStyles.peopleImage}/>
+                  <b>Princi Koirala</b>
+                  <div>Co-founder</div>
+                  <div>Moonlit Solutions</div>
+                </div>
+              }
+            />
+
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src={Aradhana} style={pageStyles.peopleImage}/>
-            <b>Aradhana Gurung</b>
+            <Popup
+              content=<div style={pageStyles.bio}>Aradhana Gurung started working in the humanitarian and development sector with the United Nations 15 years ago. For the last 4 years, she was with World Vision as the Lead Manager for their Innovation Lab. She is currently the Country Manager for Viamo, a company that enables the most marginalised to have better access to information and make better decisions  using their mobiles.</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({aradhana: false})}
+              onOpen={() => setOpen({aradhana: true})}
+              open={open.aradhana}
+              position='left center'
+              trigger={
+                <div>
+                  <Image src={Aradhana} style={pageStyles.peopleImage}/>
+                  <b>Aradhana Gurung</b>
+                  <div>Country Manager</div>
+                  <div>Viamo</div>
+                </div>
+              }
+            />
+
           </Grid.Column>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
         </Grid.Row>
