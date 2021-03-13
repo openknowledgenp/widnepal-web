@@ -61,10 +61,11 @@ const Resource = () => {
 
 export default Resource;
 
+const FONT_SIZE = 17
 const pageStyles = {
   section: { paddingTop: 40, paddingBottom: 40 },
   item: { borderBottom: '1px solid #0f46641f', paddingBottom: 30, marginBottom: 20 },
   content: {},
   header: {fontSize: 20},
-  description: {fontSize: 17},
+  description: {fontSize: FONT_SIZE},
 }

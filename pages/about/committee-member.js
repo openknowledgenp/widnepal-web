@@ -61,12 +61,13 @@ const About = () => {
 
 export default About;
 
+const FONT_SIZE = 17
 const pageStyles = {
   mainContainer: {paddingTop: 40, paddingBottom: 40},
   socialMediaCustomIcon: {height: 17, width: 19, top:6},
   socialMediaBtn: {backgroundColor:'white', padding: 5, color: '#1B9EFF'},
-  aboutUsIntro: {fontSize: 17, paddingBottom: 20, fontWeight: 'bold'},
-  aboutUs: {fontSize: 17, paddingTop: 20, paddingBottom: 20},
+  aboutUsIntro: {fontSize: FONT_SIZE, paddingBottom: 20, fontWeight: 'bold'},
+  aboutUs: {fontSize: FONT_SIZE, paddingTop: 20, paddingBottom: 20},
   organizationName: {fontSize: 26, fontWeight: 'bold'},
   logoItem: {marginTop: 15, maxHeight: 90, width: 'auto', maxWidth: 300},
   memberContainer: {borderBottom: '1px solid #E5E5E5', marginBottom: 70, paddingBottom: 30, paddingTop: 40},

@@ -96,10 +96,11 @@ const Contact = () => {
 
 export default Contact;
 
+const FONT_SIZE = 17
 const pageStyles = {
   formContainer: {
     marginTop: 50,
     marginBottom: 50,
-    fontSize: 17
+    fontSize: FONT_SIZE
   }
 }

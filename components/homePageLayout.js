@@ -71,6 +71,7 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
   )
 }
 
+const FONT_SIZE = 17
 const pageStyles = {
   hero: {
     zIndex: 0,
@@ -96,6 +97,6 @@ const pageStyles = {
   );},
   heroContainer: { position: 'relative', zIndex: 2, paddingTop: 90, paddingBottom: 100 },
   heroContainerHead: { color: 'white', fontSize: '30px', fontWeight: '600' },
-  heroContainerDescription: { color: 'white', fontSize: '17px', fontWeight: '400', paddingTop: '15px', marginBottom: '30px' },
+  heroContainerDescription: { color: 'white', fontSize: FONT_SIZE, fontWeight: '400', paddingTop: '15px', marginBottom: '30px' },
   headerImage: {margin: 'auto', maxHeight: 240, width: 'auto', textAlign: 'center'}
 }

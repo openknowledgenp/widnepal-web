@@ -44,8 +44,8 @@ const ProjectDetail = () => {
 
 export default ProjectDetail;
 
-
+const FONT_SIZE = 17
 const pageStyles = {
-  description: {fontSize: 17, paddingTop:20, marginTop: 15},
+  description: {fontSize: FONT_SIZE, paddingTop:20, marginTop: 15},
   projectContainer: {paddingBottom: 80},
 }

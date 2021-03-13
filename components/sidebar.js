@@ -219,9 +219,10 @@ export default class Sidebar extends React.Component {
   }
 }
 
+const FONT_SIZE = 17
 const pageStyles = {
   mainContainer: {
-    fontSize: 17,
+    fontSize: FONT_SIZE,
     // position: '-webkit-sticky',
     // position: 'sticky',
     paddingLeft: 30,
@@ -233,7 +234,7 @@ const pageStyles = {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     width: '100%',
-    fontSize: 17,
+    fontSize: FONT_SIZE,
     marginBottom: 20
   }},
   quote: { backgroundColor: 'rgba(0,0,0,0.5)', minHeight: 100, height: '100%', width: '100%', color: 'white', fontWeight: 'bold', padding: 50 },

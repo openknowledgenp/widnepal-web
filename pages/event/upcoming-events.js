@@ -60,6 +60,7 @@ const Event = () => {
 
 export default Event;
 
+const FONT_SIZE = 17
 const pageStyles={
   heading: {fontSize: 20, fontWeight: 'bold', marginBottom: 15, color: '#000'},
   calendar: (idx)=>{
@@ -70,6 +71,6 @@ const pageStyles={
   month:{fontSize: 12, fontWeight: 'bold'},
   year:{fontSize: 18},
   date: {fontSize: 36, fontWeight: 'bold', padding: 10},
-  description: {fontSize:17, color: '#18201E'},
+  description: {fontSize:FONT_SIZE, color: '#18201E'},
   container: {paddingBottom:40, marginTop:40}
 }

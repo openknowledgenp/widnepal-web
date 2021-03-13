@@ -10,17 +10,6 @@ import DI_logo from '../assets/footer/di.png'
 import TAF_logo from '../assets/footer/taf.png'
 import UKAID_logo from '../assets/footer/ukaid.png'
 
-const pageStyles = {
-  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: 17, position: 'relative',  },
-  license: { borderTop: '1px solid white', padding: '10px 0 0 0', marginTop: 10, width: '100%', clear: 'both', fontSize: 16 },
-  supportedBy: {paddingBottom: 10, fontSize: 17 },
-  otherLinks: {padding: 20, fontSize: 16 },
-  marginZero: {margin:0},
-  whiteLinks: {color:'white'},
-  suportList: { margin: 0},
-  memberOrgImage: {maxWidth: 'auto', maxHeight: '80px', padding: 15, backgroundColor: 'white'},
-}
-
 const Footer = () => {
   const memberOrgs = [
     {
@@ -75,3 +64,15 @@ const Footer = () => {
 }
 
 export default Footer
+
+const FONT_SIZE = 16
+const pageStyles = {
+  section: { paddingTop: 50, paddingBottom: 10, color: 'white', backgroundColor: '#282828', fontSize: FONT_SIZE, position: 'relative',  },
+  license: { borderTop: '1px solid white', padding: '10px 0 0 0', marginTop: 10, width: '100%', clear: 'both', fontSize: FONT_SIZE },
+  supportedBy: {paddingBottom: 10, fontSize: 17 },
+  otherLinks: {padding: 20, fontSize: FONT_SIZE },
+  marginZero: {margin:0},
+  whiteLinks: {color:'white'},
+  suportList: { margin: 0},
+  memberOrgImage: {maxWidth: 'auto', maxHeight: '80px', padding: 15, backgroundColor: 'white'},
+}

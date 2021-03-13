@@ -362,6 +362,7 @@ const Home = () => {
 
 export default Home;
 
+const FONT_SIZE = 17
 const pageStyles = {
   section: { paddingTop: 80, paddingBottom: 80 },
   sectionNoUpperPadding: { paddingBottom: 100, clear: 'both' },
@@ -370,7 +371,7 @@ const pageStyles = {
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '60px', margin: 'auto', paddingBottom: 30 },
   memberOrgImage: {maxWidth: '200px', maxHeight: '100px', padding: 1},
   imageLink: { margin: 'auto'},
-  content: { fontSize: "16px" },
+  content: { fontSize: FONT_SIZE },
   image: { margin: 'auto', boxShadow: '15px -15px #FCCA35', width: '70%' },
   imageWrapper: { paddingTop: 35, paddingRight: 15, height: '100%', },
   tweetContainer: {maxHeight: 400, overflowY: 'auto', borderBottom: '1px solid #ddd'},
@@ -432,7 +433,7 @@ const pageStyles = {
       fontSize: 20,
     },
     description: {
-      fontSize: "17px",
+      fontSize: FONT_SIZE,
       paddingTop: 10,
       overflow: 'hidden',
       color: '#403E3E',
@@ -481,14 +482,14 @@ const pageStyles = {
   },
   mainContent: {
     paddingTop: 10,
-    fontSize: 17,
+    fontSize: FONT_SIZE,
     height: '260px',
     overflowY: 'auto',
     lineHeight: 1.45
   },
   blogReadMore: {
     color: 'rgb(27, 158, 255)',
-    fontSize: 17,
+    fontSize: FONT_SIZE,
     position:'absolute',
     bottom: 15,
     borderTop: '1px solid black',
@@ -522,19 +523,19 @@ const pageStyles = {
     borderBottom: '1px solid #ddd'
   },
   usefulResourceHead: {
-    fontSize: 17,
+    fontSize: FONT_SIZE,
     color: 'rgb(27, 158, 255)',
     textDecoration:'underline'
   },
   usefulResourceDescription: {
-    fontSize: 17,
+    fontSize: FONT_SIZE,
   },
   joinUsInfo: {
-    fontSize: 17,
+    fontSize: FONT_SIZE,
     lineHeight: 1.3,
   },
   joinUsBtn: {
     backgroundColor: "rgb(27, 158, 255)", color: '#fff',
-    padding: '10px 40px', fontSize: '17px', fontWeight: 600
+    padding: '10px 40px', fontSize: FONT_SIZE, fontWeight: 600
   }
 }
