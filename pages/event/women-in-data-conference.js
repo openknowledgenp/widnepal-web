@@ -535,7 +535,7 @@ const pageStyles = {
     borderImage: 'linear-gradient(to Right, rgba(0,0,0,0) 90%, white 90%, white 100%)',
     borderImageSlice: 1,
     backgroundColor: 'rgba(255,255,255,0.2)',
-    borderRadius: 50,
+    borderRadius: 40,
     padding: 20,
   },
   boxLeft: {
