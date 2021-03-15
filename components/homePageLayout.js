@@ -8,6 +8,7 @@ import {
   Image,
   Grid
 } from 'semantic-ui-react'
+import Banner from '../assets/og_image.jpg';
 
 export const HomePageLayout = ({resultObject, errorReport, children}) => {
   const title = {data: resultObject['siteTitle'], errStatus: errorReport['siteTitleHasError']}
@@ -20,6 +21,21 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
         <Head>
           <title>{title.errStatus ? 'Home' : `${title.data} | Home`}</title>
           <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."
+          />
+          <meta
+            property="og:image"
+            content={Banner}
+          />
+          <meta name="og:title" content={title.data} />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title.data}/>
+          <meta name="twitter:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."/>
+          <meta name="twitter:image" content={Banner}/>
+          <meta name="keywords" content="womenindata, nepal, women in data nepal, technology, open data, open data nepal"/>
         </Head>
         <div style={pageStyles.hero}>
           <GraphicsElement />

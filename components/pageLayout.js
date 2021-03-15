@@ -14,6 +14,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { NAV_SITE_LOGO, NAV_SITE_LOGO_CONTENT_MAP } from '../graphql/common.queries.js';
 import { Loading } from './loading'
 import Sidebar from './sidebar'
+import Banner from '../assets/og_image.jpg';
+import BannerConf from '../assets/og_image_conf.jpg';
 
 export const PageLayout = ({title, children, format, headerImage, noHero}) => {
   let resultObject = {}
@@ -39,6 +41,21 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."
+        />
+        <meta
+          property="og:image"
+          content={format=="conferenceread" ? BannerConf:Banner}
+        />
+        <meta name="og:title" content={title} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title}/>
+        <meta name="twitter:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."/>
+        <meta name="twitter:image" content={format=="conferenceread" ? BannerConf:Banner}/>
+        <meta name="keywords" content="womenindata, nepal, women in data nepal, technology, open data, open data nepal"/>
       </Head>
       {!noHero &&
       <div style={pageStyles.hero}>
