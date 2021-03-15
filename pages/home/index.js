@@ -236,6 +236,7 @@ const OtherMedia = ({resultObject, errorReport, resourceErr, pinnedResources}) =
             <div style={pageStyles.tweetContainer}>
             {tweets && tweets.length > 0 ? tweets.map((tweet)=>{
                 const linkProps = {target: '_blank', rel: 'noreferrer'}
+                tweet.user.profile_image_url=tweet.user.profile_image_url_https;
                 return (
                   <Tweet key={tweet.id} data={tweet} linkProps={linkProps}/>
                 )
