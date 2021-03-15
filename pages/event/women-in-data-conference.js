@@ -20,6 +20,9 @@ import Jamie from '../../assets/WIDC/Jamie Holton.jpg'
 import Aradhana from '../../assets/WIDC/aradhana.jpg'
 import Princi from '../../assets/WIDC/Princi.jpeg'
 import Rumee from '../../assets/WIDC/rumee.png'
+import Meghan from '../../assets/WIDC/Meghan Nalbo.jpg'
+import Binita from '../../assets/WIDC/Binita.jpg'
+import Carolyn from '../../assets/WIDC/Carolyn.jpg'
 import {
   Grid,
   Image,
@@ -117,25 +120,41 @@ const People = () => {
       <br/>
       <Grid stackable >
         <Grid.Row>
-          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
+          <Grid.Column width={4} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
+            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Lisa Honan</b>
             <div>Development Director</div>
             <div>British Embassy Nepal</div>
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
-            <b>Meghan Nalbo</b>
-            <div>Country Representative</div>
-            <div>The Asia Foundation</div>
+            <Popup
+              content=<div style={pageStyles.bio}>Meghan W.T. Nalbo is The Asia Foundation’s country representative in Nepal and brings over a decade of experience in governance and development in Asia, the majority of which is focused on Nepal’s political transition.
+ <br/>
+ <br/>
+Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U.S. Agency for International Development (USAID) where she most recently served as director of the Democracy and Governance office at USAID in Nepal. Her work at USAID spanned over nine years during which she held a variety positions, also including as USAID’s Asia regional coordinator for the Global, Regional Policy Team, where for two years she was the technical lead in the Center for Democracy, Human Rights, and Governance in Washington, DC and as a program officer in Bangladesh. During her tenure at USAID, Meghan supported the agency’s evolving work on examining cross-sectoral development programming, thinking and working politically programmatic implementation, as well as various partnerships with academic institutions in order to advance more rigorous development learning and data utilization. In addition to her work at USAID, she has also worked with the UN Development Programme, University of Leeds Law School, and the International Center for Transitional Justice.
+</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({meghan: false})}
+              onOpen={() => setOpen({meghan: true})}
+              open={open.meghan}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Meghan} style={pageStyles.peopleImage} circular/>
+                  <b>Meghan Nalbo</b>
+                  <div>Country Representative, Nepal</div>
+                  <div>The Asia Foundation</div>
+                </div>
+              }
+            />
           </Grid.Column>
-          <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
+          {/*<Grid.Column width={4} style={pageStyles.peopleDetail}>
+            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Craig Irwin</b>
             <div>Statistician</div>
             <div>FCDO</div>
-          </Grid.Column>
+          </Grid.Column>*/}
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
         </Grid.Row>
       </Grid>
@@ -151,7 +170,7 @@ const People = () => {
         <Grid.Row>
           <Grid.Column width={6} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
+            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Tina Rosario</b>
             <div>Women in Big Data</div>
           </Grid.Column>
@@ -179,7 +198,7 @@ const People = () => {
               position='right center'
               trigger={
                 <div>
-                  <Image src={Jyoti} style={pageStyles.peopleImage}/>
+                  <Image src={Jyoti} style={pageStyles.peopleImage} circular/>
                   <b>Jyoti U. Devkota</b>
                   <div>Professor, Department of Mathematics</div>
                   <div>Kathmandu University</div>
@@ -197,7 +216,7 @@ const People = () => {
               position='right center'
               trigger={
                 <div>
-                  <Image src={Sumana} style={pageStyles.peopleImage}/>
+                  <Image src={Sumana} style={pageStyles.peopleImage} circular/>
                   <b>Sumana Shrestha</b>
                   <div>Managing Partner</div>
                   <div>Kosi Collaborative</div>
@@ -216,7 +235,7 @@ const People = () => {
               position='left center'
               trigger={
                 <div>
-                  <Image src={Jamie} style={pageStyles.peopleImage}/>
+                  <Image src={Jamie} style={pageStyles.peopleImage} circular/>
                   <b>Jamie Holton</b>
                   <div>Project Management and Research Officer</div>
                   <div>Publish What You Fund</div>
@@ -237,14 +256,27 @@ const People = () => {
       <br/>
       <Grid stackable >
         <Grid.Row>
-          <Grid.Column width={3} style={pageStyles.peopleDetail}/>
+          <Grid.Column width={4} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
-            <b>Binita Shrestha</b>
+            <Popup
+              content=<div style={pageStyles.bio}>Binita Shrestha is an IT Engineer, an Educator, and a Social Entrepreneur. She is the Chairman and Managing Director at Women in STEAM, a social enterprise that encourages young girls to learn and lead in computing careers. She has overseen several successful tech philanthropic ventures, including a partnership between WiSTEM Nepal, UNICEF, and the Nepal Telecommunication Authority.</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({binita: false})}
+              onOpen={() => setOpen({binita: true})}
+              open={open.binita}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Binita} style={pageStyles.peopleImage} circular/>
+                  <b>Binita Shrestha</b>
+                  <div>Chairman and Managing Director</div>
+                  <div>Women in STEAM</div>
+                </div>
+              }
+            />
           </Grid.Column>
-          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
+            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Craig Irwin</b>
             <div>Statistician</div>
             <div>FCDO</div>
@@ -273,7 +305,7 @@ const People = () => {
               position='left center'
               trigger={
                 <div>
-                  <Image src={Rumee} style={pageStyles.peopleImage}/>
+                  <Image src={Rumee} style={pageStyles.peopleImage} circular/>
                   <b>Rumee Singh</b>
                   <div>Co-founder</div>
                   <div>Rumsan Group</div>
@@ -292,7 +324,7 @@ const People = () => {
               position='left center'
               trigger={
                 <div>
-                  <Image src={Princi} style={pageStyles.peopleImage}/>
+                  <Image src={Princi} style={pageStyles.peopleImage} circular/>
                   <b>Princi Koirala</b>
                   <div>Co-founder</div>
                   <div>Moonlit Solutions</div>
@@ -311,7 +343,7 @@ const People = () => {
               position='left center'
               trigger={
                 <div>
-                  <Image src={Aradhana} style={pageStyles.peopleImage}/>
+                  <Image src={Aradhana} style={pageStyles.peopleImage} circular/>
                   <b>Aradhana Gurung</b>
                   <div>Country Manager</div>
                   <div>Viamo</div>
@@ -335,9 +367,26 @@ const People = () => {
         <Grid.Row>
           <Grid.Column width={6} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage}/>
-            <b>Carolyn O’Donnal</b>
-            <div>The Asia Foundation</div>
+            <Popup
+              content=<div style={pageStyles.bio}>Carolyn O’Donnell joined the Asia Foundation Nepal as the Director for Monitoring, Evaluation, Research and Learning in June 2019. With more than twelve years of experience in M&E, learning and knowledge management, she supports teams in M&E, research methods, and provides on-the-job training and mentoring to M&E officers to build their skills in statistical software, databases, monitoring tools, and evaluation design.
+ <br/>
+ <br/>
+Prior to joining the Foundation, Ms. O’Donnell worked as a MEL Fellow at USAID/Nepal for four years. Before that, she was based in Washington, DC with Winrock International as an M&E Advisor, including as key personnel for a child labor policy project. She started her career in M&E in 2008 at the Centre for Development and Population Activities, working on female empowerment and reproductive health.
+</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({carolyn: false})}
+              onOpen={() => setOpen({carolyn: true})}
+              open={open.carolyn}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Carolyn} style={pageStyles.peopleImage} circular/>
+                  <b>Carolyn O’Donnal</b>
+                  <div>Monitoring, Evaluation, Research, and Learning Director</div>
+                  <div>The Asia Foundation</div>
+                </div>
+              }
+            />
           </Grid.Column>
           <Grid.Column width={6} style={pageStyles.peopleDetail}/>
         </Grid.Row>
@@ -453,7 +502,7 @@ const pageStyles = {
   categoryTitle: {borderBottom: '4px solid #252323', width: 'fit-content', margin: 'auto', paddingBottom: 10},
   people: {marginRight:'auto',marginLeft:'auto',marginTop: 50, paddingTop: 80, paddingBottom: 80, fontSize: FONT_SIZE},
   peopleDetail: {fontSize: FONT_SIZE, textAlign: 'center', lineHeight: 1.4},
-  peopleImage: {backgroundColor: 'grey', border: '1px solid #eee', margin:'auto', marginBottom: 10, maxHeight:150},
+  peopleImage: {backgroundColor: 'grey', border: '1px solid #eee', margin:'auto', marginBottom: 10, maxHeight:200},
   organizingMember: {fontSize: FONT_SIZE, textAlign:'center'},
   orgImage: {margin:'auto', maxHeight:200, width:'auto'},
   partnerImage: {maxWidth:200, height: 'auto',  border: '1px solid #eee', margin:'auto'},
@@ -465,7 +514,7 @@ const pageStyles = {
     textAlign: 'center',
     fontSize: FONT_SIZE
   },
-  bio: { fontWeight: 300, fontSize: FONT_SIZE, width: '400px' },
+  bio: { fontWeight: 300, fontSize: 14, width: '400px' },
   titleBorderRight: {
     backgroundClip: 'content-box',
     margin:'auto',
