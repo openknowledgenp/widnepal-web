@@ -121,24 +121,17 @@ const People = () => {
   const [open, setOpen] = React.useState(false)
   return(
     <div style={pageStyles.people}>
-      <div style={pageStyles.peopleDescription}>Opening Remarks</div>
-      <br/>
       <Grid stackable >
         <Grid.Row>
-          <Grid.Column width={4} style={pageStyles.peopleDetail}/>
+          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
-            <b>Lisa Honan</b>
-            <div style={pageStyles.peopleDetailDesignation}>Development Director</div>
-            <div style={pageStyles.peopleDetailDesignation}>British Embassy Nepal</div>
-          </Grid.Column>
-          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+            <div style={pageStyles.peopleDescription}>Opening Remarks</div>
             <Popup
               content=<div style={pageStyles.bio}>Meghan W.T. Nalbo is The Asia Foundation’s country representative in Nepal and brings over a decade of experience in governance and development in Asia, the majority of which is focused on Nepal’s political transition.
- <br/>
- <br/>
-Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U.S. Agency for International Development (USAID) where she most recently served as director of the Democracy and Governance office at USAID in Nepal. Her work at USAID spanned over nine years during which she held a variety positions, also including as USAID’s Asia regional coordinator for the Global, Regional Policy Team, where for two years she was the technical lead in the Center for Democracy, Human Rights, and Governance in Washington, DC and as a program officer in Bangladesh. During her tenure at USAID, Meghan supported the agency’s evolving work on examining cross-sectoral development programming, thinking and working politically programmatic implementation, as well as various partnerships with academic institutions in order to advance more rigorous development learning and data utilization. In addition to her work at USAID, she has also worked with the UN Development Programme, University of Leeds Law School, and the International Center for Transitional Justice.
-</div>
+                 <br/>
+                 <br/>
+                Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U.S. Agency for International Development (USAID) where she most recently served as director of the Democracy and Governance office at USAID in Nepal. Her work at USAID spanned over nine years during which she held a variety positions, also including as USAID’s Asia regional coordinator for the Global, Regional Policy Team, where for two years she was the technical lead in the Center for Democracy, Human Rights, and Governance in Washington, DC and as a program officer in Bangladesh. During her tenure at USAID, Meghan supported the agency’s evolving work on examining cross-sectoral development programming, thinking and working politically programmatic implementation, as well as various partnerships with academic institutions in order to advance more rigorous development learning and data utilization. In addition to her work at USAID, she has also worked with the UN Development Programme, University of Leeds Law School, and the International Center for Transitional Justice.
+                </div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({meghan: false})}
               onOpen={() => setOpen({meghan: true})}
@@ -154,12 +147,25 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
               }
             />
           </Grid.Column>
+          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+            <div style={pageStyles.peopleDescription}>Keynote Speaker</div>
+            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
+            <b>Lisa Honan</b>
+            <div style={pageStyles.peopleDetailDesignation}>Development Director</div>
+            <div style={pageStyles.peopleDetailDesignation}>British Embassy Nepal</div>
+          </Grid.Column>
           {/*<Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Craig Irwin</b>
             <div>Statistician</div>
             <div>FCDO</div>
           </Grid.Column>*/}
+          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+            <div style={pageStyles.peopleDescription}>Introductory Speaker</div>
+            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
+            <b>Tina Rosario</b>
+            <div style={pageStyles.peopleDetailDesignation}>Women in Big Data</div>
+          </Grid.Column>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
         </Grid.Row>
       </Grid>
@@ -169,27 +175,7 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
       <br/>
       <br/>
       <br/>
-      <div style={pageStyles.peopleDescription}>Introductory Speaker</div>
-      <br/>
-      <Grid stackable >
-        <Grid.Row>
-          <Grid.Column width={6} style={pageStyles.peopleDetail}/>
-          <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
-            <b>Tina Rosario</b>
-            <div style={pageStyles.peopleDetailDesignation}>Women in Big Data</div>
-          </Grid.Column>
-          <Grid.Column width={6} style={pageStyles.peopleDetail}/>
-        </Grid.Row>
-      </Grid>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <div style={pageStyles.peopleDescription}>The Leadership Panel</div>
-      <br/>
+      <div style={pageStyles.peopleDescription}>The Leadership Panel: Leveraging Data for Digital Future</div>
       <Grid stackable >
         <Grid.Row>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
@@ -257,12 +243,11 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
       <br/>
       <br/>
       <br/>
-      <div style={pageStyles.peopleDescription}>Presentation</div>
-      <br/>
       <Grid stackable >
         <Grid.Row>
-          <Grid.Column width={4} style={pageStyles.peopleDetail}/>
-          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
+          <Grid.Column width={6} style={pageStyles.peopleDetail}>
+            <div style={pageStyles.peopleDescription}>Role of Technology in STEM for Nepal</div>
             <Popup
               content=<div style={pageStyles.bio}>Binita Shrestha is an IT Engineer, an Educator, and a Social Entrepreneur. She is the Chairman and Managing Director at Women in STEAM, a social enterprise that encourages young girls to learn and lead in computing careers. She has overseen several successful tech philanthropic ventures, including a partnership between WiSTEM Nepal, UNICEF, and the Nepal Telecommunication Authority.</div>
               eventsEnabled={eventsEnabled}
@@ -280,13 +265,14 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
               }
             />
           </Grid.Column>
-          <Grid.Column width={4} style={pageStyles.peopleDetail}>
+          <Grid.Column width={6} style={pageStyles.peopleDetail}>
+            <div style={pageStyles.peopleDescription}>Women in Data Generation Nepal</div>
             <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Craig Irwin</b>
             <div style={pageStyles.peopleDetailDesignation}>Statistician</div>
             <div style={pageStyles.peopleDetailDesignation}>FCDO</div>
           </Grid.Column>
-          <Grid.Column width={3} style={pageStyles.peopleDetail}/>
+          <Grid.Column width={2} style={pageStyles.peopleDetail}/>
         </Grid.Row>
       </Grid>
       <br/>
@@ -295,8 +281,7 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
       <br/>
       <br/>
       <br/>
-      <div style={pageStyles.peopleDescription}>Panel Discussion</div>
-      <br/>
+      <div style={pageStyles.peopleDescription}>Women innovators using tech and data for problem solving</div>
       <Grid stackable >
         <Grid.Row>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
@@ -367,7 +352,6 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
       <br/>
       <br/>
       <div style={pageStyles.peopleDescription}>Closing Remarks</div>
-      <br/>
       <Grid stackable >
         <Grid.Row>
           <Grid.Column width={6} style={pageStyles.peopleDetail}/>
@@ -502,7 +486,7 @@ const pageStyles = {
   conferenceHero: {textAlign: 'center', padding: 50, fontSize: 16},
   description: {fontSize: FONT_SIZE, paddingTop:20, marginTop: 15, textAlign: 'center', lineHeight:1.4},
   subtitle: {fontWeight: 'bold', fontSize: 26, marginTop: 40, textAlign: 'center'},
-  peopleDescription: {fontWeight: 'bold', fontSize: 24, marginBottom: 40, textAlign: 'center'},
+  peopleDescription: {fontWeight: 'bold', fontSize: 20, marginBottom: 40, textAlign: 'center'},
   middleTitleUnderline: { borderTop: '3px solid #403E3E', width: '100px', marginRight: 'auto', marginLeft: 'auto', marginTop: 15 },
   categoryTitle: {borderBottom: '4px solid #252323', width: 'fit-content', margin: 'auto', paddingBottom: 10},
   people: {marginRight:'auto',marginLeft:'auto',marginTop: 50, paddingTop: 80, paddingBottom: 80, fontSize: FONT_SIZE},

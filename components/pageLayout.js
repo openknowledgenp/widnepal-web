@@ -66,7 +66,7 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
           </Grid>
         </Container>}
         {format=="conferenceread" &&
-        children.map((section) => {console.log(section);return(
+        children.map((section) => {return(
           <div key={section.type && section.type.name} style={pageStyles.bgImage(section.props && section.props.bgImageLink)}>
           <div style={pageStyles.pageWrapper(section.props && section.props.bgColor ,section.props && section.props.bgSize)}>
             <Container>
