@@ -10,7 +10,7 @@ import DI_logo from '../assets/footer/di.png'
 import TAF_logo from '../assets/footer/taf.png'
 import UKAID_logo from '../assets/footer/ukaid.png'
 
-const Footer = () => {
+const Footer = ({noSupportedBy}) => {
   const memberOrgs = [
     {
       imageLink:D4D_logo,
@@ -33,7 +33,7 @@ const Footer = () => {
     <div style={pageStyles.section}>
       <Container>
         <Grid style={pageStyles.marginZero}>
-          <Grid.Row>
+          {noSupportedBy ? <span/> : <Grid.Row>
             <Grid.Column width={12} style= {{ padding : 0}}>
               <div style={pageStyles.supportedBy}>Supported By:</div>
               <Grid divided='vertically' stackable style={{ margin: 0}}>
@@ -42,8 +42,7 @@ const Footer = () => {
                         <Image src={memberOrg.imageLink} key={memberOrg.name} style={pageStyles.memberOrgImage} />
                     )})}
                   </Grid.Row>
-                </Grid>
-              <div/>
+              </Grid>
             </Grid.Column>
             <Grid.Column width={4}>
               <div style={pageStyles.otherLinks}>
@@ -53,7 +52,7 @@ const Footer = () => {
                 <p style={{ paddingBottom: '2px', margin: '0' }}><a href="/event/upcoming-events" style={pageStyles.whiteLinks}>Upcoming Events</a></p>
               </div>
             </Grid.Column>
-          </Grid.Row>
+          </Grid.Row>}
             <div style={pageStyles.license}>
               Content on this site is licensed under a <a target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/" >Creative Commons Attribution-ShareAlike 4.0 International License</a>. <a target="_blank" href="https://github.com/okfnepal/widnepal-web">Source code</a> available under the MIT license. Developed and managed by <a target="_blank" href="http://oknp.org/">Open Knowledge Nepal</a>.
             </div>

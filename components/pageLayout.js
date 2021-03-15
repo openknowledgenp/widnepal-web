@@ -77,7 +77,7 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
         )})
         }
       </div>
-      <Footer/>
+      <Footer noSupportedBy={format=="conferenceread"}/>
 
     </div>
   )
