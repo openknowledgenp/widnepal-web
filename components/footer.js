@@ -73,5 +73,5 @@ const pageStyles = {
   marginZero: {margin:0},
   whiteLinks: {color:'white'},
   suportList: { margin: 0},
-  memberOrgImage: {maxWidth: 'auto', maxHeight: '80px', padding: 15, backgroundColor: 'white'},
+  memberOrgImage: { padding: 15, backgroundColor: 'white'},
 }
