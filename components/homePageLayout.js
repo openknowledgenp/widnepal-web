@@ -21,6 +21,8 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
         <Head>
           <title>{title.errStatus ? 'Home' : `${title.data} | Home`}</title>
           <link rel="icon" href="/favicon.ico" />
+          <meta name="title" content={title.data}/>
+
           <meta
             name="description"
             content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."
@@ -36,6 +38,10 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
           <meta name="twitter:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."/>
           <meta name="twitter:image" content={Banner}/>
           <meta name="keywords" content="womenindata, nepal, women in data nepal, technology, open data, open data nepal"/>
+
+          <meta property="og:type" content="website"/>
+          <meta property="og:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems.
+          "/>
         </Head>
         <div style={pageStyles.hero}>
           <GraphicsElement />

@@ -41,6 +41,7 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="title" content={title}/>
         <meta
           name="description"
           content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."
@@ -56,6 +57,9 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
         <meta name="twitter:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."/>
         <meta name="twitter:image" content={format=="conferenceread" ? BannerConf:Banner}/>
         <meta name="keywords" content="womenindata, nepal, women in data nepal, technology, open data, open data nepal"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems.
+        "/>
       </Head>
       {!noHero &&
       <div style={pageStyles.hero}>
