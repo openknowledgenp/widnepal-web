@@ -46,7 +46,10 @@ const ConferenceHero = () => {
       <div><div style={pageStyles.titleBorderRight}><div style={pageStyles.titleBorderBottom}>
         <div style={pageStyles.boxLeft}/>
         <br/>
+        <br/>
         <h1 style={pageStyles.categoryTitle}>WOMEN IN DATA VIRTUAL CONFERENCE</h1>
+        <br/>
+        <br/>
         <h2>"Leveraging the Power of Women,<br/> Data and Technology"</h2>
         <br/>
         <div><Button color="blue" as="a" size="large" href="https://asiafoundation.zoom.us/meeting/register/tJYode2orjoqE92wbQZVUY0Bdoa4KWN2w4Pr">REGISTER HERE</Button></div>
@@ -55,7 +58,7 @@ const ConferenceHero = () => {
         <Grid>
           <Grid.Row>
             <Grid.Column width={5}>
-              <div><b>WHEN</b></div>
+              <div><b><u>WHEN</u></b></div>
               <br/>
               <div>
                 <div>
@@ -67,7 +70,7 @@ const ConferenceHero = () => {
               </div>
             </Grid.Column>
             <Grid.Column width={6}>
-              <div><b>TIME</b></div>
+              <div><b><u>TIME</u></b></div>
               <br/>
               <div>
                 <b>
@@ -76,7 +79,7 @@ const ConferenceHero = () => {
               </div>
             </Grid.Column>
             <Grid.Column width={5}>
-              <div><b>CONFERENCE AT</b></div>
+              <div><b><u>CONFERENCE AT</u></b></div>
               <br/>
               <div>
                 <b>
@@ -531,7 +534,8 @@ const pageStyles = {
     borderBottom: '10px solid white',
     borderImage: 'linear-gradient(to Right, rgba(0,0,0,0) 90%, white 90%, white 100%)',
     borderImageSlice: 1,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    borderRadius: 50,
     padding: 20,
   },
   boxLeft: {
