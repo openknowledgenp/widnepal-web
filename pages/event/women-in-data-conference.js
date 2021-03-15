@@ -129,8 +129,8 @@ const People = () => {
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Lisa Honan</b>
-            <div>Development Director</div>
-            <div>British Embassy Nepal</div>
+            <div style={pageStyles.peopleDetailDesignation}>Development Director</div>
+            <div style={pageStyles.peopleDetailDesignation}>British Embassy Nepal</div>
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
@@ -148,8 +148,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Meghan} style={pageStyles.peopleImage} circular/>
                   <b>Meghan Nalbo</b>
-                  <div>Country Representative, Nepal</div>
-                  <div>The Asia Foundation</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Country Representative, Nepal</div>
+                  <div style={pageStyles.peopleDetailDesignation}>The Asia Foundation</div>
                 </div>
               }
             />
@@ -177,7 +177,7 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Tina Rosario</b>
-            <div>Women in Big Data</div>
+            <div style={pageStyles.peopleDetailDesignation}>Women in Big Data</div>
           </Grid.Column>
           <Grid.Column width={6} style={pageStyles.peopleDetail}/>
         </Grid.Row>
@@ -205,8 +205,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Jyoti} style={pageStyles.peopleImage} circular/>
                   <b>Jyoti U. Devkota</b>
-                  <div>Professor, Department of Mathematics</div>
-                  <div>Kathmandu University</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Professor, Department of Mathematics</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Kathmandu University</div>
                 </div>
               }
             />
@@ -223,8 +223,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Sumana} style={pageStyles.peopleImage} circular/>
                   <b>Sumana Shrestha</b>
-                  <div>Managing Partner</div>
-                  <div>Kosi Collaborative</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Managing Partner</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Kosi Collaborative</div>
                 </div>
               }
             />
@@ -242,8 +242,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Jamie} style={pageStyles.peopleImage} circular/>
                   <b>Jamie Holton</b>
-                  <div>Project Management and Research Officer</div>
-                  <div>Publish What You Fund</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Project Management and Research Officer</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Publish What You Fund</div>
                 </div>
               }
             />
@@ -274,8 +274,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Binita} style={pageStyles.peopleImage} circular/>
                   <b>Binita Shrestha</b>
-                  <div>Chairman and Managing Director</div>
-                  <div>Women in STEAM</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Chairman and Managing Director</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Women in STEAM</div>
                 </div>
               }
             />
@@ -283,8 +283,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
             <b>Craig Irwin</b>
-            <div>Statistician</div>
-            <div>FCDO</div>
+            <div style={pageStyles.peopleDetailDesignation}>Statistician</div>
+            <div style={pageStyles.peopleDetailDesignation}>FCDO</div>
           </Grid.Column>
           <Grid.Column width={3} style={pageStyles.peopleDetail}/>
         </Grid.Row>
@@ -312,8 +312,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Rumee} style={pageStyles.peopleImage} circular/>
                   <b>Rumee Singh</b>
-                  <div>Co-founder</div>
-                  <div>Rumsan Group</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Co-founder</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Rumsan Group</div>
                 </div>
               }
             />
@@ -331,8 +331,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Princi} style={pageStyles.peopleImage} circular/>
                   <b>Princi Koirala</b>
-                  <div>Co-founder</div>
-                  <div>Moonlit Solutions</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Co-founder</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Moonlit Solutions</div>
                 </div>
               }
             />
@@ -350,8 +350,8 @@ Prior to joining the Foundation, Meghan was a Foreign Service Officer with the U
                 <div>
                   <Image src={Aradhana} style={pageStyles.peopleImage} circular/>
                   <b>Aradhana Gurung</b>
-                  <div>Country Manager</div>
-                  <div>Viamo</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Country Manager</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Viamo</div>
                 </div>
               }
             />
@@ -387,8 +387,8 @@ Prior to joining the Foundation, Ms. O’Donnell worked as a MEL Fellow at USAID
                 <div>
                   <Image src={Carolyn} style={pageStyles.peopleImage} circular/>
                   <b>Carolyn O’Donnal</b>
-                  <div>Monitoring, Evaluation, Research, and Learning Director</div>
-                  <div>The Asia Foundation</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Monitoring, Evaluation, Research, and Learning Director</div>
+                  <div style={pageStyles.peopleDetailDesignation}>The Asia Foundation</div>
                 </div>
               }
             />
@@ -511,6 +511,7 @@ const pageStyles = {
   organizingMember: {fontSize: FONT_SIZE, textAlign:'center'},
   orgImage: {margin:'auto', maxHeight:200, width:'auto'},
   partnerImage: {maxWidth:200, height: 'auto',  border: '1px solid #eee', margin:'auto'},
+  peopleDetailDesignation: {fontSize: 14, textAlign: 'center'},
   organization: {marginTop: 80, marginBottom: 80},
   participants: {
     lineHeight: 1.4,
