@@ -48,12 +48,14 @@ const ConferenceHero = () => {
         <br/>
         <h1 style={pageStyles.categoryTitle}>WOMEN IN DATA VIRTUAL CONFERENCE</h1>
         <h2>"Leveraging the Power of Women,<br/> Data and Technology"</h2>
-        <div><Button color="blue" as="a" href="https://asiafoundation.zoom.us/meeting/register/tJYode2orjoqE92wbQZVUY0Bdoa4KWN2w4Pr">REGISTER HERE</Button></div>
+        <br/>
+        <div><Button color="blue" as="a" size="large" href="https://asiafoundation.zoom.us/meeting/register/tJYode2orjoqE92wbQZVUY0Bdoa4KWN2w4Pr">REGISTER HERE</Button></div>
+        <br/>
         <br/>
         <Grid>
           <Grid.Row>
             <Grid.Column width={5}>
-              <div>WHEN</div>
+              <div><b>WHEN</b></div>
               <br/>
               <div>
                 <div>
@@ -65,7 +67,7 @@ const ConferenceHero = () => {
               </div>
             </Grid.Column>
             <Grid.Column width={6}>
-              <div>TIME</div>
+              <div><b>TIME</b></div>
               <br/>
               <div>
                 <b>
@@ -74,7 +76,7 @@ const ConferenceHero = () => {
               </div>
             </Grid.Column>
             <Grid.Column width={5}>
-              <div>CONFERENCE AT</div>
+              <div><b>CONFERENCE AT</b></div>
               <br/>
               <div>
                 <b>
@@ -478,8 +480,8 @@ const Supporters = ({post}) => {
 
 const EventDetail = () => {
   return (
-    <PageLayout title="Women in data conference" format="conferenceread" headerImage={HeaderImg} noHero>
-        <ConferenceHero {...{bgColor: 'rgba(252,202,53,0.91)', bgImageLink: BannerImage}} />
+    <PageLayout title="WOMEN IN DATA CONFERENCE" format="conferenceread" headerImage={HeaderImg} noHero>
+        <ConferenceHero {...{bgColor: 'rgba(252,202,53,0.80)', bgImageLink: BannerImage}} />
         <AboutEvent />
         <People {...{bgColor:'#F7F7F7'}}/>
         <Organization />
@@ -494,7 +496,7 @@ export default EventDetail;
 
 const FONT_SIZE = 17
 const pageStyles = {
-  conferenceHero: {textAlign: 'center', padding: 50},
+  conferenceHero: {textAlign: 'center', padding: 50, fontSize: 16},
   description: {fontSize: FONT_SIZE, paddingTop:20, marginTop: 15, textAlign: 'center', lineHeight:1.4},
   subtitle: {fontWeight: 'bold', fontSize: 26, marginTop: 40, textAlign: 'center'},
   peopleDescription: {fontWeight: 'bold', fontSize: 24, marginBottom: 40, textAlign: 'center'},
