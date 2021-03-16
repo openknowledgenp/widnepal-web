@@ -29,14 +29,14 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
           />
           <meta
             property="og:image"
-            content={Banner}
+            content={`https://womenindatanepal.org${Banner}`}
           />
           <meta name="og:title" content={title.data} />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title.data}/>
           <meta name="twitter:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."/>
-          <meta name="twitter:image" content={Banner}/>
+          <meta name="twitter:image" content={`https://womenindatanepal.org${Banner}`}/>
           <meta name="keywords" content="womenindata, nepal, women in data nepal, technology, open data, open data nepal"/>
 
           <meta property="og:type" content="website"/>
