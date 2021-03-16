@@ -23,6 +23,9 @@ import Rumee from '../../assets/WIDC/rumee.png'
 import Meghan from '../../assets/WIDC/Meghan Nalbo.jpg'
 import Binita from '../../assets/WIDC/Binita.jpg'
 import Carolyn from '../../assets/WIDC/Carolyn.jpg'
+import Lisa from '../../assets/WIDC/Lisa.jpg'
+import Tina from '../../assets/WIDC/rosario_tina.jpg'
+import Criag from '../../assets/WIDC/Craig.jpg'
 import {
   Grid,
   Image,
@@ -149,10 +152,25 @@ const People = () => {
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Keynote Speaker</div>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
-            <b>Lisa Honan</b>
-            <div style={pageStyles.peopleDetailDesignation}>Development Director</div>
-            <div style={pageStyles.peopleDetailDesignation}>British Embassy Nepal</div>
+            <Popup
+              content=<div style={pageStyles.bio}>
+                Ms. Lisa Honan is the Development Director of The British Embassy Kathmandu, Nepal. She arrived as the Head of DFID Nepal (now The British Embassy/ Foreign Commonwealth and Development Office) in July 2019. She was the Governor of Saint Helena, Ascension and Tristan da Cunha from April 2016 – May 2019; the first female in the position in 400 years.
+                </div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({lisa: false})}
+              onOpen={() => setOpen({lisa: true})}
+              open={open.lisa}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Lisa} style={pageStyles.peopleImage} circular/>
+                  <b>Lisa Honan</b>
+                  <div style={pageStyles.peopleDetailDesignation}>Development Director</div>
+                  <div style={pageStyles.peopleDetailDesignation}>British Embassy Nepal</div>
+                </div>
+              }
+            />
+
           </Grid.Column>
           {/*<Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
@@ -162,9 +180,27 @@ const People = () => {
           </Grid.Column>*/}
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Introductory Speaker</div>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
-            <b>Tina Rosario</b>
-            <div style={pageStyles.peopleDetailDesignation}>Women in Big Data</div>
+            <Popup
+              content=<div style={pageStyles.bio}>
+              Tina is responsible for helping EMEA businesses drive data innovation typically as an important component of an enterprise wide transformation initiative. As head of data innovation, Tina works directly with senior business executives to design a data management approach, future state information management capabilities and consult with executives on the execution of their data strategy.
+<br/><br/>As a business strategy professional, Tina has more than 25 years of experience in business process re-engineering, defining business impact and leading transformation programs. During her 18 years at SAP, Tina has held executive positions in business operations, consulting management, and corporate strategy. Her expertise ranges from building best practice enterprise programs, defining data management innovations, driving data technology development, and managing teams of data stewards and data operations.
+
+              </div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({tina: false})}
+              onOpen={() => setOpen({tina: true})}
+              open={open.tina}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Tina} style={pageStyles.peopleImage} circular/>
+                  <b>Tina Rosario</b>
+                  <div style={pageStyles.peopleDetailDesignation}>President of the European chapter</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Women in Big Data</div>
+                </div>
+              }
+            />
+
           </Grid.Column>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
         </Grid.Row>
@@ -267,10 +303,22 @@ const People = () => {
           </Grid.Column>
           <Grid.Column width={6} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Women in Data Generation Nepal</div>
-            <Image src="https://www.pngitem.com/pimgs/m/375-3757223_free-icon-download-people-avatar-icon-transparent-background.png" style={pageStyles.peopleImage} circular/>
-            <b>Craig Irwin</b>
-            <div style={pageStyles.peopleDetailDesignation}>Statistician</div>
-            <div style={pageStyles.peopleDetailDesignation}>FCDO</div>
+            <Popup
+              content=<div style={pageStyles.bio}>Craig is a member of the UK Government Statistical Service (GSS) and has worked as a government statistician for over 15 years. Previous to this he gained a PhD in Marine Science from Otago University in New Zealand. He has worked across a variety of UK government departments including the Department for Environment, Food and Rural Affairs (DEFRA), Marine Management Organisation (MMO) and the Department of Health. Craig is a proud father of two daughters, one who wants to be an author and the other a scientist, engineer and underwater vet who both coincidently love Math!</div>
+              eventsEnabled={eventsEnabled}
+              onClose={() => setOpen({criag: false})}
+              onOpen={() => setOpen({criag: true})}
+              open={open.criag}
+              position='right center'
+              trigger={
+                <div>
+                  <Image src={Criag} style={pageStyles.peopleImage} circular/>
+                  <b>Craig Irwin</b>
+                  <div style={pageStyles.peopleDetailDesignation}>Statistician</div>
+                  <div style={pageStyles.peopleDetailDesignation}>FCDO</div>
+                </div>
+              }
+            />
           </Grid.Column>
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
         </Grid.Row>
