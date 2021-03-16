@@ -31,6 +31,10 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
             property="og:image"
             content={`https://raw.githubusercontent.com/okfnepal/widnepal-web/master/assets/og_image.jpg`}
           />
+          <meta
+            property="og:image:secure"
+            content={`https://raw.githubusercontent.com/okfnepal/widnepal-web/master/assets/og_image.jpg`}
+          />
           <meta name="og:title" content={title.data} />
 
           <meta name="twitter:card" content="summary_large_image" />
