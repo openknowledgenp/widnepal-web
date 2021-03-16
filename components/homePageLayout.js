@@ -23,6 +23,8 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
           <link rel="icon" href="/favicon.ico" />
           <meta name="title" content={title.data}/>
 
+          <meta property="og:title" content={title.data} />
+          <meta property="og:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."/>
           <meta
             name="description"
             content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems."
@@ -35,7 +37,6 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
             property="og:image:secure"
             content={`https://raw.githubusercontent.com/okfnepal/widnepal-web/master/assets/og_image.jpg`}
           />
-          <meta name="og:title" content={title.data} />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title.data}/>
@@ -44,8 +45,6 @@ export const HomePageLayout = ({resultObject, errorReport, children}) => {
           <meta name="keywords" content="womenindata, nepal, women in data nepal, technology, open data, open data nepal"/>
 
           <meta property="og:type" content="website"/>
-          <meta property="og:description" content="Women in Data Steering Committee work together to identify possible existing problems targeted around women and the scope of area in today’s society. Alongside this identification, the committee will uphold itself as a platform to solve these problems.
-          "/>
         </Head>
         <div style={pageStyles.hero}>
           <GraphicsElement />

@@ -58,7 +58,7 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
           property="og:image:secure"
           content={format=="conferenceread" ? `https://raw.githubusercontent.com/okfnepal/widnepal-web/master/assets/og_image_conf.jpg`:`https://raw.githubusercontent.com/okfnepal/widnepal-web/master/assets/og_image.jpg`}
         />
-        <meta name="og:title" content={title} />
+        <meta property="og:title" content={title} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title}/>
