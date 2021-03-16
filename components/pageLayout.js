@@ -52,7 +52,7 @@ export const PageLayout = ({title, children, format, headerImage, noHero}) => {
         />
         <meta
           property="og:image"
-          content={format=="conferenceread" ? BannerConf:Banner}
+          content={format=="conferenceread" ? `https://womenindatanepal.org${BannerConf}`:`https://womenindatanepal.org${Banner}`}
         />
         <meta name="og:title" content={title} />
 
