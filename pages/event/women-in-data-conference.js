@@ -50,7 +50,7 @@ const ConferenceHero = () => {
         <div style={pageStyles.boxLeft}/>
         <br/>
         <br/>
-        <h1 style={pageStyles.categoryTitle}>WOMEN IN DATA VIRTUAL CONFERENCE</h1>
+        <h1 style={pageStyles.categoryTitle}>Women In Data Virtual Conference</h1>
         <br/>
         <br/>
         <h2>"Leveraging the Power of Women,<br/> Data and Technology"</h2>
@@ -530,7 +530,7 @@ const Supporters = ({post}) => {
 
 const EventDetail = () => {
   return (
-    <PageLayout title="WOMEN IN DATA CONFERENCE" format="conferenceread" headerImage={HeaderImg} noHero>
+    <PageLayout title="Women In Data Conference" format="conferenceread" headerImage={HeaderImg} noHero>
         <ConferenceHero {...{bgColor: 'rgba(252,202,53,0.80)', bgImageLink: BannerImage}} />
         <AboutEvent />
         <People {...{bgColor:'#F7F7F7'}}/>
