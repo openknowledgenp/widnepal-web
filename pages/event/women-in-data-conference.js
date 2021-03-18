@@ -94,6 +94,7 @@ const ConferenceHero = () => {
         </Grid>
         <br/>
         <br/>
+        <div style={pageStyles.boxRight}/>
       </div></div></div>
     </div>
   )
@@ -130,6 +131,7 @@ const People = () => {
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Opening Remarks</div>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Meghan W.T. Nalbo is The Asia Foundation’s country representative in Nepal and brings over a decade of experience in governance and development in Asia, the majority of which is focused on Nepal’s political transition.
                  <br/>
                  <br/>
@@ -153,6 +155,7 @@ const People = () => {
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Keynote Speaker</div>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>
                 Ms. Lisa Honan is the Development Director of The British Embassy Kathmandu, Nepal. She arrived as the Head of DFID Nepal (now The British Embassy/ Foreign Commonwealth and Development Office) in July 2019. She was the Governor of Saint Helena, Ascension and Tristan da Cunha from April 2016 – May 2019; the first female in the position in 400 years.
                 </div>
@@ -181,6 +184,7 @@ const People = () => {
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Introductory Speaker</div>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>
               Tina is responsible for helping EMEA businesses drive data innovation typically as an important component of an enterprise wide transformation initiative. As head of data innovation, Tina works directly with senior business executives to design a data management approach, future state information management capabilities and consult with executives on the execution of their data strategy.
 <br/><br/>As a business strategy professional, Tina has more than 25 years of experience in business process re-engineering, defining business impact and leading transformation programs. During her 18 years at SAP, Tina has held executive positions in business operations, consulting management, and corporate strategy. Her expertise ranges from building best practice enterprise programs, defining data management innovations, driving data technology development, and managing teams of data stewards and data operations.
@@ -217,6 +221,7 @@ const People = () => {
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Jyoti U. Devkota, completed Bachelors (Honors) and Masters in Mathematical Statistics from Lady Shriram College, New Delhi India. She completed her PhD.  from the Department of Computer Science and Mathematics, University of Osnabrueck, Germany, with DAAD fellowship. She is a Professor in the Department of Mathematics, Kathmandu University, Nepal. She has a teaching experience of more than 25 years at this university. She has over 25 first authored publications in international peer reviewed journals. She has served as the Head of the Department of Natural Sciences, Kathmandu University from Oct. 2013 to April 2017. She has presented papers in several national and international conferences. Jyoti U Devkota has also written three books on Statistics and Data Analysis.</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({jyoti: false})}
@@ -235,6 +240,7 @@ const People = () => {
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Sumana is the managing partner of Kosi Collaborative. Kosi Collaborative (Kosi) is a technology and management consulting company that works at the intersection of data and research in South Asia, with the objective of helping clients realize the potential of their data and harness the power of data-driven decision making. She has an MBA from MIT Sloan School of Business, and Bachelors in Mathematics and Economics from Bryn Mawr College. She is a published mathematician in Topology and Geometry. Formerly, she was a consultant with the Boston Consulting Group, and financial analyst at Citigroup, NY.</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({sumana: false})}
@@ -254,6 +260,7 @@ const People = () => {
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Jamie Holton is Project Management and Research Officer for Publish What You Fund, the global campaign for aid and development transparency. She oversees the Gender Financing Project, which aims to get a clear picture of funding towards gender equality in Kenya, Nepal and Guatemala so we can hold governments and funders to account on their gender equality commitments and understand which initiatives make societies more equal. Jamie previously worked for Save the Children, UNOCHA, the Dutch MFA and the Dutch National Rapporteur on Trafficking in Human Beings and Sexual Violence against Children. She holds an MSc in International Development & Humanitarian Emergencies from the London School of Economics, and an MA in International Relations from Leiden University in The Netherlands.</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({jamie: false})}
@@ -285,6 +292,7 @@ const People = () => {
           <Grid.Column width={6} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Role of Technology in STEM for Nepal</div>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Binita Shrestha is an IT Engineer, an Educator, and a Social Entrepreneur. She is the Chairman and Managing Director at Women in STEAM, a social enterprise that encourages young girls to learn and lead in computing careers. She has overseen several successful tech philanthropic ventures, including a partnership between WiSTEM Nepal, UNICEF, and the Nepal Telecommunication Authority.</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({binita: false})}
@@ -304,6 +312,7 @@ const People = () => {
           <Grid.Column width={6} style={pageStyles.peopleDetail}>
             <div style={pageStyles.peopleDescription}>Women in Data Generation Nepal</div>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Craig is a member of the UK Government Statistical Service (GSS) and has worked as a government statistician for over 15 years. Previous to this he gained a PhD in Marine Science from Otago University in New Zealand. He has worked across a variety of UK government departments including the Department for Environment, Food and Rural Affairs (DEFRA), Marine Management Organisation (MMO) and the Department of Health. Craig is a proud father of two daughters, one who wants to be an author and the other a scientist, engineer and underwater vet who both coincidently love Math!</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({criag: false})}
@@ -335,6 +344,7 @@ const People = () => {
           <Grid.Column width={2} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Rumee intertwines her love for frontier technology and her passion in communication to focus on social impact. As Rumsan Group’s co-founder, she has launched several initiatives including Hamro LifeBank, a data-informed approach to cut out the stress involved in finding and managing blood for patients; and Katha4Nepal, an online community-driven platform for children to learn through empowering stories during the pandemic. Rumee and her team have also been actively pushing the concept of blockchain technology. She leads the project “Rahat” - a concept of streamlining aid distribution with blockchain. Rumee has over 15 years of experience in leading production teams in the U.S. and has successfully managed educational programs including financial literacy programs featuring Warren Buffett and STEM programs for Intel & Disney. She worked with PepsiCo in the global communication team at New York and led sector PepsiCo consumer relations in Dubai before moving back to Nepal. In January 2021, The Kathmandu Post featured her as one of ten women making a difference with technology in Nepal. She was also listed in the Annual 100 people to watch by Business360.</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({rumee: false})}
@@ -354,6 +364,7 @@ const People = () => {
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Princi is the co-founder of Moonlit Solutions. Moonlit Solutions has delivered projects in data-driven decision-making. She is an advocate on data for good and agile governance. She has over 8 years of experience in product, design and technology entrepreneurship. She is a passionate teacher and has taught in several business and art schools in Nepal. She is currently delivering classes and workshops on Social Media and Digital Citizenship at Kathmandu University School of Arts. A believer in giving back to the earth, currently she is also exploring the circular economy by researching sustainable green local products.</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({princi: false})}
@@ -373,6 +384,7 @@ const People = () => {
           </Grid.Column>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Aradhana Gurung started working in the humanitarian and development sector with the United Nations 15 years ago. For the last 4 years, she was with World Vision as the Lead Manager for their Innovation Lab. She is currently the Country Manager for Viamo, a company that enables the most marginalised to have better access to information and make better decisions  using their mobiles.</div>
               eventsEnabled={eventsEnabled}
               onClose={() => setOpen({aradhana: false})}
@@ -405,6 +417,7 @@ const People = () => {
           <Grid.Column width={6} style={pageStyles.peopleDetail}/>
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
+              style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>Carolyn O’Donnell joined the Asia Foundation Nepal as the Director for Monitoring, Evaluation, Research and Learning in June 2019. With more than twelve years of experience in M&E, learning and knowledge management, she supports teams in M&E, research methods, and provides on-the-job training and mentoring to M&E officers to build their skills in statistical software, databases, monitoring tools, and evaluation design.
  <br/>
  <br/>
@@ -531,6 +544,7 @@ export default EventDetail;
 
 const FONT_SIZE = 17
 const pageStyles = {
+  popupStyle: {minWidth: 400},
   conferenceHero: {textAlign: 'center', padding: 50, fontSize: 16},
   description: {fontSize: FONT_SIZE, paddingTop:20, marginTop: 15, textAlign: 'center', lineHeight:1.4},
   subtitle: {fontWeight: 'bold', fontSize: 26, marginTop: 40, textAlign: 'center'},
@@ -552,21 +566,15 @@ const pageStyles = {
     textAlign: 'center',
     fontSize: FONT_SIZE
   },
-  bio: { fontWeight: 300, fontSize: 14, width: '400px' },
+  bio: { fontWeight: 300, fontSize: 14},
   titleBorderRight: {
     backgroundClip: 'content-box',
     margin:'auto',
     width: '80%',
-    borderRight: '10px solid white',
-    borderImage: 'linear-gradient(to top, white 25%, rgba(0,0,0,0) 25%',
-    borderImageSlice: 1,
   },
   titleBorderBottom: {
     backgroundClip: 'content-box',
     width: '100%',
-    borderBottom: '10px solid white',
-    borderImage: 'linear-gradient(to Right, rgba(0,0,0,0) 90%, white 90%, white 100%)',
-    borderImageSlice: 1,
     backgroundColor: 'rgba(255,255,255,0.2)',
     borderRadius: 40,
     padding: 20,
@@ -580,5 +588,15 @@ const pageStyles = {
     position: 'relative',
     marginLeft: -30,
     marginTop: -30,
+  },
+  boxRight: {
+    height: 100,
+    float: 'right',
+    width: 100,
+    borderRight: '10px solid white',
+    borderBottom: '10px solid white',
+    position: 'relative',
+    marginRight: -30,
+    marginTop: -65,
   }
 }
