@@ -17,14 +17,14 @@ import DevelopmentInitiativeLogo from '../../assets/WIDC/Development_Initiatives
 import Jyoti from '../../assets/WIDC/Jyoti Upadhyaya.jpg'
 import Sumana from '../../assets/WIDC/Sumana Shrestha.jpg'
 import Jamie from '../../assets/WIDC/Jamie Holton.jpg'
-import Aradhana from '../../assets/WIDC/aradhana.jpg'
+import Bonny from '../../assets/WIDC/bonny.jpg'
 import Princi from '../../assets/WIDC/Princi.jpeg'
 import Rumee from '../../assets/WIDC/rumee.png'
 import Meghan from '../../assets/WIDC/Meghan Nalbo.jpg'
 import Binita from '../../assets/WIDC/Binita.jpg'
 import Carolyn from '../../assets/WIDC/Carolyn.jpg'
 import Lisa from '../../assets/WIDC/Lisa.jpg'
-import Tina from '../../assets/WIDC/rosario_tina.jpg'
+import Tina from '../../assets/WIDC/rosario_tina.png'
 import Criag from '../../assets/WIDC/Craig.jpg'
 import {
   Grid,
@@ -186,8 +186,10 @@ const People = () => {
             <Popup
               style={pageStyles.popupStyle}
               content=<div style={pageStyles.bio}>
-              Tina is responsible for helping EMEA businesses drive data innovation typically as an important component of an enterprise wide transformation initiative. As head of data innovation, Tina works directly with senior business executives to design a data management approach, future state information management capabilities and consult with executives on the execution of their data strategy.
-<br/><br/>As a business strategy professional, Tina has more than 25 years of experience in business process re-engineering, defining business impact and leading transformation programs. During her 18 years at SAP, Tina has held executive positions in business operations, consulting management, and corporate strategy. Her expertise ranges from building best practice enterprise programs, defining data management innovations, driving data technology development, and managing teams of data stewards and data operations.
+              In this customer facing role, Tina is responsible for helping SAP customers drive data innovation typically as an important component of an enterprise wide transformation initiative. As a business strategy professional, Tina has more than 25 years of experience in business process re-engineering, defining business impact and leading transformation programs.
+<br/><br/>When Tina moved to Paris in 2016 she extended her Chief Data Officer practitioner role to become the head of data innovation, where she works directly with senior business executives to design a data management approach, future state information management capabilities and consult with executives on the design and execution of their data strategy. Tina led SAP’s own enterprise data strategy and helped build the organization which has delivered over 75 million euros of benefit to SAP. Her expertise ranges from building best practice enterprise programs, defining data management innovations, driving data technology development, and managing teams of data stewards and data operations.
+A recognized expert in information management, Tina is regularly requested to speak at industry events. She spends a significant amount of time presenting SAP’s point of view on the power of data and a data-driven culture. Tina has two big passions: data and diversity.
+
 
               </div>
               eventsEnabled={eventsEnabled}
@@ -199,8 +201,8 @@ const People = () => {
                 <div>
                   <Image src={Tina} style={pageStyles.peopleImage} circular/>
                   <b>Tina Rosario</b>
-                  <div style={pageStyles.peopleDetailDesignation}>President of the European chapter</div>
-                  <div style={pageStyles.peopleDetailDesignation}>Women in Big Data</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Head of Data Innovation</div>
+                  <div style={pageStyles.peopleDetailDesignation}>Chief Data Officer, Europe</div>
                 </div>
               }
             />
@@ -385,18 +387,18 @@ const People = () => {
           <Grid.Column width={4} style={pageStyles.peopleDetail}>
             <Popup
               style={pageStyles.popupStyle}
-              content=<div style={pageStyles.bio}>Aradhana Gurung started working in the humanitarian and development sector with the United Nations 15 years ago. For the last 4 years, she was with World Vision as the Lead Manager for their Innovation Lab. She is currently the Country Manager for Viamo, a company that enables the most marginalised to have better access to information and make better decisions  using their mobiles.</div>
+              content=<div style={pageStyles.bio}>Bonny Pradhan is a data enthusiast, a digital innovator and a Business Intelligence (BI) consultant. She currently works on cutting edge data analytics and BI technologies in LIS Nepal. As an ADB-JSP scholar, she completed her Master in Engineering degree in Information Management from Asian Institute of Technology, Thailand. Her research was focused on creating an app for safe travel for women in Nepal. She has worked as an onsite functional and technical consultant, for management and operations of business for top-tier retailers. With her academic and professional progression spanning across Nepal, India, Indonesia and Thailand, she has set an example that all genders when united, can stimulate economic growth through data and technology.</div>
               eventsEnabled={eventsEnabled}
-              onClose={() => setOpen({aradhana: false})}
-              onOpen={() => setOpen({aradhana: true})}
-              open={open.aradhana}
+              onClose={() => setOpen({bonny: false})}
+              onOpen={() => setOpen({bonny: true})}
+              open={open.bonny}
               position='left center'
               trigger={
                 <div>
-                  <Image src={Aradhana} style={pageStyles.peopleImage} circular/>
-                  <b>Aradhana Gurung</b>
-                  <div style={pageStyles.peopleDetailDesignation}>Country Manager</div>
-                  <div style={pageStyles.peopleDetailDesignation}>Viamo</div>
+                  <Image src={Bonny} style={pageStyles.peopleImage} circular/>
+                  <b>Bonny Pradhan</b>
+                  <div style={pageStyles.peopleDetailDesignation}>Principal Software Engineer</div>
+                  <div style={pageStyles.peopleDetailDesignation}>LIS Nepal</div>
                 </div>
               }
             />
