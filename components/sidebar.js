@@ -38,6 +38,38 @@ const Quotes = [
     quote: 'Data that is loved tends to survive.',
     by: 'Kurt Bollacker',
   },
+
+
+
+
+  {
+    quote: 'The world cannot be understood without numbers and it cannot be understood with numbers alone.',
+    by: 'Dr. Hans Rosling, Factfulness',
+  },
+  {
+    quote: 'Theories come and go, but fundamental data always remain the same.',
+    by: 'Mary Leakey',
+  },
+  {
+    quote: 'The key to good decision making is evaluating the available information – the data – and combining it with your own estimates of pluses and minuses. As an economist, I do this every day.',
+    by: 'Emily Oster',
+  },
+  {
+    quote: 'Our ability to do great things with data will make a real difference in every aspect of our lives.',
+    by: 'Jennifer Pahlka, Founder and Executive Director for Code for America',
+  },
+  {
+    quote: 'There’s no room for facts when our minds are occupied by fear.',
+    by: 'Hans Rosling',
+  },
+  {
+    quote: 'The world cannot be understood without numbers. But the world cannot be understood with numbers alone.',
+    by: 'Hans Rosling, Factfulness',
+  },
+  {
+    quote: 'Data are just summaries of thousands of stories–tell a few of those stories to help make the data meaningful.',
+    by: 'Chip and Dan Heath, authors of “Made to Stick” and “Switch.”',
+  },
 ]
 
 const Facts = [
@@ -194,7 +226,7 @@ export default class Sidebar extends React.Component {
     >
         <div style={pageStyles.quoteContainer(selectedImage)}>
           <div style={pageStyles.quote}>
-            <div>{`"${selectedQuote.quote}"`}</div>
+            <div><i>{`"${selectedQuote.quote}"`}</i></div>
             <br/>
             <div>{`- ${selectedQuote.by}`}</div>
           </div>
