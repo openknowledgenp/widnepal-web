@@ -228,7 +228,7 @@ export default class Sidebar extends React.Component {
           <div style={pageStyles.quote}>
             <div><i>{`"${selectedQuote.quote}"`}</i></div>
             <br/>
-            <div>{`- ${selectedQuote.by}`}</div>
+            <small>{`- ${selectedQuote.by}`}</small>
           </div>
         </div>
         <Image src={QuickFacts}/>

@@ -1,15 +1,19 @@
 import { useQuery } from '@apollo/react-hooks';
+import React from 'react';
 import { PROJECTS, PROJECT_ERROR_MESSAGES } from '../../graphql/project.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
 import Truncate from 'react-truncate';
 import {
-  Item
+  Item,
+  Pagination
 } from 'semantic-ui-react'
 
 const Project = () => {
   // Create a query hook
   const { data, loading, error } = useQuery(PROJECTS);
+  const [page, setPage] = React.useState(1);
+
   let projectError
   let projects = []
   if (loading) {
@@ -30,6 +34,18 @@ const Project = () => {
     projectError = PROJECT_ERROR_MESSAGES.error
   }
 
+  let projectList = []
+  const ITEMS_PER_PAGE = 10
+  const totalPages = parseInt(data.projects.edges.length / ITEMS_PER_PAGE) + ((data.projects.edges.length % ITEMS_PER_PAGE) > 0 ? 1:0)
+  if (data.projects.edges && data.projects.edges.length > 0) {
+    let startingPoint = (page - 1) * ITEMS_PER_PAGE
+    let endingPoint = ((data.projects.edges.length-1) < page * ITEMS_PER_PAGE) ? ((page*ITEMS_PER_PAGE) -  (page *ITEMS_PER_PAGE - (data.projects.edges.length))) : page *ITEMS_PER_PAGE
+    for (var i = startingPoint; i < endingPoint; i++) {
+      projectList.push(data.projects.edges[i])
+    }
+  }
+  const handlePaginationChange = (e, { activePage }) => setPage(activePage)
+
   return (
     <PageLayout title="Projects">
       {projectError
@@ -38,7 +54,7 @@ const Project = () => {
       :
       <Item.Group style={pageStyles.section}>
         {
-          data.projects.edges.map(post => {
+          projectList.map(post => {
           return (
               <Item as='a' href={`/projects/${post.node.slug}`} key={`post__${post.node.id}`} style={pageStyles.item}>
                 <Item.Content style={pageStyles.content}>
@@ -54,7 +70,18 @@ const Project = () => {
               </Item>
           );
         })}
+        <Pagination
+          boundaryRange={0}
+          defaultActivePage={1}
+          ellipsisItem={'...'}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={3}
+          totalPages={totalPages}
+          onPageChange={handlePaginationChange}
+        />
       </Item.Group>}
+
     </PageLayout>
   );
 };

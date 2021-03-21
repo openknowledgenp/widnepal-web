@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const BLOGS = gql`
   query MyQuery {
-    blogs {
+    blogs(first: 1000) {
       edges {
         node {
           blogDetails {

@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const PROJECTS = gql`
 query MyQuery {
-  projects {
+  projects(first: 1000) {
     edges {
       node {
         id

@@ -1,15 +1,19 @@
 import { useQuery } from '@apollo/react-hooks';
+import React from 'react';
 import { RESOURCES, RESOURCES_ERROR_MESSAGES } from '../../graphql/resources.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
 import Truncate from 'react-truncate';
 import {
-  Item
+  Item,
+  Pagination
 } from 'semantic-ui-react'
 
 const Resource = () => {
   // Create a query hook
   const { data, loading, error } = useQuery(RESOURCES);
+  const [page, setPage] = React.useState(1);
+
   let resourceError
   let resources = []
   if (loading) {
@@ -30,6 +34,18 @@ const Resource = () => {
     resourceError = RESOURCES_ERROR_MESSAGES.error
   }
 
+  let resourcesList = []
+  const ITEMS_PER_PAGE = 10
+  const totalPages = parseInt(data.resources.edges.length / ITEMS_PER_PAGE) + ((data.resources.edges.length % ITEMS_PER_PAGE) > 0 ? 1:0)
+  if (data.resources.edges && data.resources.edges.length > 0) {
+    let startingPoint = (page - 1) * ITEMS_PER_PAGE
+    let endingPoint = ((data.resources.edges.length-1) < page * ITEMS_PER_PAGE) ? ((page*ITEMS_PER_PAGE) -  (page *ITEMS_PER_PAGE - (data.resources.edges.length))) : page *ITEMS_PER_PAGE
+    for (var i = startingPoint; i < endingPoint; i++) {
+      resourcesList.push(data.resources.edges[i])
+    }
+  }
+  const handlePaginationChange = (e, { activePage }) => setPage(activePage)
+
   return (
     <PageLayout title="Resources">
       {resourceError
@@ -37,8 +53,7 @@ const Resource = () => {
       <h2><div dangerouslySetInnerHTML={{ __html: resourceError }}/></h2>
       :
       <Item.Group style={pageStyles.section}>
-        {data.resources.edges.map(post => {
-          console.log(post);
+        {resourcesList.map(post => {
           return (
               <Item as='a' href={`/resources/${post.node.slug}`} key={`post__${post.node.id}`} style={pageStyles.item}>
                 <Item.Content style={pageStyles.content}>
@@ -54,8 +69,19 @@ const Resource = () => {
               </Item>
           );
         })}
-      </Item.Group>}
-    </PageLayout>
+        <Pagination
+          boundaryRange={0}
+          defaultActivePage={1}
+          ellipsisItem={'...'}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={3}
+          totalPages={totalPages}
+          onPageChange={handlePaginationChange}
+        />
+        </Item.Group>}
+
+      </PageLayout>
   );
 };
 
