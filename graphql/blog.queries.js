@@ -9,18 +9,7 @@ export const BLOGS = gql`
             blog
             isPinned
           }
-          categories {
-            nodes {
-              name
-              id
-            }
-          }
-          tags {
-            nodes {
-              name
-              id
-            }
-          }
+
           title
           slug
           id
@@ -47,18 +36,7 @@ export const BLOG_WITH_SLUG = (slug) => gql`
             blog
             isPinned
           }
-          categories {
-            nodes {
-              name
-              id
-            }
-          }
-          tags {
-            nodes {
-              name
-              id
-            }
-          }
+          
           title
           slug
           date
