@@ -57,6 +57,10 @@ const BlogDetail = ({host}) => {
     post.node.lastEditedBy.node.firstName + ' ' + post.node.lastEditedBy.node.lastName :
     'Author name is not mentioned.'
 
+  if (post.node.blogDetails.author!==null && post.node.blogDetails.author.split(' ').join('')!=="" && post.node.blogDetails.author!==undefined ) {
+    author = post.node.blogDetails.author
+  }
+  console.log('post.node.blogDetails.author', post.node.blogDetails.author);
   let association = (post.node.lastEditedBy.node.user_organizational_association.organizationalAssociation !== null) ?
     post.node.lastEditedBy.node.user_organizational_association.organizationalAssociation :
     ''
