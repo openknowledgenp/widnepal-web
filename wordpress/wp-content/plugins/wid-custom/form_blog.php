@@ -4,26 +4,6 @@ acf_add_local_field_group(array(
 	'title' => 'Start your blog',
 	'fields' => array(
 		array(
-			'key' => 'field_6058cad1c1407',
-			'label' => 'Author',
-			'name' => 'author',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'show_in_graphql' => 1,
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-		),
-		array(
 			'key' => 'field_602ca4756c801',
 			'label' => 'Blog',
 			'name' => 'blog',
