@@ -9,6 +9,7 @@ export const BLOGS = gql`
             blog
             isPinned
           }
+
           title
           slug
           id
@@ -35,6 +36,7 @@ export const BLOG_WITH_SLUG = (slug) => gql`
             blog
             isPinned
           }
+          
           title
           slug
           date

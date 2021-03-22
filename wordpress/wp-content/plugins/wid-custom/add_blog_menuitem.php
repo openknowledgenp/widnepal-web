@@ -37,6 +37,7 @@ function blogs_cpt() {
     'rest_base'          => 'blogs',
     'rest_controller_class' => 'WP_REST_Posts_Controller',
     'supports'           => array( 'thumbnail', 'title' ),
+    'taxonomies'          => array('category', 'post_tag' ),
     'show_in_graphql' => true,
     'hierarchical' => true,
     'graphql_single_name' => 'blog',
