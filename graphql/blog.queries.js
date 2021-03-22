@@ -115,6 +115,7 @@ export const BLOG_WITH_SLUG = (slug) => gql`
           blogDetails {
             blog
             isPinned
+            author
           }
           categories {
             nodes {
