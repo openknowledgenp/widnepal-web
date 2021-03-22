@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
 import { BLOG_WITH_SLUG } from '../../graphql/blog.queries';
 import { PageLayout } from '../../components/pageLayout'
+import TagsAndCategories from '../../components/tagsAndCategories'
 import { Loading } from '../../components/loading'
 import HeaderImg from '../../assets/detail_img_header.svg'
 import {SITE_PROTOCOL} from '../../assets/siteDetails'
@@ -114,6 +115,7 @@ const BlogDetail = ({host}) => {
         <br />
         <br />
         <br />
+        <TagsAndCategories blog={post} />
         <br />
         <br />
     </PageLayout>

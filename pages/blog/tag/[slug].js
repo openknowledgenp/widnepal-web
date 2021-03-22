@@ -1,9 +1,11 @@
 import { useQuery } from '@apollo/react-hooks';
-import { BLOGS, BLOGS_ERROR_MESSAGES } from '../../graphql/blog.queries';
-import PlaceholderImage from '../../assets/placeholder_image.jpg';
-import { PageLayout } from '../../components/pageLayout'
-import { Loading } from '../../components/loading'
-import BlogItem from '../../components/blogItem'
+import { useRouter } from 'next/router'
+
+import { BLOGS_WITH_TAG, BLOGS_ERROR_MESSAGES } from '../../../graphql/blog.queries';
+import PlaceholderImage from '../../../assets/placeholder_image.jpg';
+import { PageLayout } from '../../../components/pageLayout'
+import { Loading } from '../../../components/loading'
+import BlogItem from '../../../components/blogItem'
 import {
   Image,
   Item,
@@ -14,8 +16,10 @@ import React from 'react';
 
 
 const Blog = () => {
+  const router = useRouter()
+  const { slug } = router.query
   // Create a query hook
-  const { data, loading, error } = useQuery(BLOGS);
+  const { data, loading, error } = useQuery(BLOGS_WITH_TAG(slug));
   const [page, setPage] = React.useState(1);
 
   let blogs
@@ -52,13 +56,14 @@ const Blog = () => {
   const handlePaginationChange = (e, { activePage }) => setPage(activePage)
 
   return (
-    <PageLayout title="Blogs">
+    <PageLayout title={`Blogs | Tag: ${slug}`}>
       {blogError
         ?
         <div dangerouslySetInnerHTML={{ __html: blogError }}/>
         :
         <Item.Group style={pageStyles.section}>
           {blogsList.map(blog => {
+            console.log(blog.node.categories.nodes);
             return (
                   <BlogItem {...{blog}} />
             );
