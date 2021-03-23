@@ -20,7 +20,7 @@ const TagsAndCategories = ({blog}) => {
           {blog.node.tags.nodes.map((node, idx)=> {
             return(
               <span key={node.id}>
-                <a href={`/blog/tag/${node.name}`}>{` ${node.name}${blog.node.tags.nodes.length-1===idx?'':','}`}</a>
+                <a href={`/blog/tag/${node.name.split(' ').join('-')}`}>{` ${node.name}${blog.node.tags.nodes.length-1===idx?'':','}`}</a>
               </span>
             )
           })}
