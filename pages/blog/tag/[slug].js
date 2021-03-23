@@ -20,8 +20,8 @@ const Blog = () => {
   const { slug } = router.query
   // Create a query hook
 
-  const QUERY_SLUG = slug.split(' ').join('-')
-  const { data, loading, error } = useQuery(BLOGS_WITH_TAG(QUERY_SLUG));
+  const QUERY_SLUG =
+  const { data, loading, error } = useQuery(BLOGS_WITH_TAG(slug.split(' ').join('-')));
   const [page, setPage] = React.useState(1);
 
   let blogs
