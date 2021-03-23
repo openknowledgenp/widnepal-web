@@ -17,9 +17,10 @@ import React from 'react';
 
 const Blog = () => {
   const router = useRouter()
-  const { slug, glq_tag_filter } = router.query
+  const { slug } = router.query
   // Create a query hook
-  const { data, loading, error } = useQuery(BLOGS_WITH_TAG(glq_tag_filter || slug));
+
+  const { data, loading, error } = useQuery(BLOGS_WITH_TAG(slug));
   const [page, setPage] = React.useState(1);
 
   let blogs
