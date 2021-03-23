@@ -19,7 +19,6 @@ export const BLOGS = gql`
             nodes {
               name
               slug
-              id
             }
           }
           title
@@ -55,7 +54,6 @@ export const BLOGS_WITH_TAG = (slug) => gql`
             nodes {
               name
               slug
-              id
             }
           }
           title
@@ -90,7 +88,6 @@ export const BLOGS_WITH_CATEGORY = (slug) => gql`
             nodes {
               name
               slug
-              id
             }
           }
           title
@@ -130,7 +127,6 @@ export const BLOG_WITH_SLUG = (slug) => gql`
             nodes {
               name
               slug
-              id
             }
           }
           title
