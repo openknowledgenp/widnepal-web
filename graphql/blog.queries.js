@@ -19,6 +19,7 @@ export const BLOGS = gql`
             nodes {
               name
               id
+              slug
             }
           }
           title
