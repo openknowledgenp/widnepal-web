@@ -37,7 +37,7 @@ export const BLOGS = gql`
 
 export const BLOGS_WITH_TAG = (slug) => gql`
   query MyQuery {
-    blogs(first: 1000, where: {tagSlugIn: "${slug}"}) {
+    blogs(first: 1000, where: {tag: "${slug}"}) {
       edges {
         node {
           blogDetails {
