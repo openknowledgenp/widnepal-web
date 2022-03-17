@@ -8,7 +8,10 @@ function event_name_updater( $post_id ) {
     if (strcmp('Upcoming Events', strval(get_field('page'))) == 0) {
       $my_post['post_title'] = get_field('page').' > '.get_field('title');
     }
-    elseif (strcmp('Women in Data Conference', strval(get_field('page'))) == 0) {
+    elseif (strcmp('Women in Data Conference 2021', strval(get_field('page'))) == 0) {
+      $my_post['post_title'] = get_field('page').' > '.get_field('title');
+    }
+    elseif (strcmp('Women in Data Conference 2022', strval(get_field('page'))) == 0) {
       $my_post['post_title'] = get_field('page').' > '.get_field('title');
     }
     elseif (strcmp('Other', strval(get_field('page'))) == 0) {

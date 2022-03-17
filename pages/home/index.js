@@ -95,7 +95,8 @@ const UpcomingEventCarousel = ({resultObject, errorReport, eventErr, pinnedEvent
   let url_substring
   const URL_SUBSTRING_MAP = {
     'Other': 'other',
-    'Women in Data Conference': 'women-in-data-conference',
+    'Women in Data Conference 2021': 'women-in-data-conference',
+    'Women in Data Conference 2022': 'women-in-data-conference-2022',
     'Upcoming Events': 'upcoming-events',
   }
   if (pinnedEvents[selected_event] && pinnedEvents[selected_event].node.eventDetails.startTime !== null) {
