@@ -718,30 +718,6 @@ const GITEvent = () => {
               }
             />
           </Grid.Column>
-          {/* <Grid.Column width={4} style={pageStyles.peopleDetail}>
-            <Popup
-              style={pageStyles.popupStyle}
-              content={<div style={pageStyles.bio}>
-              In this customer facing role, Tina is responsible for helping SAP customers drive data innovation typically as an important component of an enterprise wide transformation initiative. As a business strategy professional, Tina has more than 25 years of experience in business process re-engineering, defining business impact and leading transformation programs.<br/><br/>When Tina moved to Paris in 2016 she extended her Chief Data Officer practitioner role to become the head of data innovation, where she works directly with senior business executives to design a data management approach, future state information management capabilities and consult with executives on the design and execution of their data strategy. Tina led SAP’s own enterprise data strategy and helped build the organization which has delivered over 75 million euros of benefit to SAP. Her expertise ranges from building best practice enterprise programs, defining data management innovations, driving data technology development, and managing teams of data stewards and data operations.
-              A recognized expert in information management, Tina is regularly requested to speak at industry events. She spends a significant amount of time presenting SAP’s point of view on the power of data and a data-driven culture. Tina has two big passions: data and diversity.
-
-
-              </div>}
-              eventsEnabled={eventsEnabled}
-              onClose={() => setOpen({tinaGIT: false})}
-              onOpen={() => setOpen({tinaGIT: true})}
-              open={open.tinaGIT}
-              position='right center'
-              trigger={
-                <div>
-                  <Image src={Tina} style={pageStyles.peopleImage} circular/>
-                  <b>Tina Rosario</b>
-                  <div style={pageStyles.peopleDetailDesignation}>Head of Data Innovation</div>
-                  <div style={pageStyles.peopleDetailDesignation}>Chief Data Officer, Europe</div>
-                </div>
-              }
-            />
-          </Grid.Column> */}
         </Grid.Row>
       </Grid>
       <br/>
