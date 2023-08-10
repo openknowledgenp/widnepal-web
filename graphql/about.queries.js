@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const ABOUT_US_CONTENT = gql`
 query MyQuery {
-  abouts {
+  abouts(first: 30) {
     edges {
       node {
         aboutId
