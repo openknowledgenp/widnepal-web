@@ -1,6 +1,4 @@
-# .github/workflows/deploy.yml
 name: Deploy Preact App to GitHub Pages
-
 on:
   push:
     paths:
@@ -22,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.9'
+          node-version: 'v22.9.0'
           cache: 'npm'
           cache-dependency-path: './conference/package-lock.json'
 
