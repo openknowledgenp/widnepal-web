@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --fix . && echo 'Lint complete.'"
+    "lint": "eslint --fix . && echo 'Lint complete.'",
+    "deploy": "gh-pages -d conference-2025/dist -b gh-pages -r git@github.com:openknowledgenp/widnepal-web.git"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
@@ -41,6 +42,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^6.3.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1"
   }
