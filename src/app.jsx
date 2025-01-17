@@ -8,7 +8,7 @@ export function App() {
   return (
     <>
       <Router>
-        <Home path="/" />
+        <Home path="/widnepal-web" />
         {/* <Schedule path="/schedule" /> */}
       </Router>
     </>
