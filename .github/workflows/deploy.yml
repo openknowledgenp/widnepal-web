@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 'v22.9.0'
           cache: 'npm'
-          cache-dependency-path: './package-lock.json'  # Updated path
+          cache-dependency-path: './package-lock.json'
 
       - name: Install Dependencies
         run: npm ci
@@ -34,7 +34,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist  # Changed from conference/dist
+          folder: dist  
           branch: gh-pages
           clean: true
           clean-exclude: |
