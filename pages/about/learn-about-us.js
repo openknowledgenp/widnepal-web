@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/react-hooks';
-import { ABOUT_US_CONTENT, ABOUT_US_CONTENT_ERROR } from '../../graphql/about.queries';
+import { ABOUT_US_MAIN_CONTENT, ABOUT_US_CONTENT_ERROR } from '../../graphql/about.queries';
 import { PageLayout } from '../../components/pageLayout'
 import { Loading } from '../../components/loading'
 
 const About = () => {
   // Create a query hook
-  const { data, loading, error } = useQuery(ABOUT_US_CONTENT);
+  const { data, loading, error } = useQuery(ABOUT_US_MAIN_CONTENT);
   if (loading) {
     return <Loading />;
   }

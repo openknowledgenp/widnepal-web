@@ -156,6 +156,7 @@ function Nav({isHomePage, resultObject, errorReport}) {
     <Dropdown simple text='Events' key='Events' style={style}>
       <Dropdown.Menu>
         <Menu.Item as='a' href="/event/upcoming-events" onClick={handleItemClick} style={style}>Upcoming Events</Menu.Item>
+        <Menu.Item as='a' href="https://conference.womenindatanepal.org/" target="_blank" rel="noopener noreferrer" onClick={handleItemClick} style={style}>Women in Data Conference 2025</Menu.Item>
         <Menu.Item as='a' href="/event/women-in-data-conference-2022" onClick={handleItemClick} style={style}>Women in Data Conference 2022</Menu.Item>
         <Menu.Item as='a' href="/event/women-in-data-conference" onClick={handleItemClick} style={style}>Women in Data Conference 2021</Menu.Item>
         {otherEventsOptions.length > 0 && otherEventsOptions.map(x=><Menu.Item as='a' key={x.node.eventDetails.pageTitle} href={`/event/other?page=${x.node.eventDetails.pageTitle}`} onClick={handleItemClick} style={style}>{x.node.eventDetails.pageTitle}</Menu.Item>)}

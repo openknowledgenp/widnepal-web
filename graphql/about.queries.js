@@ -1,8 +1,36 @@
 import gql from 'graphql-tag';
 
-export const ABOUT_US_CONTENT = gql`
+export const ABOUT_US_MAIN_CONTENT = gql`
 query MyQuery {
   abouts(first: 30) {
+    edges {
+      node {
+        aboutId
+        about_us_page {
+          page
+          pageTitle
+          pageContent
+          learnAboutUs
+          insertOption
+          introduction
+          socialMediaLinksAndEmail {
+            email
+            facebook
+            linkedin
+            twitter
+            website
+          }
+        }
+      }
+    }
+  }
+}
+
+`
+
+export const ABOUT_US_CONTENT = gql`
+query MyQuery {
+  abouts(first: 12) {
     edges {
       node {
         aboutId
@@ -34,6 +62,7 @@ query MyQuery {
 }
 
 `
+
 export const ABOUT_US_CONTENT_ERROR = {
   error: "<div><h2>About section is not available</h2></div>",
 }
